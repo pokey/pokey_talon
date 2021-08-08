@@ -48,7 +48,7 @@ add comment <user.text>$:
 #     edit.paste()
 # (select | cell | sell) [line] <number>: user.select_range(number, number)
 # (select | cell | sell) <number> until <number>: user.select_range(number_1, number_2)
-indent that: edit.indent_more()
+# indent that: edit.indent_more()
 # tab line <number>:
 #     edit.jump_line(number)
 #     edit.indent_more()

@@ -1,8 +1,20 @@
 import time
 from talon import Context, Module, actions, clip, ui
 
+# import re
+
 ctx = Context()
 mod = Module()
+
+
+# From https://github.com/AndreasArvidsson/andreas-talon/blob/4f4ac64376c3c2623d7a0871bb5d2997e8a10be9/misc/edit.py#L11-L20
+# @ctx.action_class("main")
+# class MainActions:
+#     def insert(text: str):
+#         if isinstance(text, str) and len(text) > 2 and re.search(r"[ /-]|\n", text):
+#             actions.user.paste(text)
+#         else:
+#             actions.next(text)
 
 
 @ctx.action_class("edit")
@@ -23,6 +35,7 @@ class Actions:
 
         with clip.revert():
             clip.set_text(text)
+            # actions.sleep("150ms")
             actions.edit.paste()
             # sleep here so that clip.revert doesn't revert the clipboard too soon
             actions.sleep("150ms")

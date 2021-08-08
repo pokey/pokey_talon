@@ -216,3 +216,9 @@ abbreviations = {
 
 ctx = Context()
 ctx.lists["user.abbreviation"] = abbreviations
+
+
+@mod.capture(rule="brief {self.abbreviation}")
+def abbreviation(m) -> str:
+    """Abbreviated words"""
+    return m.abbreviation

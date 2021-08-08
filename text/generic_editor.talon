@@ -10,10 +10,10 @@ tug:
 tug <number_small> now:
     user.left_n(number_small)
 
-draw:
+drain:
     edit.word_left()
 
-draw <number_small> now:
+drain <number_small> now:
     user.word_left_n(number_small)
 
 push:

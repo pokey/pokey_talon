@@ -138,6 +138,7 @@ action(user.code_operator_bitwise_right_shift): " >> "
 action(user.code_operator_bitwise_right_shift_assignment): " >>= "
 <user.operator> cast: " as "
 
+state throw: "throw "
 state const: "const "
 
 state let: "let "

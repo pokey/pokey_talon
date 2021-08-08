@@ -19,11 +19,13 @@ def word(m) -> str:
     except AttributeError:
         return " ".join(actions.dictate.replace_words(actions.dictate.parse_words(m.word)))
 
+# @mod.capture(rule="({self.vocabulary} | <user.abbreviation> | <user.spell> | <user.number_string> | {user.punctuation} | <phrase>)+")
 @mod.capture(rule="({user.vocabulary} | <phrase>)+")
 def text(m) -> str:
     """A sequence of words, including user-defined vocabulary."""
     return format_phrase(m)
 
+# @mod.capture(rule="({self.vocabulary} | <user.abbreviation> | <user.spell> | <user.number_string> | {user.punctuation} | <phrase>)+")
 @mod.capture(rule="({user.vocabulary} | {user.punctuation} | <phrase>)+")
 def prose(m) -> str:
     """Mixed words and punctuation, auto-spaced & capitalized."""

@@ -25,7 +25,7 @@ action(user.new_line_above):
 	user.vscode_and_wait("editor.action.insertLineBefore")
 
 settings():
-  key_wait = 1
+  key_wait = 5
 
 #talon app actions
 action(app.tab_close): user.vscode("workbench.action.closeActiveEditor")
@@ -105,6 +105,7 @@ bar extensions: user.vscode("workbench.view.extensions")
 bar outline: user.vscode("outline.focus")
 bar run: user.vscode("workbench.view.debug")
 bar source: user.vscode("workbench.view.scm")
+bar pull request: user.vscode("pr:github.focus")
 side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
@@ -142,23 +143,25 @@ show snippets: user.vscode("workbench.action.openSnippets")
 centered switch: user.vscode("workbench.action.toggleCenteredLayout")
 fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
-wrap switch: user.vscode("editor.action.toggleWordWrap")
+wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
 
 # File Commands
-<user.find> dock [<user.text>] [{user.file_extension}]: 
+<user.find> dock [<user.text>] [{user.file_extension}] [halt]: 
   user.vscode("workbench.action.quickOpen")
   sleep(50ms)
   insert(text or "")
   insert(file_extension or "")
   sleep(300ms)
-<user.teleport> dock [<user.text>] [{user.file_extension}]: 
+<user.teleport> dock <user.text> [{user.file_extension}] [halt]: 
   user.vscode("workbench.action.quickOpen")
   sleep(50ms)
   insert(text or "")
   insert(file_extension or "")
   sleep(300ms)
   key(enter)
+  sleep(150ms)
+<user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 file copy path:
 	user.vscode("copyFilePath") 
 file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]: 
@@ -182,9 +185,13 @@ save ugly:
 file clone:
 	user.vscode("fileutils.duplicateFile")
 	sleep(150ms)
+disc:
+	key(esc:5)
+	edit.save()
 action(edit.save):
 	key(cmd-s)
 	sleep(50ms)
+save all: key(cmd-alt-s)
 
 # Language Features
 suggest show: user.vscode("editor.action.triggerSuggest")
@@ -285,6 +292,10 @@ git commit [<user.text>]:
   user.vscode("git.commitStaged")
   sleep(100ms)
   user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+git stash [<user.text>]:
+  user.vscode("git.stash")
+  sleep(100ms)
+  user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git commit undo: user.vscode("git.undoCommit")
 git commit ammend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
@@ -304,7 +315,10 @@ git stage: user.vscode("git.stage")
 git stage all: user.vscode("git.stageAll")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
+git log: user.vscode("git-graph.view")
+file open: user.vscode("git.openFile")
 pull request: user.vscode("pr.create")
+file viewed: user.vscode("pr.markFileAsViewed")
 (open | show) pull request: user.vscode("pr.openPullRequestOnGitHub")
 change next: key(alt-f5)
 change last: key(shift-alt-f5)
@@ -410,8 +424,6 @@ yes:
 	sleep(100ms)
 	key(tab)
 
-install local: user.vscode("workbench.extensions.action.installVSIX")
-
 zoom (talk | demo | big):
 	user.set_zoom_level(4)
 
@@ -422,8 +434,12 @@ make executable: user.vscode("chmod.plusX")
 
 add dock string: user.vscode("autoDocstring.generateDocstring")
 
-issue create: user.vscode("issue.createIssue")
-issue submit: user.vscode("issue.createIssueFromFile")
+issue create [<user.text>]:
+	user.vscode("issue.createIssue")
+	sleep(100ms)
+	edit.delete_line()
+	user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+issue (submit | save): user.vscode("issue.createIssueFromFile")
 
 draft (save | submit):
 	user.draft_editor_save()
@@ -431,3 +447,7 @@ draft discard:
 	user.draft_editor_discard()
 
 dev tools: user.vscode("workbench.action.toggleDevTools")
+show in finder: user.vscode("revealFileInOS")
+
+file delete: user.vscode("fileutils.removeFile")
+next: key(escape tab)

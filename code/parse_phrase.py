@@ -1,4 +1,4 @@
-# From https://github.com/AndreasArvidsson/talon-user/blob/3631f25d426a9fb7526c240cb0c9961ea90072c2/andreas/misc/rephrase.py
+# From https://github.com/AndreasArvidsson/andreas-talon/blob/3631f25d426a9fb7526c240cb0c9961ea90072c2/andreas/misc/rephrase.py
 from typing import Optional, Union
 from talon import Module, actions, speech_system
 from talon.grammar import Phrase

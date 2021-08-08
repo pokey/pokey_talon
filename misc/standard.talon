@@ -24,6 +24,7 @@ show clip:
     key(cmd-shift-v)
     sleep(100ms)
     insert(number_small)
+    sleep(100ms)
 (pace | paste) rough <number_small>:
     key(cmd-shift-v)
     sleep(100ms)
@@ -42,16 +43,19 @@ slow mode: mode.enable("user.slow")
 
 emoji scout [<user.text>]:
 	key(cmd-ctrl-space)
-	sleep(100ms)
+	sleep(200ms)
 	insert(user.text or "")
 
-^dictate <user.text>$:
-    auto_insert(text)
+prose [<user.prose>]$:
+    auto_insert(prose or "")
     mode.disable("sleep")
     mode.disable("command")
     mode.enable("dictation")
     user.code_clear_language_mode()
     mode.disable("user.gdb")
+
+prose <user.prose> halt:
+    auto_insert(prose or "")
 
 show numbers: key(cmd-ctrl-alt-f)
 

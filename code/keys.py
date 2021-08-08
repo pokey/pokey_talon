@@ -4,7 +4,7 @@ from user.pokey_talon.code.terms import DELETE
 from talon import Module, Context, actions, app
 import sys
 
-default_alphabet = "air bat cap drum each fine gust harp sit jane crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp ink jane crunch look made near ox pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
 letters_string = "abcdefghijklmnopqrstuvwxyz"
@@ -14,6 +14,7 @@ numbers = [str(i) for i in range(10)]
 default_f_digits = (
     "one two three four five six seven eight nine ten eleven twelve".split(" ")
 )
+
 
 mod = Module()
 mod.list("letter", desc="The spoken phonetic alphabet")
@@ -224,9 +225,8 @@ simple_keys = [
 
 alternate_keys = {
     "clap": "enter",
-    "deli": "delete",
     "drill": "delete",
-    "chuck that": "backspace",
+    "chuck": "backspace",
     "wipe": "backspace",
     "scrape": "escape",
     "void": "space",
@@ -251,3 +251,9 @@ class Actions:
     def get_alphabet() -> dict:
         """Provides the alphabet dictionary"""
         return alphabet
+
+
+@mod.capture(rule="spell {self.letter}+")
+def spell(m) -> str:
+    """Spell a word"""
+    return "".join(m.letter_list)

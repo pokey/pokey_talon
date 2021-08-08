@@ -284,7 +284,7 @@ class Actions:
 
 ctx.lists["self.formatters"] = formatters_words.keys()
 ctx.lists["self.prose_formatter"] = {
-    "speak": "NOOP",
+    # "speak": "NOOP",
     "sense": "CAPITALIZE_FIRST_WORD",
 }
 
@@ -295,3 +295,7 @@ def gui(gui: imgui.GUI):
     gui.line()
     for name in sorted(set(formatters_words.keys())):
         gui.text(f"{name} | {format_phrase_no_history(['one', 'two', 'three'], name)}")
+
+
+mod.list("phrase_ender", desc="list of commands that can be used to end a phrase")
+ctx.lists["self.phrase_ender"] = {"void": "space", "clap": "enter", "halt": "space:0"}
