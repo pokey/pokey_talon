@@ -316,7 +316,7 @@ git stage all: user.vscode("git.stageAll")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git log: user.vscode("git-graph.view")
-file open: user.vscode("git.openFile")
+file open: user.vscode("gitlens.openWorkingFile")
 pull request: user.vscode("pr.create")
 file viewed: user.vscode("pr.markFileAsViewed")
 (open | show) pull request: user.vscode("pr.openPullRequestOnGitHub")
@@ -334,6 +334,14 @@ debug stopper: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
 debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
+debug extension:
+	user.vscode("workbench.action.debug.selectandstart")
+	"run extension"
+	key(enter)
+debug test:
+	user.vscode("workbench.action.debug.selectandstart")
+	"extension tests"
+	key(enter)
 
 # Terminal
 term external: user.vscode("workbench.action.terminal.openNativeConsole")
@@ -365,6 +373,7 @@ replace here:
 	key(cmd-alt-l)
 
 hover show: user.vscode("editor.action.showHover")
+debug hover: user.vscode("editor.debug.action.showDebugHover")
 
 edit last: user.vscode("editsHistory.moveCursorToPreviousEdit")
 edit next: user.vscode("editsHistory.moveCursorToNextEdit")
