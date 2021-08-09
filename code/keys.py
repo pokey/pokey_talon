@@ -188,7 +188,7 @@ symbol_key_words = {
     "rack": "]",
     "lace": "{",
     "race": "}",
-    "angle": "<",
+    "langle": "<",
     "less than": "<",
     "wrangle": ">",
     "greater than": ">",
