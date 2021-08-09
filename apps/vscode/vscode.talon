@@ -460,3 +460,5 @@ show in finder: user.vscode("revealFileInOS")
 
 file delete: user.vscode("fileutils.removeFile")
 next: key(escape tab)
+
+cursorless record: user.vscode("cursorless.recordTestCase")
