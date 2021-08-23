@@ -1,0 +1,43 @@
+# Spoken form, Cursorless identifier
+bottom, scrollToBottom
+breakpoint, setBreakpoint
+bring, bring
+call, call
+carve, cut
+center, scrollToCenter
+chuck, delete
+clear, clear
+clone, copyLinesDown
+clone up, copyLinesUp
+comment, commentLines
+copy, copy
+crown, scrollToTop
+dedent, outdentLines
+define, revealDefinition
+drink, editNewLineAbove
+drop, insertEmptyLineAbove
+extract, extractVariable
+float, insertEmptyLineBelow
+fold, fold
+format, reformat
+hover, showHover
+indent, indentLines
+inspect, showDebugHover
+move, move
+paste to, paste
+phones, nextHomophone
+post, setSelectionAfter
+pour, editNewLineBelow
+pre, setSelectionBefore
+puff, insertEmptyLinesAround
+quick fix, quickFix
+reference, showReferences
+rename, rename
+reverse, reverse
+scout, find
+scout all, findInFiles
+sort, sort
+swap, swap
+take, setSelection
+unfold, unfold
+wrap, wrap
