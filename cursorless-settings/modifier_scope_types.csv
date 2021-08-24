@@ -1,6 +1,5 @@
 Spoken form, Cursorless identifier
 arg, argumentOrParameter
-arrow, arrowFunction
 attribute, attribute
 block, paragraph
 call, functionCall
@@ -17,11 +16,12 @@ funk name, functionName
 if state, ifStatement
 item, collectionItem
 key, collectionKey
+lambda, anonymousFunction
 line, line
 list, list
-map, dictionary
+map, map
 name, name
-regex, regex
+regex, regularExpression
 start tag, xmlStartTag
 state, statement
 string, string

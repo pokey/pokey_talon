@@ -6,6 +6,6 @@ escaped twin, escapedSingleQuotes
 quad, doubleQuotes
 round, parentheses
 skis, backtickQuotes
-space, spaces
 square, squareBrackets
 twin, singleQuotes
+void, whitespace

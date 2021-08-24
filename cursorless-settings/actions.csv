@@ -1,43 +1,43 @@
 Spoken form, Cursorless identifier
 bottom, scrollToBottom
-breakpoint, setBreakpoint
-bring, bring
-call, call
-carve, cut
+breakpoint, toggleLineBreakpoint
+bring, replaceWithTarget
+call, callAsFunction
+carve, cutToClipboard
 center, scrollToCenter
-chuck, delete
-clear, clear
-clone, copyLinesDown
-clone up, copyLinesUp
-comment, commentLines
-copy, copy
+chuck, remove
+clear, clearAndSetSelection
+clone, insertCopyAfter
+clone up, insertCopyBefore
+comment, toggleLineComment
+copy, copyToClipboard
 crown, scrollToTop
-dedent, outdentLines
+dedent, outdentLine
 define, revealDefinition
-drink, editNewLineAbove
-drop, insertEmptyLineAbove
+drink, editNewLineBefore
+drop, insertEmptyLineBefore
 extract, extractVariable
-float, insertEmptyLineBelow
-fold, fold
-format, reformat
+float, insertEmptyLineAfter
+fold, foldRegion
+format, applyFormatter
 hover, showHover
-indent, indentLines
+indent, indentLine
 inspect, showDebugHover
-move, move
-paste to, paste
+move, moveToTarget
+paste to, pasteFromClipboard
 phones, nextHomophone
 post, setSelectionAfter
-pour, editNewLineBelow
+pour, editNewLineAfter
 pre, setSelectionBefore
 puff, insertEmptyLinesAround
-quick fix, quickFix
+quick fix, showQuickFix
 reference, showReferences
 rename, rename
-reverse, reverse
-scout, find
-scout all, findInFiles
-sort, sort
-swap, swap
+reverse, reverseTargets
+scout, findInDocument
+scout all, findInWorkspace
+sort, sortTargets
+swap, swapTargets
 take, setSelection
-unfold, unfold
-wrap, wrap
+unfold, unfoldRegion
+wrap, wrapWithPairedDelimiter
