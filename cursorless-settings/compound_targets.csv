@@ -1,6 +1,6 @@
 Spoken form, Cursorless identifier
--, rangeExcludingAnchor
+-, rangeExcludingStart
 and, listConnective
-between, rangeExcludingBothEnds
-past, rangeIncludingBothEnds
-until, rangeExcludingActive
+between, rangeExclusive
+past, rangeInclusive
+until, rangeExcludingEnd
