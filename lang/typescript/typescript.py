@@ -14,6 +14,16 @@ ctx.lists["user.code_functions"] = {
     #     "string": ".ToString",
 }
 
+ctx.lists["user.code_type"] = {
+    "boolean": "boolean",
+    "integer": "int",
+    "string": "string",
+    "null": "null",
+    "undefined": "undefined",
+    "number": "number",
+    "any": "any",
+}
+
 
 @ctx.action_class("user")
 class user_actions:
@@ -81,3 +91,9 @@ class user_actions:
     #     )
 
     #     actions.user.code_insert_function(result, None)
+
+    def code_insert_type_annotation(type: str):
+        actions.insert(f": {type}")
+
+    def code_insert_return_type(type: str):
+        actions.insert(f" => {type}")
