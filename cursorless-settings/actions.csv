@@ -39,5 +39,6 @@ scout all, findInWorkspace
 sort, sortTargets
 swap, swapTargets
 take, setSelection
+type deaf, revealTypeDefinition
 unfold, unfoldRegion
 wrap, wrapWithPairedDelimiter
