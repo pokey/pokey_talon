@@ -9,19 +9,10 @@ tag(): user.splits
 tag(): user.tabs
 
 settings():
-  key_wait = 5
-
-action(edit.select_line):
-	key(ctrl-e cmd-shift-left)
+    key_wait = 5
 
 <user.delete> line:
-	user.vscode_and_wait("editor.action.deleteLines")
-
-action(edit.line_insert_down):
-	user.vscode_and_wait("editor.action.insertLineAfter")
-
-action(edit.line_insert_up):
-	user.vscode_and_wait("editor.action.insertLineBefore")
+    user.vscode_and_wait("editor.action.deleteLines")
 
 #talon app actions
 <user.teleport> last: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
@@ -49,17 +40,17 @@ search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
 
 <user.find> symbol [<user.text>] [halt]:
-  user.vscode("workbench.action.gotoSymbol")
-  sleep(50ms)
-  insert(text or "")
+    user.vscode("workbench.action.gotoSymbol")
+    sleep(50ms)
+    insert(text or "")
 
-<user.teleport> symbol <user.text> [halt]: 
-  user.vscode("workbench.action.gotoSymbol")
-  sleep(50ms)
-  insert(text or "")
-  sleep(250ms)
-  key(enter)
-  sleep(50ms)
+<user.teleport> symbol <user.text> [halt]:
+    user.vscode("workbench.action.gotoSymbol")
+    sleep(50ms)
+    insert(text or "")
+    sleep(250ms)
+    key(enter)
+    sleep(50ms)
 
 symbol last: user.vscode("gotoNextPreviousMember.previousMember")
 symbol next: user.vscode("gotoNextPreviousMember.nextMember")
@@ -90,31 +81,31 @@ theme switch: user.vscode("workbench.action.selectTheme")
 wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
 # File Commands
-<user.find> dock [<user.text>] [{user.file_extension}] [halt]: 
-	user.vscode("workbench.action.quickOpen")
-	sleep(200ms)
-	insert(text or "")
-	insert(file_extension or "")
-	sleep(300ms)
-<user.teleport> dock <user.text> [{user.file_extension}] [halt]: 
-	user.vscode("workbench.action.quickOpen")
-	sleep(200ms)
-	insert(text or "")
-	insert(file_extension or "")
-	sleep(300ms)
-	key(enter)
-	sleep(150ms)
+<user.find> dock [<user.text>] [{user.file_extension}] [halt]:
+    user.vscode("workbench.action.quickOpen")
+    sleep(200ms)
+    insert(text or "")
+    insert(file_extension or "")
+    sleep(300ms)
+<user.teleport> dock <user.text> [{user.file_extension}] [halt]:
+    user.vscode("workbench.action.quickOpen")
+    sleep(200ms)
+    insert(text or "")
+    insert(file_extension or "")
+    sleep(300ms)
+    key(enter)
+    sleep(150ms)
 <user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 file copy path: user.vscode("copyFilePath")
-file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]: 
-	user.vscode_and_wait("explorer.newFile")
-	sleep(500ms)
-	user.insert_many(format_text_list or "")
-	user.insert_formatted(user.word or "", "NOOP")
-	insert(file_extension or "")
+file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
+    user.vscode_and_wait("explorer.newFile")
+    sleep(500ms)
+    user.insert_many(format_text_list or "")
+    user.insert_formatted(user.word or "", "NOOP")
+    insert(file_extension or "")
 file clone:
-	user.vscode("fileutils.duplicateFile")
-	sleep(150ms)
+    user.vscode("fileutils.duplicateFile")
+    sleep(150ms)
 file create: user.vscode("workbench.action.files.newUntitledFile")
 file rename:
     user.vscode("fileutils.renameFile")
@@ -126,12 +117,9 @@ file open folder: user.vscode("revealFileInOS")
 file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
 save ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
-	key(esc:5)
-	edit.save()
+    key(esc:5)
+    edit.save()
 disk gentle: edit.save()
-action(edit.save):
-	key(cmd-s)
-	sleep(50ms)
 
 # Language Features
 suggest show: user.vscode("editor.action.triggerSuggest")
@@ -148,64 +136,64 @@ problem next: user.vscode("editor.action.marker.nextInFiles")
 problem last: user.vscode("editor.action.marker.prevInFiles")
 problem fix: user.vscode("problems.action.showQuickFixes")
 rename that:
-	user.vscode("editor.action.rename")
-	sleep(100ms)
+    user.vscode("editor.action.rename")
+    sleep(100ms)
 refactor that: user.vscode("editor.action.refactor")
 whitespace trim: user.vscode("editor.action.trimTrailingWhitespace")
 language switch: user.vscode("workbench.action.editor.changeLanguageMode")
 refactor rename: user.vscode("editor.action.rename")
 refactor this: user.vscode("editor.action.refactor")
 ref next:
-   user.vscode("references-view.tree.focus")
-   key(down enter)
+    user.vscode("references-view.tree.focus")
+    key(down enter)
 ref last:
-   user.vscode("references-view.tree.focus")
-   key(up enter)
+    user.vscode("references-view.tree.focus")
+    key(up enter)
 
 #code navigation
 (<user.teleport> declaration | follow):
-	user.vscode("editor.action.revealDefinition")
+    user.vscode("editor.action.revealDefinition")
 spring back:
-	user.vscode("workbench.action.navigateBack") 
-spring forward:  user.vscode("workbench.action.navigateForward")  
+    user.vscode("workbench.action.navigateBack")
+spring forward: user.vscode("workbench.action.navigateForward")
 <user.teleport> implementation:
-	user.vscode("editor.action.goToImplementation")
+    user.vscode("editor.action.goToImplementation")
 <user.teleport> type:
-	user.vscode("editor.action.goToTypeDefinition")
+    user.vscode("editor.action.goToTypeDefinition")
 <user.teleport> usage:
-	user.vscode("references-view.find")
+    user.vscode("references-view.find")
 
 # Bookmarks. Requires Bookmarks plugin
-<user.find> sesh [<user.text>]: 
-  user.vscode("workbench.action.openRecent")
-  sleep(50ms)
-  insert(text or "")
-  sleep(250ms)
-<user.teleport> sesh [<user.text>]: 
-  user.vscode("workbench.action.openRecent")
-  sleep(50ms)
-  insert(text or "")
-  key(enter)
-  sleep(250ms)
-new sesh [<user.text>]: 
-  user.vscode("workbench.action.newWindow")
-  sleep(3s)
-  user.vscode("workbench.action.openRecent")
-  sleep(50ms)
-  insert(text or "")
-  sleep(250ms)
+<user.find> sesh [<user.text>]:
+    user.vscode("workbench.action.openRecent")
+    sleep(50ms)
+    insert(text or "")
+    sleep(250ms)
+<user.teleport> sesh [<user.text>]:
+    user.vscode("workbench.action.openRecent")
+    sleep(50ms)
+    insert(text or "")
+    key(enter)
+    sleep(250ms)
+new sesh [<user.text>]:
+    user.vscode("workbench.action.newWindow")
+    sleep(3s)
+    user.vscode("workbench.action.openRecent")
+    sleep(50ms)
+    insert(text or "")
+    sleep(250ms)
 
-<user.find> win [<user.text>]: 
-	user.vscode("workbench.action.switchWindow")
-	sleep(50ms)
-	insert(text or "")
-	sleep(250ms)
-<user.teleport> win [<user.text>]: 
-	user.vscode("workbench.action.switchWindow")
-	sleep(50ms)
-	insert(text or "")
-	key(enter)
-	sleep(250ms)
+<user.find> win [<user.text>]:
+    user.vscode("workbench.action.switchWindow")
+    sleep(50ms)
+    insert(text or "")
+    sleep(250ms)
+<user.teleport> win [<user.text>]:
+    user.vscode("workbench.action.switchWindow")
+    sleep(50ms)
+    insert(text or "")
+    key(enter)
+    sleep(250ms)
 
 <user.teleport> marks: user.vscode("workbench.view.extension.bookmarks")
 toggle mark: user.vscode("bookmarks.toggle")
@@ -224,23 +212,23 @@ fold comments: user.vscode("editor.foldAllBlockComments")
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
-git checkout [<user.text>]: 
-  user.vscode("git.checkout")
-  sleep(50ms)
-  user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
-git checkout main: 
-  user.vscode("git.checkout")
-  sleep(50ms)
-  'main'
-  key(enter)
+git checkout [<user.text>]:
+    user.vscode("git.checkout")
+    sleep(50ms)
+    user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
+git checkout main:
+    user.vscode("git.checkout")
+    sleep(50ms)
+    'main'
+    key(enter)
 git commit [<user.text>]:
-  user.vscode("git.commitStaged")
-  sleep(250ms)
-  user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+    user.vscode("git.commitStaged")
+    sleep(250ms)
+    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git stash [<user.text>]:
-  user.vscode("git.stash")
-  sleep(100ms)
-  user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+    user.vscode("git.stash")
+    sleep(100ms)
+    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git commit undo: user.vscode("git.undoCommit")
 git commit ammend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
@@ -280,19 +268,19 @@ debug continue: user.vscode("workbench.action.debug.continue")
 debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
 debug stench:
-	user.vscode("workbench.action.debug.selectandstart")
-	"run extension"
-	key(enter)
+    user.vscode("workbench.action.debug.selectandstart")
+    "run extension"
+    key(enter)
 debug test:
-	user.vscode("workbench.action.debug.selectandstart")
-	"extension tests"
-	key(enter)
+    user.vscode("workbench.action.debug.selectandstart")
+    "extension tests"
+    key(enter)
 
 # Terminal
 term external: user.vscode("workbench.action.terminal.openNativeConsole")
 term new: user.vscode("workbench.action.terminal.new")
 term next: user.vscode("workbench.action.terminal.focusNext")
-term last:user.vscode("workbench.action.terminal.focusPrevious")
+term last: user.vscode("workbench.action.terminal.focusPrevious")
 term split: user.vscode("workbench.action.terminal.split")
 term zoom: user.vscode("workbench.action.toggleMaximizedPanel")
 term trash: user.vscode("workbench.action.terminal.kill")
@@ -322,20 +310,20 @@ edit last here: user.vscode("editsHistory.moveCursorToPreviousEditInSameFile")
 edit next here: user.vscode("editsHistory.moveCursorToNextEditInSameFile")
 
 commode:
-	user.vscode_and_wait("vscode-neovim.enable")
-	user.vscode("vscode-neovim.escape")
-	sleep(25ms)
+    user.vscode_and_wait("vscode-neovim.enable")
+    user.vscode("vscode-neovim.escape")
+    sleep(25ms)
 
 insert:
-	user.vscode_and_wait("vscode-neovim.disable")
-	key(i)
-	sleep(25ms)
+    user.vscode_and_wait("vscode-neovim.disable")
+    key(i)
+    sleep(25ms)
 
 replace smart:
-	key(:)
-	sleep(50ms)
-	key(S)
-	key(/)
+    key(:)
+    sleep(50ms)
+    key(S)
+    key(/)
 
 swap this: user.vscode("extension.swap")
 
@@ -343,17 +331,17 @@ reload window: user.vscode("workbench.action.reloadWindow")
 close window: user.vscode("workbench.action.closeWindow")
 
 Github open:
-	user.vscode("openInGithub.openInGitHubFile")
-	sleep(250ms)
+    user.vscode("openInGithub.openInGitHubFile")
+    sleep(250ms)
 
 stage on:
-	user.vscode_and_wait("git.stage")
-	key(cmd-w)
-	user.vscode_and_wait("workbench.scm.focus")
-	key(shift-tab)
-	key(down:100)
-	sleep(100ms)
-	key(enter)
+    user.vscode_and_wait("git.stage")
+    key(cmd-w)
+    user.vscode_and_wait("workbench.scm.focus")
+    key(shift-tab)
+    key(down:100)
+    sleep(100ms)
+    key(enter)
 
 replace here:
     user.replace("")
@@ -377,30 +365,30 @@ cell run all: user.vscode("jupyter.runallcells")
 
 jest: key(ctrl-space)
 yes:
-	sleep(100ms)
-	key(tab)
+    sleep(100ms)
+    key(tab)
 
 zoom (talk | demo | big):
-	user.set_zoom_level(4)
+    user.set_zoom_level(4)
 
 zoom (normal | regular):
-	user.set_zoom_level(1)
+    user.set_zoom_level(1)
 
 make executable: user.vscode("chmod.plusX")
 
 add dock string: user.vscode("autoDocstring.generateDocstring")
 
 issue create [<user.text>]$:
-	user.vscode("issue.createIssue")
-	sleep(250ms)
-	edit.delete_line()
-	user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+    user.vscode("issue.createIssue")
+    sleep(250ms)
+    edit.delete_line()
+    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 issue (submit | save): user.vscode("issue.createIssueFromFile")
 
 draft (save | submit):
-	user.draft_editor_save()
+    user.draft_editor_save()
 draft discard:
-	user.draft_editor_discard()
+    user.draft_editor_discard()
 
 dev tools: user.vscode("workbench.action.toggleDevTools")
 show in finder: user.vscode("revealFileInOS")

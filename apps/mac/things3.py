@@ -116,6 +116,36 @@ class Actions:
         actions.key("enter")
 
 
+@ctx.action_class("user")
+class UserActions:
+    def mark_complete():
+        actions.key("cmd-.")
+
+    def mark_cancelled():
+        actions.key("cmd-alt-.")
+
+    def show_inbox():
+        actions.key("cmd-1")
+
+    def show_today():
+        actions.key("cmd-2")
+
+    def show_upcoming():
+        actions.key("cmd-3")
+
+    def show_anytime():
+        actions.key("cmd-4")
+
+    def show_someday():
+        actions.key("cmd-5")
+
+    def show_logbook():
+        actions.key("cmd-6")
+
+    def dental_click():
+        actions.key("cmd-enter")
+
+
 @mod.capture(rule="{self.things_tag}+")
 def things_tags(m) -> str:
     "One or more Things tags"

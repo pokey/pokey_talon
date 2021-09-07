@@ -39,6 +39,9 @@ class user_actions:
         actions.sleep("180ms")
         actions.app.tab_close()
 
+    def dental_click():
+        actions.key("escape f")
+
 
 @mod.action_class
 class Actions:

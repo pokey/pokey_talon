@@ -109,6 +109,21 @@ class EditActions:
         actions.key("enter")
         actions.edit.line_start()
 
+    def select_line(n: int = None):
+        actions.key("ctrl-e cmd-shift-left")
+
+    def line_insert_down():
+        actions.user.vscode_and_wait("editor.action.insertLineAfter")
+
+    def line_insert_up():
+        actions.user.vscode_and_wait("editor.action.insertLineBefore")
+        # talon app actions
+
+    def save():
+        actions.key("cmd-s")
+        actions.sleep("50ms")
+        # Language Features
+
 
 @ctx.action_class("win")
 class WinActions:
