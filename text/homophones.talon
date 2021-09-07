@@ -6,13 +6,13 @@ phones hide: user.homophones_hide()
 phones word:
   edit.select_word()
   user.homophones_show_selection()
-phones [<user.ordinals>] word left:
-  n = ordinals or 1
+phones [<user.ordinals_small>] word left:
+  n = ordinals_small or 1
   user.words_left(n - 1)
   edit.extend_word_left()
   user.homophones_show_selection()
-phones [<user.ordinals>] word right:
-  n = ordinals or 1
+phones [<user.ordinals_small>] word right:
+  n = ordinals_small or 1
   user.words_right(n - 1)
   edit.extend_word_right()
   user.homophones_show_selection()

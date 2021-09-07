@@ -2,7 +2,7 @@
 #   restriction.
 os: mac
 -
-desk <number>: user.desktop(number)
-window move desk <number>: user.window_move_desktop(number)
+desk <number_small>: user.desktop(number_small)
+window move desk <number_small>: user.window_move_desktop(number_small)
 window move desk left: user.window_move_desktop_left()
 window move desk right: user.window_move_desktop_right()

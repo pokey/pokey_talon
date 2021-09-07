@@ -45,17 +45,3 @@ folk sim [<phrase>]$:
     user.switcher_focus("Simulator")
     sleep(200ms)
     user.parse_phrase(phrase or "")
-
-<user.teleport> site [<user.text>] [{user.file_extension}]:
-    user.switcher_focus("Google Chrome")
-    key(cmd-t l p space)
-    insert(text or "")
-    insert(file_extension or "")
-    sleep(500ms)
-    key(down enter)
-<user.find> site [<user.text>] [{user.file_extension}]:
-    user.switcher_focus("Google Chrome")
-    key(cmd-t l p space)
-    insert(text or "")
-    insert(file_extension or "")
-    sleep(500ms)

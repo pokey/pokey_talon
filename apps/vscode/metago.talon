@@ -19,14 +19,6 @@ dropper: user.vscode("metaGo.gotoEmptyLineDown")
 # <user.select> to: user.vscode("metaGo.selectSmart")
 # tasty: user.vscode("metaGo.selectBefore")
 # toasty: user.vscode("metaGo.selectAfter")
-<user.select> upper: user.vscode("metaGo.selectEmptyLineUp")
-<user.select> downer: user.vscode("metaGo.selectEmptyLineDown")
-<user.delete> downer:
-    user.vscode("metaGo.selectEmptyLineDown")
-    key(backspace)
-<user.delete> upper:
-    user.vscode("metaGo.selectEmptyLineUp")
-    key(backspace)
 # <user.select> outside: user.vscode("metaGo.inSurroundingPairSelectionWithPairs")
 # <user.select> inside <user.symbol_key>:
 #     user.vscode("metaGo.inSurroundingPairSelection")
@@ -36,10 +28,6 @@ dropper: user.vscode("metaGo.gotoEmptyLineDown")
 # cursor add: user.vscode("metaGo.addCursorSmart")
 # cursor add before: user.vscode("metaGo.addCursorBefore")
 # cursor add after: user.vscode("metaGo.addCursorAfter")
-
-act up: user.vscode("metaGo.scrollCurrentLineToTop")
-act eat: user.vscode("metaGo.scrollCurrentLineToMiddle")
-act down: user.vscode("metaGo.scrollCurrentLineToBottom")
 
 <user.select> right big: user.vscode("metaGo.cursorSpaceWordRightSelect")
 <user.select> left big: user.vscode("metaGo.cursorSpaceWordLeftSelect")
