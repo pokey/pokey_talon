@@ -37,8 +37,8 @@ tag require [{user.talon_tags}]:
 tag set [{user.talon_tags}]: 
     tag = talon_tags or ""
     user.paste("tag(): {tag}")
-list {user.talon_lists}: "{{{talon_lists}}}"
-capture {user.talon_captures}: "<{talon_captures}>"
+# list {user.talon_lists}: "{{{talon_lists}}}"
+# capture {user.talon_captures}: "<{talon_captures}>"
 
 #commands for dictating key combos
 key <user.keys> over: "{keys}"
@@ -47,10 +47,10 @@ key <user.modifiers> over: "{modifiers}"
 
 #funk commands, consistent with other languages
 
-funk {user.talon_actions}: user.code_insert_function(talon_actions, edit.selected_text())
-funk cell <number>:
-    user.code_select_function(number - 1, "")
+# funk {user.talon_actions}: user.code_insert_function(talon_actions, edit.selected_text())
+funk cell <number_small>:
+    user.code_select_function(number_small - 1, "")
 funk wrap <user.code_functions>:
     user.code_insert_function(code_functions, edit.selected_text())
-funk wrap <number>:
-    user.code_select_function(number - 1, edit.selected_text())
+funk wrap <number_small>:
+    user.code_select_function(number_small - 1, edit.selected_text())
