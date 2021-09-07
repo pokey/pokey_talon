@@ -14,7 +14,7 @@ state else: user.code_state_else()
 state self: user.code_self()
 #todo: this is valid for many languages,
 # but probably not all
-self dot:
+self point:
     user.code_self()
     insert(".")
 state while: user.code_state_while()

@@ -1,6 +1,5 @@
 -
 settings():
-    speech.record_all = 1
     speech.debug = 1
     speech.timeout = 0.35
     #adjust the scale of the imgui to my liking
@@ -37,6 +36,8 @@ settings():
     # work in some applications. You may wish to enable this on a
     # per-application basis.
     user.context_sensitive_dictation = 1
+
+    user.cursorless_settings_directory = "pokey_talon/cursorless-settings"
 	
 # uncomment tag to enable mouse grid
 tag(): user.mouse_grid_enabled

@@ -7,37 +7,37 @@ next one:
 tug:
     edit.left()
 
-tug <number_small> now:
+tug <number_small> times:
     user.left_n(number_small)
 
 drain:
     edit.word_left()
 
-drain <number_small> now:
+drain <number_small> times:
     user.word_left_n(number_small)
 
 push:
     edit.right()
 
-push <number_small> now:
+push <number_small> times:
     user.right_n(number_small)
 
 step:
     edit.word_right()
 
-step <number_small> now:
+step <number_small> times:
     user.word_right_n(number_small)
 
 north:
     user.up_n(1)
 
-north <number_small> now:
+north <number_small> times:
     user.up_n(number_small)
 
 south:
     user.down_n(1)
 
-south <number_small> now:
+south <number_small> times:
     user.down_n(number_small)
 
 head:
@@ -109,10 +109,10 @@ indent [more]:
 clear line:
     edit.delete_line()
 
-wipe <number_small> now:
+wipe <number_small> times:
     user.delete_left_n(number_small)
 
-drill <number_small> now:
+drill <number_small> times:
     user.delete_right_n(number_small)
     
 <user.delete> up:
@@ -129,13 +129,13 @@ drill <number_small> now:
 scratch:
     user.delete_word_left_n(1)
 
-scratch <number_small> now:
+scratch <number_small> times:
     user.delete_word_left_n(number_small)
 
 swallow:
     user.delete_word_right_n(1)
 
-swallow <number_small> now:
+swallow <number_small> times:
     user.delete_word_right_n(number_small)
 
 <user.delete> head:

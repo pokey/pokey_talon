@@ -32,7 +32,7 @@ show clip:
 (undo that | nope): edit.undo()
 (redo that | yes indeed): edit.redo()
 paste match: edit.paste_match_style()
-disc: edit.save()
+disk: edit.save()
 padding:
 	insert("  ") 
 	key(left)

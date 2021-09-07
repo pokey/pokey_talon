@@ -13,7 +13,6 @@ action(user.code_operator_division): " / "
 action(user.code_operator_assignment): " = "
 action(user.code_comment): "#"
 
-dot talon: insert(".talon")
 #defintion blocks for the context
 action block:
 	insert("action():")

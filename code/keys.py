@@ -4,7 +4,7 @@ from user.pokey_talon.code.terms import DELETE
 from talon import Module, Context, actions, app
 import sys
 
-default_alphabet = "air bat cap drum each fine gust harp ink jane crunch look made near ox pit quench red sun trap urge vest whale plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp ink jane kick look made near ox pit quench risk sun trap urge vest whale plex yank zip".split(
     " "
 )
 letters_string = "abcdefghijklmnopqrstuvwxyz"
@@ -164,7 +164,7 @@ punctuation_words = {
 }
 
 immune_symbol_key_words = {
-    "dot": ".",
+    "point": ".",
     "dash": "-",
 }
 

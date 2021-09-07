@@ -110,10 +110,18 @@ side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
 
-<user.find> symbol[<user.text>]:
+<user.find> symbol [<user.text>] [halt]:
   user.vscode("workbench.action.gotoSymbol")
   sleep(50ms)
   insert(text or "")
+
+<user.teleport> symbol <user.text> [halt]: 
+  user.vscode("workbench.action.gotoSymbol")
+  sleep(50ms)
+  insert(text or "")
+  sleep(250ms)
+  key(enter)
+  sleep(50ms)
 
 symbol last: user.vscode("gotoNextPreviousMember.previousMember")
 symbol next: user.vscode("gotoNextPreviousMember.nextMember")
@@ -136,6 +144,7 @@ pan edit: user.vscode("workbench.action.focusActiveEditorGroup")
 
 # Settings
 show settings: user.vscode("workbench.action.openGlobalSettings")
+show settings json: user.vscode("workbench.action.openSettingsJson")
 show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
 show snippets: user.vscode("workbench.action.openSnippets")
 
@@ -145,17 +154,16 @@ fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
 wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
-
 # File Commands
 <user.find> dock [<user.text>] [{user.file_extension}] [halt]: 
   user.vscode("workbench.action.quickOpen")
-  sleep(50ms)
+  sleep(200ms)
   insert(text or "")
   insert(file_extension or "")
   sleep(300ms)
 <user.teleport> dock <user.text> [{user.file_extension}] [halt]: 
   user.vscode("workbench.action.quickOpen")
-  sleep(50ms)
+  sleep(200ms)
   insert(text or "")
   insert(file_extension or "")
   sleep(300ms)
@@ -185,9 +193,10 @@ save ugly:
 file clone:
 	user.vscode("fileutils.duplicateFile")
 	sleep(150ms)
-disc:
+disk:
 	key(esc:5)
 	edit.save()
+disk gentle: edit.save()
 action(edit.save):
 	key(cmd-s)
 	sleep(50ms)
@@ -287,10 +296,15 @@ git branch this: user.vscode("git.branch")
 git checkout [<user.text>]: 
   user.vscode("git.checkout")
   sleep(50ms)
-  insert(text or "")
+  user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
+git checkout main: 
+  user.vscode("git.checkout")
+  sleep(50ms)
+  'main'
+  key(enter)
 git commit [<user.text>]:
   user.vscode("git.commitStaged")
-  sleep(100ms)
+  sleep(250ms)
   user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git stash [<user.text>]:
   user.vscode("git.stash")
@@ -334,7 +348,7 @@ debug stopper: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
 debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
-debug extension:
+debug stench:
 	user.vscode("workbench.action.debug.selectandstart")
 	"run extension"
 	key(enter)
@@ -410,7 +424,9 @@ curse undo: user.vscode("cursorUndo")
 <user.select> word: user.vscode("editor.action.addSelectionToNextFindMatch")
 skip word: user.vscode("editor.action.moveSelectionToNextFindMatch")
 
-Github open: user.vscode("openInGithub.openInGitHubFile")
+Github open:
+	user.vscode("openInGithub.openInGitHubFile")
+	sleep(250ms)
 
 stage on:
 	user.vscode_and_wait("git.stage")
@@ -443,9 +459,9 @@ make executable: user.vscode("chmod.plusX")
 
 add dock string: user.vscode("autoDocstring.generateDocstring")
 
-issue create [<user.text>]:
+issue create [<user.text>]$:
 	user.vscode("issue.createIssue")
-	sleep(100ms)
+	sleep(250ms)
 	edit.delete_line()
 	user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 issue (submit | save): user.vscode("issue.createIssueFromFile")
@@ -459,6 +475,9 @@ dev tools: user.vscode("workbench.action.toggleDevTools")
 show in finder: user.vscode("revealFileInOS")
 
 file delete: user.vscode("fileutils.removeFile")
-next: key(escape tab)
+next: user.vscode("jumpToNextSnippetPlaceholder")
+previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
 cursorless record: user.vscode("cursorless.recordTestCase")
+
+comment next: user.vscode("editor.action.nextCommentThreadAction")

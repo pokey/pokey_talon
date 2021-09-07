@@ -16,11 +16,11 @@ paste line up:
 #     edit.line_end()
 comment (line | this | that):
     code.toggle_comment()
-add comment <user.text>$:
+add comment [<user.text>]$:
     #todo: this should probably be a single function once
     #.talon supports implementing actions with parameters?
     code.toggle_comment()
-    insert(user.text)
+    insert(user.text or None)
 # comment <number> until <number>: 
 #     user.select_range(number_1, number_2)
 #     code.toggle_comment()

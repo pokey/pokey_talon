@@ -22,6 +22,7 @@ ctx.lists["user.code_functions"] = {
     "update": "update",
     "max": "max",
     "min": "min",
+    "get at her": "getattr",
 }
 
 """a set of fields used in python docstrings that will follow the

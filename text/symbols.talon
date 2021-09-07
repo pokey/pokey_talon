@@ -1,6 +1,5 @@
 double dash: "--"
 triple quote: "'''"
-(dot dot | dotdot): ".."
 #ellipses: "…"
 ellipses: "..."
 spam: ", "
@@ -29,7 +28,7 @@ quad:
 twin:
     "''"
     key(left)
-eyes:
+skis:
     '``'
     key(left)
 escaped quad:
