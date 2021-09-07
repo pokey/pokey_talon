@@ -147,6 +147,7 @@ class WinActions:
 zoom_level_regex = re.compile(r'"window.zoomLevel": \d')
 
 
+@mod.action_class
 class Actions:
     def vscode_terminal(number: int):
         """Activate a terminal by number"""
