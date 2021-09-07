@@ -14,7 +14,7 @@ drain:
     edit.word_left()
 
 drain <number_small> times:
-    user.word_left_n(number_small)
+    user.word_right(number_small)
 
 push:
     edit.right()
@@ -26,7 +26,7 @@ step:
     edit.word_right()
 
 step <number_small> times:
-    user.word_right_n(number_small)
+    user.words_right(number_small)
 
 north:
     user.up_n(1)
@@ -50,6 +50,12 @@ go way down:
     edit.file_end()
 
 go way up:
+    edit.file_start()
+    
+go bottom:
+    edit.file_end()
+    
+go top:
     edit.file_start()
 
 go page down:

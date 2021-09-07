@@ -8,9 +8,8 @@ tag(): user.snippets
 tag(): user.splits
 tag(): user.tabs
 
-# TODO remove this once implemented in cursorless
-cut line:
-	key(cmd-x)
+settings():
+  key_wait = 5
 
 action(edit.select_line):
 	key(ctrl-e cmd-shift-left)
@@ -18,87 +17,26 @@ action(edit.select_line):
 <user.delete> line:
 	user.vscode_and_wait("editor.action.deleteLines")
 
-action(user.new_line_below):
+action(edit.line_insert_down):
 	user.vscode_and_wait("editor.action.insertLineAfter")
 
-action(user.new_line_above):
+action(edit.line_insert_up):
 	user.vscode_and_wait("editor.action.insertLineBefore")
 
-settings():
-  key_wait = 5
-
 #talon app actions
-action(app.tab_close): user.vscode("workbench.action.closeActiveEditor")
-action(app.tab_next): user.vscode("workbench.action.nextEditorInGroup")
-action(app.tab_previous): user.vscode("workbench.action.previousEditorInGroup")
-action(app.tab_reopen): user.vscode("workbench.action.reopenClosedEditor")
-action(app.window_close): user.vscode("workbench.action.closeWindow")
-action(app.window_open): user.vscode("workbench.action.newWindow")
 <user.teleport> last: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 <user.teleport> next: user.vscode("workbench.action.openNextRecentlyUsedEditorInGroup")
 
-#talon code actions
-action(code.toggle_comment): user.vscode("editor.action.commentLine")
+cross: user.split_next()
 
-#talon edit actions
-action(edit.indent_more): user.vscode("editor.action.indentLines")
-action(edit.indent_less): user.vscode("editor.action.outdentLines")
-action(edit.save_all): user.vscode("workbench.action.files.saveAll")
-
-# splits.py support begin
-action(user.split_clear_all):
-	user.vscode("workbench.action.editorLayoutSingle")
-action(user.split_clear):
-	user.vscode("workbench.action.joinTwoGroups")
-action(user.split_flip):
-	user.vscode("workbench.action.toggleEditorGroupLayout") 
-action(user.split_last):
-	user.vscode("workbench.action.focusLeftGroup")
-action(user.split_next): 
-	user.vscode_and_wait("workbench.action.focusRightGroup")
-action(user.split_window_down):
-	user.vscode("workbench.action.moveEditorToBelowGroup")
-action(user.split_window_horizontally):
-	user.vscode("workbench.action.splitEditorOrthogonal")
-action(user.split_window_left):
-	user.vscode("workbench.action.moveEditorToLeftGroup")
-action(user.split_window_right):
-	user.vscode("workbench.action.moveEditorToRightGroup")
-action(user.split_window_up):
-	user.vscode("workbench.action.moveEditorToAboveGroup")
-action(user.split_window_vertically):
-	user.vscode("workbench.action.splitEditor")
-action(user.split_window):
-	user.vscode("workbench.action.splitEditor")
-cross:
-	# user.vscode("vscode-neovim.escape")
-	# sleep(25ms)
-	user.split_next()
-	# key(a)
-# splits.py support end
-
-#multiple_cursor.py support begin
-#note: vscode has no explicit mode for multiple cursors
-action(user.multi_cursor_add_above):
-	user.vscode("editor.action.insertCursorAbove")
-action(user.multi_cursor_add_below):
-	user.vscode("editor.action.insertCursorBelow")
-action(user.multi_cursor_add_to_line_ends):
-	user.vscode("editor.action.insertCursorAtEndOfEachLineSelected")
-action(user.multi_cursor_disable): key(escape)
-action(user.multi_cursor_enable): skip()
-action(user.multi_cursor_select_all_occurrences):
-	user.vscode("editor.action.selectHighlights")
-action(user.multi_cursor_select_fewer_occurrences):
-	user.vscode("cursorUndo")
-action(user.multi_cursor_select_more_occurrences):
-	user.vscode("editor.action.addSelectionToNextFindMatch")
+window reload: user.vscode("workbench.action.reloadWindow")
+window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
 
-please [<user.text>]: 
-  user.vscode("workbench.action.showCommands")
-  insert(user.text or "")
-
+please [<user.text>]:
+    user.vscode("workbench.action.showCommands")
+    insert(user.text or "")
+    
 # Sidebar
 bar explore: user.vscode("workbench.view.explorer")
 bar extensions: user.vscode("workbench.view.extensions")
@@ -125,14 +63,11 @@ search last: user.vscode("search.action.focusPreviousSearchResult")
 
 symbol last: user.vscode("gotoNextPreviousMember.previousMember")
 symbol next: user.vscode("gotoNextPreviousMember.nextMember")
-# <user.teleport> symbol: user.vscode_and_wait("semantic-movement.jumpToContainingSymbol")
-# <user.teleport> funk: user.vscode_and_wait("semantic-movement.jumpToContainingFunction")
-# <user.teleport> named funk: user.vscode_and_wait("semantic-movement.jumpToContainingNamedFunction")
-# <user.teleport> class: user.vscode_and_wait("semantic-movement.jumpToContainingClass")
-# <user.select> symbol: user.vscode_and_wait("semantic-movement.selectContainingSymbol")
-# <user.select> funk: user.vscode_and_wait("semantic-movement.selectContainingFunction")
-# <user.select> named funk: user.vscode_and_wait("semantic-movement.selectContainingNamedFunction")
-# <user.select> class: user.vscode_and_wait("semantic-movement.selectContainingClass")
+
+symbol hunt [<user.text>]:
+    user.vscode("workbench.action.gotoSymbol")
+    sleep(50ms)
+    insert(text or "")
 
 # Panels
 panel control: user.vscode("workbench.panel.repl.view.focus")
@@ -156,43 +91,40 @@ wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
 # File Commands
 <user.find> dock [<user.text>] [{user.file_extension}] [halt]: 
-  user.vscode("workbench.action.quickOpen")
-  sleep(200ms)
-  insert(text or "")
-  insert(file_extension or "")
-  sleep(300ms)
+	user.vscode("workbench.action.quickOpen")
+	sleep(200ms)
+	insert(text or "")
+	insert(file_extension or "")
+	sleep(300ms)
 <user.teleport> dock <user.text> [{user.file_extension}] [halt]: 
-  user.vscode("workbench.action.quickOpen")
-  sleep(200ms)
-  insert(text or "")
-  insert(file_extension or "")
-  sleep(300ms)
-  key(enter)
-  sleep(150ms)
+	user.vscode("workbench.action.quickOpen")
+	sleep(200ms)
+	insert(text or "")
+	insert(file_extension or "")
+	sleep(300ms)
+	key(enter)
+	sleep(150ms)
 <user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
-file copy path:
-	user.vscode("copyFilePath") 
+file copy path: user.vscode("copyFilePath")
 file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]: 
-  user.vscode_and_wait("explorer.newFile")
-  sleep(500ms)
-  user.insert_many(format_text_list or "")
-  user.insert_formatted(user.word or "", "NOOP")
-  insert(file_extension or "")
-file create: user.vscode("workbench.action.files.newUntitledFile")
-file rename:
-	user.vscode("fileutils.renameFile")
-	sleep(150ms)
-file move:
-	user.vscode("fileutils.moveFile")
-	sleep(150ms)
-file open folder:
-	user.vscode("revealFileInOS")
-file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer") 
-save ugly:
-    user.vscode("workbench.action.files.saveWithoutFormatting")
+	user.vscode_and_wait("explorer.newFile")
+	sleep(500ms)
+	user.insert_many(format_text_list or "")
+	user.insert_formatted(user.word or "", "NOOP")
+	insert(file_extension or "")
 file clone:
 	user.vscode("fileutils.duplicateFile")
 	sleep(150ms)
+file create: user.vscode("workbench.action.files.newUntitledFile")
+file rename:
+    user.vscode("fileutils.renameFile")
+    sleep(150ms)
+file move:
+    user.vscode("fileutils.moveFile")
+    sleep(150ms)
+file open folder: user.vscode("revealFileInOS")
+file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
+save ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
 	key(esc:5)
 	edit.save()
@@ -200,7 +132,6 @@ disk gentle: edit.save()
 action(edit.save):
 	key(cmd-s)
 	sleep(50ms)
-save all: key(cmd-alt-s)
 
 # Language Features
 suggest show: user.vscode("editor.action.triggerSuggest")
@@ -382,11 +313,6 @@ minimap: user.vscode("editor.action.toggleMinimap")
 maximize: user.vscode("workbench.action.minimizeOtherEditors")
 restore: user.vscode("workbench.action.evenEditorWidths")
 
-replace here:
-	user.replace("")
-	key(cmd-alt-l)
-
-hover show: user.vscode("editor.action.showHover")
 debug hover: user.vscode("editor.debug.action.showDebugHover")
 
 edit last: user.vscode("editsHistory.moveCursorToPreviousEdit")
@@ -394,8 +320,6 @@ edit next: user.vscode("editsHistory.moveCursorToNextEdit")
 edit add: user.vscode("editsHistory.createEditAtCursor")
 edit last here: user.vscode("editsHistory.moveCursorToPreviousEditInSameFile")
 edit next here: user.vscode("editsHistory.moveCursorToNextEditInSameFile")
-
-join lines: user.vscode("editor.action.joinLines")
 
 commode:
 	user.vscode_and_wait("vscode-neovim.enable")
@@ -415,14 +339,8 @@ replace smart:
 
 swap this: user.vscode("extension.swap")
 
-full screen: user.vscode("workbench.action.toggleFullScreen")
 reload window: user.vscode("workbench.action.reloadWindow")
 close window: user.vscode("workbench.action.closeWindow")
-
-curse undo: user.vscode("cursorUndo")
-
-<user.select> word: user.vscode("editor.action.addSelectionToNextFindMatch")
-skip word: user.vscode("editor.action.moveSelectionToNextFindMatch")
 
 Github open:
 	user.vscode("openInGithub.openInGitHubFile")
@@ -436,6 +354,19 @@ stage on:
 	key(down:100)
 	sleep(100ms)
 	key(enter)
+
+replace here:
+    user.replace("")
+    key(cmd-alt-l)
+    
+join lines: user.vscode("editor.action.joinLines")
+
+full screen: user.vscode("workbench.action.toggleFullScreen")
+
+curse undo: user.vscode("cursorUndo")
+
+<user.select> word: user.vscode("editor.action.addSelectionToNextFindMatch")
+skip word: user.vscode("editor.action.moveSelectionToNextFindMatch")
 
 # jupyter
 cell next: user.vscode("jupyter.gotoNextCellInFile")

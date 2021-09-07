@@ -33,11 +33,12 @@ show clip:
 (redo that | yes indeed): edit.redo()
 paste match: edit.paste_match_style()
 disk: edit.save()
+disk all: edit.save_all()
 padding:
 	insert("  ") 
 	key(left)
-pour this: user.new_line_below()
-drink this: user.new_line_above()
+pour this: edit.line_insert_down()
+drink this: edit.line_insert_up()
 
 slow mode: mode.enable("user.slow")
 

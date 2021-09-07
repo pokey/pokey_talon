@@ -62,6 +62,9 @@ diamond:
     user.paste("({text})")
 (double | quad) that:
     text = edit.selected_text()
+    user.paste("'{text}'")
+(double quote | dubquote) that:
+    text = edit.selected_text()
     user.paste('"{text}"')
 (single | twin) that:
     text = edit.selected_text()
