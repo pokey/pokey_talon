@@ -62,3 +62,18 @@ show numbers: key(cmd-ctrl-alt-f)
 
 move overlay: user.move_overlay()
 ring save: user.ring_save()
+
+additional word:
+    user.switcher_focus("Code")
+    user.vscode("workbench.action.openRecent")
+    sleep(50ms)
+    insert("pokey-talon")
+    key(enter)
+    sleep(250ms)
+    user.vscode("workbench.action.quickOpen")
+    sleep(200ms)
+    insert("additional_words")
+    sleep(300ms)
+    key(enter)
+    edit.file_end()
+    edit.line_insert_down()

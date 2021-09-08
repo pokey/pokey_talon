@@ -314,7 +314,7 @@ commode:
     user.vscode("vscode-neovim.escape")
     sleep(25ms)
 
-insert:
+voice code:
     user.vscode_and_wait("vscode-neovim.disable")
     key(i)
     sleep(25ms)
