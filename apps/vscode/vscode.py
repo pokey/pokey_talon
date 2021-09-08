@@ -1,4 +1,5 @@
 from talon import Context, actions, ui, Module, app, clip
+import json
 import re
 from pathlib import Path
 from os.path import expanduser
@@ -109,20 +110,22 @@ class EditActions:
         actions.key("enter")
         actions.edit.line_start()
 
-    def select_line(n: int = None):
-        actions.key("ctrl-e cmd-shift-left")
-
     def line_insert_down():
         actions.user.vscode_and_wait("editor.action.insertLineAfter")
 
     def line_insert_up():
         actions.user.vscode_and_wait("editor.action.insertLineBefore")
-        # talon app actions
 
     def save():
         actions.key("cmd-s")
         actions.sleep("50ms")
-        # Language Features
+
+
+@mac_ctx.action_class("edit")
+class EditActions:
+    def select_line(n: int = None):
+        # NB: this prevents opening a split when you're quick picking a file
+        actions.key("ctrl-e cmd-shift-left")
 
 
 @ctx.action_class("win")
@@ -144,7 +147,23 @@ class WinActions:
         return ""
 
 
-zoom_level_regex = re.compile(r'"window.zoomLevel": \d')
+def change_setting(setting_name: str, setting_value: any):
+    """
+    Changes a VSCode setting by name
+
+    Args:
+        setting_name (str): The name of the setting
+        setting_value (any): The new value.  Will be JSON encoded
+    """
+    original_settings_path = Path(
+        expanduser("~/Library/Application Support/Code/User/settings.json")
+    )
+    original_settings = original_settings_path.read_text()
+    regex = re.compile(fr'^(\s*)"{setting_name}": .*[^,](,?)$', re.MULTILINE)
+    new_settings = regex.sub(
+        fr'\1"{setting_name}": {json.dumps(setting_value)}\2', original_settings
+    )
+    original_settings_path.write_text(new_settings)
 
 
 @mod.action_class
@@ -155,14 +174,11 @@ class Actions:
 
     def set_zoom_level(level: int):
         """Set zoom level"""
-        original_settings_path = Path(
-            expanduser("~/Library/Application Support/Code/User/settings.json")
-        )
-        original_settings = original_settings_path.read_text()
-        new_settings = zoom_level_regex.sub(
-            f'"window.zoomLevel": {level}', original_settings
-        )
-        original_settings_path.write_text(new_settings) @ mod.action_class
+        change_setting("window.zoomLevel", level)
+
+    def set_line_number_mode(mode: str):
+        """Set line number mode"""
+        change_setting("editor.lineNumbers", mode)
 
     def command_palette():
         """Show command palette"""

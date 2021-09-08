@@ -400,3 +400,6 @@ previous: user.vscode("jumpToPrevSnippetPlaceholder")
 cursorless record: user.vscode("cursorless.recordTestCase")
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
+
+line numbers on: user.set_line_number_mode("on")
+line numbers off: user.set_line_number_mode("off")
