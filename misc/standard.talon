@@ -20,10 +20,10 @@ cut that: edit.cut()
 show clip:
     key(cmd-shift-v)
     sleep(100ms)
-(pace | paste) <number_small>:
+(pace | paste) <user.ordinals_small>:
     key(cmd-shift-v)
     sleep(100ms)
-    insert(number_small)
+    insert(user.ordinals_small)
     sleep(100ms)
 (pace | paste) rough <number_small>:
     key(cmd-shift-v)

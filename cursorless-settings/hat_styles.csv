@@ -8,9 +8,10 @@ yellow, yellow
 
 # Shapes
 curve, curve
+ex, fourPointStar
+eye, eye
+fox, chevron
 frame, frame
 hole, hole
-eye, eye
+play, play
 wing, threePointStar
-fox, chevron
-splat, fourPointStar

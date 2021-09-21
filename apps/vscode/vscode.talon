@@ -83,13 +83,13 @@ zen switch: user.vscode("workbench.action.toggleZenMode")
 # File Commands
 <user.find> dock [<user.text>] [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
-    sleep(200ms)
+    sleep(300ms)
     insert(text or "")
     insert(file_extension or "")
     sleep(300ms)
 <user.teleport> dock <user.text> [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
-    sleep(200ms)
+    sleep(300ms)
     insert(text or "")
     insert(file_extension or "")
     sleep(300ms)
