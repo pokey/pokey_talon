@@ -399,3 +399,17 @@ class UserActions:
         actions.key("esc")
 
     # find_and_replace.py support end
+
+
+def handle_change_focus(focus: str):
+    if focus == "terminal":
+        ctx.tags = ["terminal"]
+    else:
+        ctx.tags = []
+
+
+def on_ready():
+    actions.user.watch_vscode_state("core.focus", handle_change_focus)
+
+
+app.register("ready", on_ready)
