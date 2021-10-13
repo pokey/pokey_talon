@@ -199,6 +199,7 @@ symbol_key_words = {
     "tangle": "^",
     "amper": "&",
     "pipe": "|",
+    "dollar": "$",
 }
 
 # make punctuation words also included in {user.symbol_keys}
@@ -228,7 +229,7 @@ alternate_keys = {
     "clap": "enter",
     "drill": "delete",
     "chuck": "backspace",
-    "wipe": "backspace",
+    "scratch": "backspace",
     "scrape": "escape",
     "void": "space",
     "page up": "pageup",

@@ -6,6 +6,6 @@ settings():
     #enable pop click with 'control mouse' mode
     user.mouse_enable_pop_click = 0
     #so that postalveolar click doesn't inadvertantly trigger a command
-    speech.timeout = 0.01
+    # speech.timeout = 0.01
 #this exists solely to prevent talon from walking up super easily in sleep mode at the moment with wav2letter
-<phrase>: skip()
+# <phrase>: skip()

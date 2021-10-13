@@ -33,10 +33,6 @@ class UserActions:
     def code_is_null():
         actions.auto_insert(" == null")
 
-    def code_type_dictionary():
-        actions.insert("{}")
-        actions.key("left")
-
     def code_state_if():
         actions.insert("if ()")
         actions.key("left")
@@ -76,6 +72,7 @@ class UserActions:
 
     def code_state_case():
         actions.auto_insert("case :")
+        actions.key("left")
 
     def code_state_go_to():
         actions.auto_insert("")
@@ -248,6 +245,14 @@ class UserActions:
         )
 
         actions.user.code_insert_function(result, None)
+
+    def code_interface(text: str):
+        """Inserts interface declaration"""
+        type_name = actions.user.formatted_text(
+            text, settings.get("user.code_typename_formatter")
+        )
+        actions.insert(f"interface {type_name} {{}}")
+        actions.key("left enter")
 
     # def code_private_static_function(text: str):
     #     """Inserts private static function"""

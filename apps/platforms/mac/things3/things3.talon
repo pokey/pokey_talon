@@ -3,8 +3,8 @@ app: things3
 tag(): user.todo_list
 
 new task: key(cmd-n)
-show tag {user.things_tag}: user.show_tag(things_tag)
-show list {user.things_project}: user.show_things_list(things_project)
+<user.teleport> tag {user.things_tag}: user.show_tag(things_tag)
+<user.teleport> list {user.things_project}: user.show_things_list(things_project)
 
 follow link: key(cmd-alt-enter)
 

@@ -132,10 +132,10 @@ drill <number_small> times:
 <user.delete> word:
     edit.delete_word()
 
-scratch:
+scratcher:
     user.delete_word_left_n(1)
 
-scratch <number_small> times:
+scratcher <number_small> times:
     user.delete_word_left_n(number_small)
 
 swallow:

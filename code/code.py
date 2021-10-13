@@ -16,6 +16,7 @@ setting_protected_variable_formatter = mod.setting(
     "code_protected_variable_formatter", str
 )
 setting_public_variable_formatter = mod.setting("code_public_variable_formatter", str)
+setting_typename_formatter = mod.setting("code_typename_formatter", str)
 
 mod.tag("code_comment", desc="Tag for enabling generic comment commands")
 mod.tag("code_block_comment", desc="Tag for enabling generic block comment commands")
@@ -96,6 +97,7 @@ mod.mode("auto_lang")
 
 # Auto lang is enabled by default
 app.register("ready", lambda: actions.user.code_clear_language_mode())
+
 
 @mod.action_class
 class Actions:
@@ -308,6 +310,9 @@ class Actions:
 
     def code_public_static_function(text: str):
         """Inserts public function"""
+
+    def code_interface(text: str):
+        """Inserts interface declaration"""
 
     def code_private_function_formatter(name: str):
         """Inserts private function name with formatter"""

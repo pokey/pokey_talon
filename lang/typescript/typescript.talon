@@ -15,6 +15,7 @@ settings():
     user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_typename_formatter = "PUBLIC_CAMEL_CASE"
 
 is loose equal: " == "
 is not loose equal: " != "
@@ -59,9 +60,19 @@ state quote var:
   key(left)
 
 state spread: "..."
+state type: "type "
+state extends: " extends "
+state interface: "interface "
+state cast: " as "
 
 funky <user.text>$: user.code_default_function(text)
 pro funky <user.text>$: user.code_protected_function(text)
 pub funky <user.text>$: user.code_public_function(text)
+snip face <user.text>$: user.code_interface(text)
 
 <user.operator> new: insert("new ")  
+
+state export: "export "
+state export const: "export const "
+state export default: "export default "
+state try: "try "

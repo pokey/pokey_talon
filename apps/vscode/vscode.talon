@@ -69,7 +69,10 @@ panel terminal: user.vscode("workbench.action.terminal.focus")
 pan edit: user.vscode("workbench.action.focusActiveEditorGroup")
 
 # Settings
-show settings: user.vscode("workbench.action.openGlobalSettings")
+show settings:
+    sleep(50ms)
+    user.vscode("workbench.action.openGlobalSettings")
+    sleep(250ms)
 show settings json: user.vscode("workbench.action.openSettingsJson")
 show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
 show snippets: user.vscode("workbench.action.openSnippets")
@@ -80,16 +83,19 @@ fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
 wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
+zen mode:
+    user.vscode("workbench.action.closeSidebar")
+    user.vscode("workbench.action.closePanel")
 # File Commands
 <user.find> dock [<user.text>] [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
-    sleep(300ms)
+    sleep(400ms)
     insert(text or "")
     insert(file_extension or "")
     sleep(300ms)
 <user.teleport> dock <user.text> [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
-    sleep(300ms)
+    sleep(400ms)
     insert(text or "")
     insert(file_extension or "")
     sleep(300ms)
@@ -212,14 +218,14 @@ fold comments: user.vscode("editor.foldAllBlockComments")
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
-git checkout [<user.text>]:
+<user.find> branch [<user.text>]:
     user.vscode("git.checkout")
     sleep(50ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
-git checkout main:
+<user.teleport> branch {user.git_branch}:
     user.vscode("git.checkout")
     sleep(50ms)
-    'main'
+    '{git_branch}'
     key(enter)
 git commit [<user.text>]:
     user.vscode("git.commitStaged")
@@ -275,6 +281,12 @@ debug test:
     user.vscode("workbench.action.debug.selectandstart")
     "extension tests"
     key(enter)
+<user.teleport> stopper:
+    user.vscode("workbench.action.openRecent")
+    sleep(50ms)
+    key(enter)
+    sleep(250ms)
+    user.vscode("workbench.action.debug.stop")
 
 # Terminal
 term external: user.vscode("workbench.action.terminal.openNativeConsole")

@@ -24,6 +24,7 @@ website_defaults = {
     "youtube": "https://www.youtube.com/",
 }
 
+
 _search_engine_defaults = {
     "amazon": "https://www.amazon.com/s/?field-keywords=%s",
     "google": "https://www.google.com/search?q=%s",

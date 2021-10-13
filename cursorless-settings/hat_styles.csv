@@ -7,11 +7,13 @@ red, red
 yellow, yellow
 
 # Shapes
+bolt, bolt
 curve, curve
-ex, fourPointStar
+ex, ex
 eye, eye
-fox, chevron
+fox, fox
 frame, frame
 hole, hole
 play, play
-wing, threePointStar
+star, crosshairs
+wing, wing
