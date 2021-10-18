@@ -184,6 +184,10 @@ class Actions:
         """Show command palette"""
         actions.key("ctrl-shift-p")
 
+    def vscode_language_id() -> str:
+        """Returns the vscode language id of the current programming language"""
+        pass
+
 
 @mac_ctx.action_class("user")
 class MacUserActions:
@@ -265,9 +269,13 @@ class UserActions:
 
     def snippet_insert(text: str):
         """Inserts a snippet"""
-        actions.user.vscode("editor.action.insertSnippet")
-        actions.insert(text)
-        actions.key("enter")
+        actions.user.vscode_with_plugin_and_wait(
+            "editor.action.insertSnippet",
+            {"langId": actions.user.vscode_language_id(), "name": text},
+        )
+
+    def snippet_next():
+        actions.user.vscode("jumpToNextSnippetPlaceholder")
 
     def snippet_create():
         """Triggers snippet creation"""
@@ -399,3 +407,33 @@ class UserActions:
         actions.key("esc")
 
     # find_and_replace.py support end
+
+
+python_ctx = Context()
+python_ctx.matches = r"""
+app: vscode
+mode: user.python
+mode: user.auto_lang 
+and code.language: python
+"""
+
+
+@python_ctx.action_class("user")
+class PythonActions:
+    def vscode_language_id() -> str:
+        return "python"
+
+
+typescript_ctx = Context()
+typescript_ctx.matches = r"""
+app: vscode
+mode: user.typescript
+mode: user.auto_lang 
+and code.language: typescript
+"""
+
+
+@typescript_ctx.action_class("user")
+class TypescriptActions:
+    def vscode_language_id() -> str:
+        return "typescript"

@@ -6,19 +6,23 @@ import os
 ctx = Context()
 ctx.matches = r"""
 app: vscode
-mode: user.python
+mode: user.typescript
 mode: user.auto_lang 
-and code.language: python
+and code.language: typescript
 """
 # short name -> ide clip name
-ctx.lists["user.snippets"] = {
-    "with": "with",
-}
+ctx.lists["user.snippets"] = {"binder": "bind class function"}
 ctx.lists["user.snippet_one_phrase"] = {
-    "class": "class",
+    "face": "interface",
+    "connie": "const declaration",
+    "let": "let declaration",
 }
 
-snippet_formatters = {"class": ["PUBLIC_CAMEL_CASE"]}
+snippet_formatters = {
+    "interface": ["PUBLIC_CAMEL_CASE"],
+    "const declaration": ["PRIVATE_CAMEL_CASE"],
+    "let declaration": ["PRIVATE_CAMEL_CASE"],
+}
 
 
 @ctx.action_class("user")
@@ -45,4 +49,4 @@ class UserActions:
 #         "~/Library/Application Support/Code/User/snippets"
 #     )
 # if snippet_path:
-#     watcher = snippet_watcher({snippet_path: ["python.json",],}, update_list,)
+#     watcher = snippet_watcher({snippet_path: ["typescript.json",],}, update_list,)
