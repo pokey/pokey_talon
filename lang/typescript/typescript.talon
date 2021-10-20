@@ -65,10 +65,6 @@ is not loose equal: " != "
 <user.operator> interface: "interface "
 <user.operator> cast: " as "
 
-funky <user.text>$: user.code_default_function(text)
-pro funky <user.text>$: user.code_protected_function(text)
-pub funky <user.text>$: user.code_public_function(text)
-
 <user.operator> new: insert("new ")  
 
 <user.operator> export: "export "

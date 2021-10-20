@@ -18,17 +18,20 @@ ctx.lists["user.snippets"] = {
     "binder": "bind class function",
     "if": "if statement",
     "else": "if else statement",
+    "in it": "constructor",
 }
 ctx.lists["user.snippet_one_phrase"] = {
     "face": "interface",
     "con": "const declaration",
     "let": "let declaration",
+    "funk": "function declaration",
 }
 
 snippet_formatters = {
     "interface": ["PUBLIC_CAMEL_CASE"],
     "const declaration": ["PRIVATE_CAMEL_CASE"],
     "let declaration": ["PRIVATE_CAMEL_CASE"],
+    "function declaration": ["PRIVATE_CAMEL_CASE"],
 }
 
 

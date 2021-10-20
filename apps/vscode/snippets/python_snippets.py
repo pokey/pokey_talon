@@ -18,13 +18,16 @@ ctx.lists["user.snippets"] = {
     "if": "if statement",
     "else": "if else statement",
     "with": "with statement",
+    "in it": "constructor",
 }
 ctx.lists["user.snippet_one_phrase"] = {
     "class": "class declaration",
+    "funk": "function declaration",
 }
 
 snippet_formatters = {
     "class": ["PUBLIC_CAMEL_CASE"],
+    "function declaration": ["SNAKE_CASE"],
 }
 
 
