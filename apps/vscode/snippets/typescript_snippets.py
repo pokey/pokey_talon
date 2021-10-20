@@ -11,9 +11,13 @@ mode: user.auto_lang
 and code.language: typescript
 """
 # short name -> ide clip name
+# See
+# https://github.com/pokey/dotfiles/blob/develop/vscode/snippets/typescript.json
+# for definitions
 ctx.lists["user.snippets"] = {
     "binder": "bind class function",
     "if": "if statement",
+    "else": "if else statement",
 }
 ctx.lists["user.snippet_one_phrase"] = {
     "face": "interface",

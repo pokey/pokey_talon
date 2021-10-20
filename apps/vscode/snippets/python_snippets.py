@@ -11,11 +11,16 @@ mode: user.auto_lang
 and code.language: python
 """
 # short name -> ide clip name
+# See
+# https://github.com/pokey/dotfiles/blob/develop/vscode/snippets/python.json
+# for definitions
 ctx.lists["user.snippets"] = {
-    "with": "with",
+    "if": "if statement",
+    "else": "if else statement",
+    "with": "with statement",
 }
 ctx.lists["user.snippet_one_phrase"] = {
-    "class": "class",
+    "class": "class declaration",
 }
 
 snippet_formatters = {"class": ["PUBLIC_CAMEL_CASE"]}
