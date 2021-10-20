@@ -23,7 +23,9 @@ ctx.lists["user.snippet_one_phrase"] = {
     "class": "class declaration",
 }
 
-snippet_formatters = {"class": ["PUBLIC_CAMEL_CASE"]}
+snippet_formatters = {
+    "class": ["PUBLIC_CAMEL_CASE"],
+}
 
 
 @ctx.action_class("user")
