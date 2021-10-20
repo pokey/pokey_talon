@@ -17,15 +17,15 @@ settings():
 
 #python-specific grammars
 dunder in it: "__init__"
-state (def | deaf | deft): "def "
-state try: "try:\n"
-state except: "except "
-state raise: "raise "
+<user.operator> (def | deaf | deft): "def "
+<user.operator> try: "try:\n"
+<user.operator> except: "except "
+<user.operator> raise: "raise "
 self taught: "self."
 pie test: "pytest"
-state past: "pass"
-state not: "not "
-state global: "global "
+<user.operator> past: "pass"
+<user.operator> not: "not "
+<user.operator> global: "global "
 
 ^funky <user.text>$: user.code_default_function(text)
 #^pro funky <user.text>$: user.code_protected_function(text)

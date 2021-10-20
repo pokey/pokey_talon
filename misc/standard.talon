@@ -75,5 +75,6 @@ additional word:
     insert("additional_words")
     sleep(300ms)
     key(enter)
+    sleep(200ms)
     edit.file_end()
     edit.line_insert_down()

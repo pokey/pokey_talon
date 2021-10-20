@@ -26,7 +26,7 @@ library <user.code_libraries>:
     key(end)
     " %>%"
     key(enter)
-state na:
+<user.operator> na:
     insert("NA")
     
 ^function define <user.text>$: user.code_private_function(text)

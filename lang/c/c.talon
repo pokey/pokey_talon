@@ -25,17 +25,17 @@ settings():
 
 
 # XXX - make these generic in programming, as they will match cpp, etc
-state define: "#define "
-state undefine: "#undef "
-state if define: "#ifdef "
+<user.operator> define: "#define "
+<user.operator> undefine: "#undef "
+<user.operator> if define: "#ifdef "
 
 # XXX - preprocessor instead of pre?
-state pre if: "#if "
-state error: "#error "
-state pre else if: "#elif "
-state pre end: "#endif "
-state pragma: "#pragma "
-state default: "default:\nbreak;"
+<user.operator> pre if: "#if "
+<user.operator> error: "#error "
+<user.operator> pre else if: "#elif "
+<user.operator> pre end: "#endif "
+<user.operator> pragma: "#pragma "
+<user.operator> default: "default:\nbreak;"
 
 #control flow
 #best used with a push like command

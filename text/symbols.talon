@@ -19,6 +19,7 @@ empty quad: '""'
 empty twin: "''"
 empty escaped quad: '\\"\\"'
 empty escaped twin: "\\'\\'"
+empty escaped round: '\\(\\)'
 tween <user.symbol_key>:
     '{symbol_key}{symbol_key}'
     key(left)
@@ -42,6 +43,10 @@ escaped twin:
 round:
 	insert("()")
 	key(left)
+escaped round:
+    '\\(\\)'
+    key(left)
+    key(left)
 square: 
 	insert("[]") 
 	key(left)

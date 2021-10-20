@@ -22,57 +22,56 @@ is not loose equal: " != "
 <user.operator> null coal: " ?? "
 <user.operator> cast: " as "
 
-state throw: "throw "
-state const: "const "
+<user.operator> throw: "throw "
+<user.operator> const: "const "
 
-state let: "let "
+<user.operator> let: "let "
 
-state var: "var "
+<user.operator> var: "var "
 
-state async: "async "
+<user.operator> async: "async "
 
 <user.operator> await: "await "
 
-state map:
+<user.operator> map:
     insert(".map()")
     key(left)
     
-state filter:
+<user.operator> filter:
     insert(".filter()")
     key(left)
     
-state reduce:
+<user.operator> reduce:
   insert(".reduce()")
   key(left)
 
-state concat:
+<user.operator> concat:
   insert(".concat()")
   key(left)
 
-state length: insert(".length")
+<user.operator> length: insert(".length")
 
-state log:
+<user.operator> log:
   insert("console.log()")
   key(left)
 
-state quote var:
+<user.operator> quote var:
   insert("${}")
   key(left)
 
-state spread: "..."
-state type: "type "
-state extends: " extends "
-state interface: "interface "
-state cast: " as "
+<user.operator> spread: "..."
+<user.operator> type: "type "
+<user.operator> extends: " extends "
+<user.operator> interface: "interface "
+<user.operator> cast: " as "
 
 funky <user.text>$: user.code_default_function(text)
 pro funky <user.text>$: user.code_protected_function(text)
 pub funky <user.text>$: user.code_public_function(text)
-snip face <user.text>$: user.code_interface(text)
 
 <user.operator> new: insert("new ")  
 
-state export: "export "
-state export const: "export const "
-state export default: "export default "
-state try: "try "
+<user.operator> export: "export "
+<user.operator> export const: "export const "
+<user.operator> export default: "export default "
+<user.operator> try: "try "

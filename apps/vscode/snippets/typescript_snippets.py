@@ -11,10 +11,13 @@ mode: user.auto_lang
 and code.language: typescript
 """
 # short name -> ide clip name
-ctx.lists["user.snippets"] = {"binder": "bind class function"}
+ctx.lists["user.snippets"] = {
+    "binder": "bind class function",
+    "if": "if statement",
+}
 ctx.lists["user.snippet_one_phrase"] = {
     "face": "interface",
-    "connie": "const declaration",
+    "con": "const declaration",
     "let": "let declaration",
 }
 

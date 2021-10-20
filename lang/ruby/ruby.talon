@@ -21,11 +21,11 @@ args pipe:
     insert("||")
     key(left)
     
-state do: "do "
-state end: "end"
-state begin: "begin"
-state rescue: "rescue "
-state module: "module "
+<user.operator> do: "do "
+<user.operator> end: "end"
+<user.operator> begin: "begin"
+<user.operator> rescue: "rescue "
+<user.operator> module: "module "
 ^instance <user.text>$:
     insert("@")
     user.code_public_variable_formatter(text)

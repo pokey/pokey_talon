@@ -344,7 +344,7 @@ close window: user.vscode("workbench.action.closeWindow")
 
 Github open:
     user.vscode("openInGithub.openInGitHubFile")
-    sleep(250ms)
+    sleep(350ms)
 
 stage on:
     user.vscode_and_wait("git.stage")
@@ -415,3 +415,5 @@ comment next: user.vscode("editor.action.nextCommentThreadAction")
 
 line numbers on: user.set_line_number_mode("on")
 line numbers off: user.set_line_number_mode("off")
+
+solo: user.vscode("workbench.action.closeEditorsInOtherGroups")

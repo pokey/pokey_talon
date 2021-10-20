@@ -7,7 +7,7 @@ mod = Module()
 
 SELECT = "take"
 TELEPORT = "pop"
-OPERATOR = "state"
+OPERATOR = "make"
 DELETE = "chuck"
 FIND = "scout"
 

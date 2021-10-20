@@ -115,7 +115,7 @@ indent [more]:
 clear line:
     edit.delete_line()
 
-wipe <number_small> times:
+scratch <number_small> times:
     user.delete_left_n(number_small)
 
 drill <number_small> times:
