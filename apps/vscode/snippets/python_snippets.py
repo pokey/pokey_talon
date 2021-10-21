@@ -26,7 +26,7 @@ ctx.lists["user.snippet_one_phrase"] = {
 }
 
 snippet_formatters = {
-    "class": ["PUBLIC_CAMEL_CASE"],
+    "class declaration": ["PUBLIC_CAMEL_CASE"],
     "function declaration": ["SNAKE_CASE"],
 }
 
