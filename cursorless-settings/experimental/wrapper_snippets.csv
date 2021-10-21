@@ -1,5 +1,8 @@
 Spoken form, Cursorless identifier
-else, cursorless.wrappers.ifElseStatementElseBranch
-if, cursorless.wrappers.ifStatement
-if else, cursorless.wrappers.ifElseStatementIfBranch
-try, cursorless.wrappers.tryCatchStatement
+else, ifElseStatement/alternative
+if else, ifElseStatement/consequence
+if, ifStatement/consequence
+link, link/text
+map, map/value
+nest, nestMap/items
+try, tryCatchStatement/body

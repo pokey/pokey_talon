@@ -33,23 +33,11 @@ is not loose equal: " != "
 
 <user.operator> await: "await "
 
-<user.operator> map:
-    insert(".map()")
+chain {user.code_chain_function}:
+    insert(".{code_chain_function}()")
     key(left)
     
-<user.operator> filter:
-    insert(".filter()")
-    key(left)
-    
-<user.operator> reduce:
-  insert(".reduce()")
-  key(left)
-
-<user.operator> concat:
-  insert(".concat()")
-  key(left)
-
-<user.operator> length: insert(".length")
+chain length: insert(".length")
 
 <user.operator> log:
   insert("console.log()")

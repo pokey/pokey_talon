@@ -1,5 +1,6 @@
 from talon import Module, Context, actions, ui, imgui, settings
 
+mod = Module()
 ctx = Context()
 ctx.matches = r"""
 mode: user.typescript
@@ -7,6 +8,16 @@ mode: user.auto_lang
 and code.language: typescript
 """
 # tbd
+
+mod.list("code_chain_function", "Function to use in a chain")
+
+ctx.lists["user.code_chain_function"] = {
+    "map": "map",
+    "filter": "filter",
+    "find": "find",
+    "concat": "concat",
+}
+
 ctx.lists["user.code_functions"] = {
     #     "integer": "int.TryParse",
     "print": "console.log",

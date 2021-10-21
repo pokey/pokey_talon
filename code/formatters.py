@@ -284,11 +284,16 @@ class Actions:
         for string in strings:
             actions.insert(string)
 
+
 def unformat_text(text: str) -> str:
     """Remove format from text"""
     unformatted = re.sub(r"[^a-zA-Z0-9]+", " ", text)
     # Split on camelCase, including numbes
-    unformatted = re.sub(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-zA-Z])(?=[0-9])|(?<=[0-9])(?=[a-zA-Z])", " ", unformatted)
+    unformatted = re.sub(
+        r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-zA-Z])(?=[0-9])|(?<=[0-9])(?=[a-zA-Z])",
+        " ",
+        unformatted,
+    )
     # TODO: Separate out studleycase vars
     return unformatted.lower()
 
@@ -309,4 +314,10 @@ def gui(gui: imgui.GUI):
 
 
 mod.list("phrase_ender", desc="list of commands that can be used to end a phrase")
-ctx.lists["self.phrase_ender"] = {"void": "space", "clap": "enter", "halt": "space:0"}
+ctx.lists["self.phrase_ender"] = {
+    "void": "space",
+    "clap": "enter",
+    "coal gap": ": space",
+    "spam": ", space",
+    "halt": "space:0",
+}
