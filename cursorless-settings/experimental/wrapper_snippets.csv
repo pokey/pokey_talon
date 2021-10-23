@@ -4,5 +4,6 @@ if else, ifElseStatement/consequence
 if, ifStatement/consequence
 link, link/text
 map, map/value
-nest, nestMap/items
+nest, nestedMap/items
 try, tryCatchStatement/body
+funk, functionDeclaration/body
