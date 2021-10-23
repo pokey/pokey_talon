@@ -63,7 +63,7 @@ symbol hunt [<user.text>]:
 # Panels
 panel control: user.vscode("workbench.panel.repl.view.focus")
 panel output: user.vscode("workbench.panel.output.focus")
-panel problems: user.vscode("workbench.panel.markers.view.focus")
+show problems: user.vscode("workbench.panel.markers.view.focus")
 low dog: user.vscode("workbench.action.togglePanel")
 panel terminal: user.vscode("workbench.action.terminal.focus")
 pan edit: user.vscode("workbench.action.focusActiveEditorGroup")

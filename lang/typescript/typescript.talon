@@ -29,7 +29,7 @@ is not loose equal: " != "
 
 <user.operator> var: "var "
 
-<user.operator> async: "async "
+<user.operator> a sink: "async "
 
 <user.operator> await: "await "
 
@@ -59,3 +59,6 @@ chain length: insert(".length")
 <user.operator> export const: "export const "
 <user.operator> export default: "export default "
 <user.operator> try: "try "
+<user.operator> private: "private "
+<user.operator> public: "public "
+<user.operator> protected: "protected "
