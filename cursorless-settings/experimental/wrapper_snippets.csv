@@ -1,9 +1,9 @@
 Spoken form, Cursorless identifier
-else, ifElseStatement/alternative
-if else, ifElseStatement/consequence
-if, ifStatement/consequence
-link, link/text
-map, map/value
-nest, nestedMap/items
-try, tryCatchStatement/body
-funk, functionDeclaration/body
+else, ifElseStatement.alternative
+if else, ifElseStatement.consequence
+if, ifStatement.consequence
+link, link.text
+map, map.value
+nest, nestedMap.items
+try, tryCatchStatement.body
+funk, functionDeclaration.body
