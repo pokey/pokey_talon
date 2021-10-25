@@ -54,4 +54,4 @@ settings():
 	
 # uncomment tag to enable mouse grid
 tag(): user.mouse_grid_enabled
-tag(): user.cursorless_experimental_wrapper_snippets
+tag(): user.cursorless_experimental_snippets

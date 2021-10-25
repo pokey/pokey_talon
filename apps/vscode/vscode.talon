@@ -121,7 +121,7 @@ file move:
     sleep(150ms)
 file open folder: user.vscode("revealFileInOS")
 file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
-save ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
+disk ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
     key(esc:5)
     edit.save()
