@@ -11,35 +11,20 @@ mode: user.auto_lang
 and code.language: python
 """
 # short name -> ide clip name
-# See
-# https://github.com/pokey/dotfiles/blob/develop/vscode/snippets/python.json
-# for definitions
 ctx.lists["user.snippets"] = {
-    "if": "if statement",
-    "else": "if else statement",
-    "with": "with statement",
-    "in it": "constructor",
+    "class funky": "def(class method)",
+    "class static funky": "def(class static method)",
+    "class": "class",
+    "else if": "elif",
+    "for": "for",
+    "funky": "def",
+    "if else": "if/else",
+    "if": "if",
+    "lambda": "lambda",
+    "try except": "try/except",
+    "while": "while",
+    "with": "with",
 }
-ctx.lists["user.snippet_one_phrase"] = {
-    "class": "class declaration",
-    "funk": "function declaration",
-}
-
-snippet_formatters = {
-    "class declaration": ["PUBLIC_CAMEL_CASE"],
-    "function declaration": ["SNAKE_CASE"],
-}
-
-
-@ctx.action_class("user")
-class UserActions:
-    def get_snippet_formatters(snippet_name: str):
-        """Get a list of formatters four placeholders in the given snippet
-
-        Args:
-            snippet_name (str): The name of the snippet to look up
-        """
-        return snippet_formatters[snippet_name]
 
 
 # def update_list(watch_list):
@@ -56,3 +41,4 @@ class UserActions:
 #     )
 # if snippet_path:
 #     watcher = snippet_watcher({snippet_path: ["python.json",],}, update_list,)
+

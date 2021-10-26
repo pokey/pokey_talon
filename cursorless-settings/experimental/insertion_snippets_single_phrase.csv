@@ -1,0 +1,8 @@
+Spoken form, Cursorless identifier
+binder, bindClassFunction.name
+class, classDeclaration.name
+con, constDeclaration.name
+face, interface.name
+funk, functionDeclaration.name
+let, letDeclaration.name
+link, link.text

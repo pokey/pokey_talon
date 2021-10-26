@@ -36,6 +36,7 @@ rename, rename
 reverse, reverseTargets
 scout, findInDocument
 scout all, findInWorkspace
+snip, insertSnippet
 sort, sortTargets
 swap, swapTargets
 take, setSelection
