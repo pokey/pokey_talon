@@ -1,7 +1,7 @@
 double dash: "--"
 triple quote: "'''"
 #ellipses: "…"
-ellipses: "..."
+pebbles: "..."
 spam: ", "
 coal gap: ": "
 pipe gap: " | "

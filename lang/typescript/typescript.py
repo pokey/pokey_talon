@@ -17,12 +17,20 @@ ctx.lists["user.code_chain_function"] = {
     "filter": "filter",
     "find": "find",
     "concat": "concat",
+    "push": "push",
+    "substring": "substring",
 }
 
 ctx.lists["user.code_functions"] = {
     #     "integer": "int.TryParse",
     "print": "console.log",
     "flatten": "flatten",
+    "min": "Math.min",
+    "max": "Math.max",
+    "keys": "Object.keys",
+    "values": "Object.values",
+    "entries": "Object.entries",
+    "from entries": "Object.fromEntries",
     #     "string": ".ToString",
 }
 

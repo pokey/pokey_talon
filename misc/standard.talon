@@ -23,7 +23,7 @@ show clip:
 (pace | paste) <user.ordinals_small>:
     key(cmd-shift-v)
     sleep(100ms)
-    insert(user.ordinals_small)
+    insert("{user.ordinals_small}")
     sleep(100ms)
 (pace | paste) rough <number_small>:
     key(cmd-shift-v)
@@ -78,3 +78,5 @@ additional word:
     sleep(200ms)
     edit.file_end()
     edit.line_insert_down()
+
+then: skip()

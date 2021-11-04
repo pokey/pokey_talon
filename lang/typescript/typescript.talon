@@ -37,7 +37,7 @@ chain {user.code_chain_function}:
     insert(".{code_chain_function}()")
     key(left)
     
-chain length: insert(".length")
+<user.operator> length: insert(".length")
 
 <user.operator> log:
   insert("console.log()")

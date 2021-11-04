@@ -274,9 +274,6 @@ class UserActions:
             {"langId": actions.user.vscode_language_id(), "name": text},
         )
 
-    def snippet_next():
-        actions.user.vscode("jumpToNextSnippetPlaceholder")
-
     def snippet_create():
         """Triggers snippet creation"""
         actions.user.vscode("workbench.action.openSnippets")

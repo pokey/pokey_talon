@@ -1,6 +1,9 @@
 Spoken form, Cursorless identifier
+else, elseStatement
+elsif, elseIfStatement
 if else, ifElseStatement
 if, ifStatement
 in it, constructor
+map, map
 try, tryCatchStatement
 with, withStatement

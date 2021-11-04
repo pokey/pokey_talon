@@ -12,7 +12,7 @@ tag: user.code_operators
 <user.operator> subscript: user.code_operator_subscript()
 
 #assignment
-<user.operator> (equals | assign): user.code_operator_assignment()
+<user.operator> (equals | a sign): user.code_operator_assignment()
 
 #math operators
 <user.operator> (minus | subtract): user.code_operator_subtraction()
@@ -32,8 +32,8 @@ tag: user.code_operators
 (<user.operator> | is) not equal: user.code_operator_not_equal()
 (<user.operator> | is) (greater | more): user.code_operator_greater_than()
 (<user.operator> | is) (less | below) [than]: user.code_operator_less_than()
-(<user.operator> | is) greater [than] or equal: user.code_operator_greater_than_or_equal_to()
-(<user.operator> | is) less [than] or equal: user.code_operator_less_than_or_equal_to()
+is great equal: user.code_operator_greater_than_or_equal_to()
+is less equal: user.code_operator_less_than_or_equal_to()
 (<user.operator> | is) in: user.code_operator_in()
 
 #logical operators
