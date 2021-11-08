@@ -25,7 +25,7 @@ coder [<phrase>]$:
     user.switcher_focus("Code")
     sleep(200ms)
     user.parse_phrase(phrase or "")
-change set up [<phrase>]$:
+voice adjust [<phrase>]$:
     user.switcher_focus("Code")
     user.vscode("workbench.action.openRecent")
     sleep(50ms)

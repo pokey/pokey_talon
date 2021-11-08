@@ -51,7 +51,6 @@ chain {user.code_chain_function}:
 <user.operator> type: "type "
 <user.operator> extends: " extends "
 <user.operator> interface: "interface "
-<user.operator> cast: " as "
 
 <user.operator> new: insert("new ")  
 

@@ -19,6 +19,7 @@ ctx.lists["user.code_chain_function"] = {
     "concat": "concat",
     "push": "push",
     "substring": "substring",
+    "split": "split",
 }
 
 ctx.lists["user.code_functions"] = {

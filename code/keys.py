@@ -138,31 +138,34 @@ ctx.lists["self.letter"] = alphabet
 
 # `punctuation_words` is for words you want available BOTH in dictation and as key names in command mode.
 # `symbol_key_words` is for key names that should be available in command mode, but NOT during dictation.
+# `dictation_only_punctuation_words` is for punctuation words that you only
+# want to be available during dictation, not command mode
 punctuation_words = {
     # TODO: I'm not sure why we need these, I think it has something to do with
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
     "`": "`",
     ",": ",",  # <== these things
+    "at sign": "@",
+    # Currencies
+    "pound sign": "£",
+}
+
+dictation_only_punctuation_words = {
+    "dollar sign": "$",
+    "ampersand": "&",
     "back tick": "`",
-    "grave": "`",
     "comma": ",",
     "period": ".",
-    "semi": ";",
+    "full stop": ".",
+    "semicolon": ";",
     "colon": ":",
     "forward slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
     "exclamation point": "!",
     "asterisk": "*",
-    "hash sign": "#",
     "number sign": "#",
     "percent sign": "%",
-    "at sign": "@",
-    "and sign": "&",
-    "ampersand": "&",
-    # Currencies
-    "dollar sign": "$",
-    "pound sign": "£",
 }
 
 immune_symbol_key_words = {
@@ -190,9 +193,7 @@ symbol_key_words = {
     "lace": "{",
     "race": "}",
     "langle": "<",
-    "less than": "<",
     "wrangle": ">",
-    "greater than": ">",
     "snow": "*",
     "pound": "#",
     "percy": "%",
@@ -200,11 +201,15 @@ symbol_key_words = {
     "amper": "&",
     "pipe": "|",
     "dollar": "$",
+    "semi": ";",
+    "stack": ":",
+    "drip": ",",
 }
 
 # make punctuation words also included in {user.symbol_keys}
 symbol_key_words.update(punctuation_words)
 symbol_key_words.update(immune_symbol_key_words)
+punctuation_words.update(dictation_only_punctuation_words)
 ctx.lists["self.punctuation"] = punctuation_words
 ctx.lists["self.symbol_key"] = symbol_key_words
 ctx.lists["self.immune_symbol_key"] = immune_symbol_key_words

@@ -218,7 +218,7 @@ fold comments: user.vscode("editor.foldAllBlockComments")
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
-<user.find> branch [<user.text>]:
+<user.find> branch [<user.text>] [halt]:
     user.vscode("git.checkout")
     sleep(50ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
@@ -227,6 +227,7 @@ git branch this: user.vscode("git.branch")
     sleep(50ms)
     '{git_branch}'
     key(enter)
+    sleep(250ms)
 git commit [<user.text>]:
     user.vscode("git.commitStaged")
     sleep(250ms)

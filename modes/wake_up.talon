@@ -10,3 +10,5 @@ drowse [<phrase>]$:
     speech.disable()
     user.engine_sleep()
 
+drowse <phrase> resume$: skip()
+
