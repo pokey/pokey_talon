@@ -3,7 +3,7 @@
 # -
 drowse [<phrase>]$:
     user.switcher_hide_running()
-    user.history_disable()
+    user.maybe_hide_history()
     user.homophones_hide()
     user.help_hide()
     user.mouse_sleep()
