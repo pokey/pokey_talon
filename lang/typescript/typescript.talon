@@ -50,6 +50,7 @@ chain {user.code_chain_function}:
 <user.operator> spread: "..."
 <user.operator> type: "type "
 <user.operator> extends: " extends "
+<user.operator> implements: " implements "
 <user.operator> interface: "interface "
 
 <user.operator> new: insert("new ")  
@@ -61,3 +62,4 @@ chain {user.code_chain_function}:
 <user.operator> private: "private "
 <user.operator> public: "public "
 <user.operator> protected: "protected "
+<user.operator> yield: "yield "

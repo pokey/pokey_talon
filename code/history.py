@@ -19,6 +19,9 @@ def parse_phrase(word_list):
 def on_phrase(j):
     global history
 
+    if not actions.speech.enabled():
+        return
+
     try:
         val = parse_phrase(getattr(j["parsed"], "_unmapped", j["phrase"]))
     except:

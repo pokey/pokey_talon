@@ -8,6 +8,7 @@ phrase <user.text> {user.phrase_ender}:
     user.insert_formatted(prose, prose_formatter)
     key(phrase_ender)
 <user.format_text>+ [halt]: user.insert_many(format_text_list)
+strict <user.format_text>+$: user.insert_many(format_text_list)
 <user.formatters> that: user.formatters_reformat_selection(user.formatters)
 word <user.word>: user.insert_formatted(user.word, "NOOP")
 proud <user.word>: user.insert_formatted(user.word, "CAPITALIZE_FIRST_WORD")

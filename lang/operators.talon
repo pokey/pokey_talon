@@ -28,13 +28,13 @@ tag: user.code_operators
 (<user.operator> (power | exponent) | to the power [of]): user.code_operator_exponent()
 
 #comparison operators
-(<user.operator> | is) equal: user.code_operator_equal()
-(<user.operator> | is) not equal: user.code_operator_not_equal()
-(<user.operator> | is) (greater | more): user.code_operator_greater_than()
-(<user.operator> | is) (less | below) [than]: user.code_operator_less_than()
+is equal: user.code_operator_equal()
+is not equal: user.code_operator_not_equal()
+is great: user.code_operator_greater_than()
+is less: user.code_operator_less_than()
 is great equal: user.code_operator_greater_than_or_equal_to()
 is less equal: user.code_operator_less_than_or_equal_to()
-(<user.operator> | is) in: user.code_operator_in()
+is in: user.code_operator_in()
 
 #logical operators
 (<user.operator> | logical) and: user.code_operator_and()

@@ -366,8 +366,8 @@ full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
 
-<user.select> word: user.vscode("editor.action.addSelectionToNextFindMatch")
-skip word: user.vscode("editor.action.moveSelectionToNextFindMatch")
+spawn: user.vscode("editor.action.addSelectionToNextFindMatch")
+skip that: user.vscode("editor.action.moveSelectionToNextFindMatch")
 
 # jupyter
 cell next: user.vscode("jupyter.gotoNextCellInFile")
@@ -408,6 +408,9 @@ show in finder: user.vscode("revealFileInOS")
 
 file delete: user.vscode("fileutils.removeFile")
 next: user.vscode("jumpToNextSnippetPlaceholder")
+skip:
+    key("backspace")
+    user.vscode("jumpToNextSnippetPlaceholder")
 previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
 cursorless record: user.vscode("cursorless.recordTestCase")

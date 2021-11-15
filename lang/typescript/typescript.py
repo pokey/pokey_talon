@@ -13,6 +13,7 @@ mod.list("code_chain_function", "Function to use in a chain")
 
 ctx.lists["user.code_chain_function"] = {
     "map": "map",
+    "flat map": "flatMap",
     "for each": "forEach",
     "filter": "filter",
     "find": "find",
