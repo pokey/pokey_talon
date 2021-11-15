@@ -13,7 +13,14 @@ history = []
 
 
 def parse_phrase(word_list):
-    return " ".join(word.split("\\")[0] for word in word_list)
+    words = [word.split("\\")[0] for word in word_list]
+
+    try:
+        words = words[: words.index("drowse")]
+    except ValueError:
+        pass
+
+    return " ".join(words)
 
 
 def on_phrase(j):
