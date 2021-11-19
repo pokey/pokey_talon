@@ -64,6 +64,17 @@ ctx.lists["user.code_type"] = {
     "no return": "NoReturn",
 }
 
+ctx.lists["user.code_keyword"] = {
+    "break": "break",
+    "continue": "continue",
+    "class": "class ",
+    "return": "return ",
+    "import": "import ",
+    "null": "None",
+    "true": "True",
+    "false": "False",
+}
+
 exception_list = [
     "BaseException",
     "SystemExit",

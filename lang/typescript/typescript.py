@@ -12,27 +12,28 @@ and code.language: typescript
 mod.list("code_chain_function", "Function to use in a chain")
 
 ctx.lists["user.code_chain_function"] = {
-    "map": "map",
-    "flat map": "flatMap",
-    "for each": "forEach",
+    "concat": "concat",
     "filter": "filter",
     "find": "find",
-    "concat": "concat",
+    "flat map": "flatMap",
+    "for each": "forEach",
+    "map": "map",
     "push": "push",
-    "substring": "substring",
+    "some": "some",
     "split": "split",
+    "substring": "substring",
 }
 
 ctx.lists["user.code_functions"] = {
-    #     "integer": "int.TryParse",
-    "print": "console.log",
-    "flatten": "flatten",
-    "min": "Math.min",
-    "max": "Math.max",
-    "keys": "Object.keys",
-    "values": "Object.values",
     "entries": "Object.entries",
+    "flatten": "flatten",
     "from entries": "Object.fromEntries",
+    "keys": "Object.keys",
+    "max": "Math.max",
+    "min": "Math.min",
+    "print": "console.log",
+    "values": "Object.values",
+    #     "integer": "int.TryParse",,
     #     "string": ".ToString",
 }
 
@@ -44,6 +45,35 @@ ctx.lists["user.code_type"] = {
     "undefined": "undefined",
     "number": "number",
     "any": "any",
+}
+
+ctx.lists["user.code_keyword"] = {
+    "a sink": "async ",
+    "await": "await ",
+    "break": "break",
+    "cast": " as ",
+    "class": "class ",
+    "const": "const ",
+    "continue": "continue",
+    "export": "export ",
+    "extends": " extends ",
+    "false": "false",
+    "implements": " implements ",
+    "import": "import ",
+    "interface": "interface ",
+    "let": "let ",
+    "new": "new ",
+    "null": "null",
+    "private": "private ",
+    "protected": "protected ",
+    "public": "public ",
+    "return": "return ",
+    "throw": "throw ",
+    "true": "true",
+    "try": "try ",
+    "type": "type ",
+    "undefined": "undefined",
+    "yield": "yield ",
 }
 
 
