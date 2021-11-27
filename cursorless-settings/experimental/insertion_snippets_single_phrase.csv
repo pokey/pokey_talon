@@ -5,4 +5,7 @@ con, constantDeclaration.name
 face, interface.name
 funk, functionDeclaration.name
 let, letDeclaration.name
+foreign, forEachStatement.name
 link, link.text
+lambda, lambdaExpression.parameters
+lambda block, lambdaBlock.parameters

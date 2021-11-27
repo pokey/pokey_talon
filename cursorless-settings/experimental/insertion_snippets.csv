@@ -7,3 +7,6 @@ in it, constructor
 map, map
 try, tryCatchStatement
 with, withStatement
+switch, switchStatement
+case, caseStatement
+while, whileStatement

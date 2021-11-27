@@ -1,6 +1,6 @@
 tag: user.find_and_replace
 -
-<user.find> this [<user.text>] [halt]: user.find(text or "")
+<user.find> dock [<user.text>] [halt]: user.find(text or "")
 <user.find> clip: user.find(clip.text())
 <user.find> all [<user.text>] [halt]: user.find_everywhere(text or "")
 <user.find> all clip: user.find_everywhere(clip.text())

@@ -29,7 +29,7 @@ quad:
 twin:
     "''"
     key(left)
-skis:
+ski:
     '``'
     key(left)
 escaped quad:

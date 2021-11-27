@@ -39,7 +39,7 @@ side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
 
-<user.find> symbol [<user.text>] [halt]:
+<user.show_list> symbol [<user.text>] [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
     insert(text or "")
@@ -52,13 +52,21 @@ search last: user.vscode("search.action.focusPreviousSearchResult")
     key(enter)
     sleep(50ms)
 
-symbol last: user.vscode("gotoNextPreviousMember.previousMember")
-symbol next: user.vscode("gotoNextPreviousMember.nextMember")
-
-symbol hunt [<user.text>]:
-    user.vscode("workbench.action.gotoSymbol")
+<user.show_list> all symbol [<user.text>] [halt]:
+    user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
     insert(text or "")
+
+<user.teleport> all symbol <user.text> [halt]:
+    user.vscode("workbench.action.showAllSymbols")
+    sleep(50ms)
+    insert(text or "")
+    sleep(250ms)
+    key(enter)
+    sleep(50ms)
+
+symbol last: user.vscode("gotoNextPreviousMember.previousMember")
+symbol next: user.vscode("gotoNextPreviousMember.nextMember")
 
 # Panels
 panel control: user.vscode("workbench.panel.repl.view.focus")
@@ -87,7 +95,7 @@ zen mode:
     user.vscode("workbench.action.closeSidebar")
     user.vscode("workbench.action.closePanel")
 # File Commands
-<user.find> dock [<user.text>] [{user.file_extension}] [halt]:
+<user.show_list> dock [<user.text>] [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
     sleep(400ms)
     insert(text or "")
@@ -170,15 +178,15 @@ spring forward: user.vscode("workbench.action.navigateForward")
     user.vscode("references-view.find")
 
 # Bookmarks. Requires Bookmarks plugin
-<user.find> sesh [<user.text>]:
+<user.show_list> sesh [<user.text>] [halt]:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
     sleep(250ms)
-<user.teleport> sesh [<user.text>]:
+<user.teleport> sesh [<user.text>] [halt]:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
     key(enter)
     sleep(250ms)
 new sesh [<user.text>]:
@@ -189,7 +197,7 @@ new sesh [<user.text>]:
     insert(text or "")
     sleep(250ms)
 
-<user.find> win [<user.text>]:
+<user.show_list> win [<user.text>]:
     user.vscode("workbench.action.switchWindow")
     sleep(50ms)
     insert(text or "")
@@ -218,7 +226,7 @@ fold comments: user.vscode("editor.foldAllBlockComments")
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
-<user.find> branch [<user.text>] [halt]:
+<user.show_list> branch [<user.text>] [halt]:
     user.vscode("git.checkout")
     sleep(50ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
@@ -266,7 +274,7 @@ change last: key(shift-alt-f5)
 #Debugging
 break point: user.vscode("editor.debug.action.toggleBreakpoint")
 step over: user.vscode("workbench.action.debug.stepOver")
-debug step into: user.vscode("workbench.action.debug.stepInto")
+step into: user.vscode("workbench.action.debug.stepInto")
 debug step out [of]: user.vscode("workbench.action.debug.stepOut")
 debug start: user.vscode("workbench.action.debug.start")
 debug pause: user.vscode("workbench.action.debug.pause")
@@ -366,8 +374,8 @@ full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
 
-spawn: user.vscode("editor.action.addSelectionToNextFindMatch")
-skip that: user.vscode("editor.action.moveSelectionToNextFindMatch")
+breed skip: user.vscode("editor.action.moveSelectionToNextFindMatch")
+breed last: user.vscode("editor.action.addSelectionToPreviousFindMatch")
 
 # jupyter
 cell next: user.vscode("jupyter.gotoNextCellInFile")
@@ -408,6 +416,7 @@ show in finder: user.vscode("revealFileInOS")
 
 file delete: user.vscode("fileutils.removeFile")
 next: user.vscode("jumpToNextSnippetPlaceholder")
+snip last: user.vscode("jumpToPrevSnippetPlaceholder")
 skip:
     key("backspace")
     user.vscode("jumpToNextSnippetPlaceholder")
@@ -423,3 +432,10 @@ line numbers on: user.set_line_number_mode("on")
 line numbers off: user.set_line_number_mode("off")
 
 solo: user.vscode("workbench.action.closeEditorsInOtherGroups")
+
+break line: user.vscode("rewrap.rewrapComment")
+
+mode {user.language_id}:
+    user.vscode("workbench.action.editor.changeLanguageMode")
+    "{language_id}"
+    key("enter")

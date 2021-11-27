@@ -9,7 +9,7 @@ fill password: user.fill_password()
     "{text}"
     sleep(100ms)
     key("enter")
-<user.find> tab <user.text> [halt]:
+<user.show_list> tab <user.text> [halt]:
     key("escape shift-t")
     sleep(100ms)
     "{text}"

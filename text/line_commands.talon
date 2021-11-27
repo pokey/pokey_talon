@@ -16,7 +16,9 @@ paste line up:
 #     edit.line_end()
 comment (line | this | that):
     code.toggle_comment()
-add comment [<user.text>]$:
+add comment:
+    code.toggle_comment()
+add comment <user.text>$:
     #todo: this should probably be a single function once
     #.talon supports implementing actions with parameters?
     code.toggle_comment()

@@ -13,3 +13,8 @@ map, map.value
 nest, nestedMap.items
 try, tryCatchStatement.body
 with, withStatement.body
+while, whileStatement.body
+switch, switchStatement.caseBody
+lambda, lambdaExpression.expression
+lambda block, lambdaBlock.body
+foreign, forEachStatement.body

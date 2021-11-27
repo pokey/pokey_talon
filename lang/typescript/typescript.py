@@ -43,6 +43,7 @@ ctx.lists["user.code_type"] = {
     "string": "string",
     "null": "null",
     "undefined": "undefined",
+    "unknown": "unknown",
     "number": "number",
     "any": "any",
 }

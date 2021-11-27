@@ -211,7 +211,7 @@ class UserActions:
         actions.user.vscode("workbench.action.focusLeftGroup")
 
     def split_next():
-        actions.user.vscode_and_wait("workbench.action.focusRightGroup")
+        actions.user.vscode_and_wait("workbench.action.navigateEditorGroups")
 
     def split_window_down():
         actions.user.vscode("workbench.action.moveEditorToBelowGroup")
@@ -434,3 +434,11 @@ and code.language: typescript
 class TypescriptActions:
     def vscode_language_id() -> str:
         return "typescript"
+
+
+mod.list("language_id", "language id")
+ctx.lists["user.language_id"] = {
+    "typescript": "typescript",
+    "python": "python",
+    "text": "plaintext",
+}
