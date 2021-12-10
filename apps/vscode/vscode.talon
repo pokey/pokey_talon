@@ -236,11 +236,11 @@ git branch this: user.vscode("git.branch")
     '{git_branch}'
     key(enter)
     sleep(250ms)
-git commit [<user.text>]:
+git commit [<user.text>] [halt]:
     user.vscode("git.commitStaged")
     sleep(250ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
-git stash [<user.text>]:
+git stash [<user.text>] [halt]:
     user.vscode("git.stash")
     sleep(100ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")

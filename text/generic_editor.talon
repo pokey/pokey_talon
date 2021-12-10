@@ -14,7 +14,7 @@ drain:
     edit.word_left()
 
 drain <number_small> times:
-    user.word_right(number_small)
+    user.words_left(number_small)
 
 push:
     edit.right()

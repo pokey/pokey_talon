@@ -47,3 +47,7 @@ wrap, wrapWithPairedDelimiter
 # 2021-11-10 21:33:52 - New entries automatically added by cursorless
 # -quick list, experimentalListCodeActions
 # -quick new file, experimentalMoveToNewFile
+
+# 2021-12-06 21:21:49 - New entries automatically added by cursorless
+give, deselect
+repack, rewrap
