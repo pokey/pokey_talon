@@ -40,7 +40,7 @@ ctx.lists["user.code_functions"] = {
 }
 
 ctx.lists["user.code_type"] = {
-    "boolean": "boolean",
+    "bool": "boolean",
     "integer": "int",
     "string": "string",
     "null": "null",
@@ -48,6 +48,7 @@ ctx.lists["user.code_type"] = {
     "unknown": "unknown",
     "number": "number",
     "any": "any",
+    "never": "never",
 }
 
 ctx.lists["user.code_keyword"] = {

@@ -24,11 +24,13 @@ class Actions:
         """Start recording screen"""
         ctx.tags = ["user.live_screen_share"]
         actions.key("shift-f10")
+        actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
     def live_screen_share_stop():
         """Stop recording screen"""
         ctx.tags = []
         actions.key("shift-f10")
+        actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)
 
 
 @live_screen_share_ctx.action_class("user")

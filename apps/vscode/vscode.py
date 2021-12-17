@@ -147,38 +147,33 @@ class WinActions:
         return ""
 
 
-def change_setting(setting_name: str, setting_value: any):
-    """
-    Changes a VSCode setting by name
-
-    Args:
-        setting_name (str): The name of the setting
-        setting_value (any): The new value.  Will be JSON encoded
-    """
-    original_settings_path = Path(
-        expanduser("~/Library/Application Support/Code/User/settings.json")
-    )
-    original_settings = original_settings_path.read_text()
-    regex = re.compile(fr'^(\s*)"{setting_name}": .*[^,](,?)$', re.MULTILINE)
-    new_settings = regex.sub(
-        fr'\1"{setting_name}": {json.dumps(setting_value)}\2', original_settings
-    )
-    original_settings_path.write_text(new_settings)
-
-
 @mod.action_class
 class Actions:
     def vscode_terminal(number: int):
         """Activate a terminal by number"""
         actions.user.vscode(f"workbench.action.terminal.focusAtIndex{number}")
 
+    def change_setting(setting_name: str, setting_value: any):
+        """
+        Changes a VSCode setting by name
+
+        Args:
+            setting_name (str): The name of the setting
+            setting_value (any): The new value.  Will be JSON encoded
+        """
+        original_settings_path = Path(
+            expanduser("~/Library/Application Support/Code/User/settings.json")
+        )
+        original_settings = original_settings_path.read_text()
+        regex = re.compile(fr'^(\s*)"{setting_name}": .*[^,](,?)$', re.MULTILINE)
+        new_settings = regex.sub(
+            fr'\1"{setting_name}": {json.dumps(setting_value)}\2', original_settings
+        )
+        original_settings_path.write_text(new_settings)
+
     def set_zoom_level(level: int):
         """Set zoom level"""
-        change_setting("window.zoomLevel", level)
-
-    def set_line_number_mode(mode: str):
-        """Set line number mode"""
-        change_setting("editor.lineNumbers", mode)
+        actions.user.change_setting("window.zoomLevel", level)
 
     def command_palette():
         """Show command palette"""

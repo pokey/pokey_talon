@@ -2,6 +2,12 @@ double dash: "--"
 triple quote: "'''"
 #ellipses: "…"
 pebbles: "..."
+# Add symbol at end of line and then insert line below
+# From https://github.com/AndreasArvidsson/andreas-talon/blob/master/misc/keys/keys.talon#L28
+patch {user.symbol_key}:
+    edit.line_end()
+    "{symbol_key}"
+    edit.line_insert_down()
 spam: ", "
 coal gap: ": "
 pipe gap: " | "

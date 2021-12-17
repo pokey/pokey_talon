@@ -428,8 +428,8 @@ cursorless record navigation:
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 
-line numbers on: user.set_line_number_mode("on")
-line numbers off: user.set_line_number_mode("off")
+line numbers on: user.change_setting("editor.lineNumbers", "on")
+line numbers off: user.change_setting("editor.lineNumbers", "off")
 
 solo: user.vscode("workbench.action.closeEditorsInOtherGroups")
 

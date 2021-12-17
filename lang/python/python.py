@@ -46,7 +46,7 @@ mod.list("python_docstring_fields", desc="python docstring fields")
 ctx.lists["user.python_docstring_fields"] = docstring_fields
 
 ctx.lists["user.code_type"] = {
-    "boolean": "bool",
+    "bool": "bool",
     "integer": "int",
     "string": "str",
     "none": "None",
