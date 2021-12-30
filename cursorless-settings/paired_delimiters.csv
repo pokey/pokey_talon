@@ -3,6 +3,7 @@ curly, curlyBrackets
 diamond, angleBrackets
 escaped quad, escapedDoubleQuotes
 escaped round, escapedParentheses
+escaped square, escapedSquareBrackets
 escaped twin, escapedSingleQuotes
 pair, any
 quad, doubleQuotes

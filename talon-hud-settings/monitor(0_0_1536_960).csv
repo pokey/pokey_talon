@@ -1,0 +1,107 @@
+status_bar_x,763
+status_bar_y,2
+status_bar_width,19
+status_bar_height,18
+status_bar_limit_x,763
+status_bar_limit_y,2
+status_bar_limit_width,19
+status_bar_limit_height,18
+status_bar_font_size,24
+status_bar_alignment,left
+status_bar_expand_direction,down
+event_log_x,1080
+event_log_y,728
+event_log_width,450
+event_log_height,200
+event_log_limit_x,1080
+event_log_limit_y,728
+event_log_limit_width,450
+event_log_limit_height,200
+event_log_font_size,18
+event_log_alignment,right
+event_log_expand_direction,up
+Text panel_x,1296
+Text panel_y,50
+Text panel_width,200
+Text panel_height,200
+Text panel_limit_x,1196
+Text panel_limit_y,50
+Text panel_limit_width,300
+Text panel_limit_height,400
+Text panel_font_size,18
+Text panel_alignment,left
+Text panel_expand_direction,down
+Documentation_x,36
+Documentation_y,14
+Documentation_width,400
+Documentation_height,300
+Documentation_limit_x,36
+Documentation_limit_y,14
+Documentation_limit_width,500
+Documentation_limit_height,700
+Documentation_font_size,18
+Documentation_alignment,left
+Documentation_expand_direction,down
+Choices_x,618
+Choices_y,100
+Choices_width,300
+Choices_height,150
+Choices_limit_x,618
+Choices_limit_y,100
+Choices_limit_width,300
+Choices_limit_height,600
+Choices_font_size,18
+Choices_alignment,left
+Choices_expand_direction,down
+ability_bar_x,736
+ability_bar_y,814
+ability_bar_width,500
+ability_bar_height,80
+ability_bar_limit_x,736
+ability_bar_limit_y,814
+ability_bar_limit_width,500
+ability_bar_limit_height,80
+ability_bar_font_size,18
+ability_bar_alignment,right
+ability_bar_expand_direction,up
+walk_through_x,718
+walk_through_y,880
+walk_through_width,100
+walk_through_height,20
+walk_through_limit_x,288
+walk_through_limit_y,706
+walk_through_limit_width,960
+walk_through_limit_height,148
+walk_through_font_size,24
+walk_through_alignment,center
+walk_through_expand_direction,up
+context_menu_x,50
+context_menu_y,100
+context_menu_width,200
+context_menu_height,50
+context_menu_limit_x,50
+context_menu_limit_y,100
+context_menu_limit_width,300
+context_menu_limit_height,400
+context_menu_font_size,18
+context_menu_alignment,left
+context_menu_expand_direction,down
+cursor_tracker_x,15
+cursor_tracker_y,15
+cursor_tracker_width,15
+cursor_tracker_height,15
+cursor_tracker_limit_x,15
+cursor_tracker_limit_y,15
+cursor_tracker_limit_width,15
+cursor_tracker_limit_height,15
+cursor_tracker_font_size,24
+cursor_tracker_alignment,left
+cursor_tracker_expand_direction,down
+screen_overlay_x,0
+screen_overlay_y,0
+screen_overlay_width,300
+screen_overlay_height,30
+screen_overlay_limit_x,0
+screen_overlay_limit_y,0
+screen_overlay_limit_width,300
+screen_overlay_limit_height,30

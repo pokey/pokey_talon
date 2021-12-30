@@ -111,6 +111,7 @@ zen mode:
     sleep(150ms)
 <user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 file copy path: user.vscode("copyFilePath")
+file copy relative: user.vscode("copyRelativeFilePath")
 file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
     user.vscode_and_wait("explorer.newFile")
     sleep(500ms)

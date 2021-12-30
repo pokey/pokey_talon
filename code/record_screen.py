@@ -50,7 +50,7 @@ class Actions:
         actions.key("cmd-ctrl-alt-,")
         actions.sleep("250ms")
         actions.key("cmd-shift-5")
-        actions.sleep("250ms")
+        actions.sleep("500ms")
         locate_hover("templates/stop-recording.png")
         actions.mouse_click(0)
         actions.sleep("250ms")
