@@ -83,6 +83,7 @@ show settings:
     sleep(250ms)
 show settings json: user.vscode("workbench.action.openSettingsJson")
 show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
+show shortcuts json: user.vscode("workbench.action.openGlobalKeybindingsFile")
 show snippets: user.vscode("workbench.action.openSnippets")
 
 # Display
@@ -134,6 +135,10 @@ disk ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
     key(esc:5)
     edit.save()
+disclose:
+    key(esc:5)
+    edit.save()
+    key(cmd-w)
 disk gentle: edit.save()
 
 # Language Features
@@ -461,3 +466,5 @@ install local:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
 extension publish:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
+
+line edit: key(ctrl-q e)
