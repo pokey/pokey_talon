@@ -104,3 +104,7 @@ screen_overlay_height,30
 screen_overlay_limit_x,0
 screen_overlay_limit_y,0
 screen_overlay_limit_width,300
+screen_overlay_limit_height,30
+screen_overlay_font_size,12
+screen_overlay_alignment,center
+screen_overlay_expand_direction,down

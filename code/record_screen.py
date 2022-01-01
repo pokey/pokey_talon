@@ -17,16 +17,11 @@ and tag: user.recording_screen
 
 @mod.action_class
 class Actions:
-    def maybe_show_history():
-        """Shows history if mode wants it"""
-        actions.user.history_enable()
-
     def record_screen_start():
         """Start recording screen"""
         ctx.tags = ["user.recording_screen"]
         actions.key("shift-f10")
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
-        actions.user.history_disable()
         actions.user.switcher_focus("OBS")
         actions.key("cmd-ctrl-alt-.")
         actions.key("cmd-ctrl-alt-p")
@@ -45,7 +40,6 @@ class Actions:
         ctx.tags = []
         actions.key("shift-f10")
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)
-        actions.user.history_enable()
         actions.user.switcher_focus("OBS")
         actions.key("cmd-ctrl-alt-,")
         actions.sleep("250ms")

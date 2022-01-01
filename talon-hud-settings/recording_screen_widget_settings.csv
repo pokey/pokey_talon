@@ -1,5 +1,5 @@
 show_animations,1
-enabled,1
+enabled,0
 theme_name,light
 status_bar_type,status_bar
 status_bar_enabled,1
@@ -7,7 +7,7 @@ status_bar_sleep_enabled,1
 status_bar_show_animations,1
 status_bar_minimized,0
 event_log_type,event_log
-event_log_enabled,1
+event_log_enabled,0
 event_log_sleep_enabled,0
 event_log_show_animations,1
 event_log_minimized,0

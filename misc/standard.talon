@@ -37,8 +37,8 @@ disk all: edit.save_all()
 padding:
 	insert("  ") 
 	key(left)
-pour this: edit.line_insert_down()
-drink this: edit.line_insert_up()
+pour: edit.line_insert_down()
+drink: edit.line_insert_up()
 
 slow mode: mode.enable("user.slow")
 

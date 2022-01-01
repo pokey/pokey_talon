@@ -2,14 +2,24 @@ from talon import Module, Context, actions
 
 mod = Module()
 
-ctx = Context()
-ctx.matches = r"""
+sleep_ctx = Context()
+sleep_ctx.matches = r"""
 mode: sleep
 """
+
+wake_ctx = Context()
 
 
 @mod.action_class
 class Actions:
+    def maybe_hide_history():
+        """Hides history if mode wants it"""
+        pass
+
+    def maybe_show_history():
+        """Shows history if mode wants it"""
+        pass
+
     def sleep_all():
         """Sleeps talon and hides everything"""
         actions.user.switcher_hide_running()
@@ -30,7 +40,16 @@ class Actions:
         actions.user.talon_mode()
 
 
-@ctx.action_class("user")
-class UserActions:
+@sleep_ctx.action_class("user")
+class SleepUserActions:
     def postalveolar_click():
         actions.user.wake_all()
+
+    def maybe_show_history():
+        pass
+
+
+@wake_ctx.action_class("user")
+class WakeUserActions:
+    def maybe_hide_history():
+        pass

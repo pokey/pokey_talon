@@ -238,6 +238,7 @@ git branch this: user.vscode("git.branch")
     key(enter)
     sleep(250ms)
 git commit [<user.text>] [halt]:
+    sleep(50ms)
     user.vscode("git.commitStaged")
     sleep(250ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
@@ -252,7 +253,9 @@ git ignore: user.vscode("git.ignore")
 git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
 git pull: user.vscode("git.pullRebase")
-git push: user.vscode("git.push")
+git push: 
+    sleep(100ms)
+    user.vscode("git.push")
 git push focus: user.vscode("git.pushForce")
 git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
@@ -265,6 +268,7 @@ git stage all: user.vscode("git.stageAll")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git log: user.vscode("git-graph.view")
+git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
 file open: user.vscode("gitlens.openWorkingFile")
 pull request: user.vscode("pr.create")
 file viewed: user.vscode("pr.markFileAsViewed")
@@ -379,11 +383,13 @@ breed skip: user.vscode("editor.action.moveSelectionToNextFindMatch")
 breed last: user.vscode("editor.action.addSelectionToPreviousFindMatch")
 
 # jupyter
-cell next: user.vscode("jupyter.gotoNextCellInFile")
-cell last: user.vscode("jupyter.gotoPrevCellInFile")
+cell next: user.vscode("list.focusDown")
+cell last: user.vscode("list.focusUp")
 cell run above: user.vscode("jupyter.runallcellsabove.palette")
-cell run: user.vscode("jupyter.runcurrentcell")
+cell run: user.vscode("notebook.cell.executeAndSelectBelow")
 cell run all: user.vscode("jupyter.runallcells")
+cell edit: user.vscode("notebook.cell.edit")
+cell exit: user.vscode("notebook.cell.quitEdit")
 
 jest: key(ctrl-space)
 yes:
@@ -440,3 +446,18 @@ mode {user.language_id}:
     user.vscode("workbench.action.editor.changeLanguageMode")
     "{language_id}"
     key("enter")
+
+break <user.cursorless_target>:
+    user.cursorless_command("setSelectionBefore", cursorless_target)
+    user.vscode("hideSuggestWidget")
+    key("enter")
+break:
+    user.vscode("hideSuggestWidget")
+    key("enter")
+
+tag version:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
+install local:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
+extension publish:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")

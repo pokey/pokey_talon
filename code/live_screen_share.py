@@ -16,10 +16,6 @@ tag: user.live_screen_share
 
 @mod.action_class
 class Actions:
-    def maybe_hide_history():
-        """Shows history if mode wants it"""
-        actions.user.history_disable()
-
     def live_screen_share_start():
         """Start recording screen"""
         ctx.tags = ["user.live_screen_share"]
