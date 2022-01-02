@@ -86,8 +86,8 @@ context_menu_limit_height,400
 context_menu_font_size,18
 context_menu_alignment,left
 context_menu_expand_direction,down
-cursor_tracker_x,627
-cursor_tracker_y,543
+cursor_tracker_x,15
+cursor_tracker_y,15
 cursor_tracker_width,15
 cursor_tracker_height,15
 cursor_tracker_limit_x,15
@@ -104,7 +104,3 @@ screen_overlay_height,30
 screen_overlay_limit_x,0
 screen_overlay_limit_y,0
 screen_overlay_limit_width,300
-screen_overlay_limit_height,30
-screen_overlay_font_size,12
-screen_overlay_alignment,center
-screen_overlay_expand_direction,down

@@ -1,5 +1,5 @@
 show_animations,1
-enabled,0
+enabled,1
 theme_name,light
 status_bar_type,status_bar
 status_bar_enabled,1
@@ -11,6 +11,7 @@ event_log_enabled,1
 event_log_sleep_enabled,1
 event_log_show_animations,1
 event_log_minimized,0
+event_log_ttl_duration_seconds,9
 Text panel_type,text_box
 Text panel_enabled,0
 Text panel_sleep_enabled,0
