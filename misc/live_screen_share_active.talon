@@ -1,5 +1,5 @@
 tag: user.live_screen_share
 -
 settings():
-    user.command_history_display = 10
     speech._subtitles = 1
+    user.talon_hud_environment = "live_screen_share"
