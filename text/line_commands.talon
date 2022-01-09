@@ -23,17 +23,12 @@ add comment <user.text>$:
     #.talon supports implementing actions with parameters?
     code.toggle_comment()
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
-add task [<user.text>]$:
-    #todo: this should probably be a single function once
-    #.talon supports implementing actions with parameters?
+add {user.comment_type}:
     code.toggle_comment()
-    "TODO: "
-    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
-add note [<user.text>]$:
-    #todo: this should probably be a single function once
-    #.talon supports implementing actions with parameters?
+    "{comment_type}: "
+add {user.comment_type} <user.text>$:
     code.toggle_comment()
-    "NB: "
+    "{comment_type}: "
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 # comment <number> until <number>: 
 #     user.select_range(number_1, number_2)

@@ -14,3 +14,8 @@ level six: "###### "
     key(enter:2)
     "```"
     key(up)
+
+pour task:
+    edit.line_end()
+    edit.line_insert_down()
+    "- [ ] "

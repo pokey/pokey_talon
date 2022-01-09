@@ -7,6 +7,14 @@ from talon import ctrl, ui, Module, Context, actions, clip
 import tempfile
 
 mod = Module()
+ctx = Context()
+
+mod.list("comment_type", "A type of comment, todo, note, etcetera")
+ctx.lists["user.comment_type"] = {
+    "task": "TODO",
+    "note": "NB",
+    "fix me": "FIXME",
+}
 
 mod.tag(
     "line_commands",

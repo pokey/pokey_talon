@@ -9,7 +9,7 @@ tag(): user.splits
 tag(): user.tabs
 
 settings():
-    key_wait = 5
+    key_wait = 1
 
 <user.delete> line:
     user.vscode_and_wait("editor.action.deleteLines")
@@ -242,6 +242,16 @@ git branch this: user.vscode("git.branch")
     '{git_branch}'
     key(enter)
     sleep(250ms)
+git rebase [<user.text>] [halt]:
+    user.vscode("git.rebase")
+    sleep(50ms)
+    user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
+git rebase {user.git_branch}:
+    user.vscode("git.rebase")
+    sleep(50ms)
+    '{git_branch}'
+    key(enter)
+    sleep(250ms)
 git commit [<user.text>] [halt]:
     sleep(50ms)
     user.vscode("git.commitStaged")
@@ -274,6 +284,7 @@ git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git log: user.vscode("git-graph.view")
 git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
+git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
 file open: user.vscode("gitlens.openWorkingFile")
 pull request: user.vscode("pr.create")
 file viewed: user.vscode("pr.markFileAsViewed")
@@ -290,7 +301,9 @@ debug start: user.vscode("workbench.action.debug.start")
 debug pause: user.vscode("workbench.action.debug.pause")
 debug stopper: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
-debug restart: user.vscode("workbench.action.debug.restart")
+debug restart: 
+    user.vscode("workbench.action.debug.stop")
+    user.vscode("workbench.action.debug.start")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
 debug stench:
     user.vscode("workbench.action.debug.selectandstart")
@@ -390,10 +403,11 @@ breed last: user.vscode("editor.action.addSelectionToPreviousFindMatch")
 # jupyter
 cell next: user.vscode("list.focusDown")
 cell last: user.vscode("list.focusUp")
-cell run above: user.vscode("jupyter.runallcellsabove.palette")
-cell run: user.vscode("notebook.cell.executeAndSelectBelow")
-cell run all: user.vscode("jupyter.runallcells")
+run head notebook: user.vscode("jupyter.runallcellsabove.palette")
+run cell: user.vscode("notebook.cell.executeAndSelectBelow")
+run notebook: user.vscode("jupyter.runallcells")
 cell edit: user.vscode("notebook.cell.edit")
+cell last edit: user.vscode("notebook.focusPreviousEditor")
 cell exit: user.vscode("notebook.cell.quitEdit")
 
 jest: key(ctrl-space)
@@ -459,6 +473,12 @@ break <user.cursorless_target>:
 break:
     user.vscode("hideSuggestWidget")
     key("enter")
+
+dock string <user.cursorless_target>:
+    user.cursorless_command("editNewLineBefore", cursorless_target)
+    "/**"
+    sleep(100ms)
+    key(tab)
 
 tag version:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")

@@ -47,7 +47,7 @@ emoji scout [<user.text>]:
 	sleep(200ms)
 	insert(user.text or "")
 
-prose [<user.prose>]$:
+dictate [<user.prose>]$:
     auto_insert(prose or "")
     mode.disable("sleep")
     mode.disable("command")
@@ -55,7 +55,7 @@ prose [<user.prose>]$:
     user.code_clear_language_mode()
     mode.disable("user.gdb")
 
-prose <user.prose> halt:
+dictate <user.prose> halt:
     auto_insert(prose or "")
 
 show numbers: key(cmd-ctrl-alt-f)
