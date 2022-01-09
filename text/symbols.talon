@@ -26,6 +26,7 @@ empty twin: "''"
 empty escaped quad: '\\"\\"'
 empty escaped twin: "\\'\\'"
 empty escaped round: '\\(\\)'
+empty escaped curly: '\\{{\\}}'
 tween <user.symbol_key>:
     '{symbol_key}{symbol_key}'
     key(left)
@@ -51,6 +52,10 @@ round:
 	key(left)
 escaped round:
     '\\(\\)'
+    key(left)
+    key(left)
+escaped curly:
+    '\\{{\\}}'
     key(left)
     key(left)
 square: 
