@@ -391,8 +391,6 @@ replace here:
     user.replace("")
     key(cmd-alt-l)
     
-join lines: user.vscode("editor.action.joinLines")
-
 full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
