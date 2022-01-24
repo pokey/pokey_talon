@@ -187,7 +187,7 @@ class Actions:
 
     def copy_command_id():
         """Copy the command id of the focused menu item"""
-        locate_hover("templates/command-settings.png")
+        locate_hover("templates/command-settings.png", threshold=0.9)
         actions.mouse_click(0)
         actions.sleep("750ms")
         actions.edit.copy()

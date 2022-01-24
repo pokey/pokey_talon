@@ -1,5 +1,4 @@
 from talon import Module, Context, actions, app, ui
-from talon.experimental.locate import locate_hover
 
 mod = Module()
 mod.tag(
@@ -15,42 +14,62 @@ and tag: user.recording_screen
 """
 
 
+def show_obs_menu():
+    menu = ui.apps(bundle="com.obsproject.obs-studio")[0].children.find_one(
+        AXRole="AXMenuBarItem", AXSubrole="AXMenuExtra"
+    )
+    try:
+        menu.perform("AXPress")
+    except:
+        pass
+    return menu
+
+
 @mod.action_class
 class Actions:
     def record_screen_start():
         """Start recording screen"""
         ctx.tags = ["user.recording_screen"]
+
+        # Disable notifications
         actions.key("shift-f10")
+
+        # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
-        actions.user.switcher_focus("OBS")
+
+        # Start OBS face recording
+        menu = show_obs_menu()
+        menu.children.find_one(AXRole="AXMenuItem", AXTitle="Start Recording").perform(
+            "AXPress"
+        )
+
+        # Start quick time screen recording
+        actions.key("cmd-shift-5")
         actions.sleep("500ms")
-        actions.key("cmd-ctrl-alt-.")
-        actions.key("cmd-ctrl-alt-p")
-        actions.sleep("250ms")
-        actions.user.switcher_focus("QuickTime Player")
-        actions.sleep("250ms")
-        actions.key("cmd-ctrl-n")
-        actions.sleep("250ms")
         actions.key("enter")
-        actions.sleep("250ms")
-        actions.user.switcher_focus("Code")
+
         actions.user.sleep_all()
 
     def record_screen_stop():
         """Stop recording screen"""
         ctx.tags = []
+
+        # Annabel notifications
         actions.key("shift-f10")
+
+        # Restore cursorless decoration speed
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)
-        actions.user.switcher_focus("OBS")
-        actions.sleep("250ms")
-        actions.key("cmd-ctrl-alt-,")
-        actions.sleep("250ms")
-        actions.key("cmd-shift-5")
-        actions.sleep("500ms")
-        locate_hover("templates/stop-recording.png")
-        actions.mouse_click(0)
-        actions.sleep("500ms")
-        actions.user.switcher_focus("Code")
+
+        # Stop OBS face recording
+        menu = show_obs_menu()
+        menu.children.find_one(AXRole="AXMenuItem", AXTitle="Stop Recording").perform(
+            "AXPress"
+        )
+        
+        # Stop quick time screen recording
+        ui.apps(bundle="com.apple.screencaptureui")[0].children.find_one(
+            AXRole="AXMenuBarItem"
+        ).perform("AXPress")
 
 
 @sleeping_recording_screen_ctx.action_class("user")
