@@ -23,7 +23,7 @@ class Actions:
         actions.key("shift-f10")
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
         actions.user.switcher_focus("OBS")
-        actions.sleep("250ms")
+        actions.sleep("500ms")
         actions.key("cmd-ctrl-alt-.")
         actions.key("cmd-ctrl-alt-p")
         actions.sleep("250ms")
@@ -49,7 +49,7 @@ class Actions:
         actions.sleep("500ms")
         locate_hover("templates/stop-recording.png")
         actions.mouse_click(0)
-        actions.sleep("250ms")
+        actions.sleep("500ms")
         actions.user.switcher_focus("Code")
 
 

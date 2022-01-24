@@ -55,3 +55,43 @@ mute thread: key(shift-m)
 
 # pull request list
 open issue: key(o)
+
+project <user.text>:
+    key(i p)
+    sleep(700ms)
+    "{user.text}"
+    sleep(700ms)
+    key(down enter escape)
+    sleep(700ms)
+
+assign <user.text>:
+    key(i a)
+    sleep(250ms)
+    "{user.text}"
+    sleep(250ms)
+    key(down enter escape)
+    sleep(250ms)
+
+label <user.text>:
+    key(i l)
+    sleep(250ms)
+    "{user.text}"
+    sleep(250ms)
+    key(down enter escape)
+    sleep(250ms)
+
+milestone <user.number_string>:
+    key(i m)
+    sleep(250ms)
+    "{user.number_string}"
+    sleep(250ms)
+    key(down enter escape)
+    sleep(250ms)
+
+milestone <user.text>:
+    key(i m)
+    sleep(250ms)
+    "{user.text}"
+    sleep(250ms)
+    key(down enter escape)
+    sleep(250ms)

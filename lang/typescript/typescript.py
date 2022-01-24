@@ -23,6 +23,7 @@ ctx.lists["user.code_chain_function"] = {
     "some": "some",
     "split": "split",
     "substring": "substring",
+    "then": "then",
 }
 
 ctx.lists["user.code_functions"] = {

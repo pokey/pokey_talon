@@ -10,3 +10,4 @@ with, withStatement
 switch, switchStatement
 case, caseStatement
 while, whileStatement
+on ready, talonOnReady

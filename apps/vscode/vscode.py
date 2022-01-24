@@ -1,4 +1,6 @@
+from typing import Optional
 from talon import Context, actions, ui, Module, app, clip
+from talon.experimental.locate import locate_hover
 import json
 import re
 from pathlib import Path
@@ -182,6 +184,23 @@ class Actions:
     def vscode_language_id() -> str:
         """Returns the vscode language id of the current programming language"""
         pass
+
+    def copy_command_id():
+        """Copy the command id of the focused menu item"""
+        locate_hover("templates/command-settings.png")
+        actions.mouse_click(0)
+        actions.sleep("750ms")
+        actions.edit.copy()
+        json_text = actions.edit.selected_text()
+        command_id = json.loads(json_text)["command"]
+        actions.app.tab_close()
+        clip.set_text(command_id)
+
+    def git_commit(text: str):
+        """Git commit"""
+        actions.user.vscode("git.commitStaged")
+        actions.sleep("250ms")
+        actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
 
 
 @mac_ctx.action_class("user")
@@ -436,4 +455,5 @@ ctx.lists["user.language_id"] = {
     "typescript": "typescript",
     "python": "python",
     "text": "plaintext",
+    "bash": "bash",
 }

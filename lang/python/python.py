@@ -11,7 +11,7 @@ and code.language: python
 """
 ctx.lists["user.code_functions"] = {
     "enumerate": "enumerate",
-    "integer": "int",
+    "int": "int",
     "length": "len",
     "list": "list",
     "print": "print",

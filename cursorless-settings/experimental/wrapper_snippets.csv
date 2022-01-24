@@ -18,3 +18,4 @@ switch, switchStatement.caseBody
 lambda, lambdaExpression.expression
 lambda block, lambdaBlock.body
 foreign, forEachStatement.body
+on ready, talonOnReady.body

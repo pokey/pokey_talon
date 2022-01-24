@@ -4,6 +4,7 @@ class, classDeclaration.name
 con, constantDeclaration.name
 face, interface.name
 funk, functionDeclaration.name
+capture, talonCapture.name
 let, letDeclaration.name
 foreign, forEachStatement.name
 link, link.text

@@ -252,11 +252,23 @@ git rebase {user.git_branch}:
     '{git_branch}'
     key(enter)
     sleep(250ms)
-git commit [<user.text>] [halt]:
-    sleep(50ms)
-    user.vscode("git.commitStaged")
+git commit [<user.text>]$: user.git_commit(text or "")
+git commit <user.text> clap:
+    user.git_commit(text or "")
+    key(enter)
     sleep(250ms)
-    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+disk git commit [<user.text>]$:
+    key(esc:5)
+    edit.save()
+    sleep(1500ms)
+    user.git_commit(text or "")
+disk git commit <user.text> clap:
+    key(esc:5)
+    edit.save()
+    sleep(1500ms)
+    user.git_commit(text or "")
+    key(enter)
+    sleep(250ms)
 git stash [<user.text>] [halt]:
     user.vscode("git.stash")
     sleep(100ms)
@@ -475,7 +487,7 @@ break:
 dock string <user.cursorless_target>:
     user.cursorless_command("editNewLineBefore", cursorless_target)
     "/**"
-    sleep(100ms)
+    sleep(250ms)
     key(tab)
 
 tag version:
@@ -486,3 +498,9 @@ extension publish:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
 
 line edit: key(ctrl-q e)
+
+copy command: user.copy_command_id()
+copy command <number_small>: 
+    key("down:{number_small-1}")
+    sleep(250ms)
+    user.copy_command_id()
