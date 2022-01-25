@@ -2,6 +2,9 @@
     "python.formatting.provider": "black",
     "editor.formatOnSave": false,
     "python.defaultInterpreterPath": "~/.talon/bin/python",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportSelfClsParameterName": "none",
+    },
     "cSpell.words": [
         "mkfifo"
     ]
