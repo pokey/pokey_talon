@@ -303,6 +303,9 @@ file viewed: user.vscode("pr.markFileAsViewed")
 (open | show) pull request: user.vscode("pr.openPullRequestOnGitHub")
 change next: key(alt-f5)
 change last: key(shift-alt-f5)
+
+# Run this command after you run a git command on a multi route workspace and it
+# will just apply the text of the commit or whatever to the default workspace
 default repo:
     edit.select_all()
     edit.cut()
