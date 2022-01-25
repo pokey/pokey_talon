@@ -54,7 +54,7 @@ class Actions:
         """Stop recording screen"""
         ctx.tags = []
 
-        # Annabel notifications
+        # Enable notifications
         actions.key("shift-f10")
 
         # Restore cursorless decoration speed
