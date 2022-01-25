@@ -303,6 +303,13 @@ file viewed: user.vscode("pr.markFileAsViewed")
 (open | show) pull request: user.vscode("pr.openPullRequestOnGitHub")
 change next: key(alt-f5)
 change last: key(shift-alt-f5)
+default repo:
+    edit.select_all()
+    edit.cut()
+    key(enter)
+    sleep(250ms)
+    edit.paste()
+    key(enter)
 
 #Debugging
 break point: user.vscode("editor.debug.action.toggleBreakpoint")
