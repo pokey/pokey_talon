@@ -29,6 +29,14 @@ def show_obs_menu():
 class Actions:
     def record_screen_start():
         """Start recording screen"""
+        
+        # First ensure that OBS is running
+        try:
+            next(app for app in ui.apps(background=False) if app.name == "OBS")
+        except StopIteration:
+            app.notify("ERROR: Please launch OBS")
+            raise
+
         ctx.tags = ["user.recording_screen"]
 
         # Disable notifications
