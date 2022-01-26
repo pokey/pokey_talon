@@ -28,9 +28,9 @@ def show_obs_menu():
 
 def run_shortcut(name: str):
     applescript.run(f"""
-    tell application "Shortcuts Events"
-        run shortcut "{name}"
-    end tell
+        tell application "Shortcuts Events"
+            run shortcut "{name}"
+        end tell
     """)
         
         
