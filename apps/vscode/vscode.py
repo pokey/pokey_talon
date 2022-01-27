@@ -187,10 +187,8 @@ class Actions:
 
     def copy_command_id():
         """Copy the command id of the focused menu item"""
-        locate_hover("templates/command-settings.png", threshold=0.9)
-        actions.mouse_click(0)
+        actions.key("tab:2 enter")
         actions.sleep("750ms")
-        actions.edit.copy()
         json_text = actions.edit.selected_text()
         command_id = json.loads(json_text)["command"]
         actions.app.tab_close()
