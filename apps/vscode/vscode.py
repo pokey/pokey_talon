@@ -415,6 +415,14 @@ class UserActions:
         actions.key("enter")
         actions.key("esc")
 
+    def run_shell_command(shell_command: str):
+        """Run a shell command"""
+        # FIXME: Only do it this way if we are in a bash book
+        actions.edit.select_all()
+        actions.edit.cut()
+        actions.insert(shell_command)
+        actions.user.vscode("bashbook.cell.executeAndClear")
+
     # find_and_replace.py support end
 
 

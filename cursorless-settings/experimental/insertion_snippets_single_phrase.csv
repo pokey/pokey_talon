@@ -10,3 +10,4 @@ foreign, forEachStatement.name
 link, link.text
 lambda, lambdaExpression.parameters
 lambda block, lambdaBlock.parameters
+talon list, talonList.name

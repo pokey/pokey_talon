@@ -57,3 +57,4 @@ talon dump context:
 ^talon copy active app$:
     result = user.talon_get_active_application_info()
     clip.set_text(result)
+talon restart: user.talon_relaunch()

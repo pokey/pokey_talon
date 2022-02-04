@@ -241,7 +241,7 @@ git branch this: user.vscode("git.branch")
     sleep(50ms)
     '{git_branch}'
     key(enter)
-    sleep(250ms)
+    sleep(500ms)
 git rebase [<user.text>] [halt]:
     user.vscode("git.rebase")
     sleep(50ms)
@@ -477,7 +477,7 @@ comment next: user.vscode("editor.action.nextCommentThreadAction")
 line numbers on: user.change_setting("editor.lineNumbers", "on")
 line numbers off: user.change_setting("editor.lineNumbers", "off")
 
-solo: user.vscode("workbench.action.closeEditorsInOtherGroups")
+han solo: user.vscode("workbench.action.closeEditorsInOtherGroups")
 
 break line: user.vscode("rewrap.rewrapComment")
 
@@ -514,3 +514,5 @@ copy command <number_small>:
     key("down:{number_small-1}")
     sleep(250ms)
     user.copy_command_id()
+
+aline that: user.vscode("rainbow-csv.Align")

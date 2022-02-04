@@ -150,7 +150,7 @@ formatters_words = {
     "all down": formatters_dict["ALL_LOWERCASE"],
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
     "dotted": formatters_dict["DOT_SEPARATED"],
-    "tower": formatters_dict["NEWLINE_SEPARATED"],
+    "vertical": formatters_dict["NEWLINE_SEPARATED"],
     "string": formatters_dict["DOUBLE_QUOTED_STRING"],
     "dunder": formatters_dict["DOUBLE_UNDERSCORE"],
     "hammer": formatters_dict["PUBLIC_CAMEL_CASE"],

@@ -54,6 +54,7 @@ extension_lang_map = {
     ".rb": "ruby",
     ".s": "assembly",
     ".sh": "bash",
+    ".bashbook": "bash",
     ".snippets": "snippets",
     ".talon": "talon",
     ".ts": "typescript",

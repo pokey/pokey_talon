@@ -19,13 +19,21 @@ class Actions:
     def live_screen_share_start():
         """Start recording screen"""
         ctx.tags = ["user.live_screen_share"]
-        actions.key("shift-f10")
+
+        # Disable notifications
+        actions.user.run_shortcut("Turn Do Not Disturb On")
+
+        # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
     def live_screen_share_stop():
         """Stop recording screen"""
         ctx.tags = []
-        actions.key("shift-f10")
+
+        # Enable notifications
+        actions.user.run_shortcut("Turn Do Not Disturb Off")
+
+        # Restore cursorless decoration speed
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)
 
 

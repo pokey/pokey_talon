@@ -1,5 +1,4 @@
 from talon import Module, Context, actions, app, ui
-from talon.mac import applescript
 
 mod = Module()
 mod.tag(
@@ -26,14 +25,6 @@ def show_obs_menu():
     return menu
 
 
-def run_shortcut(name: str):
-    applescript.run(f"""
-        tell application "Shortcuts Events"
-            run shortcut "{name}"
-        end tell
-    """)
-        
-        
 @mod.action_class
 class Actions:
     def record_screen_start():
@@ -49,7 +40,7 @@ class Actions:
         ctx.tags = ["user.recording_screen"]
 
         # Disable notifications
-        run_shortcut("Turn Do Not Disturb On")
+        actions.user.run_shortcut("Turn Do Not Disturb On")
 
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
@@ -72,7 +63,7 @@ class Actions:
         ctx.tags = []
 
         # Enable notifications
-        run_shortcut("Turn Do Not Disturb Off")
+        actions.user.run_shortcut("Turn Do Not Disturb Off")
 
         # Restore cursorless decoration speed
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)
