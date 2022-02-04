@@ -1,3 +1,4 @@
+from typing import Optional
 from talon import imgui, Module, speech_system, actions, app
 
 # We keep command_history_size lines of history, but by default display only
@@ -12,30 +13,16 @@ hist_more = False
 history = []
 
 
-def parse_phrase(word_list):
-    words = [word.split("\\")[0] for word in word_list]
-
-    try:
-        words = words[: words.index("drowse")]
-    except ValueError:
-        pass
-
-    return " ".join(words)
-
-
 def on_phrase(j):
     global history
 
     if not actions.speech.enabled():
         return
+    
+    words = j.get('text')
 
-    try:
-        val = parse_phrase(getattr(j["parsed"], "_unmapped", j["phrase"]))
-    except:
-        val = parse_phrase(j["phrase"])
-
-    if val != "":
-        history.append(val)
+    if text := actions.user.history_transform_phrase_text(words):
+        history.append(text)
         history = history[-setting_command_history_size.get() :]
 
 
@@ -89,3 +76,7 @@ class Actions:
         """returns the history entry at the specified index"""
         num = (0 - number) - 1
         return history[num]
+
+    def history_transform_phrase_text(words: list[str]) -> Optional[str]:
+        """Transforms phrase text for presentation in history. Return `None` to omit from history"""
+        return ' '.join(words) if words else None
