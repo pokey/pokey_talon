@@ -9,7 +9,7 @@ tag(): user.splits
 tag(): user.tabs
 
 settings():
-    key_wait = 1
+    key_wait = 2
 
 <user.delete> line:
     user.vscode_and_wait("editor.action.deleteLines")
