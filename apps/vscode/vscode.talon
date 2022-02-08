@@ -506,6 +506,11 @@ install local:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
 extension publish:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
+test clean talon:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Test clean talon")
+    sleep(250ms)
+    user.talon_relaunch()
+
 
 line edit: key(ctrl-q e)
 

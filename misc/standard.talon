@@ -80,3 +80,5 @@ additional word:
     edit.line_insert_down()
 
 then: skip()
+work focus: user.run_shortcut("Set work focus")
+clear focus: user.run_shortcut("Turn Do Not Disturb Off")
