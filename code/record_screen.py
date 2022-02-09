@@ -49,6 +49,15 @@ def log_object(output_object):
         out.write(json.dumps(output_object) + "\n")
 
 
+def git(*args: str, cwd: Path):
+    return subprocess.run(
+        [GIT, *args],
+        capture_output=True,
+        text=True,
+        cwd=cwd,
+    ).stdout.strip()
+
+
 @mod.action_class
 class Actions:
     def record_screen_start():
@@ -95,42 +104,18 @@ class Actions:
             if not directory.is_dir():
                 continue
 
-            repo_remote_url = subprocess.run(
-                [
-                    GIT,
-                    "config",
-                    "--get",
-                    "remote.origin.url",
-                ],
-                capture_output=True,
-                text=True,
-                cwd=directory,
-            ).stdout.strip()
+            repo_remote_url = git("config", "--get", "remote.origin.url", cwd=directory)
 
             if not repo_remote_url:
                 continue
 
-            commit_sha = subprocess.run(
-                [GIT, "rev-parse", "HEAD"],
-                capture_output=True,
-                text=True,
-                cwd=directory,
-            ).stdout.strip()
+            commit_sha = git("rev-parse", "HEAD", cwd=directory)
 
             # Represents the path of the given folder within the git repo in
             # which it is contained. This occurs when we sim link a subdirectory
             # of a repository into our talon user directory such as we do with
             # cursorless talon.
-            repo_prefix = subprocess.run(
-                [
-                    GIT,
-                    "rev-parse",
-                    "--show-prefix",
-                ],
-                capture_output=True,
-                text=True,
-                cwd=directory,
-            ).stdout.strip()
+            repo_prefix = git("rev-parse", "--show-prefix", cwd=directory)
 
             log_object(
                 {
