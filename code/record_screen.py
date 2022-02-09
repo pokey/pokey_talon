@@ -36,6 +36,8 @@ def show_obs_menu():
     return menu
 
 
+GIT = "/usr/local/bin/git"
+
 recording_start_time = 0
 recording_log_directory = ""
 recording_log_file = ""
@@ -95,7 +97,7 @@ class Actions:
 
             repo_remote_url = subprocess.run(
                 [
-                    "/usr/local/bin/git",
+                    GIT,
                     "config",
                     "--get",
                     "remote.origin.url",
@@ -109,7 +111,7 @@ class Actions:
                 continue
 
             commit_sha = subprocess.run(
-                ["/usr/local/bin/git", "rev-parse", "HEAD"],
+                [GIT, "rev-parse", "HEAD"],
                 capture_output=True,
                 text=True,
                 cwd=directory,
@@ -121,7 +123,7 @@ class Actions:
             # cursorless talon.
             repo_prefix = subprocess.run(
                 [
-                    "/usr/local/bin/git",
+                    GIT,
                     "rev-parse",
                     "--show-prefix",
                 ],
