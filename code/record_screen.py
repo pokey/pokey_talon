@@ -93,24 +93,19 @@ class Actions:
             if not directory.is_dir():
                 continue
 
-            repo_url = subprocess.run(
+            repo_remote_url = subprocess.run(
                 [
-                    "/usr/local/bin/gh",
-                    "repo",
-                    "view",
-                    "-b",
-                    "main",
-                    "--json",
-                    "url",
-                    "-q",
-                    ".url",
+                    "/usr/local/bin/git",
+                    "config",
+                    "--get",
+                    "remote.origin.url",
                 ],
                 capture_output=True,
                 text=True,
                 cwd=directory,
             ).stdout.strip()
 
-            if not repo_url:
+            if not repo_remote_url:
                 continue
 
             commit_sha = subprocess.run(
@@ -120,11 +115,28 @@ class Actions:
                 cwd=directory,
             ).stdout.strip()
 
+            # Represents the path of the given folder within the git repo in
+            # which it is contained. This occurs when we sim link a subdirectory
+            # of a repository into our talon user directory such as we do with
+            # cursorless talon.
+            repo_prefix = subprocess.run(
+                [
+                    "/usr/local/bin/git",
+                    "rev-parse",
+                    "--show-prefix",
+                ],
+                capture_output=True,
+                text=True,
+                cwd=directory,
+            ).stdout.strip()
+
             log_object(
                 {
                     "type": "directoryInfo",
                     "localPath": str(directory),
-                    "repoUrl": repo_url,
+                    "localRealPath": str(directory.resolve(strict=True)),
+                    "repoRemoteUrl": repo_remote_url,
+                    "repoPrefix": repo_prefix,
                     "commitSha": commit_sha,
                 }
             )
