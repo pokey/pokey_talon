@@ -195,6 +195,7 @@ class UserActions:
                     "type": "talonCommandPhrase",
                     "id": str(uuid.uuid4()),
                     "timeOffset": time.perf_counter() - recording_start_time,
+                    "phraseStartTimeOffset": j["_ts"] - recording_start_time,
                     "phrase": text,
                     "rawSim": sim,
                     "commands": commands,
