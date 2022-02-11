@@ -396,10 +396,6 @@ swap this: user.vscode("extension.swap")
 reload window: user.vscode("workbench.action.reloadWindow")
 close window: user.vscode("workbench.action.closeWindow")
 
-Github open:
-    user.vscode("openInGithub.openInGitHubFile")
-    sleep(350ms)
-
 stage on:
     user.vscode_and_wait("git.stage")
     key(cmd-w)
@@ -469,8 +465,7 @@ skip:
 previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
 cursorless record: user.vscode("cursorless.recordTestCase")
-cursorless record navigation:
-    user.vscode_with_plugin("cursorless.recordTestCase", 1)
+cursorless record navigation: user.cursorless_record_navigation_test()
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 
@@ -517,7 +512,9 @@ line edit: key(ctrl-q e)
 copy command: user.copy_command_id()
 copy command <number_small>: 
     key("down:{number_small-1}")
-    sleep(250ms)
+    sleep(350ms)
     user.copy_command_id()
 
 aline that: user.vscode("rainbow-csv.Align")
+
+format doc: user.vscode("editor.action.formatDocument")

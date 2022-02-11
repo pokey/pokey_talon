@@ -199,6 +199,10 @@ class Actions:
         actions.user.vscode("git.commitStaged")
         actions.sleep("250ms")
         actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
+    
+    def cursorless_record_navigation_test():
+        """Run cursorless record navigation test"""
+        actions.user.vscode_with_plugin("cursorless.recordTestCase", {"isHatTokenMapTest": True})
 
 
 @mac_ctx.action_class("user")

@@ -86,6 +86,16 @@ diamond:
     text = edit.selected_text()
     user.paste("'{text}'")
 
+big round:
+	insert("()")
+	key(left enter)
+big square: 
+	insert("[]") 
+	key(left enter)
+big curly: 
+	insert("{}") 
+	key(left enter)
+
 slicer:
 	edit.line_end()
 	key(enter)

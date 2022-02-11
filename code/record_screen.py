@@ -92,12 +92,22 @@ class Actions:
         actions.sleep("500ms")
         actions.key("enter")
 
+        actions.sleep("250ms")
+
         recording_start_time = time.perf_counter()
         recording_log_directory = recordings_root_dir / time.strftime("%Y%m%dT%H%M%S")
         recording_log_directory.mkdir(parents=True)
         recording_log_file = recording_log_directory / "talon-log.jsonl"
 
-        # TODO: Enable silent cursorless record mode
+        # Start cursorless recording
+        actions.user.vscode_with_plugin(
+            "cursorless.recordTestCase",
+            {
+                "isSilent": True,
+                "directory": str(recording_log_directory),
+                "extraSnapshotFields": ["timeOffsetSeconds"],
+            },
+        )
 
         user_dir: Path = actions.path.talon_user()
         for directory in user_dir.iterdir():
@@ -151,11 +161,18 @@ class Actions:
             AXRole="AXMenuBarItem"
         ).perform("AXPress")
 
-        # TODO: Disable silent cursorless record mode
+        actions.sleep("250ms")
+
+        # Stop cursorless recording
+        actions.user.vscode("cursorless.recordTestCase")
 
     def maybe_capture_phrase(j: Any):
         """Possibly capture a phrase; does nothing unless screen recording is active"""
         pass
+
+    def get_last_phrase():
+        """Get the last phrase"""
+        return last_phrase
 
 
 @sleeping_recording_screen_ctx.action_class("user")
@@ -171,6 +188,19 @@ class UserActions:
         pass
 
 
+def json_safe(arg: Any):
+    """
+    Checks whether arg can be json serialized and if so just returns arg as is
+    otherwise returns none
+
+    """
+    try:
+        json.dumps(arg)
+        return arg
+    except:
+        return None
+
+
 @recording_screen_ctx.action_class("user")
 class UserActions:
     def maybe_capture_phrase(j: Any):
@@ -178,8 +208,6 @@ class UserActions:
         words = j.get("text")
 
         if text := actions.user.history_transform_phrase_text(words):
-            # TODO: Parse sim output and dump to file
-            # TODO: Get github link to talon file, making sure to follow symlinks
             # QUESTION: Should we spy actions?
 
             sim = None
@@ -189,6 +217,12 @@ class UserActions:
                 commands = actions.user.parse_sim(sim)
             except Exception as e:
                 app.notify(f'Couldn\'t sim for "{text}"', f"{e}")
+
+            if commands is not None:
+                for idx, capture_list in enumerate(j["parsed"]):
+                    commands[idx]["captures"] = [
+                        json_safe(capture) for capture in capture_list
+                    ]
 
             log_object(
                 {
@@ -205,7 +239,12 @@ class UserActions:
             )
 
 
+last_phrase = None
+
+
 def on_phrase(j):
+    global last_phrase
+    last_phrase = j
     actions.user.maybe_capture_phrase(j)
 
 

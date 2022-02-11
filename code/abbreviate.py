@@ -102,6 +102,7 @@ abbreviations = {
     "initialize": "init",
     "initializer": "init",
     "in real life": "irl",
+    "index": "idx",
     "instance": "inst",
     "integer": "int",
     "interrupt": "int",
