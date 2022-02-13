@@ -54,3 +54,7 @@ wrap, wrapWithPairedDelimiter
 
 # 2022-01-20 20:46:14 - New entries automatically added by cursorless
 snip make, generateSnippet
+
+# 2022-02-13 14:52:27 - New entries automatically added by cursorless
+open, followLink
+shuffle, randomizeTargets
