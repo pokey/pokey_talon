@@ -1,4 +1,7 @@
 Spoken form, Cursorless identifier
+# -quick list, experimentalListCodeActions
+# -quick new file, experimentalMoveToNewFile
+-falling, revealDefinition
 bottom, scrollToBottom
 break point, toggleLineBreakpoint
 bring, replaceWithTarget
@@ -15,7 +18,7 @@ crown, scrollToTop
 dedent, outdentLine
 drink, editNewLineBefore
 extract, extractVariable
-falling, revealDefinition
+falling, followLink
 float, insertEmptyLineAfter
 fold, foldRegion
 form, applyFormatter
@@ -36,6 +39,8 @@ rename, rename
 reverse, reverseTargets
 scout all, findInWorkspace
 scout, findInDocument
+shuffle, randomizeTargets
+snip make, generateSnippet
 snip, insertSnippet
 sort, sortTargets
 spike, insertEmptyLineBefore
@@ -45,16 +50,3 @@ take, setSelection
 type deaf, revealTypeDefinition
 unfold, unfoldRegion
 wrap, wrapWithPairedDelimiter
-
-# 2021-11-10 21:33:52 - New entries automatically added by cursorless
-# -quick list, experimentalListCodeActions
-# -quick new file, experimentalMoveToNewFile
-
-# 2021-12-06 21:21:49 - New entries automatically added by cursorless
-
-# 2022-01-20 20:46:14 - New entries automatically added by cursorless
-snip make, generateSnippet
-
-# 2022-02-13 14:52:27 - New entries automatically added by cursorless
-open, followLink
-shuffle, randomizeTargets
