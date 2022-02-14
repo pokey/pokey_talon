@@ -1,10 +1,12 @@
+from contextlib import contextmanager
+from datetime import datetime
 import json
 from pathlib import Path
 import subprocess
 import time
 from typing import Any, Iterable
 import uuid
-from talon import Module, Context, actions, app, ui, speech_system, scope
+from talon import Module, Context, actions, app, ui, speech_system, scope, screen
 
 mod = Module()
 mod.tag(
@@ -39,7 +41,7 @@ def show_obs_menu():
 GIT = "/usr/local/bin/git"
 
 recording_start_time = 0
-recording_log_directory = ""
+recording_log_directory: Path
 recording_log_file = ""
 recordings_root_dir = Path.home() / "talon-recording-logs"
 
@@ -204,6 +206,7 @@ def json_safe(arg: Any):
 @recording_screen_ctx.action_class("user")
 class UserActions:
     def maybe_capture_phrase(j: Any):
+        global recording_log_directory
         global recording_start_time
         words = j.get("text")
 
@@ -233,9 +236,25 @@ class UserActions:
                 ],
             }
 
-            actions.user.cursorless_single_target_command("highlight", all_decorated_marks_target, "highlight1")
+            with cursorless_recording_paused():
+                actions.user.cursorless_single_target_command(
+                    "highlight", all_decorated_marks_target, "highlight1"
+                )
 
-            actions.sleep("1s")
+                actions.sleep("50ms")
+
+                all_decorated_marks_screenshot = capture_screen(
+                    recording_log_directory, recording_start_time
+                )
+
+                actions.user.cursorless_single_target_command(
+                    "highlight",
+                    {
+                        "type": "primitive",
+                        "mark": {"type": "nothing"},
+                    },
+                    "highlight1",
+                )
 
             log_object(
                 {
@@ -248,8 +267,28 @@ class UserActions:
                     "commands": commands,
                     "modes": list(scope.get("mode")),
                     "tags": list(scope.get("tag")),
+                    "allDecoratedMarksScreenshot": all_decorated_marks_screenshot,
                 }
             )
+
+
+@contextmanager
+def cursorless_recording_paused():
+    actions.user.vscode("cursorless.pauseRecording")
+    yield
+    actions.user.vscode("cursorless.resumeRecording")
+
+
+def capture_screen(directory: Path, start_time: float):
+    img = screen.capture_rect(screen.main_screen().rect)
+    date = datetime.now().strftime("%Y-%m-%dT%H-%M-%S-%f3")
+    path = directory / f"screenshot-{date}.png"
+    img.write_file(path)
+
+    return {
+        "path": path,
+        "timestamp": time.perf_counter() - start_time,
+    }
 
 
 def extract_decorated_marks(parsed: Iterable[list[Any]]):
