@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import subprocess
 import time
-from typing import Any
+from typing import Any, Iterable
 import uuid
 from talon import Module, Context, actions, app, ui, speech_system, scope
 
@@ -208,8 +208,6 @@ class UserActions:
         words = j.get("text")
 
         if text := actions.user.history_transform_phrase_text(words):
-            # QUESTION: Should we spy actions?
-
             sim = None
             commands = None
             try:
@@ -218,11 +216,26 @@ class UserActions:
             except Exception as e:
                 app.notify(f'Couldn\'t sim for "{text}"', f"{e}")
 
+            parsed = j["parsed"]
+
             if commands is not None:
-                for idx, capture_list in enumerate(j["parsed"]):
+                for idx, capture_list in enumerate(parsed):
                     commands[idx]["captures"] = [
                         json_safe(capture) for capture in capture_list
                     ]
+
+            decorated_marks = list(extract_decorated_marks(parsed))
+
+            all_decorated_marks_target = {
+                "type": "list",
+                "elements": [
+                    {"type": "primitive", "mark": mark} for mark in decorated_marks
+                ],
+            }
+
+            actions.user.cursorless_single_target_command("highlight", all_decorated_marks_target, "highlight1")
+
+            actions.sleep("1s")
 
             log_object(
                 {
@@ -237,6 +250,43 @@ class UserActions:
                     "tags": list(scope.get("tag")),
                 }
             )
+
+
+def extract_decorated_marks(parsed: Iterable[list[Any]]):
+    for capture_list in parsed:
+        for capture in capture_list:
+            try:
+                type = capture["type"]
+            except (IndexError, TypeError):
+                continue
+
+            if type not in {"primitive", "list", "range"}:
+                continue
+
+            yield from extract_decorated_marks_from_target(capture)
+
+
+def extract_decorated_marks_from_target(target: dict):
+    type = target["type"]
+
+    if type == "primitive":
+        yield from extract_decorated_marks_from_primitive_target(target)
+    elif type == "range":
+        yield from extract_decorated_marks_from_primitive_target(target["start"])
+        yield from extract_decorated_marks_from_primitive_target(target["end"])
+    elif type == "list":
+        for element in target["elements"]:
+            yield from extract_decorated_marks_from_target(element)
+
+
+def extract_decorated_marks_from_primitive_target(target: dict):
+    try:
+        mark = target["mark"]
+    except IndexError:
+        return
+
+    if mark["type"] == "decoratedSymbol":
+        yield mark
 
 
 last_phrase = None
