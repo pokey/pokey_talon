@@ -7,3 +7,6 @@ this, currentSelection
 down, lineNumberRelativeDown
 row, lineNumberModulo100
 up, lineNumberRelativeUp
+
+# 2022-02-14 14:25:32 - New entries automatically added by cursorless
+nothing, nothing

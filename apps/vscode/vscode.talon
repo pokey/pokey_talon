@@ -501,6 +501,8 @@ install local:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
 extension publish:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
+cursorless local split:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
 test clean talon:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Test clean talon")
     sleep(250ms)

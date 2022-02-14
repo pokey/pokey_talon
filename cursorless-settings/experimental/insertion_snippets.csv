@@ -13,3 +13,4 @@ while, whileStatement
 on ready, talonOnReady
 full context, talonContextFile
 shebang, shebang
+else if, elseIf

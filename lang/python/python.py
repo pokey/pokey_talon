@@ -73,6 +73,8 @@ ctx.lists["user.code_keyword"] = {
     "null": "None",
     "true": "True",
     "false": "False",
+    "yield": "yield ",
+    "from": "from ",
 }
 
 exception_list = [

@@ -50,3 +50,6 @@ take, setSelection
 type deaf, revealTypeDefinition
 unfold, unfoldRegion
 wrap, wrapWithPairedDelimiter
+
+# 2022-02-14 14:25:32 - New entries automatically added by cursorless
+highlight, highlight
