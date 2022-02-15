@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 import subprocess
 import time
-from typing import Any, Iterable
+from typing import Any, Iterable, Optional
 import uuid
-from talon import Module, Context, actions, app, ui, speech_system, scope, screen
+from talon import Module, Context, actions, app, ui, speech_system, scope, screen, cron
 
 mod = Module()
 mod.tag(
@@ -40,9 +40,10 @@ def show_obs_menu():
 
 GIT = "/usr/local/bin/git"
 
-recording_start_time = 0
+recording_start_time: float
 recording_log_directory: Path
-recording_log_file = ""
+screenshots_directory: Path
+recording_log_file: Path
 recordings_root_dir = Path.home() / "talon-recording-logs"
 
 
@@ -66,6 +67,7 @@ class Actions:
         """Start recording screen"""
         global recording_start_time
         global recording_log_directory
+        global screenshots_directory
         global recording_log_file
 
         # First ensure that OBS is running
@@ -101,12 +103,18 @@ class Actions:
         recording_log_directory.mkdir(parents=True)
         recording_log_file = recording_log_directory / "talon-log.jsonl"
 
+        commands_directory = recording_log_directory / "commands"
+        commands_directory.mkdir(parents=True)
+
+        screenshots_directory = recording_log_directory / "screenshots"
+        screenshots_directory.mkdir(parents=True)
+
         # Start cursorless recording
         actions.user.vscode_with_plugin(
             "cursorless.recordTestCase",
             {
                 "isSilent": True,
-                "directory": str(recording_log_directory),
+                "directory": str(commands_directory),
                 "extraSnapshotFields": ["timeOffsetSeconds"],
             },
         )
@@ -172,9 +180,9 @@ class Actions:
         """Possibly capture a phrase; does nothing unless screen recording is active"""
         pass
 
-    def get_last_phrase():
-        """Get the last phrase"""
-        return last_phrase
+    def maybe_capture_post_phrase(j: Any):
+        """Possibly capture a phrase; does nothing unless screen recording is active"""
+        pass
 
 
 @sleeping_recording_screen_ctx.action_class("user")
@@ -186,6 +194,10 @@ class SleepUserActions:
 @ctx.action_class("user")
 class UserActions:
     def maybe_capture_phrase(j: Any):
+        # Turn this one off globally
+        pass
+
+    def maybe_capture_post_phrase(j: Any):
         # Turn this one off globally
         pass
 
@@ -203,73 +215,106 @@ def json_safe(arg: Any):
         return None
 
 
+phrase_capture: Optional[dict]
+
+
 @recording_screen_ctx.action_class("user")
 class UserActions:
     def maybe_capture_phrase(j: Any):
-        global recording_log_directory
-        global recording_start_time
+        global phrase_capture
         words = j.get("text")
 
-        if text := actions.user.history_transform_phrase_text(words):
-            sim = None
-            commands = None
-            try:
-                sim = speech_system._sim(text)
-                commands = actions.user.parse_sim(sim)
-            except Exception as e:
-                app.notify(f'Couldn\'t sim for "{text}"', f"{e}")
+        text = actions.user.history_transform_phrase_text(words)
 
-            parsed = j["parsed"]
+        if text is None:
+            phrase_capture = None
+            return
 
-            if commands is not None:
-                for idx, capture_list in enumerate(parsed):
-                    commands[idx]["captures"] = [
-                        json_safe(capture) for capture in capture_list
-                    ]
+        sim = None
+        commands = None
+        try:
+            sim = speech_system._sim(text)
+            commands = actions.user.parse_sim(sim)
+        except Exception as e:
+            app.notify(f'Couldn\'t sim for "{text}"', f"{e}")
 
-            decorated_marks = list(extract_decorated_marks(parsed))
+        parsed = j["parsed"]
 
-            all_decorated_marks_target = {
-                "type": "list",
-                "elements": [
-                    {"type": "primitive", "mark": mark} for mark in decorated_marks
-                ],
-            }
+        if commands is not None:
+            for idx, capture_list in enumerate(parsed):
+                commands[idx]["captures"] = [
+                    json_safe(capture) for capture in capture_list
+                ]
 
-            with cursorless_recording_paused():
-                actions.user.cursorless_single_target_command(
-                    "highlight", all_decorated_marks_target, "highlight1"
-                )
+        pre_command_screenshot = capture_screen(
+            screenshots_directory, recording_start_time
+        )
+        mark_screenshots = take_mark_screenshots(
+            parsed, screenshots_directory, recording_start_time
+        )
 
-                actions.sleep("50ms")
+        phrase_capture = {
+            "type": "talonCommandPhrase",
+            "id": str(uuid.uuid4()),
+            "timeOffset": time.perf_counter() - recording_start_time,
+            "phraseStartTimeOffset": j["_ts"] - recording_start_time,
+            "phrase": text,
+            "rawSim": sim,
+            "commands": commands,
+            "modes": list(scope.get("mode")),
+            "tags": list(scope.get("tag")),
+            "markScreenshots": mark_screenshots,
+            "preCommandScreenshot": pre_command_screenshot,
+        }
 
-                all_decorated_marks_screenshot = capture_screen(
-                    recording_log_directory, recording_start_time
-                )
-
-                actions.user.cursorless_single_target_command(
-                    "highlight",
-                    {
-                        "type": "primitive",
-                        "mark": {"type": "nothing"},
-                    },
-                    "highlight1",
-                )
-
+    def maybe_capture_post_phrase(j: Any):
+        if phrase_capture is not None:
             log_object(
                 {
-                    "type": "talonCommandPhrase",
-                    "id": str(uuid.uuid4()),
-                    "timeOffset": time.perf_counter() - recording_start_time,
-                    "phraseStartTimeOffset": j["_ts"] - recording_start_time,
-                    "phrase": text,
-                    "rawSim": sim,
-                    "commands": commands,
-                    "modes": list(scope.get("mode")),
-                    "tags": list(scope.get("tag")),
-                    "allDecoratedMarksScreenshot": all_decorated_marks_screenshot,
+                    **phrase_capture,
+                    "postCommandScreenshot": capture_screen(
+                        screenshots_directory, recording_start_time
+                    ),
                 }
             )
+
+
+def take_mark_screenshots(
+    parsed: Iterable[list[Any]],
+    screenshots_directory: Path,
+    recording_start_time: float,
+):
+    decorated_marks = list(extract_decorated_marks(parsed))
+
+    if not decorated_marks:
+        return None
+
+    all_decorated_marks_target = {
+        "type": "list",
+        "elements": [{"type": "primitive", "mark": mark} for mark in decorated_marks],
+    }
+
+    with cursorless_recording_paused():
+        actions.user.cursorless_single_target_command(
+            "highlight", all_decorated_marks_target, "highlight1"
+        )
+
+        actions.sleep("50ms")
+
+        all_decorated_marks_screenshot = capture_screen(
+            screenshots_directory, recording_start_time
+        )
+
+        actions.user.cursorless_single_target_command(
+            "highlight",
+            {
+                "type": "primitive",
+                "mark": {"type": "nothing"},
+            },
+            "highlight1",
+        )
+
+    return {"allDecoratedMarks": all_decorated_marks_screenshot}
 
 
 @contextmanager
@@ -281,12 +326,14 @@ def cursorless_recording_paused():
 
 def capture_screen(directory: Path, start_time: float):
     img = screen.capture_rect(screen.main_screen().rect)
-    date = datetime.now().strftime("%Y-%m-%dT%H-%M-%S-%f3")
-    path = directory / f"screenshot-{date}.png"
-    img.write_file(path)
+    date = datetime.now().strftime("%Y-%m-%dT%H-%M-%S-%f")
+    filename = f"{date}.png"
+    path = directory / filename
+    # NB: Writing the image to the file is expensive so we do it asynchronously
+    cron.after("50ms", lambda: img.write_file(path))
 
     return {
-        "path": path,
+        "filename": filename,
         "timestamp": time.perf_counter() - start_time,
     }
 
@@ -332,9 +379,12 @@ last_phrase = None
 
 
 def on_phrase(j):
-    global last_phrase
-    last_phrase = j
     actions.user.maybe_capture_phrase(j)
 
 
-speech_system.register("phrase", on_phrase)
+def on_post_phrase(j):
+    actions.user.maybe_capture_post_phrase(j)
+
+
+speech_system.register("pre:phrase", on_phrase)
+speech_system.register("post:phrase", on_post_phrase)
