@@ -121,6 +121,7 @@ class Actions:
                 "isSilent": True,
                 "directory": str(commands_directory),
                 "extraSnapshotFields": ["timeOffsetSeconds"],
+                "showCalibrationDisplay": True,
             },
         )
 
@@ -344,6 +345,7 @@ def cursorless_recording_paused():
 
 
 def capture_screen(directory: Path, start_time: float):
+    timestamp = time.perf_counter() - start_time
     img = screen.capture_rect(screen.main_screen().rect)
     date = datetime.now().strftime("%Y-%m-%dT%H-%M-%S-%f")
     filename = f"{date}.png"
@@ -353,7 +355,7 @@ def capture_screen(directory: Path, start_time: float):
 
     return {
         "filename": filename,
-        "timestamp": time.perf_counter() - start_time,
+        "timestamp": timestamp,
     }
 
 
