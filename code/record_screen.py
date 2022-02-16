@@ -312,8 +312,10 @@ class UserActions:
             "commands": commands,
             "modes": list(scope.get("mode")),
             "tags": list(scope.get("tag")),
-            "markScreenshots": mark_screenshots,
-            "preCommandScreenshot": pre_command_screenshot,
+            "screenshots": {
+                "decoratedMarks": mark_screenshots,
+                "preCommand": pre_command_screenshot,
+            },
         }
 
     def maybe_capture_post_phrase(j: Any):
@@ -329,10 +331,14 @@ class UserActions:
                     "timeOffsets": {
                         **phrase_capture["timeOffsets"],
                         "postPhraseCallbackStart": post_phrase_start,
-                        "postPhraseCallbackEnd": time.perf_counter()
-                        - recording_start_time,
+                        "postPhraseCallbackEnd": (
+                            time.perf_counter() - recording_start_time
+                        ),
                     },
-                    "postCommandScreenshot": post_command_screenshot,
+                    "screenshots": {
+                        **phrase_capture["screenshots"],
+                        "postCommand": post_command_screenshot,
+                    },
                 }
             )
 
