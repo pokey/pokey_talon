@@ -392,7 +392,7 @@ def take_mark_screenshots(
             "highlight1",
         )
 
-    return {"allDecoratedMarks": all_decorated_marks_screenshot}
+    return {"all": all_decorated_marks_screenshot}
 
 
 @contextmanager
