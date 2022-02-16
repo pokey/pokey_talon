@@ -6,8 +6,22 @@ import subprocess
 import time
 from typing import Any, Iterable, Optional
 import uuid
-from talon import Module, Context, actions, app, ui, speech_system, scope, screen, cron
+from talon import (
+    Module,
+    Context,
+    actions,
+    app,
+    ui,
+    speech_system,
+    scope,
+    screen,
+    cron,
+    settings,
+)
 from talon.canvas import Canvas
+
+CALIBRATION_DISPLAY_BACKGROUND_COLOR = "#1b0026"
+CALIBRATION_DISPLAY_DURATION = "30ms"
 
 mod = Module()
 mod.tag(
@@ -103,6 +117,7 @@ class Actions:
         flash_rect()
 
         recording_start_time = time.perf_counter()
+        start_timestamp_iso = datetime.utcnow().isoformat()
 
         recording_log_directory = recordings_root_dir / time.strftime("%Y%m%dT%H%M%S")
         recording_log_directory.mkdir(parents=True)
@@ -115,7 +130,7 @@ class Actions:
         screenshots_directory.mkdir(parents=True)
 
         # Start cursorless recording
-        actions.user.vscode_with_plugin(
+        extension_payload = actions.user.vscode_get(
             "cursorless.recordTestCase",
             {
                 "isSilent": True,
@@ -123,6 +138,14 @@ class Actions:
                 "extraSnapshotFields": ["timeOffsetSeconds"],
                 "showCalibrationDisplay": True,
             },
+        )
+
+        log_object(
+            {
+                "type": "initialInfo",
+                "extensionRecordStartPayload": extension_payload,
+                "startTimestampISO": start_timestamp_iso,
+            }
         )
 
         user_dir: Path = actions.path.talon_user()
@@ -228,11 +251,26 @@ phrase_capture: Optional[dict]
 class UserActions:
     def maybe_capture_phrase(j: Any):
         global phrase_capture
+
+        pre_phrase_start = time.perf_counter() - recording_start_time
+
         words = j.get("text")
 
         text = actions.user.history_transform_phrase_text(words)
 
         if text is None:
+            log_object(
+                {
+                    "type": "talonIgnoredPhrase",
+                    "id": str(uuid.uuid4()),
+                    "raw_words": words,
+                    "timeOffsets": {
+                        "speechStart": j["_ts"] - recording_start_time,
+                        "prePhraseCallbackStart": pre_phrase_start,
+                    },
+                    "speechTimeout": settings.get("speech.timeout"),
+                }
+            )
             phrase_capture = None
             return
 
@@ -262,9 +300,14 @@ class UserActions:
         phrase_capture = {
             "type": "talonCommandPhrase",
             "id": str(uuid.uuid4()),
-            "timeOffset": time.perf_counter() - recording_start_time,
-            "phraseStartTimeOffset": j["_ts"] - recording_start_time,
+            "timeOffsets": {
+                "speechStart": j["_ts"] - recording_start_time,
+                "prePhraseCallbackStart": pre_phrase_start,
+                "prePhraseCallbackEnd": time.perf_counter() - recording_start_time,
+            },
+            "speechTimeout": settings.get("speech.timeout"),
             "phrase": text,
+            "raw_words": words,
             "rawSim": sim,
             "commands": commands,
             "modes": list(scope.get("mode")),
@@ -275,12 +318,21 @@ class UserActions:
 
     def maybe_capture_post_phrase(j: Any):
         if phrase_capture is not None:
+            post_phrase_start = time.perf_counter() - recording_start_time
+            post_command_screenshot = capture_screen(
+                screenshots_directory, recording_start_time
+            )
+
             log_object(
                 {
                     **phrase_capture,
-                    "postCommandScreenshot": capture_screen(
-                        screenshots_directory, recording_start_time
-                    ),
+                    "timeOffsets": {
+                        **phrase_capture["timeOffsets"],
+                        "postPhraseCallbackStart": post_phrase_start,
+                        "postPhraseCallbackEnd": time.perf_counter()
+                        - recording_start_time,
+                    },
+                    "postCommandScreenshot": post_command_screenshot,
                 }
             )
 
@@ -290,9 +342,9 @@ def flash_rect():
 
     def on_draw(c):
         c.paint.style = c.paint.Style.FILL
-        c.paint.color = "#1b0026"
+        c.paint.color = CALIBRATION_DISPLAY_BACKGROUND_COLOR
         c.draw_rect(rect)
-        cron.after("30ms", canvas.close)
+        cron.after(CALIBRATION_DISPLAY_DURATION, canvas.close)
 
     canvas = Canvas.from_rect(rect)
     canvas.register("draw", on_draw)
@@ -347,7 +399,7 @@ def cursorless_recording_paused():
 def capture_screen(directory: Path, start_time: float):
     timestamp = time.perf_counter() - start_time
     img = screen.capture_rect(screen.main_screen().rect)
-    date = datetime.now().strftime("%Y-%m-%dT%H-%M-%S-%f")
+    date = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%S-%f")
     filename = f"{date}.png"
     path = directory / filename
     # NB: Writing the image to the file is expensive so we do it asynchronously
@@ -355,7 +407,7 @@ def capture_screen(directory: Path, start_time: float):
 
     return {
         "filename": filename,
-        "timestamp": timestamp,
+        "timeOffset": timestamp,
     }
 
 

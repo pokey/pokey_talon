@@ -15,4 +15,4 @@ class UserActions:
         except ValueError:
             pass
 
-        return " ".join(words)
+        return " ".join(words) if words else None
