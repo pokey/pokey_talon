@@ -328,13 +328,9 @@ debug restart:
     user.vscode("workbench.action.debug.start")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
 debug stench:
-    user.vscode("workbench.action.debug.selectandstart")
-    "run extension"
-    key(enter)
+    user.vscode_with_plugin("commands.startDebugging", "Run Extension")
 debug test:
-    user.vscode("workbench.action.debug.selectandstart")
-    "extension tests"
-    key(enter)
+    user.vscode_with_plugin("commands.startDebugging", "Extension Tests")
 <user.teleport> stopper:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
@@ -476,10 +472,7 @@ han solo: user.vscode("workbench.action.closeEditorsInOtherGroups")
 
 break line: user.vscode("rewrap.rewrapComment")
 
-mode {user.language_id}:
-    user.vscode("workbench.action.editor.changeLanguageMode")
-    "{language_id}"
-    key("enter")
+mode {user.language_id}: user.vscode_with_plugin("commands.setEditorLanguage", language_id)
 
 break <user.cursorless_target>:
     user.cursorless_command("setSelectionBefore", cursorless_target)
