@@ -7,6 +7,7 @@ import time
 from typing import Any, Iterable, Optional
 import uuid
 from talon import Module, Context, actions, app, ui, speech_system, scope, screen, cron
+from talon.canvas import Canvas
 
 mod = Module()
 mod.tag(
@@ -96,9 +97,13 @@ class Actions:
         actions.sleep("500ms")
         actions.key("enter")
 
-        actions.sleep("250ms")
+        actions.sleep("3s")
+
+        # Flash a rectangle so that we can synchronize the recording start time
+        flash_rect()
 
         recording_start_time = time.perf_counter()
+
         recording_log_directory = recordings_root_dir / time.strftime("%Y%m%dT%H%M%S")
         recording_log_directory.mkdir(parents=True)
         recording_log_file = recording_log_directory / "talon-log.jsonl"
@@ -277,6 +282,20 @@ class UserActions:
                     ),
                 }
             )
+
+
+def flash_rect():
+    rect = screen.main_screen().rect
+
+    def on_draw(c):
+        c.paint.style = c.paint.Style.FILL
+        c.paint.color = "#1b0026"
+        c.draw_rect(rect)
+        cron.after("30ms", canvas.close)
+
+    canvas = Canvas.from_rect(rect)
+    canvas.register("draw", on_draw)
+    canvas.freeze()
 
 
 def take_mark_screenshots(
