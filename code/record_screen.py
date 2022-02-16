@@ -119,7 +119,7 @@ class Actions:
         recording_start_time = time.perf_counter()
         start_timestamp_iso = datetime.utcnow().isoformat()
 
-        recording_log_directory = recordings_root_dir / time.strftime("%Y%m%dT%H%M%S")
+        recording_log_directory = recordings_root_dir / time.strftime("%Y-%m-%dT%H-%M-%S")
         recording_log_directory.mkdir(parents=True)
         recording_log_file = recording_log_directory / "talon-log.jsonl"
 
