@@ -514,3 +514,5 @@ aline that: user.vscode("rainbow-csv.Align")
 
 format doc: user.vscode("editor.action.formatDocument")
 show extensions: user.vscode("workbench.extensions.action.showEnabledExtensions")
+
+run python: user.vscode("python.execInTerminal")
