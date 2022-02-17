@@ -244,7 +244,7 @@ def json_safe(arg: Any):
         return None
 
 
-phrase_capture: Optional[dict]
+phrase_capture: Optional[dict] = None
 
 
 @recording_screen_ctx.action_class("user")
@@ -259,13 +259,18 @@ class UserActions:
         text = actions.user.history_transform_phrase_text(words)
 
         if text is None:
+            try:
+                speech_start = j["_ts"] - recording_start_time
+            except KeyError:
+                speech_start = None
+
             log_object(
                 {
                     "type": "talonIgnoredPhrase",
                     "id": str(uuid.uuid4()),
                     "raw_words": words,
                     "timeOffsets": {
-                        "speechStart": j["_ts"] - recording_start_time,
+                        "speechStart": speech_start,
                         "prePhraseCallbackStart": pre_phrase_start,
                     },
                     "speechTimeout": settings.get("speech.timeout"),
@@ -319,6 +324,8 @@ class UserActions:
         }
 
     def maybe_capture_post_phrase(j: Any):
+        global phrase_capture
+
         if phrase_capture is not None:
             post_phrase_start = time.perf_counter() - recording_start_time
             post_command_screenshot = capture_screen(
@@ -420,15 +427,17 @@ def capture_screen(directory: Path, start_time: float):
 def extract_decorated_marks(parsed: Iterable[list[Any]]):
     for capture_list in parsed:
         for capture in capture_list:
-            try:
-                type = capture["type"]
-            except (IndexError, TypeError):
-                continue
+            items = capture if isinstance(capture, list) else [capture]
+            for item in items:
+                try:
+                    type = item["type"]
+                except (KeyError, TypeError):
+                    continue
 
-            if type not in {"primitive", "list", "range"}:
-                continue
+                if type not in {"primitive", "list", "range"}:
+                    continue
 
-            yield from extract_decorated_marks_from_target(capture)
+                yield from extract_decorated_marks_from_target(item)
 
 
 def extract_decorated_marks_from_target(target: dict):
@@ -447,7 +456,7 @@ def extract_decorated_marks_from_target(target: dict):
 def extract_decorated_marks_from_primitive_target(target: dict):
     try:
         mark = target["mark"]
-    except IndexError:
+    except KeyError:
         return
 
     if mark["type"] == "decoratedSymbol":
