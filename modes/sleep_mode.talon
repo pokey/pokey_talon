@@ -8,4 +8,5 @@ settings():
     #so that postalveolar click doesn't inadvertantly trigger a command
     # speech.timeout = 0.01
 #this exists solely to prevent talon from walking up super easily in sleep mode at the moment with wav2letter
-# <phrase>: skip()
+<phrase>: skip()
+talon wake: actions.user.wake_all()
