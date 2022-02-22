@@ -35,6 +35,7 @@ bar outline: user.vscode("outline.focus")
 bar run: user.vscode("workbench.view.debug")
 bar source: user.vscode("workbench.view.scm")
 bar pull request: user.vscode("pr:github.focus")
+bar test: user.vscode("workbench.view.testing.focus")
 side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
@@ -512,7 +513,10 @@ copy command <number_small>:
 
 aline that: user.vscode("rainbow-csv.Align")
 
-format doc: user.vscode("editor.action.formatDocument")
+format doc: 
+    user.vscode("editor.action.formatDocument")
+    user.vscode("editor.action.organizeImports")
+
 show extensions: user.vscode("workbench.extensions.action.showEnabledExtensions")
 
 run python: user.vscode("python.execInTerminal")

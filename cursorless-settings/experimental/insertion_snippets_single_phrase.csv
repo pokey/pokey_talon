@@ -11,3 +11,5 @@ link, link.text
 lambda, lambdaExpression.parameters
 lambda block, lambdaBlock.parameters
 talon list, talonList.name
+list comp, listComprehension.element
+data class, dataclass.name

@@ -140,15 +140,17 @@ class Actions:
             },
         )
 
+        user_dir: Path = actions.path.talon_user()
+
         log_object(
             {
                 "type": "initialInfo",
                 "extensionRecordStartPayload": extension_payload,
                 "startTimestampISO": start_timestamp_iso,
+                "talonDir": str(user_dir.parent),
             }
         )
 
-        user_dir: Path = actions.path.talon_user()
         for directory in user_dir.iterdir():
             if not directory.is_dir():
                 continue

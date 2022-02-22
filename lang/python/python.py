@@ -62,6 +62,7 @@ ctx.lists["user.code_type"] = {
     "callable": "callable",
     "list": "list",
     "no return": "NoReturn",
+    "path": "Path",
 }
 
 ctx.lists["user.code_keyword"] = {
