@@ -1,22 +1,23 @@
-from contextlib import contextmanager
-from datetime import datetime
 import json
-from pathlib import Path
 import subprocess
 import time
-from typing import Any, Iterable, Optional
 import uuid
+from contextlib import contextmanager
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Iterable, Optional
+
 from talon import (
-    Module,
     Context,
+    Module,
     actions,
     app,
-    ui,
-    speech_system,
+    cron,
     scope,
     screen,
-    cron,
     settings,
+    speech_system,
+    ui,
 )
 from talon.canvas import Canvas
 
@@ -119,7 +120,9 @@ class Actions:
         recording_start_time = time.perf_counter()
         start_timestamp_iso = datetime.utcnow().isoformat()
 
-        recording_log_directory = recordings_root_dir / time.strftime("%Y-%m-%dT%H-%M-%S")
+        recording_log_directory = recordings_root_dir / time.strftime(
+            "%Y-%m-%dT%H-%M-%S"
+        )
         recording_log_directory.mkdir(parents=True)
         recording_log_file = recording_log_directory / "talon-log.jsonl"
 
@@ -260,6 +263,15 @@ class UserActions:
 
         text = actions.user.history_transform_phrase_text(words)
 
+        word_infos = [
+            {
+                "start": words[idx].start - recording_start_time,
+                "end": words[idx].end - recording_start_time,
+                "text": str(words[idx]),
+            }
+            for idx in range(len(words))
+        ]
+
         if text is None:
             try:
                 speech_start = j["_ts"] - recording_start_time
@@ -270,7 +282,7 @@ class UserActions:
                 {
                     "type": "talonIgnoredPhrase",
                     "id": str(uuid.uuid4()),
-                    "raw_words": words,
+                    "raw_words": word_infos,
                     "timeOffsets": {
                         "speechStart": speech_start,
                         "prePhraseCallbackStart": pre_phrase_start,
@@ -314,7 +326,7 @@ class UserActions:
             },
             "speechTimeout": settings.get("speech.timeout"),
             "phrase": text,
-            "raw_words": words,
+            "raw_words": word_infos,
             "rawSim": sim,
             "commands": commands,
             "modes": list(scope.get("mode")),
