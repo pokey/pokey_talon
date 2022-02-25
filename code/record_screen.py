@@ -95,9 +95,6 @@ class Actions:
 
         ctx.tags = ["user.recording_screen"]
 
-        # Disable notifications
-        actions.user.run_shortcut("Turn Do Not Disturb On")
-
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
@@ -163,6 +160,10 @@ class Actions:
             if not repo_remote_url:
                 continue
 
+            if git("status", "--porcelain", cwd=directory):
+                app.notify("ERROR: Please commit all git changes")
+                raise Exception("Please commit all git changes")
+
             commit_sha = git("rev-parse", "HEAD", cwd=directory)
 
             # Represents the path of the given folder within the git repo in
@@ -181,6 +182,9 @@ class Actions:
                     "commitSha": commit_sha,
                 }
             )
+
+        # Disable notifications
+        actions.user.run_shortcut("Turn Do Not Disturb On")
 
         actions.user.sleep_all()
 
