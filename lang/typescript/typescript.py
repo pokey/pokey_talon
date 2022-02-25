@@ -50,6 +50,7 @@ ctx.lists["user.code_type"] = {
     "number": "number",
     "any": "any",
     "never": "never",
+    "void": "void",
 }
 
 ctx.lists["user.code_keyword"] = {
