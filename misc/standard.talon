@@ -33,7 +33,7 @@ show clip:
 (redo that | yes indeed): edit.redo()
 paste match: edit.paste_match_style()
 disk: edit.save()
-disk all: edit.save_all()
+disk oliver: edit.save_all()
 padding:
 	insert("  ") 
 	key(left)

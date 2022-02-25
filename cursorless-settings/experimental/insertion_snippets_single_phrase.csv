@@ -13,3 +13,4 @@ lambda block, lambdaBlock.parameters
 talon list, talonList.name
 list comp, listComprehension.element
 data class, dataclass.name
+command, vscodeCommand.spokenForm
