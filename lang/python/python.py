@@ -47,7 +47,7 @@ ctx.lists["user.python_docstring_fields"] = docstring_fields
 
 ctx.lists["user.code_type"] = {
     "bool": "bool",
-    "integer": "int",
+    "int": "int",
     "string": "str",
     "none": "None",
     "dick": "dict",

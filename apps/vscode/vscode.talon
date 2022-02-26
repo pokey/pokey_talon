@@ -520,3 +520,5 @@ format doc:
 show extensions: user.vscode("workbench.extensions.action.showEnabledExtensions")
 
 run python: user.vscode("python.execInTerminal")
+
+run tests: user.vscode("testing.runAll")
