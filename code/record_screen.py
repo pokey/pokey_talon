@@ -34,7 +34,7 @@ mod.tag(
 screenshot_time_stamp_only = mod.setting(
     "screenshot_time_stamp_only",
     type=bool,
-    default=False,
+    default=True,
     desc="If `True`, don't actually take a screenshot during recording just capture the timestamp so that we can extract it from the video later",
 )
 
