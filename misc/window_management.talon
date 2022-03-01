@@ -26,7 +26,7 @@ coder [<phrase>]$:
     user.switcher_launch("/Applications/Visual Studio Code.app")
     sleep(200ms)
     user.parse_phrase(phrase or "")
-voice adjust [<phrase>]$:
+tune setup [<phrase>]$:
     user.desktop(2)
     user.switcher_launch("/Applications/Visual Studio Code.app")
     user.vscode("workbench.action.openRecent")

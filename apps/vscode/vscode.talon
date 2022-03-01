@@ -522,3 +522,13 @@ show extensions: user.vscode("workbench.extensions.action.showEnabledExtensions"
 run python: user.vscode("python.execInTerminal")
 
 run tests: user.vscode("testing.runAll")
+
+foam note [<user.text>] [halt]: 
+    user.vscode("foam-vscode.create-note-from-default-template")
+    sleep(100ms)
+    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+
+foam note clip: 
+    user.vscode("foam-vscode.create-note-from-default-template")
+    sleep(100ms)
+    edit.paste()

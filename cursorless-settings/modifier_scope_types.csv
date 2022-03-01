@@ -8,7 +8,7 @@ car, character
 class, class
 class name, className
 comment, comment
-element, xmlElement
+eli, xmlElement
 end tag, xmlEndTag
 file, document
 funk, namedFunction

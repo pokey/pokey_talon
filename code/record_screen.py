@@ -26,7 +26,16 @@ CALIBRATION_DISPLAY_DURATION = "30ms"
 
 mod = Module()
 mod.tag(
-    "recording_screen", f"tag to to indicate that screen is currently being recorded"
+    "recording_screen",
+    'tag to to indicate that screen is currently being recorded',
+)
+
+
+screenshot_time_stamp_only = mod.setting(
+    "screenshot_time_stamp_only",
+    type=bool,
+    default=False,
+    desc="If `True`, don't actually take a screenshot during recording just capture the timestamp so that we can extract it from the video later",
 )
 
 ctx = Context()
@@ -429,12 +438,16 @@ def cursorless_recording_paused():
 
 def capture_screen(directory: Path, start_time: float):
     timestamp = time.perf_counter() - start_time
-    img = screen.capture_rect(screen.main_screen().rect)
-    date = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%S-%f")
-    filename = f"{date}.png"
-    path = directory / filename
-    # NB: Writing the image to the file is expensive so we do it asynchronously
-    cron.after("50ms", lambda: img.write_file(path))
+
+    if screenshot_time_stamp_only.get():
+        filename = None
+    else:
+        img = screen.capture_rect(screen.main_screen().rect)
+        date = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%S-%f")
+        filename = f"{date}.png"
+        path = directory / filename
+        # NB: Writing the image to the file is expensive so we do it asynchronously
+        cron.after("50ms", lambda: img.write_file(path))
 
     return {
         "filename": filename,
