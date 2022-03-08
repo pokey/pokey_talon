@@ -34,6 +34,8 @@ ctx.lists["user.code_functions"] = {
     "max": "Math.max",
     "min": "Math.min",
     "abs": "Math.abs",
+    "round": "Math.round",
+    "floor": "Math.floor",
     "print": "console.log",
     "values": "Object.values",
     #     "integer": "int.TryParse",,

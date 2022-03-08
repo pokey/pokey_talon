@@ -20,3 +20,4 @@ lambda block, lambdaBlock.body
 foreign, forEachStatement.body
 on ready, talonOnReady.body
 use effect, useEffect.body
+div, div.body

@@ -29,6 +29,7 @@ coder [<phrase>]$:
 tune setup [<phrase>]$:
     user.desktop(2)
     user.switcher_launch("/Applications/Visual Studio Code.app")
+    sleep(250ms)
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert("pokey-talon")

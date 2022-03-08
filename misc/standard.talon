@@ -82,3 +82,8 @@ additional word:
 then: skip()
 work focus: user.run_shortcut("Set work focus")
 clear focus: user.run_shortcut("Turn Do Not Disturb Off")
+
+^mixed mode$:
+    mode.disable("sleep")
+    mode.enable("dictation")
+    mode.enable("command")
