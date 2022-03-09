@@ -3,10 +3,10 @@ Spoken form, Cursorless identifier
 and, listConnective
 between, rangeExclusive
 past, rangeInclusive
-to, contentConnective
+# to, contentConnective
 until, rangeExcludingEnd
 with, swapConnective
 
 # 2021-10-26 15:30:48 - New entries automatically added by cursorless
-after, afterConnective
-before, beforeConnective
+# after, afterConnective
+# before, beforeConnective

@@ -40,8 +40,8 @@ reverse, reverseTargets
 scout all, findInWorkspace
 scout, findInDocument
 shuffle, randomizeTargets
-snip make, generateSnippet
-snip, insertSnippet
+# snip make, generateSnippet
+# snip, insertSnippet
 sort, sortTargets
 spike, insertEmptyLineBefore
 swap, swapTargets
