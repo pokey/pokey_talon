@@ -364,6 +364,9 @@ class UserActions:
                 screenshots_directory, recording_start_time
             )
 
+            # NB: This object will get merged with the pre-phrase object during
+            # postprocessing.  See
+            # https://github.com/pokey/voice_vid/blob/079558a2246875fd651bdd7f5d7b76974dc9b3eb/voice_vid/io/parse_transcript.py#L112-L117
             log_object(
                 {
                     "id": current_phrase_id,
