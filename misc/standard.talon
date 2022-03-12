@@ -64,7 +64,9 @@ move overlay: user.move_overlay()
 ring save: user.ring_save()
 
 additional word:
-    user.switcher_focus("Code")
+    user.desktop(2)
+    user.switcher_launch("/Applications/Visual Studio Code.app")
+    sleep(200ms)
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert("pokey-talon")
