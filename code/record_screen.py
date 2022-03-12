@@ -270,8 +270,6 @@ class UserActions:
     def maybe_capture_phrase(j: Any):
         global current_phrase_id
 
-        current_phrase_id = str(uuid.uuid4())
-
         pre_phrase_start = time.perf_counter() - recording_start_time
 
         words = j.get("text")
@@ -296,7 +294,7 @@ class UserActions:
             log_object(
                 {
                     "type": "talonIgnoredPhrase",
-                    "id": current_phrase_id,
+                    "id": str(uuid.uuid4()),
                     "raw_words": word_infos,
                     "timeOffsets": {
                         "speechStart": speech_start,
@@ -305,6 +303,9 @@ class UserActions:
                     "speechTimeout": settings.get("speech.timeout"),
                 }
             )
+
+            current_phrase_id = None
+
             return
 
         sim = None
@@ -329,6 +330,8 @@ class UserActions:
         mark_screenshots = take_mark_screenshots(
             parsed, screenshots_directory, recording_start_time
         )
+
+        current_phrase_id = str(uuid.uuid4())
 
         log_object({
             "type": "talonCommandPhrase",
