@@ -262,13 +262,15 @@ def json_safe(arg: Any):
         return None
 
 
-phrase_capture: Optional[dict] = None
+current_phrase_id: Optional[str] = None
 
 
 @recording_screen_ctx.action_class("user")
 class UserActions:
     def maybe_capture_phrase(j: Any):
-        global phrase_capture
+        global current_phrase_id
+
+        current_phrase_id = str(uuid.uuid4())
 
         pre_phrase_start = time.perf_counter() - recording_start_time
 
@@ -294,7 +296,7 @@ class UserActions:
             log_object(
                 {
                     "type": "talonIgnoredPhrase",
-                    "id": str(uuid.uuid4()),
+                    "id": current_phrase_id,
                     "raw_words": word_infos,
                     "timeOffsets": {
                         "speechStart": speech_start,
@@ -303,7 +305,6 @@ class UserActions:
                     "speechTimeout": settings.get("speech.timeout"),
                 }
             )
-            phrase_capture = None
             return
 
         sim = None
@@ -329,9 +330,9 @@ class UserActions:
             parsed, screenshots_directory, recording_start_time
         )
 
-        phrase_capture = {
+        log_object({
             "type": "talonCommandPhrase",
-            "id": str(uuid.uuid4()),
+            "id": current_phrase_id,
             "timeOffsets": {
                 "speechStart": j["_ts"] - recording_start_time,
                 "prePhraseCallbackStart": pre_phrase_start,
@@ -348,12 +349,12 @@ class UserActions:
                 "decoratedMarks": mark_screenshots,
                 "preCommand": pre_command_screenshot,
             },
-        }
+        })
 
     def maybe_capture_post_phrase(j: Any):
-        global phrase_capture
+        global current_phrase_id
 
-        if phrase_capture is not None:
+        if current_phrase_id is not None:
             post_phrase_start = time.perf_counter() - recording_start_time
             post_command_screenshot = capture_screen(
                 screenshots_directory, recording_start_time
@@ -361,16 +362,15 @@ class UserActions:
 
             log_object(
                 {
-                    **phrase_capture,
+                    "id": current_phrase_id,
+                    "commandCompleted": True,
                     "timeOffsets": {
-                        **phrase_capture["timeOffsets"],
                         "postPhraseCallbackStart": post_phrase_start,
                         "postPhraseCallbackEnd": (
                             time.perf_counter() - recording_start_time
                         ),
                     },
                     "screenshots": {
-                        **phrase_capture["screenshots"],
                         "postCommand": post_command_screenshot,
                     },
                 }
