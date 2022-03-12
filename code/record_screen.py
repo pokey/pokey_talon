@@ -154,6 +154,7 @@ class Actions:
         log_object(
             {
                 "type": "initialInfo",
+                "version": 1,
                 "extensionRecordStartPayload": extension_payload,
                 "startTimestampISO": start_timestamp_iso,
                 "talonDir": str(user_dir.parent),
