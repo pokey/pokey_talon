@@ -94,6 +94,7 @@ class Actions:
         global recording_log_directory
         global screenshots_directory
         global recording_log_file
+        global current_phrase_id
 
         # First ensure that OBS is running
         try:
@@ -103,6 +104,8 @@ class Actions:
             raise
 
         ctx.tags = ["user.recording_screen"]
+
+        current_phrase_id = None
 
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
@@ -382,6 +385,8 @@ class UserActions:
                     },
                 }
             )
+            
+            current_phrase_id = None
 
 
 def flash_rect():

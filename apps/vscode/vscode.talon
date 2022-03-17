@@ -486,7 +486,7 @@ break:
 dock string <user.cursorless_target>:
     user.cursorless_command("editNewLineBefore", cursorless_target)
     "/**"
-    sleep(250ms)
+    sleep(350ms)
     key(tab)
 
 tag version:
