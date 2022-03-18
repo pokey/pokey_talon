@@ -298,8 +298,8 @@ class UserActions:
 
         word_infos = [
             {
-                "start": words[idx].start - recording_start_time,
-                "end": words[idx].end - recording_start_time,
+                "start": (words[idx].start - recording_start_time if words[idx].start is not None else None),
+                "end": (words[idx].end - recording_start_time if words[idx].end is not None else None),
                 "text": str(words[idx]),
             }
             for idx in range(len(words))
