@@ -361,8 +361,6 @@ class UserActions:
             parsed, screenshots_directory, recording_start_time
         )
 
-        current_phrase_id = str(uuid.uuid4())
-
         log_object(
             {
                 "type": "talonCommandPhrase",
