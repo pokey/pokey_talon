@@ -352,7 +352,7 @@ class UserActions:
                 {"phraseId": current_phrase_id, "type": "prePhrase"},
             )
         except TimeoutError:
-            print("timed out trying to take pre phrase snapshot")
+            print(f"timed out trying to take pre phrase snapshot for {current_phrase_id}")
 
         pre_command_screenshot = capture_screen(
             screenshots_directory, recording_start_time
@@ -394,7 +394,7 @@ class UserActions:
                     {"phraseId": current_phrase_id, "type": "postPhrase"},
                 )
             except TimeoutError:
-                print("timed out trying to take post phrase snapshot")
+                print(f"timed out trying to take post phrase snapshot for {current_phrase_id}")
             post_phrase_start = time.perf_counter() - recording_start_time
             post_command_screenshot = capture_screen(
                 screenshots_directory, recording_start_time
