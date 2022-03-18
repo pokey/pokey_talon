@@ -426,7 +426,7 @@ class UserActions:
 class UserActions:
     def take_snapshot(path: str, metadata: Any):
         actions.user.vscode_with_plugin_and_wait_with_timeout(
-            "cursorless.takeSnapshot", 0.3, path, metadata
+            "cursorless.takeSnapshot", 1.0, path, metadata
         )
 
 
