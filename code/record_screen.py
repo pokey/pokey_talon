@@ -103,6 +103,21 @@ class Actions:
             app.notify("ERROR: Please launch OBS")
             raise
 
+        recording_log_directory = recordings_root_dir / time.strftime(
+            "%Y-%m-%dT%H-%M-%S"
+        )
+        recording_log_directory.mkdir(parents=True)
+        recording_log_file = recording_log_directory / "talon-log.jsonl"
+
+        commands_directory = recording_log_directory / "commands"
+        commands_directory.mkdir(parents=True)
+
+        snapshots_directory = recording_log_directory / "snapshots"
+        snapshots_directory.mkdir(parents=True)
+
+        screenshots_directory = recording_log_directory / "screenshots"
+        screenshots_directory.mkdir(parents=True)
+
         check_and_log_talon_subdirs()
 
         ctx.tags = ["user.recording_screen"]
@@ -130,21 +145,6 @@ class Actions:
 
         recording_start_time = time.perf_counter()
         start_timestamp_iso = datetime.utcnow().isoformat()
-
-        recording_log_directory = recordings_root_dir / time.strftime(
-            "%Y-%m-%dT%H-%M-%S"
-        )
-        recording_log_directory.mkdir(parents=True)
-        recording_log_file = recording_log_directory / "talon-log.jsonl"
-
-        commands_directory = recording_log_directory / "commands"
-        commands_directory.mkdir(parents=True)
-
-        snapshots_directory = recording_log_directory / "snapshots"
-        snapshots_directory.mkdir(parents=True)
-
-        screenshots_directory = recording_log_directory / "screenshots"
-        screenshots_directory.mkdir(parents=True)
 
         # Start cursorless recording
         extension_payload = actions.user.vscode_get(
