@@ -7,19 +7,11 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable, Optional
 
-from talon import (
-    Context,
-    Module,
-    actions,
-    app,
-    cron,
-    scope,
-    screen,
-    settings,
-    speech_system,
-    ui,
-)
+from talon import (Context, Module, actions, app, cron, scope, screen,
+                   settings, speech_system, ui)
 from talon.canvas import Canvas
+
+from ..apps.vscode.command_client.command_client import TimeoutError
 
 CALIBRATION_DISPLAY_BACKGROUND_COLOR = "#1b0026"
 CALIBRATION_DISPLAY_DURATION = "30ms"
@@ -27,7 +19,7 @@ CALIBRATION_DISPLAY_DURATION = "30ms"
 mod = Module()
 mod.tag(
     "recording_screen",
-    'tag to to indicate that screen is currently being recorded',
+    "tag to to indicate that screen is currently being recorded",
 )
 
 
@@ -51,6 +43,12 @@ recording_screen_ctx.matches = r"""
 tag: user.recording_screen
 """
 
+recording_screen_vscode_ctx = Context()
+recording_screen_vscode_ctx.matches = r"""
+tag: user.recording_screen
+app: vscode
+"""
+
 
 def show_obs_menu():
     menu = ui.apps(bundle="com.obsproject.obs-studio")[0].children.find_one(
@@ -68,6 +66,7 @@ GIT = "/usr/local/bin/git"
 recording_start_time: float
 recording_log_directory: Path
 screenshots_directory: Path
+snapshots_directory: Path
 recording_log_file: Path
 recordings_root_dir = Path.home() / "talon-recording-logs"
 
@@ -93,6 +92,7 @@ class Actions:
         global recording_start_time
         global recording_log_directory
         global screenshots_directory
+        global snapshots_directory
         global recording_log_file
         global current_phrase_id
 
@@ -102,6 +102,8 @@ class Actions:
         except StopIteration:
             app.notify("ERROR: Please launch OBS")
             raise
+
+        check_and_log_talon_subdirs()
 
         ctx.tags = ["user.recording_screen"]
 
@@ -138,6 +140,9 @@ class Actions:
         commands_directory = recording_log_directory / "commands"
         commands_directory.mkdir(parents=True)
 
+        snapshots_directory = recording_log_directory / "snapshots"
+        snapshots_directory.mkdir(parents=True)
+
         screenshots_directory = recording_log_directory / "screenshots"
         screenshots_directory.mkdir(parents=True)
 
@@ -164,42 +169,12 @@ class Actions:
             }
         )
 
-        for directory in user_dir.iterdir():
-            if not directory.is_dir():
-                continue
-
-            repo_remote_url = git("config", "--get", "remote.origin.url", cwd=directory)
-
-            if not repo_remote_url:
-                continue
-
-            if git("status", "--porcelain", cwd=directory):
-                app.notify("ERROR: Please commit all git changes")
-                raise Exception("Please commit all git changes")
-
-            commit_sha = git("rev-parse", "HEAD", cwd=directory)
-
-            # Represents the path of the given folder within the git repo in
-            # which it is contained. This occurs when we sim link a subdirectory
-            # of a repository into our talon user directory such as we do with
-            # cursorless talon.
-            repo_prefix = git("rev-parse", "--show-prefix", cwd=directory)
-
-            log_object(
-                {
-                    "type": "directoryInfo",
-                    "localPath": str(directory),
-                    "localRealPath": str(directory.resolve(strict=True)),
-                    "repoRemoteUrl": repo_remote_url,
-                    "repoPrefix": repo_prefix,
-                    "commitSha": commit_sha,
-                }
-            )
-
         # Disable notifications
         actions.user.run_shortcut("Turn Do Not Disturb On")
 
         actions.user.sleep_all()
+
+
 
     def record_screen_stop():
         """Stop recording screen"""
@@ -235,6 +210,43 @@ class Actions:
         """Possibly capture a phrase; does nothing unless screen recording is active"""
         pass
 
+    def take_snapshot(path: str, metadata: Any):
+        """Take a snapshot of the current app state"""
+        pass
+
+
+def check_and_log_talon_subdirs():
+    for directory in actions.path.talon_user().iterdir():
+        if not directory.is_dir():
+            continue
+
+        repo_remote_url = git("config", "--get", "remote.origin.url", cwd=directory)
+
+        if not repo_remote_url:
+            continue
+
+        if git("status", "--porcelain", cwd=directory):
+            app.notify("ERROR: Please commit all git changes")
+            raise Exception("Please commit all git changes")
+
+        commit_sha = git("rev-parse", "HEAD", cwd=directory)
+
+        # Represents the path of the given folder within the git repo in
+        # which it is contained. This occurs when we sim link a subdirectory
+        # of a repository into our talon user directory such as we do with
+        # cursorless talon.
+        repo_prefix = git("rev-parse", "--show-prefix", cwd=directory)
+
+        log_object(
+            {
+                "type": "directoryInfo",
+                "localPath": str(directory),
+                "localRealPath": str(directory.resolve(strict=True)),
+                "repoRemoteUrl": repo_remote_url,
+                "repoPrefix": repo_prefix,
+                "commitSha": commit_sha,
+            }
+        )
 
 @sleeping_recording_screen_ctx.action_class("user")
 class SleepUserActions:
@@ -249,6 +261,10 @@ class UserActions:
         pass
 
     def maybe_capture_post_phrase(j: Any):
+        # Turn this one off globally
+        pass
+
+    def take_snapshot(path: str, metadata: Any):
         # Turn this one off globally
         pass
 
@@ -328,6 +344,16 @@ class UserActions:
                     json_safe(capture) for capture in capture_list
                 ]
 
+        current_phrase_id = str(uuid.uuid4())
+
+        try:
+            actions.user.take_snapshot(
+                str(snapshots_directory / f"{current_phrase_id}-prePhrase.yaml"),
+                {"phraseId": current_phrase_id, "type": "prePhrase"},
+            )
+        except TimeoutError:
+            print("timed out trying to take pre phrase snapshot")
+
         pre_command_screenshot = capture_screen(
             screenshots_directory, recording_start_time
         )
@@ -337,31 +363,40 @@ class UserActions:
 
         current_phrase_id = str(uuid.uuid4())
 
-        log_object({
-            "type": "talonCommandPhrase",
-            "id": current_phrase_id,
-            "timeOffsets": {
-                "speechStart": j["_ts"] - recording_start_time,
-                "prePhraseCallbackStart": pre_phrase_start,
-                "prePhraseCallbackEnd": time.perf_counter() - recording_start_time,
-            },
-            "speechTimeout": settings.get("speech.timeout"),
-            "phrase": text,
-            "raw_words": word_infos,
-            "rawSim": sim,
-            "commands": commands,
-            "modes": list(scope.get("mode")),
-            "tags": list(scope.get("tag")),
-            "screenshots": {
-                "decoratedMarks": mark_screenshots,
-                "preCommand": pre_command_screenshot,
-            },
-        })
+        log_object(
+            {
+                "type": "talonCommandPhrase",
+                "id": current_phrase_id,
+                "timeOffsets": {
+                    "speechStart": j["_ts"] - recording_start_time,
+                    "prePhraseCallbackStart": pre_phrase_start,
+                    "prePhraseCallbackEnd": time.perf_counter() - recording_start_time,
+                },
+                "speechTimeout": settings.get("speech.timeout"),
+                "phrase": text,
+                "raw_words": word_infos,
+                "rawSim": sim,
+                "commands": commands,
+                "modes": list(scope.get("mode")),
+                "tags": list(scope.get("tag")),
+                "screenshots": {
+                    "decoratedMarks": mark_screenshots,
+                    "preCommand": pre_command_screenshot,
+                },
+            }
+        )
 
     def maybe_capture_post_phrase(j: Any):
         global current_phrase_id
 
         if current_phrase_id is not None:
+            try:
+                actions.user.take_snapshot(
+                    str(snapshots_directory / f"{current_phrase_id}-postPhrase.yaml"),
+                    {"phraseId": current_phrase_id, "type": "postPhrase"},
+                )
+            except TimeoutError:
+                print("timed out trying to take post phrase snapshot")
             post_phrase_start = time.perf_counter() - recording_start_time
             post_command_screenshot = capture_screen(
                 screenshots_directory, recording_start_time
@@ -385,8 +420,16 @@ class UserActions:
                     },
                 }
             )
-            
+
             current_phrase_id = None
+
+
+@recording_screen_vscode_ctx.action_class("user")
+class UserActions:
+    def take_snapshot(path: str, metadata: Any):
+        actions.user.vscode_with_plugin_and_wait_with_timeout(
+            "cursorless.takeSnapshot", 0.3, path, metadata
+        )
 
 
 def flash_rect():

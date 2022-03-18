@@ -44,6 +44,9 @@ app: vscode
 """
 
 
+class TimeoutError(Exception):
+    pass
+
 class NotSet:
     def __repr__(self):
         return "<argument not set>"
@@ -128,6 +131,7 @@ def run_vscode_command(
     *args: str,
     wait_for_finish: bool = False,
     return_command_output: bool = False,
+    timeout: float = VSCODE_COMMAND_TIMEOUT_SECONDS,
 ):
     """Runs a VSCode command, using command server if available
 
@@ -187,7 +191,7 @@ def run_vscode_command(
     actions.user.trigger_command_server_command_execution()
 
     try:
-        decoded_contents = read_json_with_timeout(response_path)
+        decoded_contents = read_json_with_timeout(response_path, timeout)
     finally:
         # NB: We remove response file first because we want to do this while we
         # still own the request file
@@ -248,7 +252,7 @@ def robust_unlink(path: Path):
             raise e
 
 
-def read_json_with_timeout(path: str) -> Any:
+def read_json_with_timeout(path: Path, timeout: float = VSCODE_COMMAND_TIMEOUT_SECONDS) -> Any:
     """Repeatedly tries to read a json object from the given path, waiting
     until there is a trailing new line indicating that the write is complete
 
@@ -261,7 +265,7 @@ def read_json_with_timeout(path: str) -> Any:
     Returns:
         Any: The json-decoded contents of the file
     """
-    timeout_time = time.perf_counter() + VSCODE_COMMAND_TIMEOUT_SECONDS
+    timeout_time = time.perf_counter() + timeout
     sleep_time = MINIMUM_SLEEP_TIME_SECONDS
     while True:
         try:
@@ -278,7 +282,7 @@ def read_json_with_timeout(path: str) -> Any:
         time_left = timeout_time - time.perf_counter()
 
         if time_left < 0:
-            raise Exception("Timed out waiting for response")
+            raise TimeoutError("Timed out waiting for response")
 
         # NB: We use minimum sleep time here to ensure that we don't spin with
         # small sleeps due to clock slip
@@ -335,6 +339,27 @@ class Actions:
             arg3,
             arg4,
             arg5,
+            wait_for_finish=True,
+        )
+
+    def vscode_with_plugin_and_wait_with_timeout(
+        command_id: str,
+        timeout: float,
+        arg1: Any = NotSet,
+        arg2: Any = NotSet,
+        arg3: Any = NotSet,
+        arg4: Any = NotSet,
+        arg5: Any = NotSet,
+    ):
+        """Execute command via vscode command server and wait for command to finish."""
+        run_vscode_command(
+            command_id,
+            arg1,
+            arg2,
+            arg3,
+            arg4,
+            arg5,
+            timeout=timeout,
             wait_for_finish=True,
         )
 
