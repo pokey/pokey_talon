@@ -41,6 +41,7 @@ talon dump context:
 #     user.talon_copy_list(talon_lists)
 ^talon debug tags$:
     user.talon_debug_tags()
+talon debug focused: user.talon_capture_focused()
 ^talon debug modes$:
     user.talon_debug_modes()
 ^talon debug scope {user.talon_scopes}$:

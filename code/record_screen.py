@@ -7,8 +7,19 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable, Optional
 
-from talon import (Context, Module, actions, app, cron, scope, screen,
-                   settings, speech_system, ui)
+import yaml
+from talon import (
+    Context,
+    Module,
+    actions,
+    app,
+    cron,
+    scope,
+    screen,
+    settings,
+    speech_system,
+    ui,
+)
 from talon.canvas import Canvas
 
 from ..apps.vscode.command_client.command_client import TimeoutError
@@ -174,8 +185,6 @@ class Actions:
 
         actions.user.sleep_all()
 
-
-
     def record_screen_stop():
         """Stop recording screen"""
         ctx.tags = []
@@ -248,6 +257,7 @@ def check_and_log_talon_subdirs():
             }
         )
 
+
 @sleeping_recording_screen_ctx.action_class("user")
 class SleepUserActions:
     def maybe_show_history():
@@ -298,8 +308,16 @@ class UserActions:
 
         word_infos = [
             {
-                "start": (words[idx].start - recording_start_time if words[idx].start is not None else None),
-                "end": (words[idx].end - recording_start_time if words[idx].end is not None else None),
+                "start": (
+                    words[idx].start - recording_start_time
+                    if words[idx].start is not None
+                    else None
+                ),
+                "end": (
+                    words[idx].end - recording_start_time
+                    if words[idx].end is not None
+                    else None
+                ),
                 "text": str(words[idx]),
             }
             for idx in range(len(words))
@@ -346,13 +364,10 @@ class UserActions:
 
         current_phrase_id = str(uuid.uuid4())
 
-        try:
-            actions.user.take_snapshot(
-                str(snapshots_directory / f"{current_phrase_id}-prePhrase.yaml"),
-                {"phraseId": current_phrase_id, "type": "prePhrase"},
-            )
-        except TimeoutError:
-            print(f"timed out trying to take pre phrase snapshot for {current_phrase_id}")
+        actions.user.take_snapshot(
+            str(snapshots_directory / f"{current_phrase_id}-prePhrase.yaml"),
+            {"phraseId": current_phrase_id, "type": "prePhrase"},
+        )
 
         pre_command_screenshot = capture_screen(
             screenshots_directory, recording_start_time
@@ -388,13 +403,10 @@ class UserActions:
         global current_phrase_id
 
         if current_phrase_id is not None:
-            try:
-                actions.user.take_snapshot(
-                    str(snapshots_directory / f"{current_phrase_id}-postPhrase.yaml"),
-                    {"phraseId": current_phrase_id, "type": "postPhrase"},
-                )
-            except TimeoutError:
-                print(f"timed out trying to take post phrase snapshot for {current_phrase_id}")
+            actions.user.take_snapshot(
+                str(snapshots_directory / f"{current_phrase_id}-postPhrase.yaml"),
+                {"phraseId": current_phrase_id, "type": "postPhrase"},
+            )
             post_phrase_start = time.perf_counter() - recording_start_time
             post_command_screenshot = capture_screen(
                 screenshots_directory, recording_start_time
@@ -425,9 +437,17 @@ class UserActions:
 @recording_screen_vscode_ctx.action_class("user")
 class UserActions:
     def take_snapshot(path: str, metadata: Any):
-        actions.user.vscode_with_plugin_and_wait_with_timeout(
-            "cursorless.takeSnapshot", 1.0, path, metadata
+        has_menu = any(
+            child.get("AXRole") == "AXMenu"
+            for child in ui.active_window().element.children
         )
+        if not has_menu:
+            actions.user.vscode_with_plugin_and_wait(
+                "cursorless.takeSnapshot", path, metadata
+            )
+        else:
+            with open("path", "w") as f:
+                yaml.dump({"metadata": metadata, "isMenuShowing": True}, f)
 
 
 def flash_rect():

@@ -1,3 +1,5 @@
+from rich import inspect
+from rich.pretty import pprint as pretty_print
 from talon import (
     Context,
     actions,
@@ -18,6 +20,7 @@ import re
 import platform
 from itertools import islice
 import pprint
+from talon.mac.ui import Element
 
 pp = pprint.PrettyPrinter()
 
@@ -98,6 +101,27 @@ class Actions:
         print(str(registry.tags))
         print("***********************")
 
+    def talon_capture_focused():
+        """Dumps the active tags to the console"""
+        print("**** Dumping and capturing focused element *** ")
+        # global captured_focused_element
+        # captured_focused_element = ui.focused_element()
+        # print(repr(captured_focused_element))
+        # captured_focused_element = ui.active_app().children.find(AXRole="AXMenuItem")
+        # walk(ui.active_window().element)
+        has_menu = any(
+            child.get("AXRole") == "AXMenu"
+            for child in ui.active_window().element.children
+        )
+        if has_menu:
+            print("Menu showing")
+
+        print("***********************")
+
+    # def talon_get_captured_element():
+    #     """Gets captured focused element"""
+    #     return captured_focused_element
+        
     def talon_debug_modes():
         """Dumps active modes to the console"""
         print("**** Active modes ****")
@@ -184,3 +208,15 @@ class Actions:
             ], start_new_session=True)
             talon_app.appscript().quit(waitreply=False) # XXX temporary replacement
         # XXX talon_app.quit() nonfunctional?
+
+def walk(el: Element, indent=''):
+    print(f"{indent}{el}")
+    inspect(el)
+    pretty_print(
+        {attr: el.get(attr)
+        for attr in el.attrs}
+    )
+
+    indent += '  '
+    for child in el.children:
+        walk(child, indent)
