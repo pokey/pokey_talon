@@ -445,11 +445,9 @@ class UserActions:
             use_pre_phrase_snapshot = actions.user.did_emit_pre_phrase_signal()
         except KeyError:
             use_pre_phrase_snapshot = False
-        has_menu = any(
-            child.get("AXRole") == "AXMenu"
-            for child in ui.active_window().element.children
-        )
-        if not has_menu:
+
+        menu_showing = ui.active_window().find_one(AXRole="AXMenu", max_depth=0) is not None
+        if not menu_showing:
             try:
                 actions.user.vscode_with_plugin_and_wait(
                     "cursorless.takeSnapshot",
