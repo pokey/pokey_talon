@@ -446,7 +446,7 @@ class UserActions:
         except KeyError:
             use_pre_phrase_snapshot = False
 
-        menu_showing = ui.active_window().find_one(AXRole="AXMenu", max_depth=0) is not None
+        menu_showing = ui.active_window().children.find_one(AXRole="AXMenu", max_depth=0) is not None
         if not menu_showing:
             try:
                 actions.user.vscode_with_plugin_and_wait(
