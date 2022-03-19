@@ -21,7 +21,7 @@ VSCODE_COMMAND_TIMEOUT_SECONDS = 3.0
 MINIMUM_SLEEP_TIME_SECONDS = 0.0005
 
 # Indicates whether a pre-phrase signal was emitted during the course of the
-# current phrase 
+# current phrase
 did_emit_pre_phrase_signal = False
 
 mod = Module()
@@ -46,6 +46,7 @@ app: vscode
 
 class TimeoutError(Exception):
     pass
+
 
 class NotSet:
     def __repr__(self):
@@ -252,7 +253,9 @@ def robust_unlink(path: Path):
             raise e
 
 
-def read_json_with_timeout(path: Path, timeout: float = VSCODE_COMMAND_TIMEOUT_SECONDS) -> Any:
+def read_json_with_timeout(
+    path: Path, timeout: float = VSCODE_COMMAND_TIMEOUT_SECONDS
+) -> Any:
     """Repeatedly tries to read a json object from the given path, waiting
     until there is a trailing new line indicating that the write is complete
 
@@ -339,27 +342,6 @@ class Actions:
             arg3,
             arg4,
             arg5,
-            wait_for_finish=True,
-        )
-
-    def vscode_with_plugin_and_wait_with_timeout(
-        command_id: str,
-        timeout: float,
-        arg1: Any = NotSet,
-        arg2: Any = NotSet,
-        arg3: Any = NotSet,
-        arg4: Any = NotSet,
-        arg5: Any = NotSet,
-    ):
-        """Execute command via vscode command server and wait for command to finish."""
-        run_vscode_command(
-            command_id,
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            timeout=timeout,
             wait_for_finish=True,
         )
 
