@@ -6,6 +6,7 @@ from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable, Optional
+from talon.ui import UIErr
 
 import yaml
 from talon import (
@@ -446,7 +447,11 @@ class UserActions:
         except KeyError:
             use_pre_phrase_snapshot = False
 
-        menu_showing = ui.active_window().children.find_one(AXRole="AXMenu", max_depth=0) is not None
+        try:
+            ui.active_window().children.find_one(AXRole="AXMenu", max_depth=0)
+            menu_showing = True
+        except UIErr:
+            menu_showing = False
         if not menu_showing:
             try:
                 actions.user.vscode_with_plugin_and_wait(
