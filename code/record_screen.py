@@ -219,7 +219,7 @@ class Actions:
         """Possibly capture a phrase; does nothing unless screen recording is active"""
         pass
 
-    def take_snapshot(path: str, metadata: Any):
+    def take_snapshot(path: str, metadata: Any, decorated_marks: list[dict]):
         """Take a snapshot of the current app state"""
         pass
 
@@ -274,7 +274,7 @@ class UserActions:
         # Turn this one off globally
         pass
 
-    def take_snapshot(path: str, metadata: Any):
+    def take_snapshot(path: str, metadata: Any, decorated_marks: list[dict]):
         # Turn this one off globally
         pass
 
@@ -364,16 +364,19 @@ class UserActions:
 
         current_phrase_id = str(uuid.uuid4())
 
+        decorated_marks = list(extract_decorated_marks(parsed))
+
         actions.user.take_snapshot(
             str(snapshots_directory / f"{current_phrase_id}-prePhrase.yaml"),
             {"phraseId": current_phrase_id, "type": "prePhrase"},
+            decorated_marks,
         )
 
         pre_command_screenshot = capture_screen(
             screenshots_directory, recording_start_time
         )
         mark_screenshots = take_mark_screenshots(
-            parsed, screenshots_directory, recording_start_time
+            decorated_marks, screenshots_directory, recording_start_time
         )
 
         log_object(
@@ -406,6 +409,7 @@ class UserActions:
             actions.user.take_snapshot(
                 str(snapshots_directory / f"{current_phrase_id}-postPhrase.yaml"),
                 {"phraseId": current_phrase_id, "type": "postPhrase"},
+                [],
             )
             post_phrase_start = time.perf_counter() - recording_start_time
             post_command_screenshot = capture_screen(
@@ -436,17 +440,29 @@ class UserActions:
 
 @recording_screen_vscode_ctx.action_class("user")
 class UserActions:
-    def take_snapshot(path: str, metadata: Any):
+    def take_snapshot(path: str, metadata: Any, decorated_marks: list[dict]):
+        try:
+            use_pre_phrase_snapshot = actions.user.did_emit_pre_phrase_signal()
+        except KeyError:
+            use_pre_phrase_snapshot = False
         has_menu = any(
             child.get("AXRole") == "AXMenu"
             for child in ui.active_window().element.children
         )
         if not has_menu:
-            actions.user.vscode_with_plugin_and_wait(
-                "cursorless.takeSnapshot", path, metadata
-            )
+            try:
+                actions.user.vscode_with_plugin_and_wait(
+                    "cursorless.takeSnapshot",
+                    path,
+                    metadata,
+                    decorated_marks,
+                    use_pre_phrase_snapshot,
+                )
+            except Exception as e:
+                with open(path, "w") as f:
+                    yaml.dump({"metadata": metadata, "error": str(e)}, f)
         else:
-            with open("path", "w") as f:
+            with open(path, "w") as f:
                 yaml.dump({"metadata": metadata, "isMenuShowing": True}, f)
 
 
@@ -465,12 +481,10 @@ def flash_rect():
 
 
 def take_mark_screenshots(
-    parsed: Iterable[list[Any]],
+    decorated_marks: list[dict],
     screenshots_directory: Path,
     recording_start_time: float,
 ):
-    decorated_marks = list(extract_decorated_marks(parsed))
-
     if not decorated_marks:
         return None
 
