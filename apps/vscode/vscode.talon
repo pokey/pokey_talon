@@ -497,12 +497,6 @@ extension publish:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
 cursorless local split:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
-test clean talon:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Test clean talon")
-    sleep(250ms)
-    user.talon_relaunch()
-
-
 line edit: key(ctrl-q e)
 
 copy command: user.copy_command_id()
