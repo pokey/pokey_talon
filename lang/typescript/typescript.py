@@ -68,7 +68,7 @@ ctx.lists["user.code_typescript_keyword"] = {
 @mod.capture(
     rule=("{user.code_keyword} | {user.code_typescript_keyword}")
 )
-def code_keyword(m):
+def code_keyword(m) -> str:
     return str(m)
 
 

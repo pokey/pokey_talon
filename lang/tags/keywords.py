@@ -10,7 +10,7 @@ mod.list("code_keyword", desc="List of keywords for active language")
 @mod.capture(
     rule=("{user.code_keyword}")
 )
-def code_keyword(m):
+def code_keyword(m) -> str:
     return str(m)
 
 
