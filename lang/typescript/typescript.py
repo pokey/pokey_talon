@@ -60,6 +60,7 @@ ctx.lists["user.code_typescript_keyword"] = {
     "extends": " extends ",
     "implements": " implements ",
     "interface": "interface ",
+    "readonly": "readonly ",
     "type": "type ",
 }
 

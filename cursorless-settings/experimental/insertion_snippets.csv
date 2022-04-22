@@ -15,3 +15,4 @@ full context, talonContextFile
 shebang, shebang
 else if, elseIf
 use effect, useEffect
+turn, ternaryExpression

@@ -5,7 +5,7 @@ Spoken form, Cursorless identifier
 bottom, scrollToBottom
 break point, toggleLineBreakpoint
 bring, replaceWithTarget
-calling, callAsFunction
+apply, callAsFunction
 carve, cutToClipboard
 center, scrollToCenter
 chuck, remove
