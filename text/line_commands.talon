@@ -30,14 +30,11 @@ add {user.comment_type} <user.text>$:
     code.toggle_comment()
     "{comment_type}: "
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
-# comment <number> until <number>: 
-#     user.select_range(number_1, number_2)
-#     code.toggle_comment()
 # <user.delete> line <number>:
 #     edit.jump_line(number)
 #     user.select_range(number, number)
 #     edit.delete()
-# <user.delete> <number> until <number>: 
+# clear <number> until <number>: 
 #     user.select_range(number_1, number_2)
 #     edit.delete()
 # copy [line] <number>: 
@@ -46,10 +43,10 @@ add {user.comment_type} <user.text>$:
 # copy <number> until <number>: 
 #     user.select_range(number_1, number_2)
 #     edit.copy()
-# cut line <number>: 
+# cut [line] <number>: 
 #     user.select_range(number, number)
 #     edit.cut()
-# cut line <number> until <number>: 
+# cut [line] <number> until <number>: 
 #     user.select_range(number_1, number_2)
 #     edit.cut()
 # (paste | replace) <number> until <number>:
@@ -57,22 +54,22 @@ add {user.comment_type} <user.text>$:
 #     edit.paste()
 # (select | cell | sell) [line] <number>: user.select_range(number, number)
 # (select | cell | sell) <number> until <number>: user.select_range(number_1, number_2)
-# indent that: edit.indent_more()
-# tab line <number>:
+# tab that: edit.indent_more()
+# tab [line] <number>:
 #     edit.jump_line(number)
 #     edit.indent_more()
 # tab <number> until <number>:
 #     user.select_range(number_1, number_2)
 #     edit.indent_more()
-dedent that: edit.indent_less()
+# retab that: edit.indent_less()
 # retab [line] <number>:
 #     user.select_range(number, number)
 #     edit.indent_less()
 # retab <number> until <number>:
 #     user.select_range(number_1, number_2)
 #     edit.indent_less()
-drag line down: edit.line_swap_down()
-drag line up: edit.line_swap_up()
+# drag [line] down: edit.line_swap_down()
+# drag [line] up: edit.line_swap_up()
 # drag up [line] <number>:
 #     user.select_range(number, number)
 #     edit.line_swap_up()
@@ -85,4 +82,9 @@ drag line up: edit.line_swap_up()
 # drag down <number> until <number>: 
 #     user.select_range(number_1, number_2)
 #     edit.line_swap_down()
-smear (line|that): edit.line_clone()
+# clone (line|that): edit.line_clone()
+
+select camel left: user.extend_camel_left()
+select camel right: user.extend_camel_right()
+go camel left: user.camel_left()
+go camel right: user.camel_right()

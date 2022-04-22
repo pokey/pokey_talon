@@ -1,0 +1,7 @@
+desk <number_small>: user.desktop(number_small)
+desk next: user.desktop_next()
+desk last: user.desktop_last()
+desk show: user.desktop_show()
+window move desk <number_small>: user.window_move_desktop(number_small)
+window move desk left: user.window_move_desktop_left()
+window move desk right: user.window_move_desktop_right()

@@ -14,12 +14,18 @@ mod = Module()
 mod.apps.vscode = """
 os: mac
 and app.bundle: com.microsoft.VSCode
+os: mac
+and app.bundle: com.microsoft.VSCodeInsiders
+os: mac
+and app.bundle: com.visualstudio.code.oss
 """
 mod.apps.vscode = """
 os: linux
 and app.name: Code
 os: linux
 and app.name: code-oss
+os: linux
+and app.name: code-insiders
 os: linux
 and app.name: VSCodium
 os: linux
@@ -29,7 +35,13 @@ mod.apps.vscode = """
 os: windows
 and app.name: Visual Studio Code
 os: windows
+and app.name: Visual Studio Code Insiders
+os: windows
+and app.name: Visual Studio Code - Insiders
+os: windows
 and app.exe: Code.exe
+os: windows
+and app.exe: Code-Insiders.exe
 os: windows
 and app.name: VSCodium
 os: windows
@@ -278,7 +290,10 @@ class UserActions:
     def multi_cursor_select_more_occurrences():
         actions.user.vscode("editor.action.addSelectionToNextFindMatch")
 
-    # snippet.py support beginHelp close
+    def multi_cursor_skip_occurrence():
+        actions.user.vscode("editor.action.moveSelectionToNextFindMatch")
+
+    # snippet.py support begin
     def snippet_search(text: str):
         actions.user.vscode("editor.action.insertSnippet")
         actions.insert(text)
@@ -299,13 +314,13 @@ class UserActions:
     def tab_jump(number: int):
         if number < 10:
             if is_mac:
-                actions.key("ctrl-{}".format(number))
+                actions.user.vscode_with_plugin(f"workbench.action.openEditorAtIndex{number}")
             else:
                 actions.key("alt-{}".format(number))
 
     def tab_final():
         if is_mac:
-            actions.key("ctrl-0")
+            actions.user.vscode("workbench.action.lastEditorInGroup")
         else:
             actions.key("alt-0")
 

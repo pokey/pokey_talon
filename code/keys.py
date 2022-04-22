@@ -251,14 +251,18 @@ ctx.lists["self.function_key"] = {
 }
 
 
-@mod.action_class
-class Actions:
-    def get_alphabet() -> dict:
-        """Provides the alphabet dictionary"""
-        return alphabet
-
-
 @mod.capture(rule="spell {self.letter}+")
 def spell(m) -> str:
     """Spell a word"""
     return "".join(m.letter_list)
+
+
+@mod.action_class
+class Actions:
+    def move_cursor(s: str):
+        """Given a sequence of directions, eg. 'left left up', moves the cursor accordingly using edit.{left,right,up,down}."""
+        for d in s.split():
+            if d in ('left','right','up','down'):
+                getattr(actions.edit, d)()
+            else:
+                raise RuntimeError(f'invalid arrow key: {d}')

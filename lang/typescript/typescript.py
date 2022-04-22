@@ -3,9 +3,7 @@ from talon import Module, Context, actions, ui, imgui, settings
 mod = Module()
 ctx = Context()
 ctx.matches = r"""
-mode: user.typescript
-mode: user.auto_lang 
-and code.language: typescript
+tag: user.typescript
 """
 # tbd
 
@@ -24,6 +22,7 @@ ctx.lists["user.code_chain_function"] = {
     "split": "split",
     "substring": "substring",
     "then": "then",
+    "reduce": "reduce",
 }
 
 ctx.lists["user.code_functions"] = {
@@ -55,249 +54,25 @@ ctx.lists["user.code_type"] = {
     "void": "void",
 }
 
-ctx.lists["user.code_keyword"] = {
-    "a sink": "async ",
-    "await": "await ",
-    "break": "break",
+mod.list("code_typescript_keyword", desc="List of extra keywords for typescript")
+ctx.lists["user.code_typescript_keyword"] = {
     "cast": " as ",
-    "class": "class ",
-    "const": "const ",
-    "continue": "continue",
-    "default": "default ",
-    "export": "export ",
     "extends": " extends ",
-    "false": "false",
-    "function": "function ",
     "implements": " implements ",
-    "import": "import ",
     "interface": "interface ",
-    "let": "let ",
-    "new": "new ",
-    "null": "null",
-    "private": "private ",
-    "protected": "protected ",
-    "public": "public ",
-    "return": "return ",
-    "throw": "throw ",
-    "true": "true",
-    "try": "try ",
     "type": "type ",
-    "undefined": "undefined",
-    "yield": "yield ",
 }
+
+
+@mod.capture(
+    rule=("{user.code_keyword} | {user.code_typescript_keyword}")
+)
+def code_keyword(m):
+    return str(m)
 
 
 @ctx.action_class("user")
 class UserActions:
-    def code_is_not_null():
-        actions.auto_insert(" != null")
-
-    def code_is_null():
-        actions.auto_insert(" == null")
-
-    def code_state_if():
-        actions.insert("if ()")
-        actions.key("left")
-
-    def code_state_else_if():
-        actions.insert(" else if ()")
-        actions.key("left")
-
-    def code_state_else():
-        actions.insert(" else {}")
-        actions.key("left enter")
-
-    def code_block():
-        actions.insert("{}")
-        actions.key("left enter")
-
-    def code_self():
-        actions.auto_insert("this")
-
-    def code_state_while():
-        actions.insert("while ()")
-        actions.key("left")
-
-    def code_state_do():
-        actions.insert("do ")
-
-    def code_state_return():
-        actions.insert("return ")
-
-    def code_state_for():
-        actions.insert("for ()")
-        actions.key("left")
-
-    def code_state_switch():
-        actions.insert("switch ()")
-        actions.key("left")
-
-    def code_state_case():
-        actions.auto_insert("case :")
-        actions.key("left")
-
-    def code_state_go_to():
-        actions.auto_insert("")
-
-    def code_import():
-        actions.auto_insert("import ")
-
-    def code_from_import():
-        actions.insert(' from  ""')
-        actions.key("left")
-
-    def code_type_class():
-        actions.auto_insert("class ")
-
-    def code_include():
-        actions.auto_insert("")
-
-    def code_include_system():
-        actions.auto_insert("")
-
-    def code_include_local():
-        actions.auto_insert("")
-
-    def code_type_definition():
-        actions.auto_insert("")
-
-    def code_typedef_struct():
-        actions.auto_insert("")
-
-    def code_state_for_each():
-        actions.insert(".forEach()")
-        actions.key("left")
-
-    def code_break():
-        actions.auto_insert("break;")
-
-    def code_next():
-        actions.auto_insert("continue;")
-
-    def code_true():
-        actions.auto_insert("true")
-
-    def code_false():
-        actions.auto_insert("false")
-
-    def code_null():
-        actions.auto_insert("null")
-
-    def code_operator_indirection():
-        actions.auto_insert("")
-
-    def code_operator_address_of():
-        actions.auto_insert("")
-
-    def code_operator_structure_dereference():
-        actions.auto_insert("")
-
-    def code_operator_lambda():
-        actions.auto_insert(" => ")
-
-    def code_operator_subscript():
-        actions.insert("[]")
-        actions.key("left")
-
-    def code_operator_assignment():
-        actions.auto_insert(" = ")
-
-    def code_operator_subtraction():
-        actions.auto_insert(" - ")
-
-    def code_operator_subtraction_assignment():
-        actions.auto_insert(" -= ")
-
-    def code_operator_addition():
-        actions.auto_insert(" + ")
-
-    def code_operator_addition_assignment():
-        actions.auto_insert(" += ")
-
-    def code_operator_multiplication():
-        actions.auto_insert(" * ")
-
-    def code_operator_multiplication_assignment():
-        actions.auto_insert(" *= ")
-
-    def code_operator_exponent():
-        actions.auto_insert(" ** ")
-
-    def code_operator_division():
-        actions.auto_insert(" / ")
-
-    def code_operator_division_assignment():
-        actions.auto_insert(" /= ")
-
-    def code_operator_modulo():
-        actions.auto_insert(" % ")
-
-    def code_operator_modulo_assignment():
-        actions.auto_insert(" %= ")
-
-    def code_operator_equal():
-        actions.auto_insert(" === ")
-
-    def code_operator_not_equal():
-        actions.auto_insert(" !== ")
-
-    def code_operator_greater_than():
-        actions.auto_insert(" > ")
-
-    def code_operator_greater_than_or_equal_to():
-        actions.auto_insert(" >= ")
-
-    def code_operator_less_than():
-        actions.auto_insert(" < ")
-
-    def code_operator_less_than_or_equal_to():
-        actions.auto_insert(" <= ")
-
-    def code_operator_and():
-        actions.auto_insert(" && ")
-
-    def code_operator_or():
-        actions.auto_insert(" || ")
-
-    def code_operator_bitwise_and():
-        actions.auto_insert(" & ")
-
-    def code_operator_bitwise_and_assignment():
-        actions.auto_insert(" &= ")
-
-    def code_operator_bitwise_or():
-        actions.auto_insert(" | ")
-
-    def code_operator_bitwise_or_assignment():
-        actions.auto_insert(" |= ")
-
-    def code_operator_bitwise_exclusive_or():
-        actions.auto_insert(" ^ ")
-
-    def code_operator_bitwise_exclusive_or_assignment():
-        actions.auto_insert(" ^= ")
-
-    def code_operator_bitwise_left_shift():
-        actions.auto_insert(" << ")
-
-    def code_operator_bitwise_left_shift_assignment():
-        actions.auto_insert(" <<= ")
-
-    def code_operator_bitwise_right_shift():
-        actions.auto_insert(" >> ")
-
-    def code_operator_bitwise_right_shift_assignment():
-        actions.auto_insert(" >>= ")
-
-    def code_insert_function(text: str, selection: str):
-        if selection:
-            text = text + "({})".format(selection)
-        else:
-            text = text + "()"
-
-        actions.user.paste(text)
-        actions.edit.left()
-
     def code_private_function(text: str):
         """Inserts private function declaration"""
         result = "private function {}".format(
@@ -366,4 +141,4 @@ class UserActions:
         actions.insert(f": {type}")
 
     def code_insert_return_type(type: str):
-        actions.insert(f" => {type}")
+        actions.insert(f": {type}")

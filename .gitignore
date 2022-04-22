@@ -5,3 +5,4 @@ __pycache__
 *.sw?
 # Locally generated
 /settings
+.vscode/settings.json

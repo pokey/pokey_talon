@@ -34,6 +34,9 @@ settings():
     # The amount to scroll up/down (equivalent to mouse wheel on Windows by default)
     user.mouse_wheel_down_amount = 120
 
+    # The amount to scroll left/right
+    user.mouse_wheel_horizontal_amount = 40
+
     # Mouse grid and friends put the number one on the bottom left (vs on the top left)
     user.grids_put_one_bottom_left = 1
 
@@ -53,6 +56,7 @@ settings():
 
     user.cursorless_settings_directory = "pokey_talon/cursorless-settings"
 	
-# uncomment tag to enable mouse grid
-tag(): user.mouse_grid_enabled
-tag(): user.cursorless_experimental_snippets
+tag(): user.cursorless_experimental_wrapper_snippets
+
+# Uncomment this to enable the curse yes/curse no commands (show hide mouse cursor). See issue #688.
+# tag(): user.mouse_cursor_commands_enable

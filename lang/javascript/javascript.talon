@@ -1,12 +1,20 @@
-mode: command
-and mode: user.javascript
-mode: command
-and mode: user.auto_lang
-and code.language: javascript
+tag: user.javascript
 -
-tag(): user.code_operators
-tag(): user.code_comment
-tag(): user.code_generic
+tag(): user.code_imperative
+tag(): user.code_object_oriented
+
+tag(): user.code_comment_line
+tag(): user.code_comment_block_c_like
+tag(): user.code_data_bool
+tag(): user.code_data_null
+tag(): user.code_functions
+tag(): user.code_functions_gui
+tag(): user.code_libraries
+tag(): user.code_operators_array
+tag(): user.code_operators_assignment
+tag(): user.code_operators_bitwise
+tag(): user.code_operators_lambda
+tag(): user.code_operators_math
 
 settings():
     user.code_private_function_formatter = "PRIVATE_CAMEL_CASE"
@@ -15,43 +23,20 @@ settings():
     user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
-    
-(op | is) strict equal: " === "
-(op | is) strict not equal: " !== "
+    user.code_typename_formatter = "PUBLIC_CAMEL_CASE"
 
-<user.operator> const: "const "
+is loose equal: " == "
+is not loose equal: " != "
+<user.operator> null coal: " ?? "
 
-<user.operator> let: "let "
-
-<user.operator> var: "var "
-
-<user.operator> async: "async "
-
-<user.operator> await: "await "
-
-<user.operator> map:
-    insert(".map()")
-    key(left)
-    
-<user.operator> filter:
-    insert(".filter()")
-    key(left)
-    
-<user.operator> reduce:
-  insert(".reduce()")
-  key(left)
-
-<user.operator> length: insert(".length")
+chain {user.code_chain_function}:
+    user.insert_between(".{code_chain_function}(", ")")
 
 <user.operator> quote var:
   insert("${}")
   key(left)
-  
-<user.operator> log:
-  insert("console.log()")
-  key(left)
+
 <user.operator> spread: "..."
 
-^funky <user.text>$: user.code_default_function(text)
-^pro funky <user.text>$: user.code_protected_function(text)
-^pub funky <user.text>$: user.code_public_function(text)
+from import:
+    user.insert_between(' from  "', '"')

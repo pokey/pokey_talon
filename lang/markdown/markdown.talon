@@ -1,6 +1,4 @@
-mode: user.markdown
-mode: command
-and code.language: markdown
+tag: user.markdown
 -
 level one: "# "
 level two: "## "

@@ -18,7 +18,9 @@ def on_phrase(j):
 
     words = j.get('text')
 
-    if text := actions.user.history_transform_phrase_text(words):
+    text = actions.user.history_transform_phrase_text(words)
+
+    if text is not None:
         history.append(text)
         history = history[-setting_command_history_size.get() :]
 
@@ -32,6 +34,10 @@ def gui(gui: imgui.GUI):
     )
     for line in text:
         gui.text(line)
+
+    gui.spacer()
+    if gui.button("Command history close"):
+        actions.user.history_disable()
 
 
 speech_system.register("phrase", on_phrase)

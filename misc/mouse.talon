@@ -64,21 +64,22 @@ end drag | drag end:
 (scroll | school) down here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down()
-(scroll | school) tiny [down]: mouse_scroll(20)
+(scroll | school) tiny [down]: user.mouse_scroll_down(0.2)
 (scroll | school) tiny [down] here:
     user.mouse_move_center_active_window()
-    mouse_scroll(20)
+    user.mouse_scroll_down(0.2)
 (scroll | school) downer: user.mouse_scroll_down_continuous()
 (scroll | school) downer here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_down_continuous()
 (scroll | school) up: user.mouse_scroll_up()
 (scroll | school) up here:
- user.mouse_scroll_up()
-(scroll | school) tiny up: mouse_scroll(-20)
+    user.mouse_move_center_active_window()
+    user.mouse_scroll_up()
+(scroll | school) tiny up: user.mouse_scroll_up(0.2)
 (scroll | school) tiny up here:
     user.mouse_move_center_active_window()
-    mouse_scroll(-20)
+    user.mouse_scroll_up(0.2)
 (scroll | school) upper: user.mouse_scroll_up_continuous()
 (scroll | school) upper here:
     user.mouse_move_center_active_window()
@@ -91,22 +92,23 @@ end drag | drag end:
 (scroll | school) stop here:
     user.mouse_move_center_active_window()
     user.mouse_scroll_stop()
-(scroll | school) left: mouse_scroll(0, -40)
+(scroll | school) left: user.mouse_scroll_left()
 (scroll | school) left here:
     user.mouse_move_center_active_window()
-    mouse_scroll(0, -40)
-(scroll | school) tiny left: mouse_scroll(0, -20)
+    user.mouse_scroll_left()
+(scroll | school) tiny left: user.mouse_scroll_left(0.5)
 (scroll | school) tiny left here:
     user.mouse_move_center_active_window()
-    mouse_scroll(0, -20)
-(scroll | school) right: mouse_scroll(0, 40)
+    user.mouse_scroll_left(0.5)
+(scroll | school) right: user.mouse_scroll_right()
 (scroll | school) right here:
     user.mouse_move_center_active_window()
-    mouse_scroll(0, 40)
-(scroll | school) tiny right: mouse_scroll(0, 20)
+    user.mouse_scroll_right()
+(scroll | school) tiny right: user.mouse_scroll_right(0.5)
 (scroll | school) tiny right here:
     user.mouse_move_center_active_window()
-    mouse_scroll(0, 20)
-curse yes: user.mouse_show_cursor()
-curse no: user.mouse_hide_cursor()
+    user.mouse_scroll_right(0.5)
 copy mouse position: user.copy_mouse_position()
+curse no:
+    # Command added 2021-12-13, can remove after 2022-06-01
+    app.notify("Please activate the user.mouse_cursor_commands_enable tag to enable this command")
