@@ -70,6 +70,7 @@ ctx.lists["user.code_keyword"] = {
     "return": "return ",
     "import": "import ",
     "null": "None",
+    "none": "None",
     "true": "True",
     "false": "False",
     "yield": "yield ",
