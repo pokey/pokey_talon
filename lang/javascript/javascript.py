@@ -6,6 +6,37 @@ ctx.matches = """
 tag: user.javascript
 """
 
+ctx.lists["user.code_common_function"] = {
+    "entries": "Object.entries",
+    "flatten": "flatten",
+    "from entries": "Object.fromEntries",
+    "keys": "Object.keys",
+    "max": "Math.max",
+    "min": "Math.min",
+    "abs": "Math.abs",
+    "round": "Math.round",
+    "floor": "Math.floor",
+    "print": "console.log",
+    "values": "Object.values",
+}
+
+mod.list("code_chain_function", "Function to use in a chain")
+
+ctx.lists["user.code_chain_function"] = {
+    "concat": "concat",
+    "filter": "filter",
+    "find": "find",
+    "flat map": "flatMap",
+    "for each": "forEach",
+    "includes": "includes",
+    "map": "map",
+    "push": "push",
+    "some": "some",
+    "split": "split",
+    "substring": "substring",
+    "then": "then",
+    "reduce": "reduce",
+}
 
 ctx.lists["user.code_keyword"] = {
     "a sink": "async ",
