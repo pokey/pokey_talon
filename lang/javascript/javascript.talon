@@ -24,7 +24,6 @@ settings():
     user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
-    user.code_typename_formatter = "PUBLIC_CAMEL_CASE"
 
 is loose equal: " == "
 is not loose equal: " != "
