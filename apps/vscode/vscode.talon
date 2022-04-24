@@ -300,9 +300,10 @@ git stash pop: user.vscode("git.stashPop")
 git status: user.vscode("workbench.scm.focus")
 git stage: user.vscode("git.stage")
 git stage all: user.vscode("git.stageAll")
-git sync: user.vscode("git.sync")
+git stage all merge: user.vscode("git.stageAllMerge")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
+git sync: user.vscode("git.sync")
 git log: user.vscode("git-graph.view")
 git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
 git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
@@ -314,6 +315,12 @@ file viewed: user.vscode("pr.markFileAsViewed")
 # action: https://code.visualstudio.com/api/references/when-clause-contexts
 change next: key(alt-f5)
 change last: key(shift-alt-f5)
+
+accept incoming: user.vscode("merge-conflict.accept.incoming")
+accept both: user.vscode("merge-conflict.accept.both")
+accept current: user.vscode("merge-conflict.accept.current")
+accept all current: user.vscode("merge-conflict.accept.all-current")
+conflict next: user.vscode("merge-conflict.next")
 
 # Run this command after you run a git command on a multi route workspace and it
 # will just apply the text of the commit or whatever to the default workspace
