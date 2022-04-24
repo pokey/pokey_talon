@@ -4,7 +4,7 @@ mod = Module()
 ctx = Context()
 ctx.matches = r"""
 mode: user.bash
-mode: user.auto_lang 
+mode: user.auto_lang
 and code.language: bash
 """
 # tbd

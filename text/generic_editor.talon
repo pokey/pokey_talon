@@ -51,10 +51,10 @@ go way down:
 
 go way up:
     edit.file_start()
-    
+
 go bottom:
     edit.file_end()
-    
+
 go top:
     edit.file_start()
 
@@ -120,7 +120,7 @@ scratch <number_small> times:
 
 drill <number_small> times:
     user.delete_right_n(number_small)
-    
+
 <user.delete> up:
     edit.extend_line_up()
     edit.delete()

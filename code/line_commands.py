@@ -51,4 +51,3 @@ class Actions:
 
     def line_clone(line: int):
         """Clones specified line at current position"""
-

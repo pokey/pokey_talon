@@ -36,7 +36,7 @@ paste match: edit.paste_match_style()
 disk: edit.save()
 disk oliver: edit.save_all()
 padding:
-	insert("  ") 
+	insert("  ")
 	key(left)
 pour: edit.line_insert_down()
 drink: edit.line_insert_up()

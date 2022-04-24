@@ -121,7 +121,7 @@ class Actions:
     # def talon_get_captured_element():
     #     """Gets captured focused element"""
     #     return captured_focused_element
-        
+
     def talon_debug_modes():
         """Dumps active modes to the console"""
         print("**** Active modes ****")

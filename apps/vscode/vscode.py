@@ -211,7 +211,7 @@ class Actions:
         actions.user.vscode("git.commitStaged")
         actions.sleep("250ms")
         actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
-    
+
     def cursorless_record_navigation_test():
         """Run cursorless record navigation test"""
         actions.user.vscode_with_plugin("cursorless.recordTestCase", {"isHatTokenMapTest": True})
@@ -234,6 +234,12 @@ class UserActions:
 
     def split_flip():
         actions.user.vscode("workbench.action.toggleEditorGroupLayout")
+
+    def split_maximize():
+        actions.user.vscode("workbench.action.maximizeEditor")
+
+    def split_reset():
+        actions.user.vscode("workbench.action.evenEditorWidths")
 
     def split_last():
         actions.user.vscode("workbench.action.focusLeftGroup")
@@ -449,7 +455,7 @@ python_ctx = Context()
 python_ctx.matches = r"""
 app: vscode
 mode: user.python
-mode: user.auto_lang 
+mode: user.auto_lang
 and code.language: python
 """
 
@@ -464,7 +470,7 @@ typescript_ctx = Context()
 typescript_ctx.matches = r"""
 app: vscode
 mode: user.typescript
-mode: user.auto_lang 
+mode: user.auto_lang
 and code.language: typescript
 """
 

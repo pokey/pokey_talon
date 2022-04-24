@@ -1,5 +1,5 @@
 <user.letter>: key(letter)
-uppercase <user.letters> [(lowercase | sunk)]: 
+uppercase <user.letters> [(lowercase | sunk)]:
     user.insert_formatted(letters, "ALL_CAPS")
 <user.symbol_key>: key(symbol_key)
 <user.function_key>: key(function_key)

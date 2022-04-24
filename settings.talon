@@ -55,7 +55,7 @@ settings():
     user.context_sensitive_dictation = 1
 
     user.cursorless_settings_directory = "pokey_talon/cursorless-settings"
-	
+
 tag(): user.cursorless_experimental_snippets
 
 # Uncomment this to enable the curse yes/curse no commands (show hide mouse cursor). See issue #688.

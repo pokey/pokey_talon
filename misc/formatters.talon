@@ -16,7 +16,7 @@ phrase <user.text> {user.phrase_ender}:
 # getHaltStringNode
 # Also keep an eye out for the following cases when messing with these formatters:
 # getStringNode
-# mockPrePhraseGetVersion    
+# mockPrePhraseGetVersion
 <user.format_text>: user.insert_many(format_text_list)
 <user.format_text> halt: user.insert_many(format_text_list)
 strict <user.format_text>$: user.insert_many(format_text_list)

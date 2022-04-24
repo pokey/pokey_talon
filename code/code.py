@@ -28,6 +28,7 @@ language_extensions = {
     'markdown': 'md',
     # 'perl': 'pl',
     # 'powershell': 'ps1',
+    'protobuf': 'proto',
     'python': 'py ipynb',
     'r': 'r',
     # 'racket': 'rkt',

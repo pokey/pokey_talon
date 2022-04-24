@@ -12,7 +12,7 @@ os: mac
 @mod.action_class
 class Actions:
     def run_shortcut(name: str):
-        """Runs a shortcut on macOS"""        
+        """Runs a shortcut on macOS"""
         pass
 
 

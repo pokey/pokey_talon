@@ -27,7 +27,7 @@ window close: user.vscode("workbench.action.closeWindow")
 please [<user.text>]:
     user.vscode("workbench.action.showCommands")
     insert(user.text or "")
-    
+
 # Sidebar
 bar explore: user.vscode("workbench.view.explorer")
 bar extensions: user.vscode("workbench.view.extensions")
@@ -83,6 +83,10 @@ show settings:
     user.vscode("workbench.action.openGlobalSettings")
     sleep(250ms)
 show settings json: user.vscode("workbench.action.openSettingsJson")
+show settings folder: user.vscode("workbench.action.openFolderSettings")
+show settings folder json: user.vscode("workbench.action.openFolderSettingsFile")
+show settings workspace: user.vscode("workbench.action.openWorkspaceSettings")
+show settings workspace json: user.vscode("workbench.action.openWorkspaceSettingsFile")
 show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
 show shortcuts json: user.vscode("workbench.action.openGlobalKeybindingsFile")
 show snippets: user.vscode("workbench.action.openSnippets")
@@ -203,6 +207,7 @@ new sesh [<user.text>]:
     sleep(50ms)
     insert(text or "")
     sleep(250ms)
+go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 
 <user.show_list> win [<user.text>]:
     user.vscode("workbench.action.switchWindow")
@@ -277,11 +282,13 @@ git stash [<user.text>] [halt]:
 git commit undo: user.vscode("git.undoCommit")
 git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
+git fetch: user.vscode("git.fetch")
+git fetch all: user.vscode("git.fetchAll")
 git ignore: user.vscode("git.ignore")
 git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
 git pull: user.vscode("git.pullRebase")
-git push: 
+git push:
     sleep(100ms)
     user.vscode("git.push")
 git push focus: user.vscode("git.pushForce")
@@ -293,6 +300,7 @@ git stash pop: user.vscode("git.stashPop")
 git status: user.vscode("workbench.scm.focus")
 git stage: user.vscode("git.stage")
 git stage all: user.vscode("git.stageAll")
+git sync: user.vscode("git.sync")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git log: user.vscode("git-graph.view")
@@ -302,6 +310,8 @@ file open: user.vscode("gitlens.openWorkingFile")
 pull request: user.vscode("pr.create")
 file viewed: user.vscode("pr.markFileAsViewed")
 (open | show) pull request: user.vscode("pr.openPullRequestOnGitHub")
+# Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
+# action: https://code.visualstudio.com/api/references/when-clause-contexts
 change next: key(alt-f5)
 change last: key(shift-alt-f5)
 
@@ -324,7 +334,7 @@ debug start: user.vscode("workbench.action.debug.start")
 debug pause: user.vscode("workbench.action.debug.pause")
 debug stopper: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
-debug restart: 
+debug restart:
     user.vscode("workbench.action.debug.stop")
     user.vscode("workbench.action.debug.start")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
@@ -405,7 +415,7 @@ stage on:
 replace here:
     user.replace("")
     key(cmd-alt-l)
-    
+
 full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
@@ -500,14 +510,14 @@ cursorless local split:
 line edit: key(ctrl-q e)
 
 copy command: user.copy_command_id()
-copy command <number_small>: 
+copy command <number_small>:
     key("down:{number_small-1}")
     sleep(350ms)
     user.copy_command_id()
 
 aline that: user.vscode("rainbow-csv.Align")
 
-format doc: 
+format doc:
     user.vscode("editor.action.formatDocument")
     user.vscode("editor.action.organizeImports")
 
@@ -517,12 +527,12 @@ run python: user.vscode("python.execInTerminal")
 
 run tests: user.vscode("testing.runAll")
 
-foam note [<user.text>] [halt]: 
+foam note [<user.text>] [halt]:
     user.vscode("foam-vscode.create-note-from-default-template")
     sleep(100ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 
-foam note clip: 
+foam note clip:
     user.vscode("foam-vscode.create-note-from-default-template")
     sleep(100ms)
     edit.paste()

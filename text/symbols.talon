@@ -58,22 +58,22 @@ escaped curly:
     '\\{{\\}}'
     key(left)
     key(left)
-square: 
-	insert("[]") 
+square:
+	insert("[]")
 	key(left)
-curly: 
-	insert("{}") 
+curly:
+	insert("{}")
 	key(left)
-diamond: 
-	insert("<>") 
+diamond:
+	insert("<>")
 	key(left)
-(diamond | angle) that: 
+(diamond | angle) that:
     text = edit.selected_text()
     user.paste("<{text}>")
 (curly | lace) that:
     text = edit.selected_text()
     user.paste("{{{text}}}")
-(round | leper) that: 
+(round | leper) that:
     text = edit.selected_text()
     user.paste("({text})")
 (double | quad) that:
@@ -89,11 +89,11 @@ diamond:
 big round:
 	insert("()")
 	key(left enter)
-big square: 
-	insert("[]") 
+big square:
+	insert("[]")
 	key(left enter)
-big curly: 
-	insert("{}") 
+big curly:
+	insert("{}")
 	key(left enter)
 
 slicer:

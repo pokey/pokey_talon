@@ -5,7 +5,6 @@ ctx = Context()
 ctx.matches = r"""
 tag: user.typescript
 """
-# tbd
 
 mod.list("code_chain_function", "Function to use in a chain")
 
@@ -37,8 +36,6 @@ ctx.lists["user.code_functions"] = {
     "floor": "Math.floor",
     "print": "console.log",
     "values": "Object.values",
-    #     "integer": "int.TryParse",,
-    #     "string": ".ToString",
 }
 
 ctx.lists["user.code_type"] = {
