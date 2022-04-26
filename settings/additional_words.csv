@@ -1,73 +1,73 @@
 Word(s),Spoken Form (If Different)
-admin
-VPN
-DNS
-fontello
-git
-Github
-app
-vscode,van cake
-Pokey
-json,jason
-config
-meta
-Schwab
-lodash
-debounced
-debounce
-timeout
-fifo
-mkfifo,make fifo
-args
-arg
-node.js,no js
-enum,eenum
-todo,to do
-flashcard,flash card
-flashcards,flash cards
-pytorch,pie torch
-HSBC
-subword
-subwords
-nth,enth
-karabiner
-URL, U R L
-uri,you are I
-Gmail
-min
-cursorless
-cursorless, cursor list
-synology
 API,A P I
-infer
-null
-edit
-edits
-parser
-parsers
-matcher
-matchers
-node
-async
-nonce
-dir
-css
-svg
-html
+DNS
+Github
+Gmail
+HMRC
+HSBC
 PR
 PRs
-misrecognized
-knausj,mouse jay
-tuple
-util,you till
+Pokey
+Schwab
+URL, U R L
+VPN
+admin
+app
+arg
+args
+async
+cheatsheet
+config
+css
 csv
-dfa
-HMRC
-snippet
-delimiters
+cursorless
+cursorless, cursor list
+debounce
+debounced
 delimiter
-wiki
+delimiters
+dfa
+dir
+edit
+edits
+enum,eenum
+fifo
+flashcard,flash card
+flashcards,flash cards
+fontello
+git
+html
+infer
+json,jason
+karabiner
+knausj,mouse jay
+lodash
+matcher
+matchers
+meta
+min
+misrecognized
+mkfifo,make fifo
+node
+node.js,no js
+nonce
+nth,enth
+null
+parser
+parsers
+pytest,pi test
+pytorch,pie torch
+snippet
+subword
+subwords
+svg
+synology
+timeout
+todo,to do
+tuple
+uri,you are I
+util,you till
+vscode,van cake
 walkthrough
 walkthroughs
-pytest,pi test
-cheatsheet
+wiki
