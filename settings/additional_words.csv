@@ -28,6 +28,8 @@ delimiter
 delimiters
 dfa
 dir
+doc,dock
+docs,docks
 edit
 edits
 enum,eenum

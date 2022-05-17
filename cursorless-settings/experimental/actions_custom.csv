@@ -5,5 +5,5 @@ decrement, editor.emmet.action.decrementNumberByOne
 open, editor.action.openLink
 open link to, gitlens.openFileOnRemote
 copy link to, gitlens.copyRemoteFileUrlToClipboard
-eli wrap, editor.emmet.action.wrapWithAbbreviation
 accept, merge-conflict.accept.selection
+retag, editor.emmet.action.updateTag

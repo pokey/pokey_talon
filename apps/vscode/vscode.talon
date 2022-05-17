@@ -242,6 +242,11 @@ git branch this: user.vscode("git.branch")
     user.vscode("git.checkout")
     sleep(50ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
+branch make [<user.text>] [halt]:
+    user.vscode("git.checkout")
+    sleep(50ms)
+    'pokey/'
+    user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
 <user.teleport> branch {user.git_branch}:
     user.vscode("git.checkout")
     sleep(50ms)
@@ -279,6 +284,7 @@ git stash [<user.text>] [halt]:
     user.vscode("git.stash")
     sleep(100ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+git branches: user.vscode("gitlens.views.branches.focus")
 git commit undo: user.vscode("git.undoCommit")
 git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
@@ -306,6 +312,7 @@ git unstage all: user.vscode("git.unstageAll")
 git sync: user.vscode("git.sync")
 git log: user.vscode("git-graph.view")
 git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
+git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
 git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
 file open: user.vscode("gitlens.openWorkingFile")
 pull request: user.vscode("pr.create")
@@ -505,6 +512,11 @@ dock string <user.cursorless_target>:
     "/**"
     sleep(350ms)
     key(tab)
+
+eli wrap <user.cursorless_target>:
+    user.cursorless_command("setSelection", cursorless_target)
+    user.vscode("editor.emmet.action.wrapWithAbbreviation")
+    sleep(250ms)
 
 tag version:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
