@@ -1,10 +1,11 @@
-from typing import Optional
-from talon import Context, actions, ui, Module, app, clip
-from talon.experimental.locate import locate_hover
 import json
 import re
-from pathlib import Path
 from os.path import expanduser
+from pathlib import Path
+from typing import Optional
+
+from talon import Context, Module, actions, app, clip, ui
+from talon.experimental.locate import locate_hover
 
 is_mac = app.platform == "mac"
 
@@ -179,9 +180,9 @@ class Actions:
             expanduser("~/Library/Application Support/Code/User/settings.json")
         )
         original_settings = original_settings_path.read_text()
-        regex = re.compile(fr'^(\s*)"{setting_name}": .*[^,](,?)$', re.MULTILINE)
+        regex = re.compile(rf'^(\s*)"{setting_name}": .*[^,](,?)$', re.MULTILINE)
         new_settings = regex.sub(
-            fr'\1"{setting_name}": {json.dumps(setting_value)}\2', original_settings
+            rf'\1"{setting_name}": {json.dumps(setting_value)}\2', original_settings
         )
         original_settings_path.write_text(new_settings)
 
@@ -214,7 +215,17 @@ class Actions:
 
     def cursorless_record_navigation_test():
         """Run cursorless record navigation test"""
-        actions.user.vscode_with_plugin("cursorless.recordTestCase", {"isHatTokenMapTest": True})
+        actions.user.vscode_with_plugin(
+            "cursorless.recordTestCase", {"isHatTokenMapTest": True}
+        )
+
+    # From https://github.com/AndreasArvidsson/andreas-talon/blob/1f48ae59452004d2266aad908b301f93b262f875/apps/vscode/vscode.py#L382-L387
+    def vscode_add_missing_imports():
+        """Add all missing imports"""
+        actions.user.vscode_with_plugin(
+            "editor.action.sourceAction",
+            {"kind": "source.addMissingImports", "apply": "first"},
+        )
 
 
 @mac_ctx.action_class("user")
@@ -320,7 +331,9 @@ class UserActions:
     def tab_jump(number: int):
         if number < 10:
             if is_mac:
-                actions.user.vscode_with_plugin(f"workbench.action.openEditorAtIndex{number}")
+                actions.user.vscode_with_plugin(
+                    f"workbench.action.openEditorAtIndex{number}"
+                )
             else:
                 actions.key("alt-{}".format(number))
 

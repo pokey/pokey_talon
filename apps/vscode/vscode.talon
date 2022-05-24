@@ -555,3 +555,13 @@ foam note clip:
     user.vscode("foam-vscode.create-note-from-default-template")
     sleep(100ms)
     edit.paste()
+
+
+# Imports
+# from https://github.com/AndreasArvidsson/andreas-talon/blob/a098969bd6b35f5ed0fc99805aa529efc08569a2/apps/vscode/vscode.talon#L25-L31
+imports organize:        user.vscode("editor.action.organizeImports")
+imports add:             user.vscode_add_missing_imports()
+imports fix:
+    user.vscode_add_missing_imports()
+    sleep(0.1)
+    user.vscode("editor.action.organizeImports")
