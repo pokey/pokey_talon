@@ -124,9 +124,6 @@ file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
     user.insert_many(format_text_list or "")
     user.insert_formatted(user.word or "", "NOOP")
     insert(file_extension or "")
-file clone:
-    user.vscode("fileutils.duplicateFile")
-    sleep(150ms)
 file create: user.vscode("workbench.action.files.newUntitledFile")
 file rename:
     user.vscode("fileutils.renameFile")
@@ -134,6 +131,10 @@ file rename:
 file move:
     user.vscode("fileutils.moveFile")
     sleep(150ms)
+file clone:
+	user.vscode("fileutils.duplicateFile")
+	sleep(150ms)
+file delete: user.vscode("fileutils.removeFile")
 file open folder: user.vscode("revealFileInOS")
 file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
 disk ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
@@ -227,6 +228,11 @@ toggle mark: user.vscode("bookmarks.toggle")
 <user.teleport> next mark: user.vscode("bookmarks.jumpToNext")
 <user.teleport> last mark: user.vscode("bookmarks.jumpToPrevious")
 
+close other tabs: user.vscode("workbench.action.closeOtherEditors")
+close all tabs: user.vscode("workbench.action.closeAllEditors")
+close tabs way right: user.vscode("workbench.action.closeEditorsToTheRight")
+close tabs way left: user.vscode("workbench.action.closeEditorsToTheLeft")
+
 # Folding
 # fold that: user.vscode("editor.fold")
 # unfold that: user.vscode("editor.unfold")
@@ -235,6 +241,13 @@ unfold those: user.vscode("editor.unfoldRecursively")
 fold all: user.vscode("editor.foldAll")
 unfold all: user.vscode("editor.unfoldAll")
 fold comments: user.vscode("editor.foldAllBlockComments")
+fold one: user.vscode("editor.foldLevel1")
+fold two: user.vscode("editor.foldLevel2")
+fold three: user.vscode("editor.foldLevel3")
+fold four: user.vscode("editor.foldLevel4")
+fold five: user.vscode("editor.foldLevel5")
+fold six: user.vscode("editor.foldLevel6")
+fold seven: user.vscode("editor.foldLevel7")
 
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 git branch: user.vscode("git.branchFrom")
@@ -428,6 +441,9 @@ stage on:
     key(down:100)
     sleep(100ms)
     key(enter)
+#breadcrumb
+select breadcrumb: user.vscode('breadcrumbs.focusAndSelect')
+# Use `alt-left` and `alt-right` to navigate the bread crumb
 
 replace here:
     user.replace("")
@@ -480,7 +496,6 @@ draft discard:
 dev tools: user.vscode("workbench.action.toggleDevTools")
 show in finder: user.vscode("revealFileInOS")
 
-file delete: user.vscode("fileutils.removeFile")
 next: user.vscode("jumpToNextSnippetPlaceholder")
 snip last: user.vscode("jumpToPrevSnippetPlaceholder")
 skip:
