@@ -1,8 +1,9 @@
-from talon import Module, Context, actions, ui, imgui, app
-from talon.grammar import Phrase
-from typing import List, Union
 import logging
 import re
+from typing import List, Union
+
+from talon import Context, Module, actions, app, imgui, ui
+from talon.grammar import Phrase
 
 ctx = Context()
 key = actions.key
@@ -264,7 +265,7 @@ class Actions:
 
 def unformat_text(text: str) -> str:
     """Remove format from text"""
-    unformatted = re.sub(r"[^\w]+", " ", text)
+    unformatted = re.sub(r"[\W_]+", " ", text)
     # Split on camelCase, including numbers
     # FIXME: handle non-ASCII letters!
     unformatted = re.sub(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-zA-Z])(?=[0-9])|(?<=[0-9])(?=[a-zA-Z])", " ", unformatted)
@@ -282,7 +283,6 @@ mod.list("phrase_ender", desc="list of commands that can be used to end a phrase
 ctx.lists["self.phrase_ender"] = {
     "void": "space",
     "clap": "enter",
-    "coal gap": ": space",
     "spam": ", space",
     "halt": "space:0",
 }

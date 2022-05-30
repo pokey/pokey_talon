@@ -34,7 +34,7 @@ bar extensions: user.vscode("workbench.view.extensions")
 bar outline: user.vscode("outline.focus")
 bar run: user.vscode("workbench.view.debug")
 bar source: user.vscode("workbench.view.scm")
-bar pull request: user.vscode("pr:github.focus")
+bar pull wreck: user.vscode("pr:github.focus")
 bar test: user.vscode("workbench.view.testing.focus")
 side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
@@ -138,8 +138,9 @@ file open folder: user.vscode("revealFileInOS")
 file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
 disk ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
-    key(esc:5)
     edit.save()
+    sleep(100ms)
+    user.vscode("hideSuggestWidget")
 disclose:
     key(esc:5)
     edit.save()
@@ -315,9 +316,10 @@ git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend
 git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
 git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
 file open: user.vscode("gitlens.openWorkingFile")
-pull request: user.vscode("pr.create")
+pull wreck make: user.vscode("pr.create")
+pull wreck show: user.vscode("prStatus:github.focus")
 file viewed: user.vscode("pr.markFileAsViewed")
-(open | show) pull request: user.vscode("pr.openPullRequestOnGitHub")
+pull wreck web: user.vscode("pr.openPullRequestOnGitHub")
 # Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
 # action: https://code.visualstudio.com/api/references/when-clause-contexts
 change next: key(alt-f5)
@@ -327,6 +329,7 @@ accept incoming: user.vscode("merge-conflict.accept.incoming")
 accept both: user.vscode("merge-conflict.accept.both")
 accept current: user.vscode("merge-conflict.accept.current")
 accept all current: user.vscode("merge-conflict.accept.all-current")
+accept all incoming: user.vscode("merge-conflict.accept.all-incoming")
 conflict next: user.vscode("merge-conflict.next")
 
 # Run this command after you run a git command on a multi route workspace and it
@@ -518,13 +521,13 @@ eli wrap <user.cursorless_target>:
     user.vscode("editor.emmet.action.wrapWithAbbreviation")
     sleep(250ms)
 
-tag version:
+^tag version$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
-install local:
+^install local$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
-extension publish:
+^extension publish$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
-cursorless local split:
+^cursorless local split$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
 line edit: key(ctrl-q e)
 

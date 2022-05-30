@@ -7,3 +7,5 @@ open link to, gitlens.openFileOnRemote
 copy link to, gitlens.copyRemoteFileUrlToClipboard
 accept, merge-conflict.accept.selection
 retag, editor.emmet.action.updateTag
+git revert, git.revertSelectedRanges
+add comment to, workbench.action.addComment
