@@ -1,4 +1,4 @@
-from talon import Module, Context, actions, app
+from talon import Module, actions
 
 mod = Module()
 
@@ -7,7 +7,6 @@ mod = Module()
 class Actions:
     def dental_click():
         """Responds to an alveolar click"""
-        pass
         # app.notify("Dental click")
 
     def postalveolar_click():

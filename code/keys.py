@@ -1,7 +1,4 @@
-from typing import Set
-from .terms import DELETE
-
-from talon import Module, Context, actions, app
+from talon import Context, Module, actions, app
 
 default_alphabet = "air bat cap drum each fine gust harp ink jane kick look made near oats pit quench risk spun trap urge vest whale plex york zip".split(
     " "
@@ -262,7 +259,7 @@ class Actions:
     def move_cursor(s: str):
         """Given a sequence of directions, eg. 'left left up', moves the cursor accordingly using edit.{left,right,up,down}."""
         for d in s.split():
-            if d in ('left','right','up','down'):
+            if d in ("left", "right", "up", "down"):
                 getattr(actions.edit, d)()
             else:
-                raise RuntimeError(f'invalid arrow key: {d}')
+                raise RuntimeError(f"invalid arrow key: {d}")

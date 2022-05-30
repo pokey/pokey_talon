@@ -1,5 +1,4 @@
-import time
-from talon import Context, Module, actions, clip, ui
+from talon import Context, Module, actions, clip
 
 # import re
 

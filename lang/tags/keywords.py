@@ -7,9 +7,7 @@ mod.tag("code_keywords", desc="Tag for enabling commands for keywords")
 mod.list("code_keyword", desc="List of keywords for active language")
 
 
-@mod.capture(
-    rule=("{user.code_keyword}")
-)
+@mod.capture(rule=("{user.code_keyword}"))
 def code_keyword(m) -> str:
     return str(m)
 

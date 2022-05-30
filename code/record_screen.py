@@ -6,7 +6,6 @@ from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable, Optional
-from talon.ui import UIErr
 
 import yaml
 from talon import (
@@ -22,8 +21,7 @@ from talon import (
     ui,
 )
 from talon.canvas import Canvas
-
-from ..apps.vscode.command_client.command_client import TimeoutError
+from talon.ui import UIErr
 
 CALIBRATION_DISPLAY_BACKGROUND_COLOR = "#1b0026"
 CALIBRATION_DISPLAY_DURATION = "30ms"
@@ -214,15 +212,12 @@ class Actions:
 
     def maybe_capture_phrase(j: Any):
         """Possibly capture a phrase; does nothing unless screen recording is active"""
-        pass
 
     def maybe_capture_post_phrase(j: Any):
         """Possibly capture a phrase; does nothing unless screen recording is active"""
-        pass
 
     def take_snapshot(path: str, metadata: Any, decorated_marks: list[dict]):
         """Take a snapshot of the current app state"""
-        pass
 
 
 def check_and_log_talon_subdirs():

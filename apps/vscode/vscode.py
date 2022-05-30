@@ -2,10 +2,8 @@ import json
 import re
 from os.path import expanduser
 from pathlib import Path
-from typing import Optional
 
-from talon import Context, Module, actions, app, clip, ui
-from talon.experimental.locate import locate_hover
+from talon import Context, Module, actions, app, clip
 
 is_mac = app.platform == "mac"
 
@@ -196,7 +194,6 @@ class Actions:
 
     def vscode_language_id() -> str:
         """Returns the vscode language id of the current programming language"""
-        pass
 
     def copy_command_id():
         """Copy the command id of the focused menu item"""
@@ -335,7 +332,7 @@ class UserActions:
                     f"workbench.action.openEditorAtIndex{number}"
                 )
             else:
-                actions.key("alt-{}".format(number))
+                actions.key(f"alt-{number}")
 
     def tab_final():
         if is_mac:
@@ -348,9 +345,9 @@ class UserActions:
         """Navigates to a the specified split"""
         if index < 9:
             if is_mac:
-                actions.key("cmd-{}".format(index))
+                actions.key(f"cmd-{index}")
             else:
-                actions.key("ctrl-{}".format(index))
+                actions.key(f"ctrl-{index}")
 
     # splits.py support end
 

@@ -1,7 +1,7 @@
 # Based on https://github.com/phillco/knausj_talon/blob/7b1703ba293b3eb4c3976d16946d28f363034488/phil/history_file.py
 import re
 
-from talon import app, Module
+from talon import Module, app
 from talon_init import TALON_HOME
 
 # ==============================================================================
@@ -51,7 +51,7 @@ def attempt_match_rule(file_path: str, grammar: str):
     from the .talon file.
     """
     path = TALON_HOME / file_path
-    with open(path, "r") as f:
+    with open(path) as f:
         lines = f.readlines()
 
     # The grammar from sim() has most of it; we need to match the optional white space,

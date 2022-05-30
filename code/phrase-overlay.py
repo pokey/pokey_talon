@@ -1,6 +1,6 @@
 # From splondike
+from talon import Module, actions, canvas, cron, ctrl, scope
 from talon.scripting import global_speech_system
-from talon import actions, canvas, ui, ctrl, cron, Module, scope
 from talon.types import Rect
 
 mod = Module()

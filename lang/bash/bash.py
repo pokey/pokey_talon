@@ -1,4 +1,4 @@
-from talon import Module, Context, actions, ui, imgui, settings
+from talon import Context, Module, actions
 
 mod = Module()
 ctx = Context()
@@ -9,14 +9,19 @@ and code.language: bash
 """
 # tbd
 
-mod.list("quick_shell_command", "Shell commands that should run immediately rather than leaving the command line there to edit")
+mod.list(
+    "quick_shell_command",
+    "Shell commands that should run immediately rather than leaving the command line there to edit",
+)
 
 ctx.lists["user.quick_shell_command"] = {
     "katy up": "cd .. && pwd",
     "printer": "pwd",
 }
 
-mod.list("commitish", "Something that can be recursively dereferenced to a commit object")
+mod.list(
+    "commitish", "Something that can be recursively dereferenced to a commit object"
+)
 
 ctx.lists["user.commitish"] = {
     "last": "head~",

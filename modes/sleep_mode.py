@@ -1,4 +1,4 @@
-from talon import Module, Context, actions
+from talon import Context, Module, actions
 
 mod = Module()
 
@@ -14,11 +14,9 @@ wake_ctx = Context()
 class Actions:
     def maybe_hide_history():
         """Hides history if mode wants it"""
-        pass
 
     def maybe_show_history():
         """Shows history if mode wants it"""
-        pass
 
     def sleep_all():
         """Sleeps talon and hides everything"""

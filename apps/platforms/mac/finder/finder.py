@@ -1,8 +1,8 @@
-from talon import Context, Module, actions, imgui, settings, ui
+import os
+
+from talon import Context, Module, actions, ui
 from talon.experimental.locate import locate
 from talon.mac import applescript
-
-import os
 
 mod = Module()
 ctx = Context()
@@ -13,14 +13,17 @@ directories_to_remap = {"": "/Volumes"}
 directories_to_exclude = {}
 
 
-@ctx.action_class('user')
+@ctx.action_class("user")
 class UserActions:
     def file_manager_open_parent():
-        actions.key('cmd-up')
+        actions.key("cmd-up")
+
     def file_manager_go_forward():
-        actions.key('cmd-]')
+        actions.key("cmd-]")
+
     def file_manager_go_back():
-        actions.key('cmd-[')
+        actions.key("cmd-[")
+
     def file_manager_current_path():
         title = ui.active_window().title
 

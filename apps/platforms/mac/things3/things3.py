@@ -1,10 +1,11 @@
-from typing import Dict, Optional
-import webbrowser
-from talon import ctrl, ui, Module, Context, actions, clip, app
-from dataclasses import dataclass
-from things3.things3 import Things3
-import io
 import csv
+import io
+import webbrowser
+from dataclasses import dataclass
+from typing import Optional
+
+from talon import Context, Module, actions, app
+from things3.things3 import Things3
 
 ctx = Context()
 mod = Module()
@@ -48,7 +49,7 @@ projects = [
     for raw_project in raw_areas + raw_projects
 ]
 
-tag_map: Dict[str, Tag] = {tag.uuid: tag for tag in tags}
+tag_map: dict[str, Tag] = {tag.uuid: tag for tag in tags}
 project_map = {project.uuid: project for project in projects}
 
 

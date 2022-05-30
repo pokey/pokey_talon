@@ -1,3 +1,3 @@
-from talon import app, actions
+from talon import actions, app
 
 app.register("launch", lambda: actions.speech.disable())

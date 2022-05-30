@@ -2,8 +2,9 @@
 This file is a hack. For some reason settings watching doesn't work if I don't
 have this file here.
 """
-from talon import fs, app
 import pathlib
+
+from talon import app, fs
 
 root = pathlib.Path(__file__).parent.parent.resolve()
 
