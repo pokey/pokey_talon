@@ -27,16 +27,16 @@ settings():
 
 is loose equal: " == "
 is not loose equal: " != "
-<user.operator> null coal: " ?? "
-
-chain {user.code_chain_function}:
-    user.insert_between(".{code_chain_function}(", ")")
+<user.operator> null else: " ?? "
 
 <user.operator> quote var:
   insert("${}")
   key(left)
 
 <user.operator> spread: "..."
+
+<user.operator> {user.code_common_member_function}:
+    user.insert_between(".{code_common_member_function}(", ")")
 
 from import:
     user.insert_between(' from  "', '"')
