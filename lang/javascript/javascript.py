@@ -46,6 +46,7 @@ ctx.lists["user.code_common_member_function"] = {
 
 ctx.lists["user.code_keyword"] = {
     "a sink": "async ",
+    "abstract": "abstract ",
     "await": "await ",
     "break": "break",
     "class": "class ",
@@ -55,7 +56,9 @@ ctx.lists["user.code_keyword"] = {
     "export": "export ",
     "false": "false",
     "function": "function ",
+    "get": "get ",
     "import": "import ",
+    "instance of": " instanceof ",
     "let": "let ",
     "new": "new ",
     "null": "null",
@@ -190,10 +193,10 @@ class UserActions:
         actions.auto_insert(" %= ")
 
     def code_operator_equal():
-        actions.auto_insert(" == ")
+        actions.auto_insert(" === ")
 
     def code_operator_not_equal():
-        actions.auto_insert(" != ")
+        actions.auto_insert(" !== ")
 
     def code_operator_greater_than():
         actions.auto_insert(" > ")

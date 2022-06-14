@@ -211,9 +211,21 @@ class Actions:
         actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
 
     def cursorless_record_navigation_test():
-        """Run cursorless record navigation test"""
+        """Run cursorless Record navigation test"""
         actions.user.vscode_with_plugin(
             "cursorless.recordTestCase", {"isHatTokenMapTest": True}
+        )
+
+    def cursorless_record_error_test():
+        """Record cursorless record error test"""
+        actions.user.vscode_with_plugin(
+            "cursorless.recordTestCase", {"recordErrors": True}
+        )
+
+    def cursorless_record_highlights_test():
+        """Record cursorless record error test"""
+        actions.user.vscode_with_plugin(
+            "cursorless.recordTestCase", {"isDecorationsTest": True}
         )
 
     # From https://github.com/AndreasArvidsson/andreas-talon/blob/1f48ae59452004d2266aad908b301f93b262f875/apps/vscode/vscode.py#L382-L387

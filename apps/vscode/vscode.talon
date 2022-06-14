@@ -116,31 +116,31 @@ zen mode:
     key(enter)
     sleep(150ms)
 <user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
-file copy path: user.vscode("copyFilePath")
-file copy relative: user.vscode("copyRelativeFilePath")
-file create sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
+dock copy path: user.vscode("copyFilePath")
+dock copy relative: user.vscode("copyRelativeFilePath")
+dock make sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
     user.vscode_and_wait("explorer.newFile")
     sleep(500ms)
     user.insert_many(format_text_list or "")
     user.insert_formatted(user.word or "", "NOOP")
     insert(file_extension or "")
-file create: user.vscode("workbench.action.files.newUntitledFile")
-file rename:
+dock make: user.vscode("workbench.action.files.newUntitledFile")
+dock rename:
     user.vscode("fileutils.renameFile")
     sleep(150ms)
-file move:
+dock move:
     user.vscode("fileutils.moveFile")
     sleep(150ms)
-file clone:
+dock clone:
 	user.vscode("fileutils.duplicateFile")
 	sleep(150ms)
-file delete: user.vscode("fileutils.removeFile")
-file open folder: user.vscode("revealFileInOS")
-file reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
+dock delete: user.vscode("fileutils.removeFile")
+dock open folder: user.vscode("revealFileInOS")
+dock reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
 disk ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
     edit.save()
-    sleep(100ms)
+    sleep(150ms)
     user.vscode("hideSuggestWidget")
 disclose:
     key(esc:5)
@@ -300,7 +300,6 @@ git stash [<user.text>] [halt]:
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git branches: user.vscode("gitlens.views.branches.focus")
 git commit undo: user.vscode("git.undoCommit")
-git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
 git fetch: user.vscode("git.fetch")
 git fetch all: user.vscode("git.fetchAll")
@@ -328,10 +327,11 @@ git log: user.vscode("git-graph.view")
 git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
 git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
 git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
-file open: user.vscode("gitlens.openWorkingFile")
+git update main: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git update main")
+dock open: user.vscode("gitlens.openWorkingFile")
 pull wreck make: user.vscode("pr.create")
 pull wreck show: user.vscode("prStatus:github.focus")
-file viewed: user.vscode("pr.markFileAsViewed")
+dock viewed: user.vscode("pr.markFileAsViewed")
 pull wreck web: user.vscode("pr.openPullRequestOnGitHub")
 # Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
 # action: https://code.visualstudio.com/api/references/when-clause-contexts
@@ -481,7 +481,7 @@ make executable: user.vscode("chmod.plusX")
 
 add dock string: user.vscode("autoDocstring.generateDocstring")
 
-issue create [<user.text>]$:
+issue make [<user.text>]$:
     user.vscode("issue.createIssue")
     sleep(250ms)
     edit.delete_line()
@@ -505,15 +505,17 @@ previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
 cursorless record: user.vscode("cursorless.recordTestCase")
 cursorless record navigation: user.cursorless_record_navigation_test()
+cursorless record error: user.cursorless_record_error_test()
+cursorless record highlights: user.cursorless_record_highlights_test()
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 
 line numbers on: user.change_setting("editor.lineNumbers", "on")
 line numbers off: user.change_setting("editor.lineNumbers", "off")
 
-han solo: user.vscode("workbench.action.closeEditorsInOtherGroups")
+han solo: user.vscode("workbench.action.joinAllGroups")
 
-break line: user.vscode("rewrap.rewrapComment")
+reflow: user.vscode("rewrap.rewrapComment")
 
 mode {user.language_id}: user.vscode_with_plugin("commands.setEditorLanguage", language_id)
 
@@ -540,10 +542,14 @@ eli wrap <user.cursorless_target>:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
 ^install local$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
+^install sandbox$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Install into cursorless sandbox")
 ^extension publish$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
 ^cursorless local split$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
+^pre commit run$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Run pre commit")
 line edit: key(ctrl-q e)
 
 copy command: user.copy_command_id()
@@ -580,6 +586,9 @@ foam note clip:
 imports organize:        user.vscode("editor.action.organizeImports")
 imports add:             user.vscode_add_missing_imports()
 imports fix:
+    sleep(0.1)
     user.vscode_add_missing_imports()
     sleep(0.1)
     user.vscode("editor.action.organizeImports")
+
+search again: user.vscode("rerunSearchEditorSearch")

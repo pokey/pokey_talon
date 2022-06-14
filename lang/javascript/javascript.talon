@@ -27,7 +27,7 @@ settings():
 
 is loose equal: " == "
 is not loose equal: " != "
-<user.operator> null else: " ?? "
+<user.operator> nullish: " ?? "
 
 <user.operator> quote var:
   insert("${}")
@@ -35,7 +35,7 @@ is not loose equal: " != "
 
 <user.operator> spread: "..."
 
-<user.operator> {user.code_common_member_function}:
+chain {user.code_common_member_function}:
     user.insert_between(".{code_common_member_function}(", ")")
 
 from import:

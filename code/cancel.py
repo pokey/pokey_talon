@@ -3,7 +3,7 @@
 from talon import actions, speech_system
 
 # To change the phrase used to cancel commands, you must also adjust misc/cancel.talon
-cancel_phrase = "cancel cancel".split()
+cancel_phrase = ["cancel"]
 
 
 def pre_phrase(d):

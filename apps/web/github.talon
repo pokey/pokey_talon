@@ -35,7 +35,7 @@ blame view open: key(b)
 (show|hide) annotations: key(a)
 
 # issues
-(issue create | create [an] issue): key(c)
+(issue make | create [an] issue): key(c)
 search (issues|[pull] requests): key(/)
 (filter by|edit) labels: key(l)
 (filter by|edit) milestones: key(m)
@@ -56,7 +56,7 @@ mark as read: key(y)
 
 # issue or pull request list
 (issue open | open issue): key(o)
-(issue create | create issue): key(c)
+(issue make | create issue): key(c)
 
 # issues and pull requests
 reviewer request: key(q)

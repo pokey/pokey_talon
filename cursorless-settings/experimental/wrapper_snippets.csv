@@ -22,3 +22,4 @@ on ready, talonOnReady.body
 use effect, useEffect.body
 div, div.body
 turn, ternaryExpression.value
+turn else, ternaryExpression.alternative
