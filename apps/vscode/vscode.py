@@ -510,4 +510,5 @@ ctx.lists["user.language_id"] = {
     "text": "plaintext",
     "bash": "bash",
     "markdown": "markdown",
+    "rust": "rust",
 }
