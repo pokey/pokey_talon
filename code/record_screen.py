@@ -167,7 +167,7 @@ class Actions:
             },
         )
 
-        user_dir: Path = actions.path.talon_user()
+        user_dir: Path = Path(actions.path.talon_user())
 
         log_object(
             {
@@ -221,7 +221,7 @@ class Actions:
 
 
 def check_and_log_talon_subdirs():
-    for directory in actions.path.talon_user().iterdir():
+    for directory in Path(actions.path.talon_user()).iterdir():
         if not directory.is_dir():
             continue
 
