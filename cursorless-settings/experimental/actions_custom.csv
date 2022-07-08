@@ -1,15 +1,1 @@
 Spoken form, VSCode command
-join, editor.action.joinLines
-increment, editor.emmet.action.incrementNumberByOne
-decrement, editor.emmet.action.decrementNumberByOne
-open, editor.action.openLink
-open link to, gitlens.openFileOnRemote
-copy link to, gitlens.copyRemoteFileUrlToClipboard
-copy markdown link to, issue.copyMarkdownGithubPermalink
-accept, merge-conflict.accept.selection
-accept both, merge-conflict.accept.both
-retag, editor.emmet.action.updateTag
-git revert, git.revertSelectedRanges
-git stage, git.stageSelectedRanges
-add comment to, workbench.action.addComment
-reflow, rewrap.rewrapComment

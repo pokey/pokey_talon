@@ -1,18 +1,4 @@
 Spoken form, Cursorless identifier
-else, elseStatement
-elsif, elseIfStatement
-if else, ifElseStatement
 if, ifStatement
-in it, constructor
-map, map
+if else, ifElseStatement
 try, tryCatchStatement
-with, withStatement
-switch, switchStatement
-case, caseStatement
-while, whileStatement
-on ready, talonOnReady
-full context, talonContextFile
-shebang, shebang
-else if, elseIf
-use effect, useEffect
-turn, ternaryExpression

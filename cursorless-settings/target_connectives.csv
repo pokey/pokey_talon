@@ -1,11 +1,8 @@
 Spoken form, Cursorless identifier
-skip past, rangeExcludingStart
+-, rangeExcludingStart
 and, listConnective
 between, rangeExclusive
 past, rangeInclusive
+to, sourceDestinationConnective
 until, rangeExcludingEnd
 with, swapConnective
-
-
-# 2022-06-25 11:59:07 - New entries automatically added by cursorless
-to, sourceDestinationConnective

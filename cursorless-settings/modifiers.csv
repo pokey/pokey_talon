@@ -1,18 +1,9 @@
 Spoken form, Cursorless identifier
-core, interiorOnly
-bounding, excludeInterior
-
-# 2021-12-06 21:19:18 - New entries automatically added by cursorless
+bounds, excludeInterior
 head, extendThroughStartOf
-tail, extendThroughEndOf
-
-# 2021-12-10 17:25:40 - New entries automatically added by cursorless
-slice, verticalRange
-
-# 2021-12-16 15:38:44 - New entries automatically added by cursorless
+inside, interiorOnly
 just, toRawSelection
-
-
-# 2022-06-02 13:13:53 - New entries automatically added by cursorless
 leading, leading
+slice, verticalRange
+tail, extendThroughEndOf
 trailing, trailing
