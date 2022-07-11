@@ -1,27 +1,40 @@
 Spoken form, Cursorless identifier
+-five section, sectionLevelFive
+-four section, sectionLevelFour
+-one section, sectionLevelOne
+-six section, sectionLevelSix
+-three section, sectionLevelThree
+-two section, sectionLevelTwo
 argue, argumentOrParameter
 at her, attribute
 block, paragraph
 call, functionCall
-cell, notebookCell
+callee, functionCallee
 car, character
-class, class
+cell, notebookCell
 class name, className
+class, class
 comment, comment
+condition, condition
 eli, xmlElement
 end tag, xmlEndTag
 file, document
-funk, namedFunction
 funk name, functionName
+funk, namedFunction
 if state, ifStatement
 item, collectionItem
 key, collectionKey
 lambda, anonymousFunction
 line, line
+link, url
 list, list
 map, map
 name, name
+paint, nonWhitespaceSequence
 regex, regularExpression
+section, section
+selector, selector
+short paint, boundedNonWhitespaceSequence
 start tag, xmlStartTag
 state, statement
 string, string
@@ -30,32 +43,3 @@ token, token
 type, type
 value, value
 word, word
-
-# 2021-12-06 21:19:17 - New entries automatically added by cursorless
-condition, condition
-
-# 2022-01-20 19:14:29 - New entries automatically added by cursorless
-paint, nonWhitespaceSequence
-
-# 2022-02-13 14:52:28 - New entries automatically added by cursorless
-link, url
-
-# 2022-03-16 15:06:37 - New entries automatically added by cursorless
--five section, sectionLevelFive
--four section, sectionLevelFour
--one section, sectionLevelOne
--six section, sectionLevelSix
--three section, sectionLevelThree
--two section, sectionLevelTwo
-section, section
-
-# 2022-04-20 20:33:14 - New entries automatically added by cursorless
-selector, selector
-
-
-# 2022-06-22 16:04:50 - New entries automatically added by cursorless
-callee, functionCallee
-
-
-# 2022-06-28 18:47:06 - New entries automatically added by cursorless
-short paint, boundedNonWhitespaceSequence
