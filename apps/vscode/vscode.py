@@ -207,7 +207,7 @@ class Actions:
     def git_commit(text: str):
         """Git commit"""
         actions.user.vscode("git.commitStaged")
-        actions.sleep("250ms")
+        actions.sleep("350ms")
         actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
 
     def cursorless_record_navigation_test():

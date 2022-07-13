@@ -28,13 +28,13 @@ lambda, anonymousFunction
 line, line
 link, url
 list, list
+long paint, nonWhitespaceSequence
 map, map
 name, name
-paint, nonWhitespaceSequence
+paint, boundedNonWhitespaceSequence
 regex, regularExpression
 section, section
 selector, selector
-short paint, boundedNonWhitespaceSequence
 start tag, xmlStartTag
 state, statement
 string, string

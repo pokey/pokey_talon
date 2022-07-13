@@ -116,6 +116,9 @@ zen mode:
     key(enter)
     sleep(150ms)
 <user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
+<user.teleport> alter: user.vscode("alternate.alternateFile")
+make alter: user.vscode("alternate.createAlternateFile")
+split alter: user.vscode("alternate.alternateFileInSplit")
 dock copy path: user.vscode("copyFilePath")
 dock copy relative: user.vscode("copyRelativeFilePath")
 dock make sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
@@ -145,6 +148,7 @@ disk:
 disclose:
     key(esc:5)
     edit.save()
+    sleep(150ms)
     key(cmd-w)
 disk gentle: edit.save()
 
