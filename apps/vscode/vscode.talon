@@ -331,6 +331,7 @@ git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend
 git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
 git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
 git update main: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git update main")
+git commit empty: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit empty")
 git continue: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
 dock open: user.vscode("gitlens.openWorkingFile")
 pull wreck make: user.vscode("pr.create")
