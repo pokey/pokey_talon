@@ -2,7 +2,7 @@ app: things3
 -
 tag(): user.todo_list
 
-new task: key(cmd-n)
+task make: key(cmd-n)
 <user.teleport> tag {user.things_tag}: user.show_tag(things_tag)
 <user.teleport> list {user.things_project}: user.show_things_list(things_project)
 
@@ -32,16 +32,16 @@ deadline <user.text>:
     insert(text)
     key(enter)
 
+deadline clear:
+    key(cmd-shift-d backspace enter)
+
 repeat this:
     key(cmd-shift-r)
 
-clear deadline:
-    key(cmd-shift-d backspace enter)
-
 filter [tag] <user.things_tags>: user.filter_by_tag(things_tags)
-clear filter: key(ctrl-escape)
+filter clear: key(ctrl-escape)
 
-add checklist: key(cmd-shift-c)
+checklist add: key(cmd-shift-c)
 
 drag [this] way up: key(cmd-alt-up)
 drag [this] way down: key(cmd-alt-down)
