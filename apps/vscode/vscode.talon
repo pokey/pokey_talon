@@ -515,6 +515,9 @@ cursorless record navigation: user.cursorless_record_navigation_test()
 cursorless record error: user.cursorless_record_error_test()
 cursorless record highlights: user.cursorless_record_highlights_test()
 
+cursorless update cheatsheet:
+    user.vscode_with_plugin("cursorless.internal.updateCheatsheetDefaults", user.cursorless_cheat_sheet_get_json())
+
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 
 line numbers on: user.change_setting("editor.lineNumbers", "on")
