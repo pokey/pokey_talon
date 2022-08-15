@@ -228,7 +228,6 @@ simple_keys = [
 alternate_keys = {
     "clap": "enter",
     "drill": "delete",
-    "chuck": "backspace",
     "scratch": "backspace",
     "scrape": "escape",
     "void": "space",

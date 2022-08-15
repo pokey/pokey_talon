@@ -34,7 +34,7 @@ bar extensions: user.vscode("workbench.view.extensions")
 bar outline: user.vscode("outline.focus")
 bar run: user.vscode("workbench.view.debug")
 bar source: user.vscode("workbench.view.scm")
-list pull wreck: user.vscode("pr:github.focus")
+list wreck: user.vscode("pr:github.focus")
 bar test: user.vscode("workbench.view.testing.focus")
 side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
@@ -334,10 +334,10 @@ git update main: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git 
 git commit empty: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit empty")
 git continue: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
 dock open: user.vscode("gitlens.openWorkingFile")
-pull wreck make: user.vscode("pr.create")
-pull wreck show: user.vscode("prStatus:github.focus")
+wreck make: user.vscode("pr.create")
+wreck show: user.vscode("prStatus:github.focus")
 dock viewed: user.vscode("pr.markFileAsViewed")
-pull wreck web: user.vscode("pr.openPullRequestOnGitHub")
+wreck web: user.vscode("pr.openPullRequestOnGitHub")
 # Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
 # action: https://code.visualstudio.com/api/references/when-clause-contexts
 change next: key(alt-f5)
@@ -543,7 +543,7 @@ dock string <user.cursorless_target>:
     sleep(350ms)
     key(tab)
 
-eli wrap <user.cursorless_target>:
+elm wrap <user.cursorless_target>:
     user.cursorless_command("setSelection", cursorless_target)
     user.vscode("editor.emmet.action.wrapWithAbbreviation")
     sleep(250ms)
@@ -560,6 +560,18 @@ eli wrap <user.cursorless_target>:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
 ^pre commit run$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Run pre commit")
+^tunnel start$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Start tunnel")
+^tunnel stop$:
+    user.vscode("workbench.action.tasks.terminate")
+    insert("Start tunnel")
+    key(enter)
+^serve start$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Serve cursorless.org")
+^serve stop$:
+    user.vscode("workbench.action.tasks.terminate")
+    insert("Serve")
+    key(enter)
 line edit: key(ctrl-q e)
 
 copy command: user.copy_command_id()
@@ -596,7 +608,7 @@ foam note clip:
 imports organize:        user.vscode("editor.action.organizeImports")
 imports add:             user.vscode_add_missing_imports()
 imports fix:
-    sleep(150ms)
+    sleep(250ms)
     user.vscode_add_missing_imports()
     sleep(0.1)
     user.vscode("editor.action.organizeImports")

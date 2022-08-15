@@ -25,13 +25,11 @@ portal [<phrase>]$:
     sleep(200ms)
     user.parse_phrase(phrase or "")
 coder [<phrase>]$:
-    user.desktop(2)
-    user.switcher_launch("/Applications/Visual Studio Code.app")
-    sleep(200ms)
+    user.switcher_focus("Code")
+    sleep(300ms)
     user.parse_phrase(phrase or "")
 tune talon [<phrase>]$:
-    user.desktop(2)
-    user.switcher_launch("/Applications/Visual Studio Code.app")
+    user.switcher_focus("Code")
     sleep(250ms)
     user.vscode("workbench.action.openRecent")
     sleep(50ms)

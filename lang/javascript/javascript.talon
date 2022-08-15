@@ -35,6 +35,7 @@ is not loose equal: " != "
 
 <user.operator> spread: "..."
 
+chain length: ".length"
 chain {user.code_common_member_function}:
     user.insert_between(".{code_common_member_function}(", ")")
 

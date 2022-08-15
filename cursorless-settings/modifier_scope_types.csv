@@ -6,7 +6,7 @@ Spoken form, Cursorless identifier
 -three section, sectionLevelThree
 -two section, sectionLevelTwo
 argue, argumentOrParameter
-at her, attribute
+tribute, attribute
 block, paragraph
 call, functionCall
 callee, functionCallee
@@ -16,7 +16,7 @@ class name, className
 class, class
 comment, comment
 condition, condition
-eli, xmlElement
+elm, xmlElement
 end tag, xmlEndTag
 file, document
 funk name, functionName
