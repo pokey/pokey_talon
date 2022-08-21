@@ -1,9 +1,13 @@
-tag: user.recording_screen
+tag: user.wax_is_recording
 -
 settings():
-    # speech._subtitles = 1
     user.talon_hud_environment = "recording_screen"
-record stop: user.record_screen_stop()
-record restart:
+
+^record stop$: user.record_screen_stop()
+
+^record restart$:
     user.record_screen_stop()
     user.record_screen_start()
+
+# Use this after a cool command; can search through logs for it later
+^nice one$: skip()

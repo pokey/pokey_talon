@@ -15,9 +15,6 @@ class Actions:
     def maybe_hide_history():
         """Hides history if mode wants it"""
 
-    def maybe_show_history():
-        """Shows history if mode wants it"""
-
     def sleep_all():
         """Sleeps talon and hides everything"""
         actions.user.switcher_hide_running()
@@ -34,7 +31,6 @@ class Actions:
         actions.sound.set_microphone("None")
         actions.sound.set_microphone(active_microphone)
         actions.user.mouse_wake()
-        actions.user.maybe_show_history()
         actions.user.talon_mode()
 
 
@@ -42,9 +38,6 @@ class Actions:
 class SleepUserActions:
     def postalveolar_click():
         actions.user.wake_all()
-
-    def maybe_show_history():
-        pass
 
 
 @wake_ctx.action_class("user")
