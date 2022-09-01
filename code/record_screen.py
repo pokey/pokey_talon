@@ -5,8 +5,14 @@ mod = Module()
 
 @mod.action_class
 class UserActions:
-    def record_screen_start(record_face: bool):
-        actions.user.wax_record_screen_start(
+    def start_recording(record_face: bool):
+        """
+        Start recording the screen
+
+        Args:
+            record_face (bool): Whether to also record the face using obs
+        """
+        actions.user.wax_start_recording(
             actions.user.get_cursorless_recorder(True),
             actions.user.get_quicktime_recorder(),
             actions.user.get_obs_recorder() if record_face else None,
@@ -20,15 +26,17 @@ class UserActions:
 
         actions.user.sleep_all()
 
-    def record_screen_start_light():
-        actions.user.wax_record_screen_start(
+    def start_recording_light():
+        """Start recording just cursorless"""
+        actions.user.wax_start_recording(
             actions.user.get_cursorless_recorder(False),
         )
 
         app.notify("Recording started")
 
-    def record_screen_stop():
-        actions.user.wax_record_screen_stop()
+    def stop_recording():
+        """Stop recording"""
+        actions.user.wax_stop_recording()
 
         # Restore cursorless decoration speed
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)

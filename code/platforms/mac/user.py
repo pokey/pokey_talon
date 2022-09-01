@@ -3,7 +3,6 @@ from talon import Context, Module
 
 mod = Module()
 
-
 ctx = Context()
 ctx.matches = r"""
 os: mac
