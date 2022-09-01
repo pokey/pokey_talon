@@ -43,3 +43,13 @@ token, token
 type, type
 value, value
 word, word
+
+
+# 2022-08-22 16:32:34 - New entries automatically added by cursorless
+chapter, chapter
+environment, environment
+paragraph, namedParagraph
+part, part
+subparagraph, subParagraph
+subsection, subSection
+subsubsection, subSubSection
