@@ -1,4 +1,4 @@
-from talon import Module, actions, app
+from talon import Module, actions, app, cron
 
 mod = Module()
 
@@ -21,10 +21,8 @@ class UserActions:
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
-        actions.sleep("2000ms")
-
         # Disable notifications
-        actions.user.run_shortcut("Turn Do Not Disturb On")
+        cron.after("2s", lambda: actions.user.run_shortcut("Turn Do Not Disturb On"))
 
         actions.user.sleep_all()
 
