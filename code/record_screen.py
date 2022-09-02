@@ -21,6 +21,8 @@ class UserActions:
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
+        actions.sleep("2000ms")
+
         # Disable notifications
         actions.user.run_shortcut("Turn Do Not Disturb On")
 
