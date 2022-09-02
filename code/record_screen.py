@@ -22,7 +22,7 @@ class UserActions:
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
         # Disable notifications
-        cron.after("2s", lambda: actions.user.run_shortcut("Turn Do Not Disturb On"))
+        # cron.after("2s", lambda: actions.user.run_shortcut("Turn Do Not Disturb On"))
 
         actions.user.sleep_all()
 
