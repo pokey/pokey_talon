@@ -13,9 +13,9 @@ class UserActions:
             record_face (bool): Whether to also record the face using obs
         """
         actions.user.wax_start_recording(
-            actions.user.get_cursorless_recorder(True),
-            actions.user.get_quicktime_recorder(),
-            actions.user.get_obs_recorder() if record_face else None,
+            actions.user.wax_cursorless_recorder(True),
+            actions.user.wax_quicktime_recorder(),
+            actions.user.wax_obs_recorder() if record_face else None,
         )
 
         # Slow down cursorless decorations
@@ -26,7 +26,7 @@ class UserActions:
     def start_recording_light():
         """Start recording just cursorless"""
         actions.user.wax_start_recording(
-            actions.user.get_cursorless_recorder(False),
+            actions.user.wax_cursorless_recorder(False),
         )
 
         app.notify("Recording started")
