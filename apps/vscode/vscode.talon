@@ -283,7 +283,8 @@ git rebase {user.git_branch}:
 git commit [<user.text>]$: user.git_commit(text or "")
 git commit <user.text> clap:
     user.git_commit(text or "")
-    key(enter)
+    edit.save()
+    app.tab_close()
     sleep(250ms)
 disk git commit [<user.text>]$:
     key(esc:5)
@@ -356,9 +357,10 @@ default repo:
     edit.select_all()
     edit.cut()
     key(enter)
-    sleep(250ms)
+    sleep(450ms)
     edit.paste()
-    key(enter)
+    edit.save()
+    app.tab_close()
 
 #Debugging
 break point: user.vscode("editor.debug.action.toggleBreakpoint")
