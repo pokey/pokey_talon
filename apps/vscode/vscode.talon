@@ -360,7 +360,8 @@ default repo:
     sleep(450ms)
     edit.paste()
     edit.save()
-    app.tab_close()
+    sleep(150ms)
+    key(cmd-w)
 
 #Debugging
 break point: user.vscode("editor.debug.action.toggleBreakpoint")
