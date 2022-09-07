@@ -1,7 +1,5 @@
 tag: user.wax_is_recording
 -
-settings():
-    user.talon_hud_environment = "recording_screen"
 
 ^record stop$: user.stop_recording()
 

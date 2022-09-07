@@ -1,6 +1,11 @@
-from talon import Module, actions, app
+from talon import Context, Module, actions, app
 
 mod = Module()
+mod.tag(
+    "recording_screen",
+    "Indicates that the screen is being recorded",
+)
+ctx = Context()
 
 
 @mod.action_class
@@ -18,6 +23,8 @@ class UserActions:
             actions.user.wax_obs_recorder() if record_face else None,
         )
 
+        ctx.tags = ["user.recording_screen"]
+
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
@@ -34,6 +41,8 @@ class UserActions:
     def stop_recording():
         """Stop recording"""
         actions.user.wax_stop_recording()
+
+        ctx.tags = []
 
         # Restore cursorless decoration speed
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 100)
