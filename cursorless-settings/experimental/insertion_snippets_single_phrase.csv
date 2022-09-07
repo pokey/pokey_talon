@@ -11,6 +11,7 @@ link, link.text
 lambda, lambdaExpression.parameters
 lambda block, lambdaBlock.parameters
 talon list, talonList.name
+talon tag, talonTag.name
 list comp, listComprehension.element
 data class, dataclass.name
 command, vscodeCommand.spokenForm
