@@ -203,3 +203,14 @@ def number_signed(m):
 )
 def number_small(m):
     return int(parse_number(list(m)))
+
+
+@mod.capture(rule="twice | thrice | <number_small> times")
+def repetition_count(m) -> int:
+    """Corresponds to a repetition count, eg 'twice', 'thrice', 'five times', etc"""
+    if m[0] == "twice":
+        return 2
+    elif m[0] == "thrice":
+        return 3
+    else:
+        return m["number_small"]
