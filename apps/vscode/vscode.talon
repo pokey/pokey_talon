@@ -107,6 +107,13 @@ zen mode:
     insert(text or "")
     insert(file_extension or "")
     sleep(300ms)
+<user.teleport> dock clip:
+    user.vscode("workbench.action.quickOpen")
+    sleep(400ms)
+    edit.paste()
+    sleep(300ms)
+    key(enter)
+    sleep(150ms)
 <user.teleport> dock <user.text> [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
     sleep(400ms)
@@ -524,6 +531,7 @@ cell next: user.vscode("list.focusDown")
 cell last: user.vscode("list.focusUp")
 run head notebook: user.vscode("jupyter.runallcellsabove.palette")
 run cell: user.vscode("notebook.cell.executeAndSelectBelow")
+run cell stay: user.vscode("notebook.cell.execute")
 run notebook: user.vscode("jupyter.runallcells")
 cell edit: user.vscode("notebook.cell.edit")
 cell last edit: user.vscode("notebook.focusPreviousEditor")
@@ -559,21 +567,22 @@ draft discard:
 dev tools: user.vscode("workbench.action.toggleDevTools")
 show in finder: user.vscode("revealFileInOS")
 
-next: user.vscode("jumpToNextSnippetPlaceholder")
+next: user.vscode_and_wait("jumpToNextSnippetPlaceholder")
 snip last: user.vscode("jumpToPrevSnippetPlaceholder")
 skip:
     key("backspace")
     user.vscode("jumpToNextSnippetPlaceholder")
 previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
-cursorless record: user.vscode("cursorless.recordTestCase")
-cursorless pause: user.vscode("cursorless.pauseRecording")
-cursorless resume: user.vscode("cursorless.resumeRecording")
-cursorless record navigation: user.cursorless_record_navigation_test()
-cursorless record error: user.cursorless_record_error_test()
-cursorless record highlights: user.cursorless_record_highlights_test()
+{user.cursorless_homophone} record: user.vscode("cursorless.recordTestCase")
+{user.cursorless_homophone} pause: user.vscode("cursorless.pauseRecording")
+{user.cursorless_homophone} resume: user.vscode("cursorless.resumeRecording")
+{user.cursorless_homophone} record navigation: user.cursorless_record_navigation_test()
+{user.cursorless_homophone} record error: user.cursorless_record_error_test()
+{user.cursorless_homophone} record highlights: user.cursorless_record_highlights_test()
+{user.cursorless_homophone} record that mark: user.cursorless_record_that_mark_test()
 
-cursorless update cheatsheet:
+{user.cursorless_homophone} update cheatsheet:
     user.vscode_with_plugin("cursorless.internal.updateCheatsheetDefaults", user.cursorless_cheat_sheet_get_json())
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
@@ -614,7 +623,7 @@ elm wrap <user.cursorless_target>:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install into cursorless sandbox")
 ^extension publish$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
-^cursorless local split$:
+^{user.cursorless_homophone} local split$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
 ^pre commit run$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Run pre commit")
@@ -666,7 +675,7 @@ foam note clip:
 imports organize:        user.vscode("editor.action.organizeImports")
 imports add:             user.vscode_add_missing_imports()
 imports fix:
-    sleep(250ms)
+    sleep(350ms)
     user.vscode_add_missing_imports()
     sleep(0.1)
     user.vscode("editor.action.organizeImports")

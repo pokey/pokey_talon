@@ -31,7 +31,7 @@ list, list
 long paint, nonWhitespaceSequence
 map, map
 name, name
-paint, boundedNonWhitespaceSequence
+short paint, boundedNonWhitespaceSequence
 regex, regularExpression
 section, section
 selector, selector

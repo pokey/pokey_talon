@@ -241,6 +241,12 @@ class Actions:
             "cursorless.recordTestCase", {"isDecorationsTest": True}
         )
 
+    def cursorless_record_that_mark_test():
+        """Record cursorless record error test"""
+        actions.user.vscode_with_plugin(
+            "cursorless.recordTestCase", {"captureFinalThatMark": True}
+        )
+
     # From https://github.com/AndreasArvidsson/andreas-talon/blob/1f48ae59452004d2266aad908b301f93b262f875/apps/vscode/vscode.py#L382-L387
     def vscode_add_missing_imports():
         """Add all missing imports"""
