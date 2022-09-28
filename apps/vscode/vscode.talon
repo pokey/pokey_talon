@@ -345,6 +345,7 @@ git continue: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git ime
 git log: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git smartlog")
 git detach: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git detach head")
 ^git push stack head$: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
+^git auto branch head$: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git auto-branch head")
 ^git commit insert <user.text>$:
   user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit insert")
   sleep(2500ms)

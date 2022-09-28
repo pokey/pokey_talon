@@ -64,6 +64,7 @@ ctx.lists["user.branchless_command"] = {
     "git abandon this": "Git discard commit tree",
     "git ditch branch this": "Git delete branch",
     "git ditch branch this force": "Git delete branch force",
+    "git auto branch this": "Git auto-branch commit",
     "pop patch this": "Git switch to commit",
     "pop branch this": "Git switch to commit",
 }
