@@ -30,8 +30,8 @@ is not loose equal: " != "
 <user.operator> nullish: " ?? "
 
 <user.operator> quote var:
-  insert("${}")
-  key(left)
+    insert("${}")
+    key(left)
 
 <user.operator> spread: "..."
 
@@ -39,5 +39,4 @@ chain length: ".length"
 chain {user.code_common_member_function}:
     user.insert_between(".{code_common_member_function}(", ")")
 
-from import:
-    user.insert_between(' from  "', '"')
+from import: user.insert_between(' from  "', '"')

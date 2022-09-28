@@ -4,7 +4,8 @@ tag(): user.todo_list
 
 task make: key(cmd-n)
 <user.teleport> tag {user.things_tag}: user.show_tag(things_tag)
-<user.teleport> list {user.things_project}: user.show_things_list(things_project)
+<user.teleport> list {user.things_project}:
+    user.show_things_list(things_project)
 
 follow link: key(cmd-alt-enter)
 
@@ -32,11 +33,9 @@ deadline <user.text>:
     insert(text)
     key(enter)
 
-deadline clear:
-    key(cmd-shift-d backspace enter)
+deadline clear: key(cmd-shift-d backspace enter)
 
-repeat this:
-    key(cmd-shift-r)
+repeat this: key(cmd-shift-r)
 
 filter [tag] <user.things_tags>: user.filter_by_tag(things_tags)
 filter clear: key(ctrl-escape)

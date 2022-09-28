@@ -3,7 +3,8 @@ phrase <user.text>$: user.insert_with_history(text)
 phrase <user.text> {user.phrase_ender}:
     user.insert_with_history(text)
     key(phrase_ender)
-{user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
+{user.prose_formatter} <user.prose>$:
+    user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> {user.phrase_ender}:
     user.insert_formatted(prose, prose_formatter)
     key(phrase_ender)
@@ -25,7 +26,8 @@ word <user.word>: user.insert_with_history(user.word)
 proud <user.word>: user.insert_formatted(user.word, "CAPITALIZE_FIRST_WORD")
 recent list: user.toggle_phrase_history()
 recent close: user.phrase_history_hide()
-recent repeat <number_small>: user.insert_with_history(user.get_recent_phrase(number_small))
+recent repeat <number_small>:
+    user.insert_with_history(user.get_recent_phrase(number_small))
 recent copy <number_small>: clip.set_text(user.get_recent_phrase(number_small))
 select that: user.select_last_phrase()
 before that: user.before_last_phrase()

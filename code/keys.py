@@ -151,6 +151,8 @@ dictation_only_punctuation_words = {
     "ampersand": "&",
     "back tick": "`",
     "comma": ",",
+    # Workaround for issue with conformer b-series; see #946
+    "coma": ",",
     "period": ".",
     "full stop": ".",
     "semicolon": ";",

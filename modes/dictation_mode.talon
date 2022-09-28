@@ -15,11 +15,11 @@ cap: user.dictation_format_cap()
 ^(no space | no-space) that$: user.dictation_reformat_no_space()
 
 # Escape, type things that would otherwise be commands
-^escape <user.text>$:
-    auto_insert(user.text)
+^escape <user.text>$: auto_insert(user.text)
 
 numb <user.number_string>: "{number_string}"
-numb <user.number_string> point <digit_string>: "{number_string}.{digit_string}"
+numb <user.number_string> point <digit_string>:
+    "{number_string}.{digit_string}"
 
 halt [<phrase>]$:
     mode.disable("sleep")

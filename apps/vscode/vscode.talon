@@ -11,12 +11,13 @@ tag(): user.tabs
 settings():
     key_wait = 2
 
-<user.delete> line:
-    user.vscode_and_wait("editor.action.deleteLines")
+<user.delete> line: user.vscode_and_wait("editor.action.deleteLines")
 
 #talon app actions
-<user.teleport> last: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
-<user.teleport> next: user.vscode("workbench.action.openNextRecentlyUsedEditorInGroup")
+<user.teleport> last:
+    user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
+<user.teleport> next:
+    user.vscode("workbench.action.openNextRecentlyUsedEditorInGroup")
 
 cross: user.split_next()
 
@@ -84,9 +85,11 @@ show settings:
     sleep(250ms)
 show settings json: user.vscode("workbench.action.openSettingsJson")
 show settings folder: user.vscode("workbench.action.openFolderSettings")
-show settings folder json: user.vscode("workbench.action.openFolderSettingsFile")
+show settings folder json:
+    user.vscode("workbench.action.openFolderSettingsFile")
 show settings workspace: user.vscode("workbench.action.openWorkspaceSettings")
-show settings workspace json: user.vscode("workbench.action.openWorkspaceSettingsFile")
+show settings workspace json:
+    user.vscode("workbench.action.openWorkspaceSettingsFile")
 show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
 show shortcuts json: user.vscode("workbench.action.openGlobalKeybindingsFile")
 show snippets: user.vscode("workbench.action.openSnippets")
@@ -122,10 +125,12 @@ zen mode:
     sleep(300ms)
     key(enter)
     sleep(150ms)
-<user.teleport> dock: user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
+<user.teleport> dock:
+    user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 <user.teleport> alter: user.vscode("alternate.alternateFile")
 make alter: user.vscode("alternate.createAlternateFile")
 split alter: user.vscode("alternate.alternateFileInSplit")
+dock copy name: user.vscode("fileutils.copyFileName")
 dock copy path: user.vscode("copyFilePath")
 dock copy relative: user.vscode("copyRelativeFilePath")
 dock make sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
@@ -135,6 +140,8 @@ dock make sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
     user.insert_formatted(user.word or "", "NOOP")
     insert(file_extension or "")
 dock make: user.vscode("workbench.action.files.newUntitledFile")
+dock make relative: user.vscode("fileutils.newFile")
+dock make root: user.vscode("fileutils.newFileAtRoot")
 dock rename:
     user.vscode("fileutils.renameFile")
     sleep(150ms)
@@ -142,8 +149,8 @@ dock move:
     user.vscode("fileutils.moveFile")
     sleep(150ms)
 dock clone:
-	user.vscode("fileutils.duplicateFile")
-	sleep(150ms)
+    user.vscode("fileutils.duplicateFile")
+    sleep(150ms)
 dock delete: user.vscode("fileutils.removeFile")
 dock open folder: user.vscode("revealFileInOS")
 dock reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
@@ -190,15 +197,11 @@ ref last:
 #code navigation
 (<user.teleport> declaration | follow):
     user.vscode("editor.action.revealDefinition")
-spring back:
-    user.vscode("workbench.action.navigateBack")
+spring back: user.vscode("workbench.action.navigateBack")
 spring forward: user.vscode("workbench.action.navigateForward")
-<user.teleport> implementation:
-    user.vscode("editor.action.goToImplementation")
-<user.teleport> type:
-    user.vscode("editor.action.goToTypeDefinition")
-<user.teleport> usage:
-    user.vscode("references-view.find")
+<user.teleport> implementation: user.vscode("editor.action.goToImplementation")
+<user.teleport> type: user.vscode("editor.action.goToTypeDefinition")
+<user.teleport> usage: user.vscode("references-view.find")
 
 # Bookmarks. Requires Bookmarks plugin
 <user.show_list> sesh [<user.text>] [halt]:
@@ -269,12 +272,12 @@ git branch this: user.vscode("git.branch")
 branch make [<user.text>] [halt]:
     user.vscode("git.checkout")
     sleep(50ms)
-    'pokey/'
+    "pokey/"
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
 <user.teleport> branch {user.git_branch}:
     user.vscode("git.checkout")
     sleep(50ms)
-    '{git_branch}'
+    "{git_branch}"
     key(enter)
     sleep(500ms)
 git rebase [<user.text>] [halt]:
@@ -284,7 +287,7 @@ git rebase [<user.text>] [halt]:
 git rebase {user.git_branch}:
     user.vscode("git.rebase")
     sleep(50ms)
-    '{git_branch}'
+    "{git_branch}"
     key(enter)
     sleep(250ms)
 git commit [<user.text>]$: user.git_commit(text or "")
@@ -334,41 +337,51 @@ git stage all merge: user.vscode("git.stageAllMerge")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git sync: user.vscode("git.sync")
-git a mend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
-git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
-git push force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
-git update main: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git update main")
-git commit empty: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit empty")
-git continue: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
+git a mend:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
+git reword:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
+git push force:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
+git update main:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git update main")
+git commit empty:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit empty")
+git continue:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
 
 # Commands for use with git-branchless
-git log: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git smartlog")
-git detach: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git detach head")
-^git push stack head$: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
-^git auto branch head$: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git auto-branch head")
+git log:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git smartlog")
+git detach:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git detach head")
+^git push stack head$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
+^git auto branch head$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git auto-branch head")
 ^git commit insert <user.text>$:
-  user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit insert")
-  sleep(2500ms)
-  insert(text)
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit insert")
+    sleep(2500ms)
+    insert(text)
 ^branch make this <user.text>$:
-  commit = edit.selected_text()
-  user.vscode_with_plugin("workbench.action.tasks.runTask", "Git branch commit")
-  sleep(350ms)
-  insert("pokey/")
-  user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
-  key(enter)
-  sleep(100ms)
-  insert(commit)
-  key(enter)
+    commit = edit.selected_text()
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git branch commit")
+    sleep(350ms)
+    insert("pokey/")
+    user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
+    key(enter)
+    sleep(100ms)
+    insert(commit)
+    key(enter)
 ^git move branch clip to this$:
-  commit = edit.selected_text()
-  user.vscode_with_plugin("workbench.action.tasks.runTask", "Git move branch to commit")
-  sleep(450ms)
-  edit.paste()
-  key(enter)
-  sleep(100ms)
-  insert(commit)
-  key(enter)
+    commit = edit.selected_text()
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git move branch to commit")
+    sleep(450ms)
+    edit.paste()
+    key(enter)
+    sleep(100ms)
+    insert(commit)
+    key(enter)
 pop patch last [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git previous")
     sleep(350ms)
@@ -390,12 +403,11 @@ pop branch next [<user.repetition_count>]:
     insert("{repetition_count or 1}")
     key(enter)
 ^{user.branchless_command}$:
-  commit = edit.selected_text()
-  user.vscode_with_plugin("workbench.action.tasks.runTask", branchless_command)
-  sleep(350ms)
-  insert(commit)
-  key(enter)
-
+    commit = edit.selected_text()
+    user.vscode_with_plugin("workbench.action.tasks.runTask", branchless_command)
+    sleep(350ms)
+    insert(commit)
+    key(enter)
 
 dock open: user.vscode("gitlens.openWorkingFile")
 wreck make: user.vscode("pr.create")
@@ -449,6 +461,7 @@ debug test:
     key(enter)
     sleep(250ms)
     user.vscode("workbench.action.debug.stop")
+debug clean: user.vscode("workbench.debug.panel.action.clearReplAction")
 
 # Terminal
 term external: user.vscode("workbench.action.terminal.openNativeConsole")
@@ -469,7 +482,7 @@ copy line up: user.vscode("editor.action.copyLinesUpAction")
 
 #Expand/Shrink AST Selection
 <user.select> less: user.vscode("editor.action.smartSelect.shrink")
-<user.select> (more|this): user.vscode("editor.action.smartSelect.expand")
+<user.select> (more | this): user.vscode("editor.action.smartSelect.expand")
 
 minimap: user.vscode("editor.action.toggleMinimap")
 maximize: user.vscode("workbench.action.minimizeOtherEditors")
@@ -513,7 +526,7 @@ stage on:
     sleep(100ms)
     key(enter)
 #breadcrumb
-select breadcrumb: user.vscode('breadcrumbs.focusAndSelect')
+select breadcrumb: user.vscode("breadcrumbs.focusAndSelect")
 # Use `alt-left` and `alt-right` to navigate the bread crumb
 
 replace here:
@@ -543,11 +556,9 @@ yes:
     sleep(100ms)
     key(tab)
 
-zoom (talk | demo | big):
-    user.set_zoom_level(4)
+zoom (talk | demo | big): user.set_zoom_level(4)
 
-zoom (normal | regular):
-    user.set_zoom_level(1)
+zoom (normal | regular): user.set_zoom_level(1)
 
 make executable: user.vscode("chmod.plusX")
 
@@ -560,10 +571,8 @@ issue make [<user.text>]$:
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 issue (submit | save): user.vscode("issue.createIssueFromFile")
 
-draft (save | submit):
-    user.draft_editor_save()
-draft discard:
-    user.draft_editor_discard()
+draft (save | submit): user.draft_editor_save()
+draft discard: user.draft_editor_discard()
 
 dev tools: user.vscode("workbench.action.toggleDevTools")
 show in finder: user.vscode("revealFileInOS")
@@ -578,10 +587,13 @@ previous: user.vscode("jumpToPrevSnippetPlaceholder")
 {user.cursorless_homophone} record: user.vscode("cursorless.recordTestCase")
 {user.cursorless_homophone} pause: user.vscode("cursorless.pauseRecording")
 {user.cursorless_homophone} resume: user.vscode("cursorless.resumeRecording")
-{user.cursorless_homophone} record navigation: user.cursorless_record_navigation_test()
+{user.cursorless_homophone} record navigation:
+    user.cursorless_record_navigation_test()
 {user.cursorless_homophone} record error: user.cursorless_record_error_test()
-{user.cursorless_homophone} record highlights: user.cursorless_record_highlights_test()
-{user.cursorless_homophone} record that mark: user.cursorless_record_that_mark_test()
+{user.cursorless_homophone} record highlights:
+    user.cursorless_record_highlights_test()
+{user.cursorless_homophone} record that mark:
+    user.cursorless_record_that_mark_test()
 
 {user.cursorless_homophone} update cheatsheet:
     user.vscode_with_plugin("cursorless.internal.updateCheatsheetDefaults", user.cursorless_cheat_sheet_get_json())
@@ -595,7 +607,8 @@ han solo: user.vscode("workbench.action.joinAllGroups")
 
 reflow: user.vscode("rewrap.rewrapComment")
 
-mode {user.language_id}: user.vscode_with_plugin("commands.setEditorLanguage", language_id)
+mode {user.language_id}:
+    user.vscode_with_plugin("commands.setEditorLanguage", language_id)
 
 break <user.cursorless_target>:
     user.cursorless_command("setSelectionBefore", cursorless_target)
@@ -654,7 +667,8 @@ format doc:
     user.vscode("editor.action.formatDocument")
     user.vscode("editor.action.organizeImports")
 
-show extensions: user.vscode("workbench.extensions.action.showEnabledExtensions")
+show extensions:
+    user.vscode("workbench.extensions.action.showEnabledExtensions")
 
 run python: user.vscode("python.execInTerminal")
 
@@ -670,11 +684,10 @@ foam note clip:
     sleep(100ms)
     edit.paste()
 
-
 # Imports
 # from https://github.com/AndreasArvidsson/andreas-talon/blob/a098969bd6b35f5ed0fc99805aa529efc08569a2/apps/vscode/vscode.talon#L25-L31
-imports organize:        user.vscode("editor.action.organizeImports")
-imports add:             user.vscode_add_missing_imports()
+imports organize: user.vscode("editor.action.organizeImports")
+imports add: user.vscode_add_missing_imports()
 imports fix:
     sleep(350ms)
     user.vscode_add_missing_imports()
@@ -682,3 +695,4 @@ imports fix:
     user.vscode("editor.action.organizeImports")
 
 search again: user.vscode("rerunSearchEditorSearch")
+preview markdown: user.vscode("markdown.showPreview")

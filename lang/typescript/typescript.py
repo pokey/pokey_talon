@@ -55,16 +55,6 @@ class UserActions:
         actions.insert(f"interface {type_name} {{}}")
         actions.key("left enter")
 
-    # def code_private_static_function(text: str):
-    #     """Inserts private static function"""
-    #     result = "private static void {}".format(
-    #         actions.user.formatted_text(
-    #             text, settings.get("user.code_private_function_formatter")
-    #         )
-    #     )
-
-    #     actions.user.code_insert_function(result, None)
-
     def code_protected_function(text: str):
         result = "protected function {}".format(
             actions.user.formatted_text(
@@ -74,15 +64,6 @@ class UserActions:
 
         actions.user.code_insert_function(result, None)
 
-    # def code_protected_static_function(text: str):
-    #     result = "protected static void {}".format(
-    #         actions.user.formatted_text(
-    #             text, settings.get("user.code_protected_function_formatter")
-    #         )
-    #     )
-
-    #     actions.user.code_insert_function(result, None)
-
     def code_public_function(text: str):
         result = "public function {}".format(
             actions.user.formatted_text(
@@ -91,15 +72,6 @@ class UserActions:
         )
 
         actions.user.code_insert_function(result, None)
-
-    # def code_public_static_function(text: str):
-    #     result = "public static void {}".format(
-    #         actions.user.formatted_text(
-    #             text, settings.get("user.code_public_function_formatter")
-    #         )
-    #     )
-
-    #     actions.user.code_insert_function(result, None)
 
     def code_insert_type_annotation(type: str):
         actions.insert(f": {type}")

@@ -50,11 +50,11 @@ of type [<user.text>] [over]:
 <user.operator> go: "go "
 <user.operator> if: "if "
 if <user.text> [over]:
-  insert("if ")
-  insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
+    insert("if ")
+    insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
 spawn <user.text> [over]:
-  insert("go ")
-  insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
+    insert("go ")
+    insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
 <user.operator> else if: " else if "
 else if <user.text> [over]:
     insert(" else if ")
@@ -111,8 +111,8 @@ type <user.text> [over]:
 <user.operator> true: " true "
 <user.operator> false: " false "
 <user.operator> (start | struct | struck):
-  insert(" struct {")
-  key("enter")
+    insert(" struct {")
+    key("enter")
 (struct | struck) <user.text> [over]:
     insert(" struct {")
     key("enter")
@@ -120,8 +120,8 @@ type <user.text> [over]:
 
 [<user.operator>] empty interface: " interface{} "
 <user.operator> interface:
-  insert(" interface {")
-  key("enter")
+    insert(" interface {")
+    key("enter")
 interface <user.text> [over]:
     insert(" interface {")
     key("enter")
@@ -132,9 +132,8 @@ interface <user.text> [over]:
 <user.operator> slice: " []"
 slice of: "[]"
 [<user.operator>] (no | nil): "nil"
-<user.operator> (int | integer | ant) 64: " int64 "
-<user.operator> tag:
-  user.insert_between(" `", "`")
+<user.operator> (int | integer | ant) sixty four: " int64 "
+<user.operator> tag: user.insert_between(" `", "`")
 field tag <user.text> [over]:
     user.insert_between(" `", "`")
     sleep(100ms)
@@ -143,7 +142,7 @@ field tag <user.text> [over]:
     sleep(100ms)
 
 <user.operator> return: " return "
-return  <user.text> [over]:
+return <user.text> [over]:
     insert("return ")
     insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
 
@@ -175,8 +174,8 @@ loop over [<user.text>] [over]:
     insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
 
 item <user.text> [over]:
-  insert(", ")
-  insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
+    insert(", ")
+    insert(user.formatted_text(text, "PRIVATE_CAMEL_CASE"))
 
 value <user.text> [over]:
     insert(": ")

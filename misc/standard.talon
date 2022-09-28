@@ -1,15 +1,3 @@
-#(jay son | jason ): "json"
-#(http | htp): "http"
-#tls: "tls"
-#M D five: "md5"
-#word (regex | rejex): "regex"
-#word queue: "queue"
-#word eye: "eye"
-#word iter: "iter"
-#word no: "NULL"
-#word cmd: "cmd"
-#word dup: "dup"
-#word shell: "shell".
 zoom in: edit.zoom_in()
 zoom out: edit.zoom_out()
 zoom reset: edit.zoom_reset()
@@ -35,18 +23,16 @@ show clip:
 paste match: edit.paste_match_style()
 disk: edit.save()
 disk oliver: edit.save_all()
-padding:
-	insert("  ")
-	key(left)
+padding: user.insert_between(" ", " ")
 pour: edit.line_insert_down()
 drink: edit.line_insert_up()
 
 slow mode: mode.enable("user.slow")
 
 emoji scout [<user.text>]:
-	key(cmd-ctrl-space)
-	sleep(200ms)
-	insert(user.text or "")
+    key(cmd-ctrl-space)
+    sleep(200ms)
+    insert(user.text or "")
 
 dictate [<user.prose>]$:
     auto_insert(prose or "")
@@ -56,8 +42,7 @@ dictate [<user.prose>]$:
     user.code_clear_language_mode()
     mode.disable("user.gdb")
 
-dictate <user.prose> halt:
-    auto_insert(prose or "")
+dictate <user.prose> halt: auto_insert(prose or "")
 
 show numbers: key(cmd-ctrl-alt-f)
 

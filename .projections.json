@@ -1,5 +1,5 @@
 {
-  "*.talon": {
-    "alternate": "{}.py"
-  }
+    "*.talon": {
+        "alternate": "{}.py"
+    }
 }

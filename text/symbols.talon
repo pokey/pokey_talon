@@ -1,6 +1,5 @@
 double dash: "--"
 triple quote: "'''"
-#ellipses: "…"
 pebbles: "..."
 # Add symbol at end of line and then insert line below
 # From https://github.com/AndreasArvidsson/andreas-talon/blob/master/misc/keys/keys.talon#L28
@@ -9,7 +8,6 @@ patch {user.symbol_key}:
     "{symbol_key}"
     edit.line_insert_down()
 spam: ", "
-coal gap: ": "
 pipe gap: " | "
 boom: ". "
 arrow: "->"
@@ -25,48 +23,20 @@ empty quad: '""'
 empty twin: "''"
 empty escaped quad: '\\"\\"'
 empty escaped twin: "\\'\\'"
-empty escaped round: '\\(\\)'
-empty escaped curly: '\\{{\\}}'
-tween <user.symbol_key>:
-    '{symbol_key}{symbol_key}'
-    key(left)
-quad:
-    '""'
-    key(left)
-twin:
-    "''"
-    key(left)
-ski:
-    '``'
-    key(left)
-escaped quad:
-    '\\"\\"'
-    key(left)
-    key(left)
-escaped twin:
-    "\\'\\'"
-    key(left)
-    key(left)
-round:
-	insert("()")
-	key(left)
-escaped round:
-    '\\(\\)'
-    key(left)
-    key(left)
-escaped curly:
-    '\\{{\\}}'
-    key(left)
-    key(left)
-square:
-	insert("[]")
-	key(left)
-curly:
-	insert("{}")
-	key(left)
-diamond:
-	insert("<>")
-	key(left)
+empty escaped round: "\\(\\)"
+empty escaped curly: "\\{{\\}}"
+tween <user.symbol_key>: user.insert_between("{symbol_key}", "{symbol_key}")
+quad: user.insert_between('"', '"')
+twin: user.insert_between("'", "'")
+ski: user.insert_between("`", "`")
+escaped quad: user.insert_between('\\"', '\\"')
+escaped twin: user.insert_between("\\'", "\\'")
+round: user.insert_between("(", ")")
+escaped round: user.insert_between("\\(", "\\)")
+escaped curly: user.insert_between("\\{{", "\\}}")
+square: user.insert_between("[", "]")
+curly: user.insert_between("{", "}")
+diamond: user.insert_between("<", ">")
 (diamond | angle) that:
     text = edit.selected_text()
     user.paste("<{text}>")
@@ -87,18 +57,18 @@ diamond:
     user.paste("'{text}'")
 
 big round:
-	insert("()")
-	key(left enter)
+    insert("()")
+    key(left enter)
 big square:
-	insert("[]")
-	key(left enter)
+    insert("[]")
+    key(left enter)
 big curly:
-	insert("{}")
-	key(left enter)
+    insert("{}")
+    key(left enter)
 
 slicer:
-	edit.line_end()
-	key(enter)
+    edit.line_end()
+    key(enter)
     insert("- ")
 
 end gap:
@@ -106,16 +76,16 @@ end gap:
     key(space)
 
 slider:
-	edit.line_end()
-	insert(",")
+    edit.line_end()
+    insert(",")
     key(enter)
 
 breaker:
-	edit.line_end()
-	insert(" {")
+    edit.line_end()
+    insert(" {")
     key(enter)
 
 chronic:
-	edit.line_end()
-	insert(":")
+    edit.line_end()
+    insert(":")
     key(enter)

@@ -11,21 +11,14 @@ tag(): user.code_functions_common
 # tag(): user.talon_populate_lists
 
 #defintion blocks for the context
-action block:
-    user.insert_between("action(", "):")
-setting block:
-    insert("settings():\n\t")
-setting {user.talon_settings}:
-    user.paste("{talon_settings} = ")
+action block: user.insert_between("action(", "):")
+setting block: insert("settings():\n\t")
+setting {user.talon_settings}: user.paste("{talon_settings} = ")
 #context requirements
-win require:
-    insert("os: windows\n")
-mac require:
-    insert("os: mac\n")
-linux require:
-    insert("os: linux\n")
-title require:
-    insert("win.title: ")
+win require: insert("os: windows\n")
+mac require: insert("os: mac\n")
+linux require: insert("os: linux\n")
+title require: insert("win.title: ")
 application [require] [{user.talon_apps}]:
     app = talon_apps or ""
     user.paste("app: {app}")
@@ -48,9 +41,9 @@ key <user.keys> over: "{keys}"
 key <user.modifiers> over: "{modifiers}"
 
 # all actions (requires uncommenting user.talon_populate_lists tag above)
-funk {user.talon_actions}: user.code_insert_function(talon_actions, edit.selected_text())
-funk cell <number>:
-    user.code_select_function(number - 1, "")
+funk {user.talon_actions}:
+    user.code_insert_function(talon_actions, edit.selected_text())
+funk cell <number>: user.code_select_function(number - 1, "")
 funk wrap <user.code_common_function>:
     user.code_insert_function(code_common_function, edit.selected_text())
 funk wrap <number_small>:

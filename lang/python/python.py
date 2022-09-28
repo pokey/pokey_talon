@@ -77,6 +77,20 @@ ctx.lists["user.code_keyword"] = {
     "from": "from ",
 }
 
+ctx.lists["user.code_keyword"] = {
+    "break": "break",
+    "continue": "continue",
+    "class": "class ",
+    "return": "return ",
+    "import": "import ",
+    "null": "None",
+    "none": "None",
+    "true": "True",
+    "false": "False",
+    "yield": "yield ",
+    "from": "from ",
+}
+
 exception_list = [
     "BaseException",
     "SystemExit",
@@ -153,7 +167,7 @@ ctx.lists["user.python_exception"] = {
 @ctx.action_class("user")
 class UserActions:
     def code_operator_lambda():
-        actions.auto_insert("lambda ")
+        actions.user.insert_between("lambda ", ": ")
 
     def code_operator_subscript():
         actions.user.insert_between("[", "]")

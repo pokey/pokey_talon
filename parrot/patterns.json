@@ -1,42 +1,36 @@
 {
-  "postalveolar_click": {
-    "sounds": [
-      "Postalveolar click"
-    ],
-    "threshold": {
-      ">probability": 0.99999,
-      ">power": 10000
+    "postalveolar_click": {
+        "sounds": ["Postalveolar click"],
+        "threshold": {
+            ">probability": 0.99999,
+            ">power": 10000
+        },
+        "throttle": {
+            "postalveolar_click": 0.25
+        }
     },
-    "throttle": {
-      "postalveolar_click": 0.25
+    "dental_click": {
+        "sounds": ["Dental click"],
+        "threshold": {
+            ">probability": 0.99999,
+            ">power": 8000
+        },
+        "throttle": {
+            "dental_click": 0.07
+        },
+        "ensureNotFollowedBy": {
+            "suppress_clicks": 0.08
+        }
+    },
+    "suppress_clicks": {
+        "sounds": ["Speech"],
+        "threshold": {
+            ">probability": 0.999,
+            ">power": 10000
+        },
+        "throttle": {
+            "dental_click": 0.1,
+            "postalveolar_click": 0.1
+        }
     }
-  },
-  "dental_click": {
-    "sounds": [
-      "Dental click"
-    ],
-    "threshold": {
-      ">probability": 0.99999,
-      ">power": 8000
-    },
-    "throttle": {
-      "dental_click": 0.07
-    },
-    "ensureNotFollowedBy": {
-      "suppress_clicks": 0.08
-    }
-  },
-  "suppress_clicks": {
-    "sounds": [
-      "Speech"
-    ],
-    "threshold": {
-      ">probability": 0.999,
-      ">power": 10000
-    },
-    "throttle": {
-      "dental_click": 0.1,
-      "postalveolar_click": 0.1
-    },
-  }
 }
