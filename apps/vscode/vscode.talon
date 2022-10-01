@@ -332,7 +332,7 @@ git stash: user.vscode("git.stash")
 git stash pop: user.vscode("git.stashPop")
 git status: user.vscode("workbench.scm.focus")
 git stage: user.vscode("git.stage")
-git stage all: user.vscode("git.stageAll")
+git stage oliver: user.vscode("git.stageAll")
 git stage all merge: user.vscode("git.stageAllMerge")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
@@ -359,10 +359,8 @@ git detach:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
 ^git auto branch head$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git auto-branch head")
-^git commit insert <user.text>$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit insert")
-    sleep(2500ms)
-    insert(text)
+^git shadow parent$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git shadow parent")
 ^branch make this <user.text>$:
     commit = edit.selected_text()
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git branch commit")
