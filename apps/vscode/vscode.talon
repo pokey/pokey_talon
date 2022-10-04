@@ -290,28 +290,28 @@ git rebase {user.git_branch}:
     "{git_branch}"
     key(enter)
     sleep(250ms)
-git commit [<user.text>]$: user.git_commit(text or "")
-git commit <user.text> clap:
-    user.git_commit(text or "")
+git commit [<user.prose>]$: user.git_commit(prose or "")
+git commit <user.prose> clap:
+    user.git_commit(prose or "")
     edit.save()
     app.tab_close()
     sleep(250ms)
-disk git commit [<user.text>]$:
+disk git commit [<user.prose>]$:
     key(esc:5)
     edit.save()
     sleep(1500ms)
-    user.git_commit(text or "")
-disk git commit <user.text> clap:
+    user.git_commit(prose or "")
+disk git commit <user.prose> clap:
     key(esc:5)
     edit.save()
     sleep(1500ms)
-    user.git_commit(text or "")
+    user.git_commit(prose or "")
     key(enter)
     sleep(250ms)
-git stash [<user.text>] [halt]:
+git stash [<user.prose>] [halt]:
     user.vscode("git.stash")
     sleep(100ms)
-    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+    user.insert_formatted(prose or "", "CAPITALIZE_FIRST_WORD")
 git branches: user.vscode("gitlens.views.branches.focus")
 git commit undo: user.vscode("git.undoCommit")
 git diff: user.vscode("git.openChange")
@@ -591,10 +591,9 @@ previous: user.vscode("jumpToPrevSnippetPlaceholder")
 {user.cursorless_homophone} record highlights:
     user.cursorless_record_highlights_test()
 {user.cursorless_homophone} record that mark:
-    user.cursorless_record_that_mark_test()
 
 {user.cursorless_homophone} update cheatsheet:
-    user.vscode_with_plugin("cursorless.internal.updateCheatsheetDefaults", user.cursorless_cheat_sheet_get_json())
+    user.cursorless_cheat_sheet_update_json()
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 

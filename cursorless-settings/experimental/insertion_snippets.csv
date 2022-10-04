@@ -16,3 +16,4 @@ shebang, shebang
 else if, elseIf
 use effect, useEffect
 turn, ternaryExpression
+debug, debugPrint

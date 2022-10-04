@@ -50,8 +50,9 @@ class user_actions:
         actions.sleep("180ms")
         actions.app.tab_close()
 
-    def dental_click():
-        actions.key("escape f")
+    # Disabled due to false positives for now
+    # def dental_click():
+    #     actions.key("escape f")
 
     def tab_duplicate():
         """Limitation: this will not work if the text in your address bar has been manually edited.
