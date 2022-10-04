@@ -34,12 +34,12 @@ class RevsetFunction(Revset):
 
 class SelectedTextRevset(Revset, Commitish):
     def get_value(self):
-        return actions.edit.selected_text()
+        return f'"{actions.edit.selected_text()}"'
 
 
 class ClipboardRevset(Revset, Commitish):
     def get_value(self):
-        return actions.clip.text()
+        return f'"{actions.clip.text()}"'
 
 
 class LiteralRevset(Revset, Commitish):
