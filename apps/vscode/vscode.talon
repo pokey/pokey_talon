@@ -371,7 +371,7 @@ git detach:
     sleep(100ms)
     insert(commit)
     key(enter)
-^git move branch clip to this$:
+^git point clip to this$:
     commit = edit.selected_text()
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git move branch to commit")
     sleep(450ms)
