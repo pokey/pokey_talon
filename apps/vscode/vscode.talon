@@ -351,8 +351,6 @@ git continue:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
 
 # Commands for use with git-branchless
-git log:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git smartlog")
 git detach:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git detach head")
 ^git push stack head$:

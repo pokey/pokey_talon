@@ -114,3 +114,12 @@ class Actions:
                 "noConfirmation": True,
             },
         )
+
+    def branchless_autobranch(revset: Revset):
+        """git-branchless move"""
+        actions.user.vscode_with_plugin(
+            "git-branchless.custom.autoBranch",
+            {
+                "revset": revset.get_value(),
+            },
+        )
