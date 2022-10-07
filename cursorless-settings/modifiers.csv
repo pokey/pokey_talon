@@ -16,3 +16,8 @@ just, toRawSelection
 # 2022-06-02 13:13:53 - New entries automatically added by cursorless
 leading, leading
 trailing, trailing
+
+
+# 2022-10-06 14:19:52 - New entries automatically added by cursorless
+content, keepContentFilter
+empty, keepEmptyFilter
