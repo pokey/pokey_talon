@@ -206,12 +206,12 @@ spring forward: user.vscode("workbench.action.navigateForward")
 # Bookmarks. Requires Bookmarks plugin
 <user.show_list> sesh [<user.text>] [halt]:
     user.vscode("workbench.action.openRecent")
-    sleep(50ms)
+    sleep(250ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
     sleep(250ms)
 <user.teleport> sesh [<user.text>] [halt]:
     user.vscode("workbench.action.openRecent")
-    sleep(50ms)
+    sleep(250ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
     key(enter)
     sleep(250ms)
@@ -219,14 +219,14 @@ new sesh [<user.text>]:
     user.vscode("workbench.action.newWindow")
     sleep(3s)
     user.vscode("workbench.action.openRecent")
-    sleep(50ms)
+    sleep(250ms)
     insert(text or "")
     sleep(250ms)
 go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 
 <user.show_list> win [<user.text>]:
     user.vscode("workbench.action.switchWindow")
-    sleep(50ms)
+    sleep(250ms)
     insert(text or "")
     sleep(250ms)
 <user.teleport> win [<user.text>]:
@@ -684,7 +684,7 @@ foam note clip:
 imports organize: user.vscode("editor.action.organizeImports")
 imports add: user.vscode_add_missing_imports()
 imports fix:
-    sleep(350ms)
+    sleep(450ms)
     user.vscode_add_missing_imports()
     sleep(0.1)
     user.vscode("editor.action.organizeImports")

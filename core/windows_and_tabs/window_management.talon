@@ -32,7 +32,7 @@ tune talon [<phrase>]$:
     user.switcher_focus("Code")
     sleep(250ms)
     user.vscode("workbench.action.openRecent")
-    sleep(50ms)
+    sleep(250ms)
     insert("pokey-talon")
     key(enter)
     sleep(250ms)
