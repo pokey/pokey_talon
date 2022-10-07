@@ -21,3 +21,12 @@ trailing, trailing
 # 2022-10-06 14:19:52 - New entries automatically added by cursorless
 content, keepContentFilter
 empty, keepEmptyFilter
+
+
+# 2022-10-07 13:32:33 - New entries automatically added by cursorless
+backward, backward
+every, every
+first, first
+last, last
+next, next
+previous, previous
