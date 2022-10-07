@@ -580,19 +580,6 @@ skip:
     user.vscode("jumpToNextSnippetPlaceholder")
 previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
-{user.cursorless_homophone} record: user.vscode("cursorless.recordTestCase")
-{user.cursorless_homophone} pause: user.vscode("cursorless.pauseRecording")
-{user.cursorless_homophone} resume: user.vscode("cursorless.resumeRecording")
-{user.cursorless_homophone} record navigation:
-    user.cursorless_record_navigation_test()
-{user.cursorless_homophone} record error: user.cursorless_record_error_test()
-{user.cursorless_homophone} record highlights:
-    user.cursorless_record_highlights_test()
-{user.cursorless_homophone} record that mark:
-
-{user.cursorless_homophone} update cheatsheet:
-    user.cursorless_cheat_sheet_update_json()
-
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 
 line numbers on: user.change_setting("editor.lineNumbers", "on")
@@ -626,27 +613,17 @@ elm wrap <user.cursorless_target>:
 
 ^tag version$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
-^install local$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Install local")
 ^install sandbox$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install into cursorless sandbox")
 ^extension publish$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
 ^{user.cursorless_homophone} local split$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
-^pre commit run$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Run pre commit")
 ^tunnel start$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Start tunnel")
 ^tunnel stop$:
     user.vscode("workbench.action.tasks.terminate")
     insert("Start tunnel")
-    key(enter)
-^serve start$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Serve cursorless.org")
-^serve stop$:
-    user.vscode("workbench.action.tasks.terminate")
-    insert("Serve")
     key(enter)
 line edit: key(ctrl-q e)
 
