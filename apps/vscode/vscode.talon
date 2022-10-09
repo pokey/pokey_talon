@@ -355,8 +355,6 @@ git detach:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git detach head")
 ^git push stack head$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
-^git auto branch head$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git auto-branch head")
 ^git shadow parent$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git shadow parent")
 ^branch make this <user.text>$:

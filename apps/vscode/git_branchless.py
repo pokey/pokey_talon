@@ -68,7 +68,8 @@ def create_rich_list_capture(
 revset_marks = {
     "this": SelectedTextRevset(),
     "clip": ClipboardRevset(),
-    "active": LiteralRevset("head"),
+    "active": LiteralRevset("."),
+    "head": LiteralRevset("."),
     "main": LiteralRevset("main()"),
 }
 
