@@ -291,7 +291,7 @@ git rebase {user.git_branch}:
     key(enter)
     sleep(250ms)
 git commit [<user.prose>]$: user.git_commit(prose or "")
-git commit <user.prose> clap:
+git commit <user.prose> disclose:
     user.git_commit(prose or "")
     edit.save()
     app.tab_close()
@@ -301,7 +301,7 @@ disk git commit [<user.prose>]$:
     edit.save()
     sleep(1500ms)
     user.git_commit(prose or "")
-disk git commit <user.prose> clap:
+disk git commit <user.prose> disclose:
     key(esc:5)
     edit.save()
     sleep(1500ms)
@@ -495,7 +495,7 @@ commode:
     user.vscode("vscode-neovim.escape")
     sleep(25ms)
 
-voice code:
+voice mode:
     user.vscode_and_wait("vscode-neovim.disable")
     key(i)
     sleep(25ms)
