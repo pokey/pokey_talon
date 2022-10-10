@@ -103,15 +103,53 @@ def revset(m) -> Revset:
         return ret
 
 
+class Destination(ABC):
+    @abstractmethod
+    def get_value(self, source: Revset) -> str:
+        pass
+
+
+class DestinationCommitish(Destination):
+    def __init__(self, commitish: Commitish):
+        self.commitish = commitish
+
+    def get_value(self, source: Revset):
+        return self.commitish.get_value()
+
+
+class DestinationRelative(Destination):
+    def __init__(self, count: int):
+        self.count = count
+
+    def get_value(self, source: Revset):
+        source_value = source.get_value()
+        return f"ancestors.nth(exactly(roots(range({source_value}, {source_value})), 1), {self.count+1})"
+
+
+@mod.capture(rule="to <user.commitish>")
+def git_destination_commitish(m) -> DestinationCommitish:
+    return DestinationCommitish(m.commitish)
+
+
+@mod.capture(rule="back <number_small>")
+def git_destination_relative(m) -> DestinationRelative:
+    return DestinationRelative(m.number_small)
+
+
+@mod.capture(rule="<user.git_destination_commitish> | <user.git_destination_relative>")
+def git_destination(m) -> Destination:
+    return m[0]
+
+
 @mod.action_class
 class Actions:
-    def branchless_move_exact(exact: Revset, destination: Commitish):
+    def branchless_move_exact(exact: Revset, destination: Destination):
         """git-branchless move"""
         actions.user.vscode_with_plugin(
             "git-branchless.move.exact",
             {
                 "exact": exact.get_value(),
-                "destination": destination.get_value(),
+                "destination": destination.get_value(exact),
                 "noConfirmation": True,
             },
         )
