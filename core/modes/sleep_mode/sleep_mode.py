@@ -2,11 +2,6 @@ from talon import Context, Module, actions
 
 mod = Module()
 
-sleep_ctx = Context()
-sleep_ctx.matches = r"""
-mode: sleep
-"""
-
 wake_ctx = Context()
 
 
@@ -32,12 +27,6 @@ class Actions:
         actions.sound.set_microphone(active_microphone)
         actions.user.mouse_wake()
         actions.user.talon_mode()
-
-
-@sleep_ctx.action_class("user")
-class SleepUserActions:
-    def postalveolar_click():
-        actions.user.wake_all()
 
 
 @wake_ctx.action_class("user")

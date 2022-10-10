@@ -50,10 +50,6 @@ class user_actions:
         actions.sleep("180ms")
         actions.app.tab_close()
 
-    # Disabled due to false positives for now
-    # def dental_click():
-    #     actions.key("escape f")
-
     def tab_duplicate():
         """Limitation: this will not work if the text in your address bar has been manually edited.
         Long-term we want a better shortcut from browsers.

@@ -2,6 +2,8 @@ app: things3
 -
 tag(): user.todo_list
 
+parrot(dental_click): key(cmd-enter)
+
 task make: key(cmd-n)
 <user.teleport> tag {user.things_tag}: user.show_tag(things_tag)
 <user.teleport> list {user.things_project}:

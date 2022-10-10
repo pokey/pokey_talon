@@ -143,9 +143,6 @@ class UserActions:
     def show_logbook():
         actions.key("cmd-6")
 
-    def dental_click():
-        actions.key("cmd-enter")
-
 
 @mod.capture(rule="{self.things_tag}+")
 def things_tags(m) -> str:
