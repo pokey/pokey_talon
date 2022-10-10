@@ -349,6 +349,10 @@ git commit empty:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git commit empty")
 git continue:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
+git full continue:
+    user.vscode("git.stageAllMerge")
+    user.git_commit(prose or "")
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
 
 # Commands for use with git-branchless
 git detach:
@@ -367,7 +371,7 @@ git detach:
     sleep(100ms)
     insert(commit)
     key(enter)
-^git point clip to this$:
+^git move clip to this$:
     commit = edit.selected_text()
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git move branch to commit")
     sleep(450ms)
