@@ -355,8 +355,6 @@ git full continue:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
 
 # Commands for use with git-branchless
-git detach:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git detach head")
 ^git push stack head$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
 ^git shadow parent$:
@@ -367,15 +365,6 @@ git detach:
     sleep(350ms)
     insert("pokey/")
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
-    key(enter)
-    sleep(100ms)
-    insert(commit)
-    key(enter)
-^git move clip to this$:
-    commit = edit.selected_text()
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git move branch to commit")
-    sleep(450ms)
-    edit.paste()
     key(enter)
     sleep(100ms)
     insert(commit)
@@ -403,7 +392,7 @@ pop branch next [<user.repetition_count>]:
 ^{user.branchless_command}$:
     commit = edit.selected_text()
     user.vscode_with_plugin("workbench.action.tasks.runTask", branchless_command)
-    sleep(350ms)
+    sleep(450ms)
     insert(commit)
     key(enter)
 

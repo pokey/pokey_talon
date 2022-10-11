@@ -60,10 +60,8 @@ mod.list("branchless_command", "A command to use with branchless that expects a 
 ctx.lists["user.branchless_command"] = {
     "git push stack this": "Git push commit stack",
     "git sink this": "Git sync commit",
-    "git abandon this": "Git discard commit tree",
     "git ditch branch this": "Git delete branch",
     "git ditch branch this force": "Git delete branch force",
-    "pop patch this": "Git switch to commit",
     "pop branch this": "Git switch to commit",
 }
 
