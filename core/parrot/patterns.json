@@ -16,7 +16,7 @@
             "Dental click"
         ],
         "threshold": {
-            ">probability": 0.995,
+            ">probability": 0.999,
             ">power": 15
         },
         "throttle": {
