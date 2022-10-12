@@ -22,9 +22,7 @@ class Actions:
 
     def wake_all():
         """Wakes talon and shows everything"""
-        active_microphone = actions.sound.active_microphone()
-        actions.sound.set_microphone("None")
-        actions.sound.set_microphone(active_microphone)
+        actions.user.cancel_in_flight_phrase()
         actions.user.mouse_wake()
         actions.user.talon_mode()
 

@@ -4,7 +4,7 @@
             "Postalveolar click"
         ],
         "threshold": {
-            ">probability": 0.99999,
+            ">probability": 0.99995,
             ">power": 15
         },
         "throttle": {
@@ -23,17 +23,53 @@
             "dental_click": 0.07
         }
     },
+    "lateral_click": {
+        "sounds": [
+            "Lateral click"
+        ],
+        "threshold": {
+            ">probability": 0.995,
+            ">power": 15
+        },
+        "throttle": {
+            "lateral_click": 0.07
+        }
+    },
+    "labiodental_click": {
+        "sounds": [
+            "Labiodental click"
+        ],
+        "threshold": {
+            ">probability": 0.999,
+            ">power": 15
+        },
+        "throttle": {
+            "labiodental_click": 0.07
+        }
+    },
+    "sibilant": {
+        "sounds": [
+            "unvoiced subapical postalveolar non sibilant fricativee"
+        ],
+        "threshold": {
+            ">probability": 0.999,
+            ">power": 15
+        }
+    },
     "suppress_clicks": {
         "sounds": [
             "Speech"
         ],
         "threshold": {
             ">probability": 0.999,
-            ">power": 10000
+            ">power": 15
         },
         "throttle": {
             "dental_click": 0.1,
-            "postalveolar_click": 0.1
+            "lateral_click": 0.01,
+            "postalveolar_click": 0.1,
+            "labiodental_click": 0.1,
+            "sibilant": 0.1
         }
     }
 }
