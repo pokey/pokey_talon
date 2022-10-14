@@ -8,7 +8,7 @@
             ">power": 15
         },
         "throttle": {
-            "postalveolar_click": 0.25
+            "postalveolar_click": 0.07
         }
     },
     "dental_click": {
@@ -20,7 +20,7 @@
             ">power": 15
         },
         "throttle": {
-            "dental_click": 0.07
+            "dental_click": 0.1
         }
     },
     "lateral_click": {
@@ -32,7 +32,7 @@
             ">power": 15
         },
         "throttle": {
-            "lateral_click": 0.07
+            "lateral_click": 0.1
         }
     },
     "labiodental_click": {
@@ -44,7 +44,7 @@
             ">power": 15
         },
         "throttle": {
-            "labiodental_click": 0.07
+            "labiodental_click": 0.1
         }
     },
     "sibilant": {
@@ -53,7 +53,7 @@
         ],
         "threshold": {
             ">probability": 0.999,
-            ">power": 15
+            ">power": 10
         }
     },
     "suppress_clicks": {
