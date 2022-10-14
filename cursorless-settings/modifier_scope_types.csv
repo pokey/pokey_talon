@@ -39,7 +39,7 @@ start tag, xmlStartTag
 state, statement
 string, string
 tags, xmlBothTags
-token, token
+click, token
 type, type
 value, value
 word, word
