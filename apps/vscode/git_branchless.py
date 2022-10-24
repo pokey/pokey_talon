@@ -111,7 +111,11 @@ create_rich_list_capture(
 
 
 mod.list("branchless_revset_modifier", "Functions for use in modifier grammar")
-ctx.lists["user.branchless_revset_modifier"] = {"stack": "stack", "tail": "descendants"}
+ctx.lists["user.branchless_revset_modifier"] = {
+    "just": "",
+    "stack": "stack",
+    "tail": "descendants",
+}
 
 
 @mod.capture(rule="[{user.branchless_revset_modifier}] <user.branchless_revset_mark>")
@@ -122,6 +126,11 @@ def branchless_revset(m) -> Revset:
         return RevsetFunction(m.branchless_revset_modifier, ret)
     except AttributeError:
         return ret
+
+
+@mod.capture(rule="{user.branchless_revset_modifier} <user.branchless_revset_mark>")
+def branchless_revset_required_modifier(m) -> Revset:
+    return RevsetFunction(m.branchless_revset_modifier, m.branchless_revset_mark)
 
 
 class Destination(ABC):
@@ -197,6 +206,17 @@ class Actions:
             {
                 "exact": exact_source.get_revset(),
                 "destination": destination.get_revset_for_move(exact_source),
+                "noConfirmation": True,
+            },
+        )
+
+    def branchless_move_source(source: Commitish, destination: Destination):
+        """git-branchless move a set of commits"""
+        actions.user.vscode_with_plugin(
+            "git-branchless.move.source",
+            {
+                "source": source.get_revset(),
+                "destination": destination.get_revset_for_move(source),
                 "noConfirmation": True,
             },
         )
