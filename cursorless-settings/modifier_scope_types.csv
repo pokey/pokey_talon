@@ -8,7 +8,7 @@ Spoken form, Cursorless identifier
 argue, argumentOrParameter
 tribute, attribute
 block, paragraph
-call, functionCall
+apple, functionCall
 callee, functionCallee
 car, character
 cell, notebookCell
@@ -53,3 +53,11 @@ part, part
 subparagraph, subParagraph
 subsection, subSection
 subsubsection, subSubSection
+
+
+# 2022-10-17 14:19:08 - New entries automatically added by cursorless
+unit, unit
+
+
+# 2022-10-21 14:55:12 - New entries automatically added by cursorless
+identifier, identifier

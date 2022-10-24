@@ -13,8 +13,8 @@ tag: user.code_operators_math
 # comparison operators
 is equal: user.code_operator_equal()
 is not equal: user.code_operator_not_equal()
-is great: user.code_operator_greater_than()
-is less: user.code_operator_less_than()
+is greater: user.code_operator_greater_than()
+is lesser: user.code_operator_less_than()
 is great equal: user.code_operator_greater_than_or_equal_to()
 is less equal: user.code_operator_less_than_or_equal_to()
 

@@ -294,6 +294,7 @@ git commit [<user.prose>]$: user.git_commit(prose or "")
 git commit <user.prose> disclose:
     user.git_commit(prose or "")
     edit.save()
+    sleep(150ms)
     app.tab_close()
     sleep(250ms)
 disk git commit [<user.prose>]$:
@@ -426,7 +427,6 @@ default repo:
     key(cmd-w)
 
 #Debugging
-break point: user.vscode("editor.debug.action.toggleBreakpoint")
 step over: user.vscode("workbench.action.debug.stepOver")
 step into: user.vscode("workbench.action.debug.stepInto")
 debug step out [of]: user.vscode("workbench.action.debug.stepOut")
@@ -653,7 +653,7 @@ foam note clip:
 imports organize: user.vscode("editor.action.organizeImports")
 imports add: user.vscode_add_missing_imports()
 imports fix:
-    sleep(450ms)
+    sleep(550ms)
     user.vscode_add_missing_imports()
     sleep(0.1)
     user.vscode("editor.action.organizeImports")
