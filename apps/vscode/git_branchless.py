@@ -72,6 +72,7 @@ def create_rich_list_capture(
     ctx.lists[full_list_name] = list(values.keys())
 
     def capture(m) -> Any:
+        f"""{description}"""
         return values[getattr(m, list_name)]
 
     capture.__name__ = name
