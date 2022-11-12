@@ -7,3 +7,5 @@ https://en.wikipedia.org/w/index.php?search=%s,wiki
 https://docs.google.com/document/u/0/?q=%s,dock
 https://paper.dropbox.com/#q=%s,paper
 https://www.amazon.co.uk/gp/your-account/order-history/ref=ppx_yo_dt_b_search?opt=ab&search=%s,order
+https://github.com/cursorless-dev/cursorless/issues?q=is%3Aissue+is%3Aopen+%s,issue
+https://github.com/cursorless-dev/cursorless/pulls?q=is%3Apr+is%3Aopen+%s,pull

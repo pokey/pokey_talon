@@ -1,4 +1,3 @@
 Spoken form, Regex
 paint, "[^\s""'`]+"
 white, "\p{Z}+"
-alpha, "[\p{L}\p{M}\p{N}_]+"

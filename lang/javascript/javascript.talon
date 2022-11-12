@@ -27,7 +27,7 @@ settings():
 
 is loose equal: " == "
 is not loose equal: " != "
-<user.operator> nullish: " ?? "
+<user.operator> fallback: " ?? "
 
 <user.operator> quote var:
     insert("${}")

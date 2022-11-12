@@ -81,3 +81,4 @@ modal
 revset,rev set
 branchless
 tokenizer
+ide

@@ -75,3 +75,9 @@ clear focus: user.run_shortcut("Turn Do Not Disturb Off")
     mode.disable("sleep")
     mode.enable("dictation")
     mode.enable("command")
+
+hey siri$:
+    user.sleep_all()
+    key(ctrl-alt-cmd-s)
+
+alphabet: "abcdefghijklmnopqrstuvwxyz"

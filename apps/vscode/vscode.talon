@@ -40,6 +40,7 @@ bar test: user.vscode("workbench.view.testing.focus")
 side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
+bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 
 <user.show_list> symbol [<user.text>] [halt]:
     user.vscode("workbench.action.gotoSymbol")

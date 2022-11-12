@@ -66,7 +66,6 @@
         },
         "throttle": {
             "dental_click": 0.1,
-            "lateral_click": 0.01,
             "postalveolar_click": 0.1,
             "labiodental_click": 0.1,
             "sibilant": 0.1

@@ -22,7 +22,7 @@ file, document
 funk name, functionName
 funk, namedFunction
 if state, ifStatement
-item, collectionItem
+item|entry, collectionItem
 key, collectionKey
 lambda, anonymousFunction
 line, line
@@ -39,7 +39,7 @@ start tag, xmlStartTag
 state, statement
 string, string
 tags, xmlBothTags
-click, token
+click|token, token
 type, type
 value, value
 word, word
@@ -60,4 +60,4 @@ unit, unit
 
 
 # 2022-10-21 14:55:12 - New entries automatically added by cursorless
-identifier, identifier
+alpha, identifier
