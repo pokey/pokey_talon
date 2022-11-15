@@ -619,6 +619,10 @@ elm wrap <user.cursorless_target>:
     insert("Start tunnel")
     key(enter)
 line edit: key(ctrl-q e)
+^move recorded video [<user.text>] [halt]:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Move recorded video")
+    sleep(450ms)
+    user.insert_formatted(text or "", "DASH_SEPARATED")
 
 copy command: user.copy_command_id()
 copy command <number_small>:
