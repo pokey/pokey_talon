@@ -1,28 +1,28 @@
 Spoken form, Cursorless identifier
-# -quick list, experimentalListCodeActions
-# -quick new file, experimentalMoveToNewFile
--falling, revealDefinition
 bottom, scrollToBottom
 break point, toggleLineBreakpoint
 bring, replaceWithTarget
-apply, callAsFunction
+call, callAsFunction
 carve, cutToClipboard
 center, scrollToCenter
-ditch, remove
-clear, clearAndSetSelection
-clone up, insertCopyBefore
+change, clearAndSetSelection
+chuck, remove
 clone, insertCopyAfter
+clone up, insertCopyBefore
 comment, toggleLineComment
 copy, copyToClipboard
 crown, scrollToTop
 dedent, outdentLine
+define, revealDefinition
 drink, editNewLineBefore
+drop, insertEmptyLineBefore
 extract, extractVariable
-falling, followLink
 float, insertEmptyLineAfter
 fold, foldRegion
-form, applyFormatter
+follow, followLink
+format, applyFormatter
 give, deselect
+highlight, highlight
 hover, showHover
 indent, indentLine
 inspect, showDebugHover
@@ -36,20 +36,16 @@ puff, insertEmptyLinesAround
 quick fix, showQuickFix
 reference, showReferences
 rename, rename
+repack, rewrap
 reverse, reverseTargets
-scout all, findInWorkspace
 scout, findInDocument
+scout all, findInWorkspace
 shuffle, randomizeTargets
-snip make, generateSnippet
-snip, insertSnippet
+snippet, insertSnippet
+snippet make, generateSnippet
 sort, sortTargets
-spike, insertEmptyLineBefore
 swap, swapTargets
-switch, rewrap
 take, setSelection
 type deaf, revealTypeDefinition
 unfold, unfoldRegion
 wrap, wrapWithPairedDelimiter
-
-# 2022-02-14 14:25:32 - New entries automatically added by cursorless
-highlight, highlight

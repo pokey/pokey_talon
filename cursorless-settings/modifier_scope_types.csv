@@ -5,59 +5,50 @@ Spoken form, Cursorless identifier
 -six section, sectionLevelSix
 -three section, sectionLevelThree
 -two section, sectionLevelTwo
-argue, argumentOrParameter
-tribute, attribute
+arg, argumentOrParameter
+attribute, attribute
 block, paragraph
-apple, functionCall
+call, functionCall
 callee, functionCallee
-car, character
 cell, notebookCell
-class name, className
+chapter, chapter
+char, character
 class, class
+class name, className
 comment, comment
 condition, condition
-elm, xmlElement
+element, xmlElement
 end tag, xmlEndTag
+environment, environment
 file, document
-funk name, functionName
 funk, namedFunction
+funk name, functionName
+identifier, identifier
 if state, ifStatement
-item|entry, collectionItem
+item, collectionItem
 key, collectionKey
 lambda, anonymousFunction
 line, line
 link, url
 list, list
-long paint, nonWhitespaceSequence
 map, map
 name, name
-short paint, boundedNonWhitespaceSequence
+paint, nonWhitespaceSequence
+paragraph, namedParagraph
+part, part
 regex, regularExpression
 section, section
 selector, selector
+short paint, boundedNonWhitespaceSequence
 start tag, xmlStartTag
 state, statement
 string, string
-tags, xmlBothTags
-click|token, token
-type, type
-value, value
-word, word
-
-
-# 2022-08-22 16:32:34 - New entries automatically added by cursorless
-chapter, chapter
-environment, environment
-paragraph, namedParagraph
-part, part
 subparagraph, subParagraph
 subsection, subSection
 subsubsection, subSubSection
-
-
-# 2022-10-17 14:19:08 - New entries automatically added by cursorless
+tags, xmlBothTags
+token, token
+type, type
 unit, unit
-
-
-# 2022-10-21 14:55:12 - New entries automatically added by cursorless
-alpha, identifier
+value, value
+word, word

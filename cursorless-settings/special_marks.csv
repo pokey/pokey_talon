@@ -1,16 +1,9 @@
 Spoken form, Cursorless identifier
+down, lineNumberRelativeDown
+nothing, nothing
+row, lineNumberModulo100
 source, previousSource
+special, unknownSymbol
 that, previousTarget
 this, currentSelection
-
-# 2021-11-27 16:50:30 - New entries automatically added by cursorless
-down, lineNumberRelativeDown
-row, lineNumberModulo100
 up, lineNumberRelativeUp
-
-# 2022-02-14 14:25:32 - New entries automatically added by cursorless
-nothing, nothing
-
-
-# 2022-08-01 19:50:36 - New entries automatically added by cursorless
-special, unknownSymbol
