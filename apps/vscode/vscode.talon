@@ -660,7 +660,7 @@ imports add: user.vscode_add_missing_imports()
 imports fix:
     sleep(550ms)
     user.vscode_add_missing_imports()
-    sleep(0.1)
+    sleep(250ms)
     user.vscode("editor.action.organizeImports")
 
 search again: user.vscode("rerunSearchEditorSearch")
