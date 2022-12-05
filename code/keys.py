@@ -135,6 +135,8 @@ punctuation_words = {
     "back tick": "`",
     "grave": "`",
     "comma": ",",
+    # Workaround for issue with conformer b-series; see #946
+    "coma": ",",
     "period": ".",
     "full stop": ".",
     "semicolon": ";",

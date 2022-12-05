@@ -254,6 +254,10 @@ class UserActions:
                 actions.user.vscode_with_plugin(f"workbench.action.openEditorAtIndex{number}")
             else:
                 actions.key(f"alt-{number}")
+        else:
+            actions.user.vscode_with_plugin(
+                "workbench.action.openEditorAtIndex", number
+            )
 
     def tab_final():
         if is_mac:
