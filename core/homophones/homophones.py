@@ -97,8 +97,13 @@ def raise_homophones(word_to_find_homophones_for, forced=False, selection=False)
     # and attempt to find the singular, then present the presumed plurals back. This could be improved!
     if word_to_find_homophones_for in all_homophones:
         valid_homophones = all_homophones[word_to_find_homophones_for]
-    elif word_to_find_homophones_for[-1] == 's' and word_to_find_homophones_for[:-1] in all_homophones:
-        valid_homophones = map(lambda w : w + 's', all_homophones[word_to_find_homophones_for[:-1]])
+    elif (
+        word_to_find_homophones_for.endswith("s")
+        and word_to_find_homophones_for[:-1] in all_homophones
+    ):
+        valid_homophones = map(
+            lambda w: w + "s", all_homophones[word_to_find_homophones_for[:-1]]
+        )
     else:
         app.notify("homophones.py", f'"{word_to_find_homophones_for}" not in homophones list')
         return
@@ -173,6 +178,15 @@ class Actions:
     def homophones_show(m: str):
         """Show the homophones display"""
         raise_homophones(m, False, False)
+
+    def homophones_show_auto():
+        """Show homophones for selection, or current word if selection is empty."""
+        text = actions.edit.selected_text()
+        if text:
+            actions.user.homophones_show(text)
+        else:
+            actions.edit.select_word()
+            actions.user.homophones_show_selection()
 
     def homophones_show_selection():
         """Show the homophones display for the selected text"""
