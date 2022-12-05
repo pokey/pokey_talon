@@ -25,7 +25,7 @@ def _drag_window_mac(win=None):
 class MacActions:
     def desktop(number: int):
         if number < 10:
-            actions.key("ctrl-{}".format(number))
+            actions.key(f"ctrl-{number}")
 
     def desktop_next():
         actions.key("ctrl-right")

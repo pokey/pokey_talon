@@ -103,7 +103,7 @@ continuous_scoll_mode = ""
 
 @imgui.open(x=700, y=0)
 def gui_wheel(gui: imgui.GUI):
-    gui.text("Scroll mode: {}".format(continuous_scoll_mode))
+    gui.text(f"Scroll mode: {continuous_scoll_mode}")
     gui.line()
     if gui.button("Wheel Stop [stop scrolling]"):
         actions.user.mouse_scroll_stop()
@@ -280,7 +280,7 @@ def show_cursor_helper(show):
             )
 
         except WindowsError:
-            print("Unable to show_cursor({})".format(str(show)))
+            print(f"Unable to show_cursor({str(show)})")
     else:
         ctrl.cursor_visible(show)
 

@@ -73,7 +73,7 @@ def gui_formatters(gui: imgui.GUI):
     gui.line()
 
     for key, val in formatters_words.items():
-        gui.text("{}: {}".format(val, key))
+        gui.text(f"{val}: {key}")
 
     gui.spacer()
     if gui.button("Help close"):
@@ -104,7 +104,7 @@ def format_context_button(index: int, context_label: str, context_name: str) -> 
             else "",
         )
     else:
-        return "{}. {} ".format(index, context_label)
+        return f"{index}. {context_label} "
 
 
 # translates 1-based index -> actual index in sorted_context_map_keys
@@ -187,9 +187,7 @@ def gui_context_help(gui: imgui.GUI):
 
         if not show_enabled_contexts_only:
             gui.text(
-                "Help: All ({}/{}) (* = active)".format(
-                    current_context_page, total_page_count
-                )
+                f"Help: All ({current_context_page}/{total_page_count}) (* = active)"
             )
         else:
             gui.text(
@@ -325,7 +323,7 @@ def draw_commands_title(gui: imgui.GUI, title: str):
     global selected_context_page
     global total_page_count
 
-    gui.text("{} ({}/{})".format(title, selected_context_page, total_page_count))
+    gui.text(f"{title} ({selected_context_page}/{total_page_count})")
     gui.line()
 
 
@@ -333,11 +331,11 @@ def draw_commands(gui: imgui.GUI, commands: Iterable[Tuple[str, str]]):
     for key, val in commands:
         val = val.split("\n")
         if len(val) > 1:
-            gui.text("{}:".format(key))
+            gui.text(f"{key}:")
             for line in val:
-                gui.text("    {}".format(line))
+                gui.text(f"    {line}")
         else:
-            gui.text("{}: {}".format(key, val[0]))
+            gui.text(f"{key}: {val[0]}")
 
 
 def reset():
@@ -498,12 +496,12 @@ def gui_list_help(gui: imgui.GUI):
     total_page_count = len(pages_list)
     #print(pages_list[current_page])
 
-    gui.text("{} {}/{}".format(selected_list, current_list_page, total_page_count))
+    gui.text(f"{selected_list} {current_list_page}/{total_page_count}")
 
     gui.line()
 
     for key, value in pages_list[current_list_page - 1].items():
-        gui.text("{}: {}".format(value, key))
+        gui.text(f"{value}: {key}")
 
     gui.spacer()
 

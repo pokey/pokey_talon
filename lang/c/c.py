@@ -267,7 +267,7 @@ class UserActions:
 
     def code_insert_function(text: str, selection: str):
         if selection:
-            text = text + "({})".format(selection)
+            text = text + f"({selection})"
         else:
             text = text + "()"
 
@@ -297,4 +297,4 @@ class UserActions:
         actions.user.code_insert_function(result, None)
 
     def code_insert_library(text: str, selection: str):
-        actions.user.paste("include <{}>".format(selection))
+        actions.user.paste(f"include <{selection}>")

@@ -34,9 +34,9 @@ class user_actions:
     def tab_jump(number: int):
         if number < 9:
             if app.platform == "mac":
-                actions.key("cmd-{}".format(number))
+                actions.key(f"cmd-{number}")
             else:
-                actions.key("ctrl-{}".format(number))
+                actions.key(f"ctrl-{number}")
 
     def tab_final():
         if app.platform == "mac":

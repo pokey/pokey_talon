@@ -77,7 +77,7 @@ def _get_nonce(port, file_prefix):
 
 
 def send_idea_command(cmd):
-    print("Sending {}".format(cmd))
+    print(f"Sending {cmd}")
     active_app = ui.active_app()
     bundle = active_app.bundle or active_app.name
     port = port_mapping.get(bundle, None)
@@ -86,7 +86,7 @@ def send_idea_command(cmd):
     print(f"sending {bundle} {port} {nonce}")
     if port and nonce:
         response = requests.get(
-            "http://localhost:{}/{}/{}".format(port, nonce, cmd),
+            f"http://localhost:{port}/{nonce}/{cmd}",
             proxies=proxies,
             timeout=(0.05, 3.05),
         )
@@ -155,7 +155,7 @@ class Actions:
             for _ in range(times):
                 send_idea_command("action EditorSelectWord")
             send_idea_command("action EditorCopy")
-            send_idea_command("goto {} {}".format(original_line, original_column))
+            send_idea_command(f"goto {original_line} {original_column}")
             send_idea_command("action EditorPaste")
         finally:
             clip.set(old_clip)
@@ -256,7 +256,7 @@ class EditActions:
         actions.user.idea("action EditorNextWordWithSelection")
 
     def jump_line(n: int):
-        actions.user.idea("goto {} 0".format(n))
+        actions.user.idea(f"goto {n} 0")
         # move the cursor to the first nonwhite space character of the line
         actions.user.idea("action EditorLineEnd")
         actions.user.idea("action EditorLineStart")
@@ -283,18 +283,18 @@ class UserActions:
     def tab_jump(number: int):
         # depends on plugin GoToTabs
         if number < 10:
-            actions.user.idea("action GoToTab{}".format(number))
+            actions.user.idea(f"action GoToTab{number}")
 
     def extend_until_line(line: int):
-        actions.user.idea("extend {}".format(line))
+        actions.user.idea(f"extend {line}")
 
     def select_range(line_start: int, line_end: int):
         # if it's a single line, select the entire thing including the ending new-line5
         if line_start == line_end:
-            actions.user.idea("goto {} 0".format(line_start))
+            actions.user.idea(f"goto {line_start} 0")
             actions.user.idea("action EditorSelectLine"),
         else:
-            actions.user.idea("range {} {}".format(line_start, line_end))
+            actions.user.idea(f"range {line_start} {line_end}")
 
     def extend_camel_left():
         actions.user.idea("action EditorPreviousWordInDifferentHumpsModeWithSelection")
@@ -309,7 +309,7 @@ class UserActions:
         actions.user.idea("action EditorNextWordInDifferentHumpsMode")
 
     def line_clone(line: int):
-        actions.user.idea("clone {}".format(line))
+        actions.user.idea(f"clone {line}")
 
     # multi-cursor tag functions
     def multi_cursor_enable():

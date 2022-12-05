@@ -10,7 +10,7 @@ class user_actions:
 
     # tabs-tag functions implementations
     def tab_jump(number):
-        actions.key("alt-{}".format(number))
+        actions.key(f"alt-{number}")
 
     # tab_final is not supported by konsole by default
     # but short cut can be configured

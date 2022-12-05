@@ -297,7 +297,7 @@ class Actions:
             if is_valid_path:
                 ui.launch(path=path)
             else:
-                cmd = "explorer.exe shell:AppsFolder\\{}".format(path)
+                cmd = f"explorer.exe shell:AppsFolder\\{path}"
                 subprocess.Popen(cmd, shell=False)
 
     def switcher_menu():

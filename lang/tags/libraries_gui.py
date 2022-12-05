@@ -55,9 +55,7 @@ def gui_libraries(gui: imgui.GUI):
 
     for i, entry in enumerate(library_list, 1):
         gui.text(
-            "{}. {}: {}".format(
-                i, entry, registry.lists["user.code_libraries"][0][entry]
-            )
+            f"{i}. {entry}: {registry.lists['user.code_libraries'][0][entry]}"
         )
 
     gui.spacer()

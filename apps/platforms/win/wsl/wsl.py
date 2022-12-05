@@ -221,7 +221,7 @@ def get_usr_path(distro=None):
 
 def get_wsl_path(win_path, distro=None):
     #print(f"WSLPATH: {win_path}")
-    return run_wslpath(["-u"], "'{}'".format(win_path), distro)
+    return run_wslpath(["-u"], f"'{win_path}'", distro)
 
 def _disable_path_detection(notify=True):
     global path_detection_disabled
@@ -427,17 +427,17 @@ class UserActions:
         if ":" in str(path):
             path = get_wsl_path(path)
 
-        actions.insert('cd "{}"'.format(path))
+        actions.insert(f'cd "{path}"')
         actions.key("enter")
         actions.user.file_manager_refresh_title()
 
     def file_manager_select_directory(path: str):
         """selects the directory"""
-        actions.insert('"{}"'.format(path))
+        actions.insert(f'"{path}"')
 
     def file_manager_new_folder(name: str):
         """Creates a new folder in a gui filemanager or inserts the command to do so for terminals"""
-        actions.insert('mkdir "{}"'.format(name))
+        actions.insert(f'mkdir "{name}"')
 
     def file_manager_open_file(path: str):
         actions.insert(path)
@@ -458,7 +458,7 @@ class UserActions:
         actions.key("enter")
 
     def terminal_change_directory(path: str):
-        actions.insert("cd {}".format(path))
+        actions.insert(f"cd {path}")
         if path:
             actions.key("enter")
 

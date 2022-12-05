@@ -22,7 +22,7 @@ class Actions:
 
     def terminal_change_directory(path: str):
         """Lists change directory"""
-        actions.insert("cd {}".format(path))
+        actions.insert(f"cd {path}")
         if path:
             actions.key("enter")
 

@@ -97,7 +97,7 @@ def raise_homophones(word_to_find_homophones_for, forced=False, selection=False)
     elif word_to_find_homophones_for[-1] == 's' and word_to_find_homophones_for[:-1] in all_homophones:
         valid_homophones = map(lambda w : w + 's', all_homophones[word_to_find_homophones_for[:-1]])
     else:
-        app.notify("homophones.py", '"%s" not in homophones list' % word_to_find_homophones_for)
+        app.notify("homophones.py", f'"{word_to_find_homophones_for}" not in homophones list')
         return
 
     # Move current word to end of list to reduce searcher's cognitive load
@@ -140,7 +140,7 @@ def gui(gui: imgui.GUI):
         gui.line()
         index = 1
         for word in active_word_list:
-            if gui.button("Choose {}: {}".format(index, word)):
+            if gui.button(f"Choose {index}: {word}"):
                 actions.insert(actions.user.homophones_select(index))
                 actions.user.homophones_hide()
             index = index + 1
