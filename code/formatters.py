@@ -36,9 +36,10 @@ def format_phrase(m: Union[str, Phrase], formatters: str):
     if isinstance(m, str):
         words = m.split(" ")
     else:
-        # FIXME: I believe this is no longer necessary. -rntz, 2022-02-10
-        if m.words[-1] == "over":
-            m.words = m.words[:-1]
+        # # I believe this is no longer necessary. -rntz, 2022-02-10
+        # # TODO: I've commented this out, remove if nobody has issues -rntz, 2022-06-21
+        # if m.words[-1] == "over":
+        #     m.words = m.words[:-1]
         words = actions.dictate.replace_words(actions.dictate.parse_words(m))
 
     result = last_phrase_formatted = format_phrase_without_adding_to_history(
@@ -135,7 +136,7 @@ formatters_dict = {
 
 # This is the mapping from spoken phrases to formatters
 formatters_words = {
-    "all caps": formatters_dict["ALL_CAPS"],
+    "all cap": formatters_dict["ALL_CAPS"],
     "all down": formatters_dict["ALL_LOWERCASE"],
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
     "dotted": formatters_dict["DOT_SEPARATED"],
@@ -277,7 +278,7 @@ class Actions:
 
 def unformat_text(text: str) -> str:
     """Remove format from text"""
-    unformatted = re.sub(r"[^\w]+", " ", text)
+    unformatted = re.sub(r"[\W_]+", " ", text)
     # Split on camelCase, including numbers
     # FIXME: handle non-ASCII letters!
     unformatted = re.sub(
