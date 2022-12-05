@@ -2,7 +2,9 @@ from collections import defaultdict
 import itertools
 import math
 import re
-from typing import Dict, List, Iterable, Set, Tuple, Union
+from collections import defaultdict
+from collections.abc import Iterable
+from itertools import islice
 
 from talon import Module, Context, actions, imgui, Module, registry, ui, app
 from talon.grammar import Phrase

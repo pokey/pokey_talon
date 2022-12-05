@@ -1,7 +1,9 @@
-from dataclasses import dataclass
-from typing import Dict, Generic, List, Mapping, Optional, TypeVar, Any
-from collections import defaultdict
 import itertools
+import re
+from collections import defaultdict
+from collections.abc import Mapping
+from dataclasses import dataclass
+from typing import Any, Optional
 
 from talon import actions
 from talon import Module

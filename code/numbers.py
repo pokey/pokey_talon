@@ -1,5 +1,7 @@
-from talon import Context, Module, actions
-from typing import List, Optional, Union, Iterator
+from collections.abc import Iterator
+from typing import Union
+
+from talon import Context, Module
 
 mod = Module()
 ctx = Context()
