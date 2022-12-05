@@ -3,8 +3,8 @@ import itertools
 import math
 import re
 from collections import defaultdict
-from collections.abc import Iterable
 from itertools import islice
+from typing import Iterable
 
 from talon import Module, Context, actions, imgui, Module, registry, ui, app
 from talon.grammar import Phrase
