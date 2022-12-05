@@ -12,7 +12,7 @@ import importlib
 class UnitTestPathFinder(importlib.machinery.PathFinder):
     """
     Makes the knausj_talon repo root directory available under
-    knausj_talon_pkg and tests/stubs/talon/ available
+    knausj_talon_pkg and test/stubs/talon/ available
     under talon. Activated by the code in pytest_sessionstart()
 
     A loader is needed since the 'code' folder in knausj conflicts
@@ -27,20 +27,14 @@ class UnitTestPathFinder(importlib.machinery.PathFinder):
 
         if fullname == "talon" or fullname.startswith("talon."):
             # Load talon stubs as talon module
-            filepath = os.path.join(
-                curr_dir, "tests", "stubs"
-            )
-            return super().find_spec(
-                fullname,
-                [filepath]
-            )
+            filepath = os.path.join(curr_dir, "test", "stubs")
+            return super().find_spec(fullname, [filepath])
         elif fullname == knausj_prefix:
             # Load knausj_talon root module
             return importlib.machinery.ModuleSpec(
                 name=fullname,
                 loader=importlib.machinery.SourceFileLoader(
-                    fullname,
-                    os.path.join(curr_dir, "tests", "repo_root_init.py")
+                    fullname, os.path.join(curr_dir, "test", "repo_root_init.py")
                 ),
                 is_package=True
             )
