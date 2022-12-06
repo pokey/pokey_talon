@@ -13,3 +13,4 @@ git revert, git.revertSelectedRanges
 git stage, git.stageSelectedRanges
 git comment, workbench.action.addComment
 reflow, rewrap.rewrapComment
+ample, editor.action.goToImplementation

@@ -23,3 +23,4 @@ use effect, useEffect.body
 div, div.body
 turn, ternaryExpression.value
 turn else, ternaryExpression.alternative
+bold, bold.text
