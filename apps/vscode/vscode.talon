@@ -76,7 +76,8 @@ panel control: user.vscode("workbench.panel.repl.view.focus")
 panel output: user.vscode("workbench.panel.output.focus")
 problem show: user.vscode("workbench.panel.markers.view.focus")
 low dog: user.vscode("workbench.action.togglePanel")
-panel terminal: user.vscode("workbench.action.terminal.focus")
+term show: user.vscode("workbench.action.terminal.focus")
+low show: user.vscode("workbench.action.focusPanel")
 pan edit: user.vscode("workbench.action.focusActiveEditorGroup")
 
 # Settings
@@ -292,6 +293,7 @@ git rebase {user.git_branch}:
     key(enter)
     sleep(250ms)
 git commit [<user.prose>]$: user.git_commit(prose or "")
+git commit [<user.prose>] halt: user.git_commit(prose or "")
 git commit <user.prose> disclose:
     user.git_commit(prose or "")
     edit.save()
@@ -303,12 +305,19 @@ disk git commit [<user.prose>]$:
     edit.save()
     sleep(1500ms)
     user.git_commit(prose or "")
+disk git commit [<user.prose>] halt:
+    key(esc:5)
+    edit.save()
+    sleep(1500ms)
+    user.git_commit(prose or "")
 disk git commit <user.prose> disclose:
     key(esc:5)
     edit.save()
     sleep(1500ms)
     user.git_commit(prose or "")
-    key(enter)
+    edit.save()
+    sleep(150ms)
+    app.tab_close()
     sleep(250ms)
 git stash [<user.prose>] [halt]:
     user.vscode("git.stash")
@@ -643,13 +652,13 @@ run python: user.vscode("python.execInTerminal")
 
 run tests: user.vscode("testing.runAll")
 
-foam note [<user.text>] [halt]:
-    user.vscode("foam-vscode.create-note-from-default-template")
+note make [<user.text>] [halt]:
+    user.vscode("foam-vscode.create-note")
     sleep(100ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 
-foam note clip:
-    user.vscode("foam-vscode.create-note-from-default-template")
+note make clip:
+    user.vscode("foam-vscode.create-note")
     sleep(100ms)
     edit.paste()
 
