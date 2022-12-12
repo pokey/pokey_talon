@@ -28,11 +28,7 @@ settings():
 is loose equal: " == "
 is not loose equal: " != "
 <user.operator> fallback: " ?? "
-
-<user.operator> quote var:
-    insert("${}")
-    key(left)
-
+<user.operator> quote var: user.insert_between("${", "}")
 <user.operator> spread: "..."
 
 chain length: ".length"
