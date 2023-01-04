@@ -10,5 +10,5 @@ git pop <user.branchless_destination>:
     user.branchless_switch_to_commit(branchless_destination)
 git log: user.vscode("git-branchless.smartlog")
 git detach: user.vscode("git-branchless.custom.detachHead")
-git auto branch <user.branchless_revset>: user.branchless_autobranch(branchless_revset)
-git abandon <user.branchless_revset>: user.branchless_hide(branchless_revset)
+git {user.branchless_simple_command} <user.branchless_revset>:
+    user.branchless_simple_command(branchless_simple_command, branchless_revset)

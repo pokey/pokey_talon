@@ -118,6 +118,13 @@ ctx.lists["user.branchless_revset_modifier"] = {
     "tail": "descendants",
 }
 
+mod.list("branchless_simple_command", "Simple branches command that accepts a revset")
+ctx.lists["user.branchless_simple_command"] = {
+    "auto branch": "custom.autoBranch",
+    "abandon": "hide",
+    "log": "smartlogRevset",
+}
+
 
 @mod.capture(rule="[{user.branchless_revset_modifier}] <user.branchless_revset_mark>")
 def branchless_revset(m) -> Revset:
@@ -222,19 +229,10 @@ class Actions:
             },
         )
 
-    def branchless_autobranch(revset: Revset):
+    def branchless_simple_command(command_id: str, revset: Revset):
         """git-branchless automatically create a branch based on commit name for a set of commits."""
         actions.user.vscode_with_plugin(
-            "git-branchless.custom.autoBranch",
-            {
-                "revset": revset.get_revset(),
-            },
-        )
-
-    def branchless_hide(revset: Revset):
-        """git-branchless hide a branch"""
-        actions.user.vscode_with_plugin(
-            "git-branchless.hide",
+            f"git-branchless.{command_id}",
             {
                 "revset": revset.get_revset(),
             },
