@@ -42,12 +42,12 @@ search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
 bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 
-<user.show_list> symbol [<user.text>] [halt]:
+<user.show_list> symbol here [<user.text>] [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
     insert(text or "")
 
-<user.teleport> symbol <user.text> [halt]:
+<user.teleport> symbol here <user.text> [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
     insert(text or "")
@@ -55,12 +55,12 @@ bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
     key(enter)
     sleep(50ms)
 
-<user.show_list> all symbol [<user.text>] [halt]:
+<user.show_list> symbol [<user.text>] [halt]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
     insert(text or "")
 
-<user.teleport> all symbol <user.text> [halt]:
+<user.teleport> symbol <user.text> [halt]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
     insert(text or "")
@@ -76,7 +76,9 @@ panel control: user.vscode("workbench.panel.repl.view.focus")
 panel output: user.vscode("workbench.panel.output.focus")
 problem show: user.vscode("workbench.panel.markers.view.focus")
 low dog: user.vscode("workbench.action.togglePanel")
-term show: user.vscode("workbench.action.terminal.focus")
+term show:
+    user.vscode("workbench.action.terminal.focus")
+    sleep(250ms)
 low show: user.vscode("workbench.action.focusPanel")
 pan edit: user.vscode("workbench.action.focusActiveEditorGroup")
 
@@ -444,9 +446,7 @@ debug start: user.vscode("workbench.action.debug.start")
 debug pause: user.vscode("workbench.action.debug.pause")
 debug stopper: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
-debug restart:
-    user.vscode("workbench.action.debug.stop")
-    user.vscode("workbench.action.debug.start")
+debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
 debug stench:
     user.vscode_with_plugin("commands.startDebugging", "Run Extension")
@@ -479,7 +479,7 @@ copy line up: user.vscode("editor.action.copyLinesUpAction")
 
 #Expand/Shrink AST Selection
 <user.select> less: user.vscode("editor.action.smartSelect.shrink")
-<user.select> (more | this): user.vscode("editor.action.smartSelect.expand")
+<user.select> more: user.vscode("editor.action.smartSelect.expand")
 
 minimap: user.vscode("editor.action.toggleMinimap")
 maximize: user.vscode("workbench.action.minimizeOtherEditors")
@@ -628,9 +628,9 @@ elm wrap <user.cursorless_target>:
     insert("Start tunnel")
     key(enter)
 line edit: key(ctrl-q e)
-^move recorded video [<user.text>] [halt]:
+^move recording [<user.text>] [halt]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Move recorded video")
-    sleep(450ms)
+    sleep(650ms)
     user.insert_formatted(text or "", "DASH_SEPARATED")
 
 copy command: user.copy_command_id()
