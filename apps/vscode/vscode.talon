@@ -667,7 +667,7 @@ note make clip:
 imports organize: user.vscode("editor.action.organizeImports")
 imports add: user.vscode_add_missing_imports()
 imports fix:
-    sleep(550ms)
+    sleep(600ms)
     user.vscode_add_missing_imports()
     sleep(250ms)
     user.vscode("editor.action.organizeImports")

@@ -27,6 +27,8 @@ ctx.lists["user.code_typescript_keyword"] = {
     "interface": "interface ",
     "readonly": "readonly ",
     "type": "type ",
+    "type of": "typeof ",
+    "key of": "keyof ",
 }
 
 
