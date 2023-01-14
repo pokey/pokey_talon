@@ -1,8 +1,6 @@
 {
     "postalveolar_click": {
-        "sounds": [
-            "Postalveolar click"
-        ],
+        "sounds": ["Postalveolar click"],
         "threshold": {
             ">probability": 0.99995,
             ">power": 15
@@ -12,9 +10,7 @@
         }
     },
     "dental_click": {
-        "sounds": [
-            "Dental click"
-        ],
+        "sounds": ["Dental click"],
         "threshold": {
             ">probability": 0.9995,
             ">power": 15
@@ -24,9 +20,7 @@
         }
     },
     "lateral_click": {
-        "sounds": [
-            "Lateral click"
-        ],
+        "sounds": ["Lateral click"],
         "threshold": {
             ">probability": 0.995,
             ">power": 15
@@ -36,9 +30,7 @@
         }
     },
     "labiodental_click": {
-        "sounds": [
-            "Labiodental click"
-        ],
+        "sounds": ["Labiodental click"],
         "threshold": {
             ">probability": 0.999,
             ">power": 15
@@ -48,18 +40,14 @@
         }
     },
     "sibilant": {
-        "sounds": [
-            "unvoiced subapical postalveolar non sibilant fricativee"
-        ],
+        "sounds": ["unvoiced subapical postalveolar non sibilant fricativee"],
         "threshold": {
             ">probability": 0.999,
             ">power": 10
         }
     },
     "suppress_clicks": {
-        "sounds": [
-            "Speech"
-        ],
+        "sounds": ["Speech"],
         "threshold": {
             ">probability": 0.999,
             ">power": 15
