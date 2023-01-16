@@ -1,0 +1,1 @@
+parrot(cluck): print("cluck")
