@@ -32,8 +32,8 @@
     "labiodental_click": {
         "sounds": ["Labiodental click"],
         "threshold": {
-            ">probability": 0.999,
-            ">power": 15
+            ">probability": 0.995,
+            ">power": 10
         },
         "throttle": {
             "labiodental_click": 0.1

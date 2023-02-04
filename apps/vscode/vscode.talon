@@ -280,7 +280,7 @@ branch make [<user.text>] [halt]:
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
 <user.teleport> branch {user.git_branch}:
     user.vscode("git.checkout")
-    sleep(50ms)
+    sleep(450ms)
     "{git_branch}"
     key(enter)
     sleep(500ms)
@@ -384,22 +384,22 @@ git full continue:
     key(enter)
 pop patch last [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git previous")
-    sleep(350ms)
+    sleep(450ms)
     insert("{repetition_count or 1}")
     key(enter)
 pop branch last [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git previous branch")
-    sleep(350ms)
+    sleep(450ms)
     insert("{repetition_count or 1}")
     key(enter)
 pop patch next [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git next")
-    sleep(350ms)
+    sleep(450ms)
     insert("{repetition_count or 1}")
     key(enter)
 pop branch next [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git next branch")
-    sleep(350ms)
+    sleep(450ms)
     insert("{repetition_count or 1}")
     key(enter)
 ^{user.branchless_command}$:
@@ -448,6 +448,10 @@ debug stopper: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
 debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
+alternate highlight <user.cursorless_target>:
+    user.cursorless_single_target_command("highlight", cursorless_target, "highlight1")
+
+consul clear: user.vscode("workbench.debug.panel.action.clearReplAction")
 debug stench:
     user.vscode_with_plugin("commands.startDebugging", "Run Extension")
 debug test:

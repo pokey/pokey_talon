@@ -23,4 +23,5 @@ use effect, useEffect.body
 div, div.body
 turn, ternaryExpression.value
 turn else, ternaryExpression.alternative
+turn dish, ternaryExpression.condition
 bold, bold.text

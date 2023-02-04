@@ -15,8 +15,8 @@ is equal: user.code_operator_equal()
 is not equal: user.code_operator_not_equal()
 is greater: user.code_operator_greater_than()
 is lesser: user.code_operator_less_than()
-is great equal: user.code_operator_greater_than_or_equal_to()
-is less equal: user.code_operator_less_than_or_equal_to()
+(is | <user.operator>) great equal: user.code_operator_greater_than_or_equal_to()
+(is | <user.operator>) less equal: user.code_operator_less_than_or_equal_to()
 
 # logical operators
 (<user.operator> | logical) and: user.code_operator_and()
