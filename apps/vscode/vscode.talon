@@ -584,7 +584,6 @@ snip last: user.vscode("jumpToPrevSnippetPlaceholder")
 skip:
     key("backspace")
     user.vscode("jumpToNextSnippetPlaceholder")
-previous: user.vscode("jumpToPrevSnippetPlaceholder")
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
 
