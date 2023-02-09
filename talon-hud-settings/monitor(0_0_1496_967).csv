@@ -1,30 +1,30 @@
-status_bar_x,962
-status_bar_y,6
+status_bar_x,831
+status_bar_y,3
 status_bar_width,19
 status_bar_height,18
-status_bar_limit_x,962
-status_bar_limit_y,6
+status_bar_limit_x,831
+status_bar_limit_y,3
 status_bar_limit_width,19
 status_bar_limit_height,18
 status_bar_font_size,24
 status_bar_alignment,left
 status_bar_expand_direction,down
-event_log_x,1118
-event_log_y,909
+event_log_x,886
+event_log_y,759
 event_log_width,608
 event_log_height,179
-event_log_limit_x,1118
-event_log_limit_y,909
+event_log_limit_x,886
+event_log_limit_y,759
 event_log_limit_width,608
 event_log_limit_height,179
 event_log_font_size,16
 event_log_alignment,right
 event_log_expand_direction,up
-Text panel_x,1296
+Text panel_x,1064
 Text panel_y,50
 Text panel_width,200
 Text panel_height,200
-Text panel_limit_x,1196
+Text panel_limit_x,964
 Text panel_limit_y,50
 Text panel_limit_width,300
 Text panel_limit_height,400
@@ -42,34 +42,34 @@ Documentation_limit_height,700
 Documentation_font_size,18
 Documentation_alignment,left
 Documentation_expand_direction,down
-Choices_x,618
+Choices_x,502
 Choices_y,100
 Choices_width,300
 Choices_height,150
-Choices_limit_x,618
+Choices_limit_x,502
 Choices_limit_y,100
 Choices_limit_width,300
 Choices_limit_height,600
 Choices_font_size,18
 Choices_alignment,left
 Choices_expand_direction,down
-ability_bar_x,736
-ability_bar_y,814
+ability_bar_x,620
+ability_bar_y,664
 ability_bar_width,500
 ability_bar_height,80
-ability_bar_limit_x,736
-ability_bar_limit_y,814
+ability_bar_limit_x,620
+ability_bar_limit_y,664
 ability_bar_limit_width,500
 ability_bar_limit_height,80
 ability_bar_font_size,18
 ability_bar_alignment,right
 ability_bar_expand_direction,up
 walk_through_x,718
-walk_through_y,880
+walk_through_y,730
 walk_through_width,100
 walk_through_height,20
 walk_through_limit_x,288
-walk_through_limit_y,706
+walk_through_limit_y,556
 walk_through_limit_width,960
 walk_through_limit_height,148
 walk_through_font_size,24
@@ -86,8 +86,8 @@ context_menu_limit_height,400
 context_menu_font_size,18
 context_menu_alignment,left
 context_menu_expand_direction,down
-cursor_tracker_x,15
-cursor_tracker_y,15
+cursor_tracker_x,151
+cursor_tracker_y,658
 cursor_tracker_width,15
 cursor_tracker_height,15
 cursor_tracker_limit_x,15
@@ -100,3 +100,10 @@ cursor_tracker_expand_direction,down
 screen_overlay_x,0
 screen_overlay_y,0
 screen_overlay_width,300
+screen_overlay_height,30
+screen_overlay_limit_x,0
+screen_overlay_limit_y,0
+screen_overlay_limit_width,300
+screen_overlay_limit_height,30
+screen_overlay_font_size,12
+screen_overlay_alignment,center
