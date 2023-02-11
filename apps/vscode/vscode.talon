@@ -384,28 +384,28 @@ git full continue:
     key(enter)
 pop patch last [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git previous")
-    sleep(450ms)
+    sleep(500ms)
     insert("{repetition_count or 1}")
     key(enter)
 pop branch last [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git previous branch")
-    sleep(450ms)
+    sleep(500ms)
     insert("{repetition_count or 1}")
     key(enter)
 pop patch next [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git next")
-    sleep(450ms)
+    sleep(500ms)
     insert("{repetition_count or 1}")
     key(enter)
 pop branch next [<user.repetition_count>]:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git next branch")
-    sleep(450ms)
+    sleep(500ms)
     insert("{repetition_count or 1}")
     key(enter)
 ^{user.branchless_command}$:
     commit = edit.selected_text()
     user.vscode_with_plugin("workbench.action.tasks.runTask", branchless_command)
-    sleep(450ms)
+    sleep(500ms)
     insert(commit)
     key(enter)
 
