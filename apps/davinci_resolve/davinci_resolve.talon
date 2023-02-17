@@ -15,3 +15,4 @@ da vinci mode:
 sprint: key(shift-l)
 give it up: key(cmd-shift-a)
 ditch clip: key(left shift-v shift-backspace)
+link clips: key(cmd-alt-l)
