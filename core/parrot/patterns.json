@@ -12,8 +12,8 @@
     "dental_click": {
         "sounds": ["Dental click"],
         "threshold": {
-            ">probability": 0.9995,
-            ">power": 15
+            ">probability": 0.995,
+            ">power": 10
         },
         "throttle": {
             "dental_click": 0.1
@@ -44,6 +44,28 @@
         "threshold": {
             ">probability": 0.999,
             ">power": 10
+        }
+    },
+    "sibilant_low": {
+        "sounds": ["unvoiced subapical postalveolar non sibilant fricativee"],
+        "threshold": {
+            ">probability": 0.999,
+            ">power": 10,
+            "<f2": 1500
+        },
+        "throttle": {
+            "sibilant_low": 0.1
+        }
+    },
+    "sibilant_high": {
+        "sounds": ["unvoiced subapical postalveolar non sibilant fricativee"],
+        "threshold": {
+            ">probability": 0.999,
+            ">power": 10,
+            ">f2": 1500
+        },
+        "throttle": {
+            "sibilant_high": 0.1
         }
     },
     "suppress_clicks": {

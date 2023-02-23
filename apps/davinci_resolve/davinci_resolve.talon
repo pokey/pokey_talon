@@ -1,11 +1,13 @@
 app: davinci_resolve
 mode: command
 -
-# parrot(postalveolar_click): key(cmd-b)
-# parrot(dental_click): key(cmd-b)
+parrot(dental_click): key(shift-left:3)
 parrot(labiodental_click): key(space)
-parrot(sibilant): key(shift-left)
 parrot(lateral_click): key(cmd-b)
+parrot(sibilant_low): edit.zoom_out()
+parrot(sibilant_high): edit.zoom_in()
+# parrot(postalveolar_click): key(cmd-b)
+# parrot(sibilant): key(shift-left)
 
 da vinci mode:
     mode.disable("sleep")
