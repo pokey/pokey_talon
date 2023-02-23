@@ -66,6 +66,7 @@ ctx.lists["user.code_keyword"] = {
     "protected": "protected ",
     "public": "public ",
     "return": "return ",
+    "static": "static ",
     "throw": "throw ",
     "true": "true",
     "try": "try ",
