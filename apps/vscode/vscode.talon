@@ -677,3 +677,28 @@ imports fix:
 
 search again: user.vscode("rerunSearchEditorSearch")
 preview markdown: user.vscode("markdown.showPreview")
+
+copilot next: user.vscode("editor.action.inlineSuggest.showNext")
+
+typescript restart: user.vscode("typescript.restartTsServer")
+(close all editors | tab close all): user.vscode("workbench.action.closeAllGroups")
+
+hay Github <user.text>$:
+    user.vscode("agent-chat-panel.focus")
+    sleep(100ms)
+    user.vscode("agent-chat-panel.focus")
+    sleep(100ms)
+    insert("{text}")
+hay Github <user.text> clap:
+    user.vscode("agent-chat-panel.focus")
+    sleep(100ms)
+    user.vscode("agent-chat-panel.focus")
+    sleep(100ms)
+    insert("{text}")
+    key(enter)
+Github yes:
+    insert("accept")
+    key(enter)
+Github no:
+    insert("reject")
+    key(enter)
