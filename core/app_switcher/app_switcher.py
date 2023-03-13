@@ -1,10 +1,11 @@
+from datetime import datetime
 import os
 import subprocess
 import time
 from pathlib import Path
 
 import talon
-from talon import Context, Module, actions, app, fs, imgui, ui
+from talon import Context, Module, actions, app, fs, imgui, ui, events
 
 # Construct at startup a list of overides for application names (similar to how homophone list is managed)
 # ie for a given talon recognition word set  `one note`, recognized this in these switcher functions as `ONENOTE`
@@ -261,12 +262,17 @@ class Actions:
 
     def switcher_focus_app(app: ui.App):
         """Focus application and wait until switch is made"""
+        events.write("focus-1", f"{datetime.now().isoformat()}")
         app.focus()
         t1 = time.perf_counter()
-        while ui.active_app() != app:
+        app2 = ui.active_app()
+        while app2 != app:
+            events.write("focus-2", f"{app=} {app2=} {datetime.now().isoformat()}")
             if time.perf_counter() - t1 > 1:
+                events.write("focus-failed", f"{datetime.now().isoformat()}")
                 raise RuntimeError(f"Can't focus app: {app.name}")
             actions.sleep(0.1)
+            app2 = ui.active_app()
 
     def switcher_focus_window(window: ui.Window):
         """Focus window and wait until switch is made"""
