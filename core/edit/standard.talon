@@ -37,10 +37,8 @@ emoji scout [<user.text>]:
 dictate [<user.prose>]$:
     auto_insert(prose or "")
     mode.disable("sleep")
-    mode.disable("command")
     mode.enable("dictation")
-    user.code_clear_language_mode()
-    mode.disable("user.gdb")
+    mode.enable("command")
 
 dictate <user.prose> halt: auto_insert(prose or "")
 
@@ -70,11 +68,6 @@ additional word:
 then: skip()
 work focus: user.run_shortcut("Set work focus")
 clear focus: user.run_shortcut("Turn Do Not Disturb Off")
-
-^mixed mode$:
-    mode.disable("sleep")
-    mode.enable("dictation")
-    mode.enable("command")
 
 hey siri$:
     user.sleep_all()
