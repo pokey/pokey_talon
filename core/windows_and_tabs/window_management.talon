@@ -30,7 +30,7 @@ coder [<phrase>]$:
     user.parse_phrase(phrase or "")
 tune talon [<phrase>]$:
     user.switcher_focus("Code")
-    sleep(250ms)
+    sleep(300ms)
     user.vscode("workbench.action.openRecent")
     sleep(250ms)
     insert("pokey-talon")
