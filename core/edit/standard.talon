@@ -34,11 +34,11 @@ emoji scout [<user.text>]:
     sleep(200ms)
     insert(user.text or "")
 
-dictate [<user.prose>]$:
-    auto_insert(prose or "")
-    mode.disable("sleep")
+dictate [<phrase>]$:
     mode.enable("dictation")
-    mode.enable("command")
+    user.parse_phrase(phrase or "")
+
+^halt: mode.disable("dictation")
 
 dictate <user.prose> halt: auto_insert(prose or "")
 
