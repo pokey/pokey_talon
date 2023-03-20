@@ -137,14 +137,12 @@ split alter: user.vscode("alternate.alternateFileInSplit")
 dock copy name: user.vscode("fileutils.copyFileName")
 dock copy path: user.vscode("copyFilePath")
 dock copy relative: user.vscode("copyRelativeFilePath")
-dock make sibling <user.format_text>* [<user.word>] [{user.file_extension}]:
-    user.vscode_and_wait("explorer.newFile")
-    sleep(500ms)
-    user.insert_many(format_text_list or "")
-    user.insert_formatted(user.word or "", "NOOP")
-    insert(file_extension or "")
-dock make: user.vscode("workbench.action.files.newUntitledFile")
-dock make relative: user.vscode("fileutils.newFile")
+dock make [<user.format_text>] [<user.word>] [{user.file_extension}]:
+    formatted = format_text or ""
+    word_raw = word or ""
+    extension = file_extension or ""
+    user.vscode("andreas.newFile", "{formatted}{word_raw}{extension}")
+    sleep(150ms)
 dock make root: user.vscode("fileutils.newFileAtRoot")
 dock rename:
     user.vscode("fileutils.renameFile")

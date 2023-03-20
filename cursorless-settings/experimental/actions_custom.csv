@@ -14,3 +14,4 @@ git stage, git.stageSelectedRanges
 git comment, workbench.action.addComment
 reflow, rewrap.rewrapComment
 ample, editor.action.goToImplementation
+dock make, andreas.newFile
