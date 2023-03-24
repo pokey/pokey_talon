@@ -83,3 +83,4 @@ branchless
 tokenizer
 ide
 eslint
+tsconfig
