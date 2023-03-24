@@ -141,7 +141,7 @@ dock make [<user.format_text>] [<user.word>] [{user.file_extension}]:
     formatted = format_text or ""
     word_raw = word or ""
     extension = file_extension or ""
-    user.vscode("andreas.newFile", "{formatted}{word_raw}{extension}")
+    user.vscode_with_plugin("andreas.newFile", "{formatted}{word_raw}{extension}")
     sleep(150ms)
 dock make root: user.vscode("fileutils.newFileAtRoot")
 dock rename:
@@ -608,6 +608,10 @@ dock string <user.cursorless_target>:
     "/**"
     sleep(350ms)
     key(tab)
+
+dock short <user.cursorless_target>:
+    user.cursorless_command("editNewLineBefore", cursorless_target)
+    "/** "
 
 elm wrap <user.cursorless_target>:
     user.cursorless_command("setSelection", cursorless_target)
