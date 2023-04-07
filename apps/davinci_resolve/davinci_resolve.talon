@@ -18,3 +18,5 @@ ditch left:
 link clips: key(cmd-alt-l)
 ripple cut: key(cmd-shift-x)
 paste insert: key(cmd-shift-v)
+import timeline: key(cmd-shift-i)
+export timeline: key(cmd-shift-o)

@@ -3,8 +3,8 @@ join, editor.action.joinLines
 increment, editor.emmet.action.incrementNumberByOne
 decrement, editor.emmet.action.decrementNumberByOne
 open, editor.action.openLink
-open link to, gitlens.openFileOnRemote
-copy link to, gitlens.copyRemoteFileUrlToClipboard
+open link to, issue.openGithubPermalink
+copy link to, issue.copyGithubPermalink
 copy markdown link to, issue.copyMarkdownGithubPermalink
 accept, merge-conflict.accept.selection
 accept both, merge-conflict.accept.both

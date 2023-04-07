@@ -24,6 +24,7 @@ ctx.lists["user.code_typescript_keyword"] = {
     "cast": " as ",
     "extends": " extends ",
     "implements": " implements ",
+    "satisfies": " satisfies ",
     "interface": "interface ",
     "readonly": "readonly ",
     "type": "type ",

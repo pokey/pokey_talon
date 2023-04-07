@@ -179,6 +179,11 @@ ref show: user.vscode("references-view.find")
 format that: user.vscode("editor.action.formatDocument")
 format selection: user.vscode("editor.action.formatSelection")
 problem next: user.vscode("editor.action.marker.nextInFiles")
+disk problem next:
+    key(esc:5)
+    edit.save()
+    sleep(500ms)
+    user.vscode("editor.action.marker.nextInFiles")
 problem last: user.vscode("editor.action.marker.prevInFiles")
 problem fix: user.vscode("problems.action.showQuickFixes")
 rename that:
