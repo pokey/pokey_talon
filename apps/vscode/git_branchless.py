@@ -207,7 +207,9 @@ def branchless_destination(m) -> Destination:
 
 @mod.action_class
 class Actions:
-    def branchless_move_exact(exact_source: Revset, destination: Destination):
+    def branchless_move_exact(
+        exact_source: Revset, destination: Destination, merge: bool = False
+    ):
         """git-branchless move a set of commits"""
         actions.user.vscode_with_plugin(
             "git-branchless.move.exact",
@@ -215,10 +217,13 @@ class Actions:
                 "exact": exact_source.get_revset(),
                 "destination": destination.get_revset_for_move(exact_source),
                 "noConfirmation": True,
+                "merge": bool(merge),
             },
         )
 
-    def branchless_move_source(source: Commitish, destination: Destination):
+    def branchless_move_source(
+        source: Commitish, destination: Destination, merge: bool = False
+    ):
         """git-branchless move a set of commits"""
         actions.user.vscode_with_plugin(
             "git-branchless.move.source",
@@ -226,6 +231,7 @@ class Actions:
                 "source": source.get_revset(),
                 "destination": destination.get_revset_for_move(source),
                 "noConfirmation": True,
+                "merge": bool(merge),
             },
         )
 
@@ -235,6 +241,16 @@ class Actions:
             f"git-branchless.{command_id}",
             {
                 "revset": revset.get_revset(),
+            },
+        )
+
+    def branchless_submit_revset(revset: Revset, create: bool = False):
+        """git-branchless automatically create a branch based on commit name for a set of commits."""
+        actions.user.vscode_with_plugin(
+            "git-branchless.submitRevset",
+            {
+                "revset": revset.get_revset(),
+                "create": bool(create),
             },
         )
 
