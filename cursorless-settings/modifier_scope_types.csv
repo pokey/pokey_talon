@@ -8,7 +8,7 @@ Spoken form, Cursorless identifier
 argue, argumentOrParameter
 tribute, attribute
 block, paragraph
-apple, functionCall
+apple|call, functionCall
 callee, functionCallee
 car, character
 cell, notebookCell

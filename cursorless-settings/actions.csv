@@ -8,7 +8,7 @@ bring, replaceWithTarget
 apply, callAsFunction
 carve, cutToClipboard
 center, scrollToCenter
-ditch, remove
+ditch|chuck, remove
 clear, clearAndSetSelection
 clone up, insertCopyBefore
 clone, insertCopyAfter
