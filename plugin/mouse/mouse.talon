@@ -50,15 +50,15 @@ dub click:
     mouse_click()
     # close the mouse grid
     user.grid_close()
-left drag | drag:
-    user.mouse_drag(0)
-    # close the mouse grid
-    user.grid_close()
-right drag | righty drag:
-    user.mouse_drag(1)
-    # close the mouse grid
-    user.grid_close()
-end drag | drag end: user.mouse_drag_end()
+# left drag | drag:
+#     user.mouse_drag(0)
+#     # close the mouse grid
+#     user.grid_close()
+# right drag | righty drag:
+#     user.mouse_drag(1)
+#     # close the mouse grid
+#     user.grid_close()
+# end drag | drag end: user.mouse_drag_end()
 (scroll | school) down: user.mouse_scroll_down()
 (scroll | school) down here:
     user.mouse_move_center_active_window()
