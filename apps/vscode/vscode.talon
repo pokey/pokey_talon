@@ -45,12 +45,12 @@ bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 <user.show_list> symbol here [<user.text>] [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "NO_SPACES")
 
 <user.teleport> symbol here <user.text> [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "NO_SPACES")
     sleep(250ms)
     key(enter)
     sleep(50ms)
@@ -58,12 +58,12 @@ bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 <user.show_list> symbol [<user.text>] [halt]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "NO_SPACES")
 
 <user.teleport> symbol <user.text> [halt]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "NO_SPACES")
     sleep(250ms)
     key(enter)
     sleep(50ms)
@@ -129,6 +129,16 @@ zen mode:
     sleep(300ms)
     key(enter)
     sleep(150ms)
+split dock <user.text> [{user.file_extension}] [halt]:
+    user.vscode("workbench.action.quickOpen")
+    sleep(400ms)
+    insert(text or "")
+    insert(file_extension or "")
+    sleep(300ms)
+    key(cmd-right)
+    sleep(150ms)
+    key(escape)
+    user.split_next()
 <user.teleport> dock:
     user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 <user.teleport> alter: user.vscode("alternate.alternateFile")
