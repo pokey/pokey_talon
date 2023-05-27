@@ -27,7 +27,7 @@ hover, showHover
 indent, indentLine
 inspect, showDebugHover
 move, moveToTarget
-paste, pasteFromClipboard
+paste|pace, pasteFromClipboard
 phones, nextHomophone
 post, setSelectionAfter
 pour, editNewLineAfter
