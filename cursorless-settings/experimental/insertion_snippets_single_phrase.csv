@@ -2,10 +2,13 @@ Spoken form, Cursorless identifier
 binder, bindClassFunction.name
 class, classDeclaration.name
 con, constantDeclaration.name
+con type, constantDeclarationWithType.name
 face, interface.name
 funk, functionDeclaration.name
+funk type, functionDeclarationWithType.name
 capture, talonCapture.name
 let, letDeclaration.name
+let type, letDeclarationWithType.name
 foreign, forEachStatement.name
 link, link.text
 lambda, lambdaExpression.parameters

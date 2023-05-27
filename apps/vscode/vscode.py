@@ -525,12 +525,16 @@ class TypescriptActions:
 
 mod.list("language_id", "language id")
 ctx.lists["user.language_id"] = {
-    "typescript": "typescript",
-    "python": "python",
-    "text": "plaintext",
     "bash": "bash",
+    "html": "html",
+    "jason": "json",
+    "java": "java",
+    "lay tech": "tex",
     "markdown": "markdown",
+    "python": "python",
+    "ruby": "ruby",
     "rust": "rust",
     "scala": "scala",
-    "java": "java",
+    "text": "plaintext",
+    "typescript": "typescript",
 }

@@ -16,7 +16,7 @@ git log: user.vscode("git-branchless.smartlog")
 git detach: user.vscode("git-branchless.custom.detachHead")
 git {user.branchless_simple_command} <user.branchless_revset>:
     user.branchless_simple_command(branchless_simple_command, branchless_revset)
-git push force <user.branchless_revset>:
+git (submit | push force) <user.branchless_revset>:
     user.branchless_submit_revset(branchless_revset)
-git push force create <user.branchless_revset>:
+git (submit | push force) create <user.branchless_revset>:
     user.branchless_submit_revset(branchless_revset, 1)

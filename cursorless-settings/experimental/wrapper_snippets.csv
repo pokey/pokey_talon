@@ -2,12 +2,15 @@ Spoken form, Cursorless identifier
 binder, bindClassFunction.name
 class, classDeclaration.body
 con, constantDeclaration.value
+con type, constantDeclarationWithType.value
 condition, ifStatement.condition
 else, ifElseStatement.alternative
 funk, functionDeclaration.body
+funk type, functionDeclarationWithType.body
 if else, ifElseStatement.consequence
 if, ifStatement.consequence
 let, letDeclaration.value
+let type, letDeclarationWithType.value
 link, link.text
 map, map.value
 nest, nestedMap.items
