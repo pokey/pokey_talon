@@ -1,7 +1,7 @@
 Spoken form, VSCode command
 join, editor.action.joinLines
-increment, editor.emmet.action.incrementNumberByOne
-decrement, editor.emmet.action.decrementNumberByOne
+increment, andreas.increment
+decrement, andreas.decrement
 open, editor.action.openLink
 open link to, issue.openGithubPermalink
 copy link to, issue.copyGithubPermalink

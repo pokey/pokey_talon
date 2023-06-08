@@ -9,7 +9,7 @@ apply, callAsFunction
 carve, cutToClipboard
 center, scrollToCenter
 ditch|chuck, remove
-clear, clearAndSetSelection
+clear|change, clearAndSetSelection
 clone up, insertCopyBefore
 clone, insertCopyAfter
 comment, toggleLineComment

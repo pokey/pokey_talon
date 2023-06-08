@@ -537,4 +537,5 @@ ctx.lists["user.language_id"] = {
     "scala": "scala",
     "text": "plaintext",
     "typescript": "typescript",
+    "javascript": "javascript",
 }

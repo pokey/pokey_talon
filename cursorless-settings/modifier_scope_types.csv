@@ -16,7 +16,7 @@ class name, className
 class, class
 comment, comment
 condition, condition
-elm, xmlElement
+elm|element, xmlElement
 end tag, xmlEndTag
 file, document
 funk name, functionName
@@ -69,3 +69,7 @@ branch, branch
 
 # 2023-05-24 10:06:04 - New entries automatically added by cursorless
 view|instance|glimpse, instance
+
+
+# 2023-06-08 09:49:14 - New entries automatically added by cursorless
+access, fieldAccess
