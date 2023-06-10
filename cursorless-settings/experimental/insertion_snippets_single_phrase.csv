@@ -19,3 +19,4 @@ list comp, listComprehension.element
 data class, dataclass.name
 command, vscodeCommand.spokenForm
 class name, className.classes
+node, named_node.type

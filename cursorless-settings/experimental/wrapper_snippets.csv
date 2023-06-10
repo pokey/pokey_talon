@@ -28,3 +28,6 @@ turn, ternaryExpression.value
 turn else, ternaryExpression.alternative
 turn dish, ternaryExpression.condition
 bold, bold.text
+group, group.pattern
+node, named_node.body
+list, list.elem1
