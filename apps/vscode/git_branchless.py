@@ -272,3 +272,14 @@ class Actions:
                 "destination": destination.get_revset(LiteralRevset(".")),
             },
         )
+
+    def branchless_reset_mixed(source: Commitish, destination: Destination):
+        """git-branchless move a set of commits"""
+        actions.user.vscode_with_plugin(
+            "git-branchless.custom.reset",
+            {
+                "source": source.get_revset(),
+                "destination": destination.get_revset(source),
+                "type": "mixed",
+            },
+        )

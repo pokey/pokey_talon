@@ -20,3 +20,5 @@ git (submit | push force) <user.branchless_revset>:
     user.branchless_submit_revset(branchless_revset)
 git (submit | push force) create <user.branchless_revset>:
     user.branchless_submit_revset(branchless_revset, 1)
+git draft <user.branchless_commitish> <user.branchless_destination>:
+    user.branchless_reset_mixed(branchless_commitish, branchless_destination)
