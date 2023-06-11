@@ -28,6 +28,10 @@ class UserActions:
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
+        # Hide VSCode notifications that command recording has started
+        actions.sleep(1)
+        actions.key("escape")
+
         actions.user.sleep_all()
 
     def start_recording_light():
