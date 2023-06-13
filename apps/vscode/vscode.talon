@@ -695,15 +695,6 @@ imports fix:
 search again: user.vscode("rerunSearchEditorSearch")
 preview markdown: user.vscode("markdown.showPreview")
 
-# copilot
-pilot jest: user.vscode("editor.action.inlineSuggest.trigger")
-pilot next: user.vscode("editor.action.inlineSuggest.showNext")
-pilot last: user.vscode("editor.action.inlineSuggest.showPrevious")
-pilot yes: user.vscode("editor.action.inlineSuggest.commit")
-pilot word: user.vscode("editor.action.inlineSuggest.acceptNextWord")
-pilot nope: user.vscode("editor.action.inlineSuggest.undo")
-pilot cancel: user.vscode("editor.action.inlineSuggest.hide")
-
 typescript restart: user.vscode("typescript.restartTsServer")
 (close all editors | tab close all): user.vscode("workbench.action.closeAllGroups")
 
