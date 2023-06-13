@@ -46,7 +46,7 @@ class Actions:
             actions.insert(prose)
             actions.key("enter")
 
-    def copilot_bring_code_block(index: int):
+    def copilot_focus_code_block(index: int):
         """Bring a copilot chat suggestion to the cursor"""
         actions.user.vscode("workbench.panel.chat.view.copilot.focus")
         action = (
@@ -57,5 +57,8 @@ class Actions:
         count = index + 1 if index >= 0 else abs(index)
         for _ in range(count):
             actions.user.vscode(action)
-        actions.user.vscode("workbench.action.chat.insertCodeBlock")
+
+    def copilot_bring_code_block(index: int):
+        """Bring a copilot chat suggestion to the cursor"""
+        actions.user.copilot_focus_code_block(index)
         actions.user.vscode("workbench.action.chat.insertCodeBlock")
