@@ -21,6 +21,6 @@ pilot bring <user.ordinal_or_last> {user.makeshift_destination} <user.cursorless
     user.copilot_bring_code_block(ordinal_or_last)
 pilot chat [<user.prose>]$:
     user.copilot_chat(prose or "")
-pilot [{user.copilot_slash_command}] <user.cursorless_target> [to <user.prose>]$:
+pilot {user.copilot_slash_command} <user.cursorless_target> [to <user.prose>]$:
     user.copilot_inline_chat(copilot_slash_command or "", cursorless_target, prose or "")
 

@@ -10,7 +10,12 @@ app: vscode
 mod.list(
     "copilot_slash_command", "Slash commands that can be used with copilot, e.g. /test"
 )
-ctx.lists["user.copilot_slash_command"] = ["test", "fix", "explain"]
+ctx.lists["user.copilot_slash_command"] = {
+    "test": "test",
+    "fix": "fix",
+    "explain": "explain",
+    "change": "",
+}
 
 mod.list("makeshift_destination", "Cursorless makeshift destination")
 ctx.lists["user.makeshift_destination"] = {
