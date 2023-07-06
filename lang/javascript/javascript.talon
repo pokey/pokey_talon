@@ -34,5 +34,24 @@ is not loose equal: " != "
 chain length: ".length"
 chain {user.code_common_member_function}:
     user.insert_between(".{code_common_member_function}(", ")")
+chain {user.code_common_member_function_with_lambda}:
+    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(($args) => ($value))")
+chain {user.code_common_member_function_with_lambda} block:
+    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(($args) => {{\n\t$body\n}})")
+chain {user.code_common_member_function_with_lambda} short:
+    user.insert_between(".{code_common_member_function_with_lambda}(", ")")
+chain {user.code_common_member_function_with_lambda} <phrase>:
+    name = user.formatted_text(phrase, "PRIVATE_CAMEL_CASE")
+    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(({name}) => ($value))")
+chain {user.code_common_member_function_with_lambda} block <phrase>:
+    name = user.formatted_text(phrase, "PRIVATE_CAMEL_CASE")
+    user.cursorless_insert_snippet(".{code_common_member_function_with_lambda}(({name}) => {{\n\t$body\n}})")
+
+chain reduce:
+    user.cursorless_insert_snippet(".reduce(\n\t(accumulator, value) => ($value),\n\t$initialValue\n)")
+chain reduce block:
+    user.cursorless_insert_snippet(".reduce(\n\t(accumulator, value) => {{\n\t\t$body\n\t}},\n\t$initialValue\n)")
+chain reduce short:
+    user.cursorless_insert_snippet(".reduce($function, $initialValue)")
 
 from import: user.insert_between(' from  "', '"')
