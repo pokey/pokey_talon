@@ -65,6 +65,22 @@ ctx.lists["user.branchless_command"] = {
     "pop branch this": "Git switch to commit",
 }
 
+mod.list("launch_configuration", "A launch configuration for vscode")
+
+ctx.lists["user.launch_configuration"] = {
+    "stench": "Run extension",
+    "test": "Extension tests",
+    "test unit": "Unit tests only",
+    "test subset": "Run test subset",
+    "test talon": "Talon tests",
+    "test talon subset": "Talon tests subset",
+    # "Update fixtures": "Update fixtures",
+    # "Update fixtures subset": "Update fixtures subset",
+    # "Docusaurus start": "Docusaurus start",
+    # "Docusaurus build": "Docusaurus build",
+    # "cursorless.org client-side": "cursorless.org client-side",
+}
+
 
 @ctx.action_class("app")
 class AppActions:
@@ -538,4 +554,6 @@ ctx.lists["user.language_id"] = {
     "text": "plaintext",
     "typescript": "typescript",
     "javascript": "javascript",
+    "go": "go",
+    "talon": "talon",
 }

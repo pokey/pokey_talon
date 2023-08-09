@@ -18,7 +18,7 @@ show clip:
     key(cmd-shift-v)
     sleep(100ms)
     key("alt-{number_small}")
-(undo that | nope): edit.undo()
+(undo that | nope | blast): edit.undo()
 (redo that | yes indeed): edit.redo()
 paste match: edit.paste_match_style()
 disk: edit.save()

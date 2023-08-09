@@ -102,6 +102,7 @@ show snippets: user.vscode("workbench.action.openSnippets")
 centered switch: user.vscode("workbench.action.toggleCenteredLayout")
 fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
+theme dog: user.vscode("workbench.action.toggleLightDarkThemes")
 wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
 zen mode:
@@ -465,10 +466,10 @@ alternate highlight <user.cursorless_target>:
     user.cursorless_single_target_command("highlight", cursorless_target, "highlight1")
 
 consul clear: user.vscode("workbench.debug.panel.action.clearReplAction")
-debug stench:
-    user.vscode_with_plugin("commands.startDebugging", "Run Extension")
-debug test:
-    user.vscode_with_plugin("commands.startDebugging", "Extension Tests")
+debug {user.launch_configuration}:
+    user.vscode_with_plugin("commands.startDebugging", launch_configuration)
+    user.vscode("workbench.debug.action.focusRepl")
+
 <user.teleport> stopper:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
@@ -633,6 +634,12 @@ elm wrap <user.cursorless_target>:
     user.vscode("editor.emmet.action.wrapWithAbbreviation")
     sleep(250ms)
 
+wreck comment <user.cursorless_target>:
+    user.cursorless_command("setSelection", cursorless_target)
+    user.vscode("workbench.action.addComment")
+    mode.enable("dictation")
+    sleep(250ms)
+
 ^tag version$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
 ^install sandbox$:
@@ -646,6 +653,12 @@ elm wrap <user.cursorless_target>:
 ^tunnel stop$:
     user.vscode("workbench.action.tasks.terminate")
     insert("Start tunnel")
+    key(enter)
+^watch start$:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "npm: watch")
+^watch stop$:
+    user.vscode("workbench.action.tasks.terminate")
+    insert("Start watch")
     key(enter)
 line edit: key(ctrl-q e)
 ^move recording [<user.text>] [halt]:

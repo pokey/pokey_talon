@@ -23,4 +23,6 @@ pilot chat [<user.prose>]$:
     user.copilot_chat(prose or "")
 pilot {user.copilot_slash_command} <user.cursorless_target> [to <user.prose>]$:
     user.copilot_inline_chat(copilot_slash_command or "", cursorless_target, prose or "")
-
+pilot clear <user.cursorless_target>:
+    user.cursorless_command("clearAndSetSelection", cursorless_target)
+    user.vscode("editor.action.inlineSuggest.trigger")
