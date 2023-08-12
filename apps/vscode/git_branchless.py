@@ -208,7 +208,11 @@ def branchless_destination(m) -> Destination:
 @mod.action_class
 class Actions:
     def branchless_move_exact(
-        exact_source: Revset, destination: Destination, merge: bool = False
+        exact_source: Revset,
+        destination: Destination,
+        merge: bool = False,
+        insert: bool = False,
+        fixup: bool = False,
     ):
         """git-branchless move a set of commits"""
         actions.user.vscode_with_plugin(
@@ -218,11 +222,16 @@ class Actions:
                 "destination": destination.get_revset_for_move(exact_source),
                 "noConfirmation": True,
                 "merge": bool(merge),
+                "insert": bool(insert),
+                "fixup": bool(fixup),
             },
         )
 
     def branchless_move_source(
-        source: Commitish, destination: Destination, merge: bool = False
+        source: Commitish,
+        destination: Destination,
+        merge: bool = False,
+        insert: bool = False,
     ):
         """git-branchless move a set of commits"""
         actions.user.vscode_with_plugin(
@@ -232,6 +241,7 @@ class Actions:
                 "destination": destination.get_revset_for_move(source),
                 "noConfirmation": True,
                 "merge": bool(merge),
+                "insert": bool(insert),
             },
         )
 

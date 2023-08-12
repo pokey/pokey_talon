@@ -8,6 +8,10 @@ git move <user.branchless_revset_required_modifier> <user.branchless_destination
     user.branchless_move_exact(branchless_revset_required_modifier, branchless_destination)
 git move merge <user.branchless_revset_required_modifier> <user.branchless_destination>:
     user.branchless_move_exact(branchless_revset_required_modifier, branchless_destination, 1)
+git move insert <user.branchless_revset_required_modifier> <user.branchless_destination>:
+    user.branchless_move_exact(branchless_revset_required_modifier, branchless_destination, 0, 1)
+git move fixup <user.branchless_revset_required_modifier> <user.branchless_destination>:
+    user.branchless_move_exact(branchless_revset_required_modifier, branchless_destination, 0, 0, 1)
 git point <user.branchless_branch> <user.branchless_destination>:
     user.branchless_move_branch(branchless_branch, branchless_destination)
 git pop <user.branchless_destination>:
