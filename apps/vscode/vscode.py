@@ -70,8 +70,8 @@ mod.list("launch_configuration", "A launch configuration for vscode")
 ctx.lists["user.launch_configuration"] = {
     "stench": "Run extension",
     "test": "Extension tests",
+    "test subset": "Extension tests subset",
     "test unit": "Unit tests only",
-    "test subset": "Run test subset",
     "test talon": "Talon tests",
     "test talon subset": "Talon tests subset",
     # "Update fixtures": "Update fixtures",
