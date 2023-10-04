@@ -640,6 +640,9 @@ wreck comment <user.cursorless_target>:
     mode.enable("dictation")
     sleep(250ms)
 
+place <user.any_alphanumeric_key> <user.cursorless_destination>:
+    user.cursorless_insert(cursorless_destination, any_alphanumeric_key)
+
 ^tag version$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
 ^install sandbox$:
