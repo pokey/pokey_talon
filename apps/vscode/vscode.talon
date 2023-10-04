@@ -733,3 +733,6 @@ Github yes:
 Github no:
     insert("reject")
     key(enter)
+
+python run file: user.vscode("python.execInTerminal")
+panel switch: user.vscode("workbench.action.togglePanel")
