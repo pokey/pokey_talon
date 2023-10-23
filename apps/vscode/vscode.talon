@@ -167,6 +167,7 @@ dock clone:
 dock delete: user.vscode("fileutils.removeFile")
 dock open folder: user.vscode("revealFileInOS")
 dock reveal: user.vscode("workbench.files.action.showActiveFileInExplorer")
+dock reveal finder: user.vscode("revealFileInOS")
 disk ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 disk:
     edit.save()
@@ -600,6 +601,7 @@ skip:
     user.vscode("jumpToNextSnippetPlaceholder")
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
+comments show: user.vscode("workbench.action.focusCommentsPanel")
 
 line numbers on: user.change_setting("editor.lineNumbers", "on")
 line numbers off: user.change_setting("editor.lineNumbers", "off")
