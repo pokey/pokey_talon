@@ -78,3 +78,8 @@ sentence, sentence
 
 # 2023-08-10 16:38:45 - New entries automatically added by cursorless
 command, command
+
+# WARNING: Please do not copy this into your own CSVs; it is for internal
+# experimentation and may break at any time without warning.
+# See https://github.com/cursorless-dev/cursorless/pull/1519#issuecomment-1745459484
+access, private.fieldAccess
