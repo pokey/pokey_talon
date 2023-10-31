@@ -102,7 +102,6 @@ show snippets: user.vscode("workbench.action.openSnippets")
 centered switch: user.vscode("workbench.action.toggleCenteredLayout")
 fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
-theme dog: user.vscode("workbench.action.toggleLightDarkThemes")
 wrap dog: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
 zen mode:
@@ -365,7 +364,7 @@ git stage all merge: user.vscode("git.stageAllMerge")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git sync: user.vscode("git.sync")
-git a mend:
+git amend:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
 git reword:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
@@ -738,3 +737,8 @@ Github no:
 
 python run file: user.vscode("python.execInTerminal")
 panel switch: user.vscode("workbench.action.togglePanel")
+
+snip code {user.language_id}:
+    user.cursorless_insert_snippet("```{language_id}\n$body\n```")
+code {user.language_id} wrap <user.cursorless_target>:
+    user.cursorless_wrap_with_snippet("```{language_id}\n$body\n```", cursorless_target, "body", "line")

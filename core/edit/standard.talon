@@ -68,6 +68,7 @@ additional word:
 then: skip()
 work focus: user.run_shortcut("Set work focus")
 clear focus: user.run_shortcut("Turn Do Not Disturb Off")
+theme dog: user.run_shortcut("Toggle dark mode")
 
 hey siri$:
     user.sleep_all()
