@@ -1,6 +1,8 @@
 mode: dictation
 experiment: anchor-file
 -
+settings():
+    speech.timeout = 0.25
 # ^press <user.modifiers>$: key(modifiers)
 # ^press <user.keys>$: key(keys)
 

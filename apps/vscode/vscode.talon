@@ -147,11 +147,11 @@ split alter: user.vscode("alternate.alternateFileInSplit")
 dock copy name: user.vscode("fileutils.copyFileName")
 dock copy path: user.vscode("copyFilePath")
 dock copy relative: user.vscode("copyRelativeFilePath")
-dock make [<user.format_text>] [<user.word>] [{user.file_extension}]:
+dock make [(<user.format_text> | <user.text>)] [{user.file_extension}]:
     formatted = format_text or ""
-    word_raw = word or ""
+    text_formatted = user.formatted_text(text or "", "PRIVATE_CAMEL_CASE")
     extension = file_extension or ""
-    user.vscode_with_plugin("andreas.newFile", "{formatted}{word_raw}{extension}")
+    user.vscode_with_plugin("andreas.newFile", "{formatted}{text_formatted}{extension}")
     sleep(150ms)
 dock make root: user.vscode("fileutils.newFileAtRoot")
 dock rename:
@@ -659,7 +659,7 @@ place <user.any_alphanumeric_key> <user.cursorless_destination>:
     insert("Start tunnel")
     key(enter)
 ^watch start$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "npm: watch")
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "watch")
 ^watch stop$:
     user.vscode("workbench.action.tasks.terminate")
     insert("Start watch")
@@ -735,10 +735,15 @@ Github no:
     insert("reject")
     key(enter)
 
-python run file: user.vscode("python.execInTerminal")
+doc run pie: user.vscode("python.execInTerminal")
+doc run bun: user.vscode_with_plugin("workbench.action.tasks.runTask", "bun run")
 panel switch: user.vscode("workbench.action.togglePanel")
 
 snip code {user.language_id}:
     user.cursorless_insert_snippet("```{language_id}\n$body\n```")
 code {user.language_id} wrap <user.cursorless_target>:
     user.cursorless_wrap_with_snippet("```{language_id}\n$body\n```", cursorless_target, "body", "line")
+
+key dog: user.vscode("workbench.action.toggleScreencastMode")
+doc move right: user.vscode("workbench.action.moveEditorToRightGroup")
+doc move left: user.vscode("workbench.action.moveEditorToLeftGroup")

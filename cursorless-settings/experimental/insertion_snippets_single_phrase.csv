@@ -20,3 +20,4 @@ data class, dataclass.name
 command, vscodeCommand.spokenForm
 class name, className.classes
 node, named_node.type
+type, typeAlias.name
