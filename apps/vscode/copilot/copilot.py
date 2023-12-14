@@ -1,6 +1,4 @@
-from typing import Any
-
-from talon import Context, Module, actions, app, clip
+from talon import Context, Module, actions
 
 mod = Module()
 ctx = Context()
