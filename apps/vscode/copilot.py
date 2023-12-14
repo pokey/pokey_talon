@@ -1,3 +1,5 @@
+from typing import Any
+
 from talon import Context, Module, actions, app, clip
 
 mod = Module()
@@ -11,7 +13,8 @@ mod.list(
     "copilot_slash_command", "Slash commands that can be used with copilot, e.g. /test"
 )
 ctx.lists["user.copilot_slash_command"] = {
-    "test": "test",
+    "test": "tests",
+    "dock": "doc",
     "fix": "fix",
     "explain": "explain",
     "change": "",
@@ -27,12 +30,14 @@ ctx.lists["user.makeshift_destination"] = {
 
 @mod.action_class
 class Actions:
-    def copilot_inline_chat(
-        copilot_slash_command: str, cursorless_target: dict, prose: str
-    ):
+    def copilot_inline_chat(copilot_slash_command: str = "", prose: str = ""):
         """Initiate copilot inline chat session"""
-        actions.user.cursorless_command("setSelection", cursorless_target)
-        actions.user.vscode("interactiveEditor.start")
+        actions.user.run_rpc_command(
+            "editor.action.codeAction",
+            {
+                "kind": "refactor.rewrite",
+            },
+        )
         has_content = copilot_slash_command or prose
         if has_content:
             actions.sleep("50ms")
