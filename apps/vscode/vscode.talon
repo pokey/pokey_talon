@@ -466,7 +466,7 @@ debug continue: user.vscode("workbench.action.debug.continue")
 debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
 alternate highlight <user.cursorless_target>:
-    user.cursorless_v1_action_highlight(cursorless_target, "highlight1")
+    user.cursorless_private_action_highlight(cursorless_target, "highlight1")
 
 consul clear: user.vscode("workbench.debug.panel.action.clearReplAction")
 debug {user.launch_configuration}:
