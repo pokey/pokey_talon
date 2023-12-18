@@ -1,5 +1,6 @@
 tag: browser
 -
+press <user.letter>: key(letter)
 address bar | go address | go url: browser.focus_address()
 address copy | url copy | copy address | copy url:
     browser.focus_address()
@@ -29,6 +30,18 @@ show downloads: browser.show_downloads()
 show extensions: browser.show_extensions()
 show history: browser.show_history()
 show cache: browser.show_clear_cache()
+
+(passwordless | password list) <user.text>:
+    key(cmd-.)
+    sleep(300ms)
+    insert("{text}")
+
+password pop <user.text>:
+    key(cmd-.)
+    sleep(300ms)
+    insert("{text}")
+    sleep(250ms)
+    key(enter)
 
 #todo - port to apps
 # navigating current page

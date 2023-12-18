@@ -35,19 +35,19 @@ bar extensions: user.vscode("workbench.view.extensions")
 bar outline: user.vscode("outline.focus")
 bar run: user.vscode("workbench.view.debug")
 bar source: user.vscode("workbench.view.scm")
-list wreck: user.vscode("pr:github.focus")
+(list wreck | wreck list | rec list | reckless): user.vscode("pr:github.focus")
 bar test: user.vscode("workbench.view.testing.focus")
 side dog: user.vscode("workbench.action.toggleSidebarVisibility")
 search next: user.vscode("search.action.focusNextSearchResult")
 search last: user.vscode("search.action.focusPreviousSearchResult")
 bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
 
-<user.show_list> symbol here [<user.text>] [halt]:
+(<user.show_list> symbol here | symbol here <user.show_list>) [<user.text>] [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
     user.insert_formatted(text or "", "NO_SPACES")
 
-<user.teleport> symbol here <user.text> [halt]:
+(<user.teleport> symbol here | symbol here <user.teleport>) <user.text> [halt]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
     user.insert_formatted(text or "", "NO_SPACES")
@@ -55,12 +55,12 @@ bar collapse: user.vscode("workbench.files.action.collapseExplorerFolders")
     key(enter)
     sleep(50ms)
 
-<user.show_list> symbol [<user.text>] [halt]:
+(<user.show_list> symbol | symbol <user.show_list>) [<user.text>] [halt]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
     user.insert_formatted(text or "", "NO_SPACES")
 
-<user.teleport> symbol <user.text> [halt]:
+(<user.teleport> symbol | symbol <user.teleport>) <user.text> [halt]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
     user.insert_formatted(text or "", "NO_SPACES")
@@ -108,20 +108,20 @@ zen mode:
     user.vscode("workbench.action.closeSidebar")
     user.vscode("workbench.action.closePanel")
 # File Commands
-<user.show_list> dock [<user.text>] [{user.file_extension}] [halt]:
+(<user.show_list> dock | dock <user.show_list> | dockless) [<user.text>] [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
     sleep(400ms)
     insert(text or "")
     insert(file_extension or "")
     sleep(300ms)
-<user.teleport> dock clip:
+(<user.teleport> dock | dock <user.teleport>) clip:
     user.vscode("workbench.action.quickOpen")
     sleep(400ms)
     edit.paste()
     sleep(300ms)
     key(enter)
     sleep(150ms)
-<user.teleport> dock <user.text> [{user.file_extension}] [halt]:
+(<user.teleport> dock | dock <user.teleport>) <user.text> [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
     sleep(400ms)
     insert(text or "")
@@ -129,7 +129,7 @@ zen mode:
     sleep(300ms)
     key(enter)
     sleep(150ms)
-split dock <user.text> [{user.file_extension}] [halt]:
+(split dock | dock split) <user.text> [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
     sleep(400ms)
     insert(text or "")
@@ -139,7 +139,7 @@ split dock <user.text> [{user.file_extension}] [halt]:
     sleep(150ms)
     key(escape)
     user.split_next()
-<user.teleport> dock:
+(<user.teleport> dock | dock <user.teleport>):
     user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
 <user.teleport> alter: user.vscode("alternate.alternateFile")
 make alter: user.vscode("alternate.createAlternateFile")
@@ -152,6 +152,9 @@ dock make [(<user.format_text> | <user.text>)] [{user.file_extension}]:
     text_formatted = user.formatted_text(text or "", "PRIVATE_CAMEL_CASE")
     extension = file_extension or ""
     user.vscode_with_plugin("andreas.newFile", "{formatted}{text_formatted}{extension}")
+    sleep(150ms)
+dock make clip:
+    user.vscode_with_plugin("andreas.newFile", clip.text())
     sleep(150ms)
 dock make root: user.vscode("fileutils.newFileAtRoot")
 dock rename:
@@ -222,12 +225,12 @@ spring forward: user.vscode("workbench.action.navigateForward")
 <user.teleport> usage: user.vscode("references-view.find")
 
 # Bookmarks. Requires Bookmarks plugin
-<user.show_list> sesh [<user.text>] [halt]:
+(<user.show_list> sesh | sesh <user.show_list>) [<user.text>] [halt]:
     user.vscode("workbench.action.openRecent")
     sleep(250ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
     sleep(250ms)
-<user.teleport> sesh [<user.text>] [halt]:
+(<user.teleport> sesh | sesh <user.teleport>) [<user.text>] [halt]:
     user.vscode("workbench.action.openRecent")
     sleep(250ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
@@ -242,12 +245,12 @@ new sesh [<user.text>]:
     sleep(250ms)
 go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 
-<user.show_list> win [<user.text>]:
+(<user.show_list> win | win <user.show_list>) [<user.text>]:
     user.vscode("workbench.action.switchWindow")
     sleep(250ms)
     insert(text or "")
     sleep(250ms)
-<user.teleport> win [<user.text>]:
+(<user.teleport> win | win <user.teleport>) [<user.text>]:
     user.vscode("workbench.action.switchWindow")
     sleep(50ms)
     insert(text or "")
@@ -424,10 +427,10 @@ pop branch next [<user.repetition_count>]:
     key(enter)
 
 dock open: user.vscode("gitlens.openWorkingFile")
-wreck make: user.vscode("pr.create")
-wreck show: user.vscode("prStatus:github.focus")
+(wreck | rec) make: user.vscode("pr.create")
+(wreck | rec) show: user.vscode("prStatus:github.focus")
 dock viewed: user.vscode("pr.markFileAsViewed")
-wreck web: user.vscode("pr.openPullRequestOnGitHub")
+(wreck | rec) web: user.vscode("pr.openPullRequestOnGitHub")
 # Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
 # action: https://code.visualstudio.com/api/references/when-clause-contexts
 change next: key(alt-f5)
@@ -600,7 +603,7 @@ skip:
     user.vscode("jumpToNextSnippetPlaceholder")
 
 comment next: user.vscode("editor.action.nextCommentThreadAction")
-comments show: user.vscode("workbench.action.focusCommentsPanel")
+comment show: user.vscode("workbench.action.focusCommentsPanel")
 
 line numbers on: user.change_setting("editor.lineNumbers", "on")
 line numbers off: user.change_setting("editor.lineNumbers", "off")
@@ -612,10 +615,6 @@ reflow: user.vscode("rewrap.rewrapComment")
 mode {user.language_id}:
     user.vscode_with_plugin("commands.setEditorLanguage", language_id)
 
-break <user.cursorless_target>:
-    user.cursorless_command("setSelectionBefore", cursorless_target)
-    user.vscode("hideSuggestWidget")
-    key("enter")
 break:
     user.vscode("hideSuggestWidget")
     key("enter")
@@ -635,7 +634,7 @@ elm wrap <user.cursorless_target>:
     user.vscode("editor.emmet.action.wrapWithAbbreviation")
     sleep(250ms)
 
-wreck comment <user.cursorless_target>:
+(wreck | rec) comment <user.cursorless_target>:
     user.cursorless_command("setSelection", cursorless_target)
     user.vscode("workbench.action.addComment")
     mode.enable("dictation")
@@ -747,3 +746,7 @@ code {user.language_id} wrap <user.cursorless_target>:
 key dog: user.vscode("workbench.action.toggleScreencastMode")
 doc move right: user.vscode("workbench.action.moveEditorToRightGroup")
 doc move left: user.vscode("workbench.action.moveEditorToLeftGroup")
+give all: user.run_rpc_command("removeSecondaryCursors")
+
+quick list:
+    user.run_rpc_command("cursorless.private.logQuickActions")

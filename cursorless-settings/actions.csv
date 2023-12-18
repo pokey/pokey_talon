@@ -50,6 +50,14 @@ take, setSelection
 type deaf, revealTypeDefinition
 unfold, unfoldRegion
 wrap, wrapWithPairedDelimiter
+# from, private.setActiveTarget
 
 # 2022-02-14 14:25:32 - New entries automatically added by cursorless
 highlight, highlight
+
+
+# 2023-12-06 15:30:04 - New entries automatically added by cursorless
+join, joinLines
+
+# 2023-12-11 18:51:22 - New entries automatically added by cursorless
+break, breakLine

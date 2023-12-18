@@ -1,7 +1,7 @@
 -
 settings():
     speech.debug = 1
-    speech.timeout = 0.175
+    speech.timeout = 0.25
     speech._subtitles = 0
 
     # Adjust the scale of the imgui to my liking

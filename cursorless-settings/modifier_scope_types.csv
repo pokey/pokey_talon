@@ -83,3 +83,7 @@ command, command
 # experimentation and may break at any time without warning.
 # See https://github.com/cursorless-dev/cursorless/pull/1519#issuecomment-1745459484
 access, private.fieldAccess
+
+
+# 2023-12-06 20:41:49 - New entries automatically added by cursorless
+glyph, glyph

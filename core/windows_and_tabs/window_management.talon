@@ -21,7 +21,7 @@ snap <user.running_applications> <user.window_snap_position>:
 snap <user.running_applications> [screen] <number>:
     user.move_app_to_screen(running_applications, number)
 portal [<phrase>]$:
-    user.switcher_focus("Google Chrome")
+    user.switcher_focus("Firefox")
     sleep(200ms)
     user.parse_phrase(phrase or "")
 coder [<phrase>]$:
