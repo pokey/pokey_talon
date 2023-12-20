@@ -750,3 +750,7 @@ give all: user.run_rpc_command("removeSecondaryCursors")
 
 quick list:
     user.run_rpc_command("cursorless.private.logQuickActions")
+
+{user.search_engine} scout <user.cursorless_target>:
+    text = user.cursorless_get_text(cursorless_target)
+    user.search_with_search_engine(search_engine, text)
