@@ -10,8 +10,8 @@ parrot(sibilant_high): edit.zoom_in()
 sprint: key(shift-l)
 reverse: key(j)
 give it up: key(cmd-shift-a)
-ditch clip: key(shift-v shift-backspace)
-ditch left:
+chuck clip: key(shift-v shift-backspace)
+chuck left:
     key(left)
     sleep(200ms)
     key(shift-v shift-backspace)

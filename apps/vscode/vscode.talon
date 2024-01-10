@@ -684,7 +684,8 @@ format doc:
 show extensions:
     user.vscode("workbench.extensions.action.showEnabledExtensions")
 
-run python: user.vscode("python.execInTerminal")
+doc run pie: user.vscode("python.execInTerminal")
+doc run bun: user.vscode_with_plugin("workbench.action.tasks.runTask", "bun run")
 
 run tests: user.vscode("testing.runAll")
 
@@ -700,8 +701,6 @@ note make clip:
 
 # Imports
 # from https://github.com/AndreasArvidsson/andreas-talon/blob/a098969bd6b35f5ed0fc99805aa529efc08569a2/apps/vscode/vscode.talon#L25-L31
-imports organize: user.vscode("editor.action.organizeImports")
-imports add: user.vscode_add_missing_imports()
 imports fix:
     sleep(600ms)
     user.vscode_add_missing_imports()
@@ -709,10 +708,10 @@ imports fix:
     user.vscode("editor.action.organizeImports")
 
 search again: user.vscode("rerunSearchEditorSearch")
-preview markdown: user.vscode("markdown.showPreview")
+markdown preview: user.vscode("markdown.showPreview")
 
 typescript restart: user.vscode("typescript.restartTsServer")
-(close all editors | tab close all): user.vscode("workbench.action.closeAllGroups")
+tab close oliver: user.vscode("workbench.action.closeAllGroups")
 
 hay Github <user.text>$:
     user.vscode("agent-chat-panel.focus")
@@ -734,8 +733,6 @@ Github no:
     insert("reject")
     key(enter)
 
-doc run pie: user.vscode("python.execInTerminal")
-doc run bun: user.vscode_with_plugin("workbench.action.tasks.runTask", "bun run")
 panel switch: user.vscode("workbench.action.togglePanel")
 
 snip code {user.language_id}:
