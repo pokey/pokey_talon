@@ -245,7 +245,7 @@ new sesh [<user.text>]:
     sleep(250ms)
 go edit: user.vscode("workbench.action.navigateToLastEditLocation")
 
-(<user.show_list> win | win <user.show_list>) [<user.text>]:
+(<user.show_list> win | win <user.show_list> | winless) [<user.text>]:
     user.vscode("workbench.action.switchWindow")
     sleep(250ms)
     insert(text or "")
@@ -458,7 +458,7 @@ default repo:
 #Debugging
 step over: user.vscode("workbench.action.debug.stepOver")
 step into: user.vscode("workbench.action.debug.stepInto")
-debug step out [of]: user.vscode("workbench.action.debug.stepOut")
+step out of: user.vscode("workbench.action.debug.stepOut")
 debug start: user.vscode("workbench.action.debug.start")
 debug pause: user.vscode("workbench.action.debug.pause")
 debug stopper: user.vscode("workbench.action.debug.stop")
@@ -615,6 +615,10 @@ reflow: user.vscode("rewrap.rewrapComment")
 mode {user.language_id}:
     user.vscode_with_plugin("commands.setEditorLanguage", language_id)
 
+break <user.cursorless_target>:
+    user.cursorless_command("setSelectionBefore", cursorless_target)
+    user.vscode("hideSuggestWidget")
+    key("enter")
 break:
     user.vscode("hideSuggestWidget")
     key("enter")
@@ -751,3 +755,5 @@ quick list:
 {user.search_engine} scout <user.cursorless_target>:
     text = user.cursorless_get_text(cursorless_target)
     user.search_with_search_engine(search_engine, text)
+
+git discard: user.vscode("git.clean")

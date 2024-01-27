@@ -60,4 +60,4 @@ highlight, highlight
 join, joinLines
 
 # 2023-12-11 18:51:22 - New entries automatically added by cursorless
-break, breakLine
+split, breakLine

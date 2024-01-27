@@ -8,7 +8,7 @@ copy markdown link to, issue.copyMarkdownGithubPermalink
 accept, merge-conflict.accept.selection
 accept both, merge-conflict.accept.both
 retag, editor.emmet.action.updateTag
-git revert, git.revertSelectedRanges
+git discard, git.revertSelectedRanges
 git stage, git.stageSelectedRanges
 reflow, rewrap.rewrapComment
 ample, editor.action.goToImplementation
