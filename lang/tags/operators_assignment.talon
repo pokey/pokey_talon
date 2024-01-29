@@ -17,6 +17,8 @@ tag(): user.code_operators_bitwise
 [<user.operator>] increment: user.code_operator_increment()
 
 #bitwise operators
+[<user.operator>] bit [wise] and equals: user.code_operator_bitwise_and_assignment()
+[<user.operator>] bit [wise] or equals: user.code_operator_bitwise_or_assignment()
 (<user.operator> | logical | bitwise) (ex | exclusive) or equals:
     user.code_operator_bitwise_exclusive_or_assignment()
 [(<user.operator> | logical | bitwise)] (left shift | shift left) equals:
