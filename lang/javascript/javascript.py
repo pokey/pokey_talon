@@ -2,8 +2,11 @@ from talon import Context, Module, actions, settings
 
 mod = Module()
 ctx = Context()
-ctx.matches = """
-tag: user.javascript
+ctx.matches = r"""
+code.language: javascript
+code.language: typescript
+code.language: javascriptreact
+code.language: typescriptreact
 """
 
 ctx.lists["user.code_common_function"] = {
@@ -87,10 +90,6 @@ class UserActions:
 
     def code_state_else():
         actions.user.insert_between(" else {", "}")
-        actions.key("enter")
-
-    def code_block():
-        actions.user.insert_between("{", "}")
         actions.key("enter")
 
     def code_self():
@@ -188,6 +187,9 @@ class UserActions:
 
     def code_operator_equal():
         actions.auto_insert(" == ")
+
+    def code_or_operator_assignment():
+        actions.auto_insert(" ||= ")
 
     def code_operator_not_equal():
         actions.auto_insert(" != ")

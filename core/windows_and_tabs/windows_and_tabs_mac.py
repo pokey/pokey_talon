@@ -13,17 +13,15 @@ class AppActions:
 
     def tab_close():
         actions.key("cmd-w")
-        # action(app.tab_detach):
-        #  Move the current tab to a new window
 
     def tab_next():
-        actions.key("cmd-shift-]")
+        actions.key("ctrl-tab")
 
     def tab_open():
         actions.key("cmd-t")
 
     def tab_previous():
-        actions.key("cmd-shift-[")
+        actions.key("ctrl-shift-tab")
 
     def tab_reopen():
         actions.key("cmd-shift-t")
@@ -37,11 +35,17 @@ class AppActions:
     def window_hide_others():
         actions.key("cmd-alt-h")
 
-    def window_next():
-        actions.key("cmd-`")
-
     def window_open():
         actions.key("cmd-n")
 
     def window_previous():
         actions.key("cmd-shift-`")
+
+    def window_next():
+        actions.key("cmd-`")
+
+
+@ctx.action_class("user")
+class UserActions:
+    def switcher_focus_last():
+        actions.key("cmd-tab")
