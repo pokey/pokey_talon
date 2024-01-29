@@ -1,53 +1,76 @@
+version,0.6
 show_animations,1
 enabled,1
+auto_focus,0
 theme_name,light
 status_bar_type,status_bar
 status_bar_enabled,1
 status_bar_sleep_enabled,1
 status_bar_show_animations,1
 status_bar_minimized,0
+status_bar_current_topics,mode_toggle,mode_option,microphone_toggle_option,language_option,programming_option,focus_toggle_option
+status_bar_subscriptions,*
 event_log_type,event_log
 event_log_enabled,1
 event_log_sleep_enabled,1
+event_log_ttl_duration_seconds,-1
 event_log_show_animations,1
 event_log_minimized,0
-event_log_ttl_duration_seconds,-1
+event_log_current_topics,
+event_log_subscriptions,command,error,warning,event,success
 Text panel_type,text_box
 Text panel_enabled,0
 Text panel_sleep_enabled,0
 Text panel_show_animations,1
 Text panel_minimized,0
+Text panel_current_topics,
+Text panel_subscriptions,*
 Documentation_type,documentation_panel
 Documentation_enabled,0
 Documentation_sleep_enabled,0
 Documentation_show_animations,1
 Documentation_minimized,0
+Documentation_current_topics,
+Documentation_subscriptions,documentation
 Choices_type,choices
 Choices_enabled,0
 Choices_sleep_enabled,0
 Choices_show_animations,1
 Choices_minimized,0
+Choices_current_topics,walkthrough_options
+Choices_subscriptions,*
 ability_bar_type,ability_bar
 ability_bar_enabled,1
 ability_bar_sleep_enabled,0
 ability_bar_show_animations,1
 ability_bar_minimized,0
-walk_through_type,walk_through
-walk_through_enabled,0
-walk_through_sleep_enabled,1
-walk_through_show_animations,1
-walk_through_minimized,0
+ability_bar_current_topics,
+ability_bar_subscriptions,*
+walkthrough_type,walkthrough
+walkthrough_enabled,0
+walkthrough_sleep_enabled,1
+walkthrough_show_animations,1
+walkthrough_minimized,0
+walkthrough_current_topics,walkthrough_step
+walkthrough_subscriptions,*
 context_menu_type,context_menu
 context_menu_enabled,0
 context_menu_sleep_enabled,0
 context_menu_show_animations,1
 context_menu_minimized,0
+context_menu_current_topics,
+context_menu_subscriptions,*
 cursor_tracker_type,cursor_tracker
 cursor_tracker_enabled,1
 cursor_tracker_sleep_enabled,0
 cursor_tracker_show_animations,1
 cursor_tracker_minimized,0
+cursor_tracker_current_topics,
+cursor_tracker_subscriptions,*
 screen_overlay_type,screen_overlay
 screen_overlay_enabled,1
 screen_overlay_sleep_enabled,0
 screen_overlay_show_animations,1
+screen_overlay_minimized,0
+screen_overlay_current_topics,
+screen_overlay_subscriptions,*
