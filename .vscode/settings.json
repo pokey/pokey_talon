@@ -3,5 +3,8 @@
     "python.analysis.diagnosticSeverityOverrides": {
         "reportSelfClsParameterName": "none"
     },
-    "cSpell.words": ["mkfifo"]
+    "cSpell.words": ["mkfifo"],
+    "python.testing.pytestArgs": ["."],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

@@ -35,12 +35,12 @@ if hasattr(talon, "test_mode"):
     def test_expands_special_chars():
         result = actions.user.create_spoken_forms("hi $world", None, 0, True)
 
-        assert "hi dollar sign world" in result
+        assert "hi dollar world" in result
 
     def test_expands_file_extensions():
         result = actions.user.create_spoken_forms("hi .cs", None, 0, True)
 
-        assert "hi dot see sharp" in result
+        assert "hi point see sharp" in result
 
     def test_expands_abbreviations():
         result = actions.user.create_spoken_forms("src", None, 0, True)
