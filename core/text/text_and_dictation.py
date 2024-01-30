@@ -91,9 +91,7 @@ def prose(m) -> str:
     return apply_formatting(m).replace("“", '"').replace("”", '"')
 
 
-@mod.capture(
-    rule="<phrase>"
-)
+@mod.capture(rule="<phrase>")
 def raw_prose(m) -> str:
     """Mixed words and punctuation, auto-spaced & capitalized, without quote straightening and commands (for use in dictation mode)."""
     return apply_formatting(m)

@@ -7,8 +7,7 @@ tag: user.code_operators_math
 <user.operator> (times | multiply): user.code_operator_multiplication()
 <user.operator> divide: user.code_operator_division()
 <user.operator> mod: user.code_operator_modulo()
-(<user.operator> (power | exponent) | to the power [of]):
-    user.code_operator_exponent()
+(<user.operator> (power | exponent) | to the power [of]): user.code_operator_exponent()
 
 # comparison operators
 is equal: user.code_operator_equal()

@@ -15,6 +15,7 @@ PARROT_HOME = Path(os.path.dirname(os.path.realpath(__file__)))
 pattern_path = str(PARROT_HOME / "patterns.json")
 model_path = str(PARROT_HOME / "model.pkl")
 
+
 ## START PARROT CLASSES ##
 class PatternMatcher:
     def detect_all(

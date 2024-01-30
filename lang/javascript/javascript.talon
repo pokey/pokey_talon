@@ -55,7 +55,6 @@ chain reduce:
     user.cursorless_insert_snippet(".reduce(\n\t(accumulator, value) => ($value),\n\t$initialValue\n)")
 chain reduce block:
     user.cursorless_insert_snippet(".reduce(\n\t(accumulator, value) => {{\n\t\t$body\n\t}},\n\t$initialValue\n)")
-chain reduce short:
-    user.cursorless_insert_snippet(".reduce($function, $initialValue)")
+chain reduce short: user.cursorless_insert_snippet(".reduce($function, $initialValue)")
 
 from import: user.insert_between(' from  "', '"')

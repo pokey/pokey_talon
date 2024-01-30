@@ -8,8 +8,7 @@ tag(): user.code_operators_bitwise
 <user.operator> or equals: user.code_or_operator_assignment()
 
 # combined computation and assignment
-<user.operator> (minus | subtract) equals:
-    user.code_operator_subtraction_assignment()
+<user.operator> (minus | subtract) equals: user.code_operator_subtraction_assignment()
 <user.operator> (plus | add) equals: user.code_operator_addition_assignment()
 <user.operator> (times | multiply) equals:
     user.code_operator_multiplication_assignment()

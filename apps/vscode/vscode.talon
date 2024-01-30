@@ -15,8 +15,7 @@ settings():
 #talon app actions
 <user.teleport> last:
     user.vscode("workbench.action.openPreviousRecentlyUsedEditorInGroup")
-<user.teleport> next:
-    user.vscode("workbench.action.openNextRecentlyUsedEditorInGroup")
+<user.teleport> next: user.vscode("workbench.action.openNextRecentlyUsedEditorInGroup")
 
 cross: user.split_next()
 
@@ -88,11 +87,9 @@ show settings:
     sleep(250ms)
 show settings json: user.vscode("workbench.action.openSettingsJson")
 show settings folder: user.vscode("workbench.action.openFolderSettings")
-show settings folder json:
-    user.vscode("workbench.action.openFolderSettingsFile")
+show settings folder json: user.vscode("workbench.action.openFolderSettingsFile")
 show settings workspace: user.vscode("workbench.action.openWorkspaceSettings")
-show settings workspace json:
-    user.vscode("workbench.action.openWorkspaceSettingsFile")
+show settings workspace json: user.vscode("workbench.action.openWorkspaceSettingsFile")
 show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
 show shortcuts json: user.vscode("workbench.action.openGlobalKeybindingsFile")
 show snippets: user.vscode("workbench.action.openSnippets")
@@ -220,8 +217,7 @@ ref last:
     key(up enter)
 
 #code navigation
-(<user.teleport> declaration | follow):
-    user.vscode("editor.action.revealDefinition")
+(<user.teleport> declaration | follow): user.vscode("editor.action.revealDefinition")
 spring back: user.vscode("workbench.action.navigateBack")
 spring forward: user.vscode("workbench.action.navigateForward")
 <user.teleport> implementation: user.vscode("editor.action.goToImplementation")
@@ -374,10 +370,8 @@ git stage all merge: user.vscode("git.stageAllMerge")
 git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git sync: user.vscode("git.sync")
-git amend:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
-git reword:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
+git amend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
+git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
 git push force:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
 git update main:
@@ -671,8 +665,7 @@ elm wrap <user.cursorless_target>:
 place <user.any_alphanumeric_key> <user.cursorless_destination>:
     user.cursorless_insert(cursorless_destination, any_alphanumeric_key)
 
-^tag version$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
+^tag version$: user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
 ^install sandbox$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install into cursorless sandbox")
 ^extension publish$:
@@ -685,8 +678,7 @@ place <user.any_alphanumeric_key> <user.cursorless_destination>:
     user.vscode("workbench.action.tasks.terminate")
     insert("Start tunnel")
     key(enter)
-^watch start$:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "watch")
+^watch start$: user.vscode_with_plugin("workbench.action.tasks.runTask", "watch")
 ^watch stop$:
     user.vscode("workbench.action.tasks.terminate")
     insert("Start watch")
@@ -709,8 +701,7 @@ format doc:
     user.vscode("editor.action.formatDocument")
     user.vscode("editor.action.organizeImports")
 
-show extensions:
-    user.vscode("workbench.extensions.action.showEnabledExtensions")
+show extensions: user.vscode("workbench.extensions.action.showEnabledExtensions")
 
 doc run pie: user.vscode("python.execInTerminal")
 doc run bun: user.vscode_with_plugin("workbench.action.tasks.runTask", "bun run")
@@ -773,8 +764,7 @@ doc move right: user.vscode("workbench.action.moveEditorToRightGroup")
 doc move left: user.vscode("workbench.action.moveEditorToLeftGroup")
 give all: user.run_rpc_command("removeSecondaryCursors")
 
-quick list:
-    user.run_rpc_command("cursorless.private.logQuickActions")
+quick list: user.run_rpc_command("cursorless.private.logQuickActions")
 
 {user.search_engine} scout <user.cursorless_target>:
     text = user.cursorless_get_text(cursorless_target)
