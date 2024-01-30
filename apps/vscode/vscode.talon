@@ -4,7 +4,6 @@ app: vscode
 tag(): user.find_and_replace
 tag(): user.line_commands
 tag(): user.multiple_cursors
-tag(): user.snippets
 tag(): user.splits
 tag(): user.tabs
 
@@ -98,6 +97,10 @@ show shortcuts: user.vscode("workbench.action.openGlobalKeybindings")
 show shortcuts json: user.vscode("workbench.action.openGlobalKeybindingsFile")
 show snippets: user.vscode("workbench.action.openSnippets")
 
+# VSCode Snippets
+snip (last | previous): user.vscode("jumpToPrevSnippetPlaceholder")
+snip next: user.vscode("jumpToNextSnippetPlaceholder")
+
 # Display
 centered switch: user.vscode("workbench.action.toggleCenteredLayout")
 fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
@@ -190,6 +193,7 @@ definition peek: user.vscode("editor.action.peekDefinition")
 definition side: user.vscode("editor.action.revealDefinitionAside")
 references show: user.vscode("editor.action.goToReferences")
 ref show: user.vscode("references-view.find")
+hierarchy peek: user.vscode("editor.showCallHierarchy")
 format that: user.vscode("editor.action.formatDocument")
 format selection: user.vscode("editor.action.formatSelection")
 problem next: user.vscode("editor.action.marker.nextInFiles")
@@ -257,7 +261,11 @@ go edit: user.vscode("workbench.action.navigateToLastEditLocation")
     key(enter)
     sleep(250ms)
 
-<user.teleport> marks: user.vscode("workbench.view.extension.bookmarks")
+# Bookmarks. Requires Bookmarks plugin
+bar marks: user.vscode("workbench.view.extension.bookmarks")
+go marks:
+    user.deprecate_command("2023-06-06", "go marks", "bar marks")
+    user.vscode("workbench.view.extension.bookmarks")
 toggle mark: user.vscode("bookmarks.toggle")
 <user.teleport> next mark: user.vscode("bookmarks.jumpToNext")
 <user.teleport> last mark: user.vscode("bookmarks.jumpToPrevious")
@@ -354,7 +362,6 @@ git pull: user.vscode("git.pullRebase")
 git push:
     sleep(100ms)
     user.vscode("git.push")
-git push focus: user.vscode("git.pushForce")
 git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
 git revert: user.vscode("git.revertChange")
@@ -456,6 +463,22 @@ default repo:
     key(cmd-w)
 
 #Debugging
+# Testing
+test run: user.vscode("testing.runAtCursor")
+test run file: user.vscode("testing.runCurrentFile")
+test run all: user.vscode("testing.runAll")
+test run failed: user.vscode("testing.reRunFailTests")
+test run last: user.vscode("testing.reRunLastRun")
+
+test debug: user.vscode("testing.debugAtCursor")
+test debug file: user.vscode("testing.debugCurrentFile")
+test debug all: user.vscode("testing.debugAll")
+test debug failed: user.vscode("testing.debugFailTests")
+test debug last: user.vscode("testing.debugLastRun")
+
+test cancel: user.vscode("testing.cancelRun")
+
+# Debugging
 step over: user.vscode("workbench.action.debug.stepOver")
 step into: user.vscode("workbench.action.debug.stepInto")
 step out of: user.vscode("workbench.action.debug.stepOut")
@@ -554,6 +577,7 @@ replace here:
 full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
+curse redo: user.vscode("cursorRedo")
 
 breed skip: user.vscode("editor.action.moveSelectionToNextFindMatch")
 breed last: user.vscode("editor.action.addSelectionToPreviousFindMatch")

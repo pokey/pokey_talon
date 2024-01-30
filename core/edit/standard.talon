@@ -1,38 +1,4 @@
-zoom in: edit.zoom_in()
-zoom out: edit.zoom_out()
-zoom reset: edit.zoom_reset()
-scroll up: edit.page_up()
-scroll down: edit.page_down()
-copy that: edit.copy()
-cut that: edit.cut()
-(pace | paste) that: edit.paste()
-show clip:
-    key(cmd-shift-v)
-    sleep(100ms)
-(pace | paste) <user.ordinals_small>:
-    key(cmd-shift-v)
-    sleep(100ms)
-    insert("{user.ordinals_small}")
-    sleep(100ms)
-(pace | paste) rough <number_small>:
-    key(cmd-shift-v)
-    sleep(100ms)
-    key("alt-{number_small}")
-(undo that | nope | blast): edit.undo()
-(redo that | yes indeed): edit.redo()
-paste match: edit.paste_match_style()
-disk: edit.save()
-disk oliver: edit.save_all()
-padding: user.insert_between(" ", " ")
-pour: edit.line_insert_down()
-drink: edit.line_insert_up()
-
 slow mode: mode.enable("user.slow")
-
-emoji scout [<user.text>]:
-    key(cmd-ctrl-space)
-    sleep(200ms)
-    insert(user.text or "")
 
 dictate [<phrase>]$:
     mode.enable("dictation")

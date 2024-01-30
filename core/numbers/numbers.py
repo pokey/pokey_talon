@@ -224,3 +224,10 @@ def repetition_count(m) -> int:
         return 3
     else:
         return m["number_small"]
+
+
+@mod.capture(rule=f"[negative|minus] <number_small>")
+def number_signed_small(m) -> int:
+    """Parses an integer between -99 and 99."""
+    number = m[-1]
+    return -number if (m[0] in ["negative", "minus"]) else number

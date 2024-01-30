@@ -1,16 +1,22 @@
 app: chrome
 -
+tag(): browser
+tag(): user.tabs
 
 fill password: user.fill_password()
-<user.teleport> tab: key("cmd-shift-a")
-<user.teleport> tab <user.text> [halt]:
-    key("cmd-shift-a")
+
+profile switch: user.chrome_mod("shift-m")
+
+<user.show_list> tab: user.chrome_mod("shift-a")
+
+<user.show_list> tab <user.text> [halt]:
+    user.chrome_mod("shift-a")
     sleep(400ms)
-    "{text}"
+    insert("{text}")
+    sleep(100ms)
+<user.teleport> tab <user.text> [halt]:
+    user.chrome_mod("shift-a")
+    sleep(400ms)
+    insert("{text}")
     sleep(100ms)
     key("enter")
-<user.show_list> tab <user.text> [halt]:
-    key("cmd-shift-a")
-    sleep(400ms)
-    "{text}"
-    sleep(100ms)

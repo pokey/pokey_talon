@@ -1,111 +1,106 @@
-find it: edit.find()
+# Zoom
+zoom in: edit.zoom_in()
+zoom out: edit.zoom_out()
+zoom reset: edit.zoom_reset()
 
+# Searching
+find it: edit.find()
 next one: edit.find_next()
 
-tug: edit.left()
+# Navigation
 
-tug <number_small> times: user.left_n(number_small)
+# The reason for these spoken forms is that "page up" and "page down" are globally defined as keys.
+scroll up: edit.page_up()
+scroll down: edit.page_down()
 
 drain: edit.word_left()
-
 drain <number_small> times: user.words_left(number_small)
-
-push: edit.right()
-
-push <number_small> times: user.right_n(number_small)
-
 step: edit.word_right()
-
 step <number_small> times: user.words_right(number_small)
 
-north: user.up_n(1)
-
+tug: edit.left()
+tug <number_small> times: user.left_n(number_small)
+push: edit.right()
+push <number_small> times: user.right_n(number_small)
+north: edit.up()
 north <number_small> times: user.up_n(number_small)
-
-south: user.down_n(1)
-
+south: edit.down()
 south <number_small> times: user.down_n(number_small)
 
-head: edit.line_start()
+go line start | head: edit.line_start()
+go line end | tail: edit.line_end()
 
-tail: edit.line_end()
-
+go way left:
+    edit.line_start()
+    edit.line_start()
+go way right: edit.line_end()
+go way up: edit.file_start()
 go way down: edit.file_end()
 
-go way up: edit.file_start()
-
+go top: edit.file_start()
 go bottom: edit.file_end()
 
-go top: edit.file_start()
-
+go page up: edit.page_up()
 go page down: edit.page_down()
 
-go page up: edit.page_up()
-
-# selecting
-select line: edit.select_line()
-
+# Selecting
 select all: edit.select_all()
+# select line: edit.select_line()
+# select line start: user.select_line_start()
+# select line end: user.select_line_end()
 
-select left: edit.extend_left()
+# select left: edit.extend_left()
+# select right: edit.extend_right()
+# select up: edit.extend_line_up()
+# select down: edit.extend_line_down()
 
-select right: edit.extend_right()
+# select word: edit.select_word()
+# select word left: edit.extend_word_left()
+# select word right: edit.extend_word_right()
 
-select up: edit.extend_line_up()
+# select way left: edit.extend_line_start()
+# select way right: edit.extend_line_end()
+# select way up: edit.extend_file_start()
+# select way down: edit.extend_file_end()
 
-select down: edit.extend_line_down()
-
-select word: edit.select_word()
-
-<user.select> lefter: edit.extend_word_left()
-
-<user.select> writer: edit.extend_word_right()
-
-take head: edit.extend_line_start()
-
-take tail: edit.extend_line_end()
-
-select way up: edit.extend_file_start()
-
-select way down: edit.extend_file_end()
-
-# editing
+# Indentation
 indent [more]: edit.indent_more()
-
 (indent less | out dent): edit.indent_less()
 
-# deleting
-clear line: edit.delete_line()
+# Delete
+<user.delete> all: user.delete_all()
+# clear line: edit.delete_line()
+# clear line start: user.delete_line_start()
+# clear line end: user.delete_line_end()
+# clear left: edit.delete()
+# clear right: user.delete_right()
 
 scratch <number_small> times: user.delete_left_n(number_small)
-
 drill <number_small> times: user.delete_right_n(number_small)
 
-<user.delete> up:
-    edit.extend_line_up()
-    edit.delete()
+# clear up:
+#     edit.extend_line_up()
+#     edit.delete()
 
-<user.delete> down:
-    edit.extend_line_down()
-    edit.delete()
+# clear down:
+#     edit.extend_line_down()
+#     edit.delete()
 
-<user.delete> word: edit.delete_word()
+# clear word: edit.delete_word()
 
 scratcher: user.delete_word_left_n(1)
-
 scratcher <number_small> times: user.delete_word_left_n(number_small)
 
 swallow: user.delete_word_right_n(1)
-
 swallow <number_small> times: user.delete_word_right_n(number_small)
 
-<user.delete> head:
-    edit.extend_line_start()
-    edit.delete()
+# clear way left:
+#     edit.extend_line_start()
+#     edit.delete()
 
-<user.delete> tail:
-    edit.extend_line_end()
-    edit.delete()
+# clear way right:
+#     edit.extend_line_end()
+#     edit.delete()
 
 <user.delete> way up:
     edit.extend_file_start()
@@ -115,14 +110,16 @@ swallow <number_small> times: user.delete_word_right_n(number_small)
     edit.extend_file_end()
     edit.delete()
 
-<user.delete> all:
-    edit.select_all()
-    edit.delete()
+# Copy
+copy that: edit.copy()
+copy all: user.copy_all()
+# copy line: user.copy_line()
+# copy line start: user.copy_line_start()
+# copy line end: user.copy_line_end()
+# copy word: user.copy_word()
+# copy word left: user.copy_word_left()
+# copy word right: user.copy_word_right()
 
-#copy commands
-copy all:
-    edit.select_all()
-    edit.copy()
 #to do: do we want these variants, seem to conflict
 # copy left:
 #      edit.extend_left()
@@ -137,26 +134,16 @@ copy all:
 #     edit.extend_down()
 #     edit.copy()
 
-copy word:
-    edit.select_word()
-    edit.copy()
+# Cut
+cut that: edit.cut()
+cut all: user.cut_all()
+# cut line: user.cut_line()
+# cut line start: user.cut_line_start()
+# cut line end: user.cut_line_end()
+# cut word: user.cut_word()
+# cut word left: user.cut_word_left()
+# cut word right: user.cut_word_right()
 
-copy lefter:
-    edit.extend_word_left()
-    edit.copy()
-
-copy righter:
-    edit.extend_word_right()
-    edit.copy()
-
-copy line:
-    edit.select_line()
-    edit.copy()
-
-#cut commands
-cut all:
-    edit.select_all()
-    edit.cut()
 #to do: do we want these variants
 # cut left:
 #      edit.select_all()
@@ -171,18 +158,58 @@ cut all:
 #     edit.select_all()
 #     edit.cut()
 
-cut word:
-    edit.select_word()
-    edit.cut()
+# Paste
+(pace | paste) that: edit.paste()
+# (pace | paste) enter:
+#     edit.paste()
+#     key(enter)
+paste match: edit.paste_match_style()
+# (pace | paste) all: user.paste_all()
+# (pace | paste) line: user.paste_line()
+# (pace | paste) line start: user.paste_line_start()
+# (pace | paste) line end: user.paste_line_end()
+# (pace | paste) word: user.paste_word()
 
-cut lefter:
-    edit.extend_word_left()
-    edit.cut()
+show clip:
+    key(cmd-shift-v)
+    sleep(100ms)
+(pace | paste) <user.ordinals_small>:
+    key(cmd-shift-v)
+    sleep(100ms)
+    insert("{user.ordinals_small}")
+    sleep(100ms)
+(pace | paste) rough <number_small>:
+    key(cmd-shift-v)
+    sleep(100ms)
+    key("alt-{number_small}")
 
-cut righter:
-    edit.extend_word_right()
-    edit.cut()
+# Duplication
+# clone that: edit.selection_clone()
+# clone line: edit.line_clone()
 
-cut line:
-    edit.select_line()
-    edit.cut()
+# Insert new line
+# new line above: edit.line_insert_up()
+# new line below | slap: edit.line_insert_down()
+
+# Insert padding with optional symbols
+(pad | padding): user.insert_between(" ", " ")
+# (pad | padding) <user.symbol_key>+:
+#     insert(" ")
+#     user.insert_many(symbol_key_list)
+#     insert(" ")
+
+# Undo/redo
+(undo that | nope | blast): edit.undo()
+(redo that | yes indeed): edit.redo()
+
+# Save
+disk: edit.save()
+disk oliver: edit.save_all()
+
+pour: edit.line_insert_down()
+drink: edit.line_insert_up()
+
+emoji scout [<user.text>]:
+    key(cmd-ctrl-space)
+    sleep(200ms)
+    insert(user.text or "")

@@ -1,4 +1,4 @@
-tag: user.python
+code.language: python
 -
 tag(): user.code_imperative
 tag(): user.code_object_oriented
@@ -38,9 +38,9 @@ pie test: "pytest"
 <user.operator> not: "not "
 <user.operator> global: "global "
 
-raise {user.python_exception}:
+[<user.operator>] raise {user.python_exception}:
     user.insert_between("raise {python_exception}(", ")")
-except {user.python_exception}: "except {python_exception}:"
+[<user.operator>] except {user.python_exception}: "except {python_exception}:"
 
 dock string: user.code_comment_documentation()
 dock {user.python_docstring_fields}:

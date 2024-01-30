@@ -45,3 +45,5 @@ class Actions:
 
     def line_clone(line: int):
         """Clones specified line at current position"""
+        actions.edit.jump_line(line)
+        actions.edit.line_clone()

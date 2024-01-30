@@ -1,5 +1,6 @@
-double dash: "--"
-triple quote: "'''"
+new line: "\n"
+# double dash: "--"
+# triple quote: "'''"
 pebbles: "..."
 # Add symbol at end of line and then insert line below
 # From https://github.com/AndreasArvidsson/andreas-talon/blob/master/misc/keys/keys.talon#L28
@@ -12,9 +13,6 @@ pipe gap: " | "
 boom: ". "
 arrow: "->"
 dub arrow: "=>"
-new line: "\\n"
-carriage return: "\\r"
-line feed: "\\r\\n"
 empty round: "()"
 empty square: "[]"
 empty curly: "{}"
@@ -49,7 +47,7 @@ diamond: user.insert_between("<", ">")
 (double | quad) that:
     text = edit.selected_text()
     user.paste("'{text}'")
-(double quote | dubquote) that:
+(double quote | dub quote) that:
     text = edit.selected_text()
     user.paste('"{text}"')
 (single | twin) that:

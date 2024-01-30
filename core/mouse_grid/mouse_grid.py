@@ -6,16 +6,15 @@ from typing import Union
 from talon import Context, Module, actions, canvas, cron, ctrl, screen, settings, ui
 from talon.skia import Paint, Rect
 from talon.types.point import Point2d
-from talon_plugins import eye_mouse, eye_zoom_mouse
 
 mod = Module()
-narrow_expansion = mod.setting(
+mod.setting(
     "grid_narrow_expansion",
     type=int,
     default=0,
     desc="""After narrowing, grow the new region by this many pixels in every direction, to make things immediately on edges easier to hit, and when the grid is at its smallest, it allows you to still nudge it around""",
 )
-grids_put_one_bottom_left = mod.setting(
+mod.setting(
     "grids_put_one_bottom_left",
     type=bool,
     default=False,
@@ -25,7 +24,7 @@ grids_put_one_bottom_left = mod.setting(
 mod.tag("mouse_grid_showing", desc="Tag indicates whether the mouse grid is showing")
 mod.tag(
     "mouse_grid_enabled",
-    desc="Deprecated: do not use.  Activates legacy m grid command",
+    desc="Deprecated: do not use. Activates legacy m grid command",
 )
 ctx = Context()
 
@@ -39,8 +38,9 @@ class MouseSnapNine:
         self.mcanvas = None
         self.active = False
         self.count = 0
-        self.was_control_mouse_active = False
         self.was_zoom_mouse_active = False
+        self.was_control_mouse_active = False
+        self.was_control1_mouse_active = False
 
     def setup(self, *, rect: Rect = None, screen_num: int = None):
         screens = ui.screens()
@@ -71,12 +71,15 @@ class MouseSnapNine:
         if self.active:
             return
         # noinspection PyUnresolvedReferences
-        if eye_zoom_mouse.zoom_mouse.enabled:
+        if actions.tracking.control_zoom_enabled():
             self.was_zoom_mouse_active = True
-            eye_zoom_mouse.toggle_zoom_mouse(False)
-        if eye_mouse.control_mouse.enabled:
+            actions.tracking.control_zoom_toggle(False)
+        if actions.tracking.control_enabled():
             self.was_control_mouse_active = True
-            eye_mouse.control_mouse.toggle()
+            actions.tracking.control_toggle(False)
+        if actions.tracking.control1_enabled():
+            self.was_control1_mouse_active = True
+            actions.tracking.control1_toggle(False)
         self.mcanvas.register("draw", self.draw)
         self.mcanvas.freeze()
         self.active = True
@@ -91,13 +94,17 @@ class MouseSnapNine:
         self.img = None
 
         self.active = False
-        if self.was_control_mouse_active and not eye_mouse.control_mouse.enabled:
-            eye_mouse.control_mouse.toggle()
-        if self.was_zoom_mouse_active and not eye_zoom_mouse.zoom_mouse.enabled:
-            eye_zoom_mouse.toggle_zoom_mouse(True)
+
+        if self.was_control_mouse_active and not actions.tracking.control_enabled():
+            actions.tracking.control_toggle(True)
+        if self.was_control1_mouse_active and not actions.tracking.control1_enabled():
+            actions.tracking.control1_toggle(True)
+        if self.was_zoom_mouse_active and not actions.tracking.control_zoom_enabled():
+            actions.tracking.control_zoom_toggle(True)
 
         self.was_zoom_mouse_active = False
         self.was_control_mouse_active = False
+        self.was_control1_mouse_active = False
 
     def draw(self, canvas):
         paint = canvas.paint
@@ -145,7 +152,7 @@ class MouseSnapNine:
             for row in range(3):
                 for col in range(3):
                     text_string = ""
-                    if settings["user.grids_put_one_bottom_left"]:
+                    if settings.get("user.grids_put_one_bottom_left"):
                         text_string = f"{(2 - row)*3+col+1}"
                     else:
                         text_string = f"{row*3+col+1}"
@@ -200,10 +207,10 @@ class MouseSnapNine:
 
     def calc_narrow(self, which, rect):
         rect = rect.copy()
-        bdr = narrow_expansion.get()
+        bdr = settings.get("user.grid_narrow_expansion")
         row = int(which - 1) // 3
         col = int(which - 1) % 3
-        if settings["user.grids_put_one_bottom_left"]:
+        if settings.get("user.grids_put_one_bottom_left"):
             row = 2 - row
         rect.x += int(col * rect.width // 3) - bdr
         rect.y += int(row * rect.height // 3) - bdr
@@ -300,3 +307,7 @@ class GridActions:
         """Close the active grid"""
         ctx.tags = []
         mg.close()
+
+    def grid_is_active():
+        """check if grid is already active"""
+        return mg.active

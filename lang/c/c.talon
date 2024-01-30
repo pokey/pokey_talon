@@ -1,7 +1,8 @@
-tag: user.c
+code.language: c
 -
 tag(): user.code_imperative
 
+tag(): user.code_block_c_like
 tag(): user.code_comment_line
 tag(): user.code_comment_block_c_like
 tag(): user.code_data_bool
@@ -23,8 +24,6 @@ settings():
     user.code_private_variable_formatter = "SNAKE_CASE"
     user.code_protected_variable_formatter = "SNAKE_CASE"
     user.code_public_variable_formatter = "SNAKE_CASE"
-    # whether or not to use uint_8 style datatypes
-    #    user.use_stdint_datatypes = 1
 
 # NOTE: migrated from generic, as they were only used here, though once cpp support is added, perhaps these should be migrated to a tag together with the commands below
 <user.operator> include: insert("#include ")
@@ -39,8 +38,14 @@ settings():
 
 # XXX - create a preprocessor tag for these, as they will match cpp, etc
 <user.operator> define: "#define "
-<user.operator> undefine: "#undef "
-<user.operator> if define: "#ifdef "
+<user.operator> (undefine | undeaf): "#undef "
+<user.operator> if (define | deaf): "#ifdef "
+[<user.operator>] define <user.text>$:
+    "#define {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"
+[<user.operator>] (undefine | undeaf) <user.text>$:
+    "#undef {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"
+[<user.operator>] if (define | deaf) <user.text>$:
+    "#ifdef {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"
 
 # XXX - preprocessor instead of pre?
 <user.operator> pre if: "#if "
@@ -52,9 +57,9 @@ settings():
 
 #control flow
 #best used with a push like command
-#the below example may not work in editors that automatically add the closing bracket
+#the below example may not work in editors that automatically add the closing brace
 #if so uncomment the two lines and comment out the rest accordingly
-push brackets:
+push braces:
     edit.line_end()
     #insert("{")
     #key(enter)
