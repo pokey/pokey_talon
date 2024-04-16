@@ -1,6 +1,7 @@
 """
 Stores terms that are used in many different places
 """
+
 from talon import Module
 
 mod = Module()

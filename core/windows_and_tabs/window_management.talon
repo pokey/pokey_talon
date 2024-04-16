@@ -30,7 +30,7 @@ coder [<phrase>]$:
     user.switcher_focus("Code")
     sleep(300ms)
     user.parse_phrase(phrase or "")
-tune talon [<phrase>]$:
+tune (talon | talent) [<phrase>]$:
     user.switcher_focus("Code")
     sleep(300ms)
     user.vscode("workbench.action.openRecent")

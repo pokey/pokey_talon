@@ -245,7 +245,8 @@ class Actions:
         actions.user.vscode("git.commitStaged")
         actions.sleep("500ms")
         actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
-        actions.key("enter")
+        if text:
+            actions.key("enter")
 
     def cursorless_record_navigation_test():
         """Run cursorless Record navigation test"""

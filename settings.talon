@@ -1,6 +1,6 @@
 settings():
     speech.debug = 1
-    speech.timeout = 0.3
+    speech.timeout = 0.325
     speech._subtitles = 0
 
     # Adjust the scale of the imgui
@@ -76,3 +76,4 @@ settings():
 # Uncomment to enable the curse yes/curse no commands (show/hide mouse cursor).
 # See issue #688 for more detail: https://github.com/talonhub/community/issues/688
 # tag(): user.mouse_cursor_commands_enable
+tag(): user.gpt_beta

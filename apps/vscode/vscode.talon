@@ -353,6 +353,12 @@ git fetch: user.vscode("git.fetch")
 git fetch all: user.vscode("git.fetchAll")
 git ignore: user.vscode("git.ignore")
 git merge: user.vscode("git.merge")
+git merge {user.git_branch}:
+    user.vscode("git.merge")
+    sleep(50ms)
+    insert("{git_branch}")
+    key(enter)
+    sleep(250ms)
 git output: user.vscode("git.showOutput")
 git pull: user.vscode("git.pullRebase")
 git push:
@@ -665,11 +671,18 @@ elm wrap <user.cursorless_target>:
 place <user.any_alphanumeric_key> <user.cursorless_destination>:
     user.cursorless_insert(cursorless_destination, any_alphanumeric_key)
 
+place [word] <word> <user.cursorless_destination>:
+    user.cursorless_insert(cursorless_destination, word)
+
 ^tag version$: user.vscode_with_plugin("workbench.action.tasks.runTask", "Tag version")
 ^install sandbox$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Install into cursorless sandbox")
 ^extension publish$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Publish extension")
+^install local$:
+    user.run_rpc_command("workbench.action.tasks.runTask", "Install local")
+^pre commit run$:
+    user.run_rpc_command("workbench.action.tasks.runTask", "Run pre commit")
 ^{user.cursorless_homophone} local split$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
 ^tunnel start$:
@@ -688,6 +701,7 @@ line edit: key(ctrl-q e)
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Move recorded video")
     sleep(650ms)
     user.insert_formatted(text or "", "DASH_SEPARATED")
+^pack install$: user.vscode_with_plugin("workbench.action.tasks.runTask", "pnpm install")
 
 copy command: user.copy_command_id()
 copy command <number_small>:

@@ -57,10 +57,10 @@ def on_ready():
     ctx.lists["self.things_tag"] = actions.user.create_spoken_forms_from_map(
         {tag.title: tag.uuid for tag in tags}
     )
-    ctx.lists[
-        "self.things_tag_with_shortcut"
-    ] = actions.user.create_spoken_forms_from_map(
-        {tag.title: tag.uuid for tag in tags if tag.shortcut is not None}
+    ctx.lists["self.things_tag_with_shortcut"] = (
+        actions.user.create_spoken_forms_from_map(
+            {tag.title: tag.uuid for tag in tags if tag.shortcut is not None}
+        )
     )
     ctx.lists["self.things_project"] = actions.user.create_spoken_forms_from_map(
         {project.title: project.uuid for project in projects}
