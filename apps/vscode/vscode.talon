@@ -290,7 +290,7 @@ fold seven: user.vscode("editor.foldLevel7")
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
-<user.show_list> branch [<user.text>] [halt]:
+(<user.show_list> branch | branchless | branch <user.show_list>) [<user.text>] [halt]:
     user.vscode("git.checkout")
     sleep(50ms)
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
@@ -299,7 +299,7 @@ branch make [<user.text>] [halt]:
     sleep(50ms)
     "pokey/"
     user.insert_formatted(text or "", "DASH_SEPARATED,ALL_LOWERCASE")
-<user.teleport> branch {user.git_branch}:
+(<user.teleport> branch | branchless | branch <user.teleport>) {user.git_branch}:
     user.vscode("git.checkout")
     sleep(450ms)
     "{git_branch}"
