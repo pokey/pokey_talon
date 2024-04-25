@@ -4,8 +4,8 @@ https://www.google.com/search?q=%s,google
 https://maps.google.com/maps?q=%s,map
 https://scholar.google.com/scholar?q=%s,scholar
 https://en.wikipedia.org/w/index.php?search=%s,wiki
-https://docs.google.com/document/u/0/?q=%s,dock
-https://paper.dropbox.com/#q=%s,paper
+https://docs.google.com/document/u/0/?q=%s,google dock
+https://paper.dropbox.com/#q=%s,dropbox paper
 https://www.amazon.co.uk/gp/your-account/order-history/ref=ppx_yo_dt_b_search?opt=ab&search=%s,order
 https://github.com/cursorless-dev/cursorless/issues?q=is%3Aissue+is%3Aopen+%s,issue
 https://github.com/cursorless-dev/cursorless/pulls?q=is%3Apr+is%3Aopen+%s,pull
