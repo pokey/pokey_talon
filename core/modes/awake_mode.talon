@@ -5,3 +5,5 @@ not mode: sleep
 # the speech engine
 drowse [<phrase>]$: user.sleep_all()
 drowse <phrase> resume$: skip()
+# Leave up overlays, etc
+drowse light [<phrase>]$: speech.disable()
