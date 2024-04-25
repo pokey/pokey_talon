@@ -30,7 +30,7 @@ and app.name: VSCodium
 os: linux
 and app.name: Codium
 """
-mod.apps.vscode = """
+mod.apps.vscode = r"""
 os: windows
 and app.name: Visual Studio Code
 os: windows
@@ -38,13 +38,13 @@ and app.name: Visual Studio Code Insiders
 os: windows
 and app.name: Visual Studio Code - Insiders
 os: windows
-and app.exe: Code.exe
+and app.exe: /^code\.exe$/i
 os: windows
-and app.exe: Code-Insiders.exe
+and app.exe: /^code-insiders\.exe$/i
 os: windows
 and app.name: VSCodium
 os: windows
-and app.exe: VSCodium.exe
+and app.exe: /^vscodium\.exe$/i
 os: windows
 and app.name: Azure Data Studio
 os: windows
@@ -158,6 +158,9 @@ class EditActions:
         actions.insert(str(n))
         actions.key("enter")
         actions.edit.line_start()
+
+    def zoom_reset():
+        actions.user.vscode("workbench.action.zoomReset")
 
     def line_insert_down():
         actions.user.vscode_and_wait("editor.action.insertLineAfter")

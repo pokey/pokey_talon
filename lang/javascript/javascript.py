@@ -253,6 +253,9 @@ class UserActions:
     def code_operator_bitwise_right_shift_assignment():
         actions.auto_insert(" >>= ")
 
+    def code_comment_line_prefix():
+        actions.auto_insert("//")
+
     def code_insert_function(text: str, selection: str):
         text += f"({selection or ''})"
         actions.user.paste(text)

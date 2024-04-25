@@ -161,7 +161,8 @@ formatters_dict = {
     "DOT_SEPARATED": words_with_joiner("."),
     "NEWLINE_SEPARATED": words_with_joiner("\n"),
     "DOT_SNAKE": (NOSEP, lambda i, word, _: "." + word if i == 0 else "_" + word),
-    "SLASH_SEPARATED": (NOSEP, words_with_joiner("/")),
+    "ALL_SLASHES": (NOSEP, every_word(lambda w: "/" + w)),
+    "SLASH_SEPARATED": words_with_joiner("/"),
     "CAPITALIZE_FIRST_WORD": (
         SEP,
         first_vs_rest(lambda w: title_case()(0, w, True)),
@@ -184,6 +185,7 @@ code_formatter_names = {
     "padded": "SPACE_SURROUNDED_STRING",
     "sentence": "CAPITALIZE_FIRST_WORD",
     "slasher": "SLASH_SEPARATED",
+    "conga": "ALL_SLASHES",
     "smash": "NO_SPACES",
     "snake": "SNAKE_CASE",
     "for string": "SINGLE_QUOTED_STRING",
