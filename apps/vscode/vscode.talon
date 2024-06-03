@@ -579,6 +579,11 @@ replace here:
     user.replace("")
     key(cmd-alt-l)
 
+replace <user.cursorless_target>:
+    user.cursorless_command("setSelection", cursorless_target)
+    user.replace("")
+    key(cmd-alt-l)
+
 full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")
