@@ -307,6 +307,7 @@ branch make [<user.text>] [halt]:
     user.vscode("git.checkout")
     sleep(450ms)
     "{git_branch}"
+    sleep(100ms)
     key(enter)
     sleep(500ms)
 git rebase [<user.text>] [halt]:
@@ -437,7 +438,7 @@ pop branch next [<user.repetition_count>]:
     insert(commit)
     key(enter)
 
-dock open: user.vscode("gitlens.openWorkingFile")
+dock open: user.vscode("git.openFile")
 (wreck | rec) make: user.vscode("pr.create")
 (wreck | rec) show: user.vscode("prStatus:github.focus")
 dock viewed: user.vscode("pr.markFileAsViewed")
