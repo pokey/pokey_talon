@@ -584,6 +584,9 @@ replace <user.cursorless_target>:
     user.replace("")
     key(cmd-alt-l)
 
+none check <user.cursorless_target>:
+    user.insert_snippet_with_cursorless_target("nullCheck", "1", cursorless_target)
+
 full screen: user.vscode("workbench.action.toggleFullScreen")
 
 curse undo: user.vscode("cursorUndo")

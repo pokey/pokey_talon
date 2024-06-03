@@ -2,6 +2,7 @@ import json
 import re
 from os.path import expanduser
 from pathlib import Path
+from typing import Any
 
 from talon import Context, Module, actions, app, clip
 
@@ -281,6 +282,15 @@ class Actions:
         actions.user.vscode_with_plugin(
             "editor.action.sourceAction",
             {"kind": "source.addMissingImports", "apply": "first"},
+        )
+
+    def insert_snippet_with_cursorless_target(
+        name: str, variable_name: str, target: Any
+    ):
+        """Insert snippet <name> with cursorless target <target>"""
+        actions.user.insert_snippet_by_name(
+            name,
+            {variable_name: actions.user.cursorless_get_text(target)},
         )
 
 

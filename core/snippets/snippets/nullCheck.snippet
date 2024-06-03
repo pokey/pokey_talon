@@ -1,0 +1,22 @@
+name: nullCheck
+phrase: none check
+insertionScope: statement
+
+$1.wrapperPhrase: none check cond
+$1.wrapperScope: statement
+$0.wrapperPhrase: none check
+$0.wrapperScope: statement
+---
+
+language: javascript
+-
+if ($1 != null) {
+    $0
+}
+---
+
+language: python
+-
+if $1 is not None:
+    $0
+---
