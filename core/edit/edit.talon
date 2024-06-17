@@ -173,15 +173,15 @@ paste match: edit.paste_match_style()
 show clip:
     key(cmd-shift-v)
     sleep(100ms)
-(pace | paste) <user.ordinals_small>:
-    key(cmd-shift-v)
-    sleep(100ms)
-    insert("{user.ordinals_small}")
-    sleep(100ms)
-(pace | paste) rough <number_small>:
-    key(cmd-shift-v)
-    sleep(100ms)
-    key("alt-{number_small}")
+# (pace | paste) <user.ordinals_small>:
+#     key(cmd-shift-v)
+#     sleep(100ms)
+#     insert("{user.ordinals_small}")
+#     sleep(100ms)
+# (pace | paste) rough <number_small>:
+#     key(cmd-shift-v)
+#     sleep(100ms)
+#     key("alt-{number_small}")
 
 # Duplication
 # clone that: edit.selection_clone()
