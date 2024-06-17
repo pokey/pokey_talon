@@ -87,3 +87,5 @@ access, private.fieldAccess
 
 # 2023-12-06 20:41:49 - New entries automatically added by cursorless
 blip, glyph
+
+text fragment,textFragment
