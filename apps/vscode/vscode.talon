@@ -696,6 +696,8 @@ place [word] <word> <user.cursorless_destination>:
     user.run_rpc_command("workbench.action.tasks.runTask", "Install local")
 ^pre commit run$:
     user.run_rpc_command("workbench.action.tasks.runTask", "Run pre commit")
+^pre commit run all$:
+    user.run_rpc_command("workbench.action.tasks.runTask", "Run pre commit all")
 ^{user.cursorless_homophone} local split$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Cursorless local split")
 ^tunnel start$:
