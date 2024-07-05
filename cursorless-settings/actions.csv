@@ -66,3 +66,6 @@ split, breakLine
 # 2024-02-22 14:54:32 - New entries automatically added by cursorless
 decrement, decrement
 increment, increment
+
+# 2024-07-04 15:27:13 - New entries automatically added by cursorless
+falling split, followLinkAside
