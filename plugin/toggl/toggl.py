@@ -9,12 +9,13 @@ from talon import Module, actions, app
 
 API_TOKEN = Path("~/envs/toggl/TOGGL_API_TOKEN").expanduser().read_text().strip()
 
-# FIXME: This should be in separate config file that maybe defines action
+# FIXME: This should be a setting
 WORKSPACE_ID = 8497458
 
 # FIXME: We should support custom projects in a map returned by an action
 projects = {
     "coding": 203834862,
+    "meetings": 203834863,
 }
 
 
