@@ -438,7 +438,7 @@ pop branch next [<user.repetition_count>]:
     insert(commit)
     key(enter)
 
-dock open: user.vscode("git.openFile")
+dock open: key(shift-cmd-ctrl-f12)
 (wreck | rec) make: user.vscode("pr.create")
 (wreck | rec) show: user.vscode("prStatus:github.focus")
 (wreck | rec) next: user.vscode("pr.goToNextDiffInPr")
@@ -803,3 +803,6 @@ quick list: user.run_rpc_command("cursorless.private.logQuickActions")
     user.search_with_search_engine(search_engine, text)
 
 git discard: user.vscode("git.clean")
+bold dog: user.run_rpc_command("bold.toggle")
+bold on: user.run_rpc_command("bold.toggle", true)
+bold off: user.run_rpc_command("bold.toggle", false)
