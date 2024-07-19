@@ -441,6 +441,9 @@ pop branch next [<user.repetition_count>]:
 dock open: user.vscode("git.openFile")
 (wreck | rec) make: user.vscode("pr.create")
 (wreck | rec) show: user.vscode("prStatus:github.focus")
+(wreck | rec) next: user.vscode("pr.goToNextDiffInPr")
+(wreck | rec) last: user.vscode("pr.goToPreviousDiffInPr")
+(wreck | rec) (scene | seen): user.vscode_and_wait("pr.markFileAsViewed")
 dock viewed: user.vscode("pr.markFileAsViewed")
 (wreck | rec) web: user.vscode("pr.openPullRequestOnGitHub")
 # Use keyboard shortcuts because VSCode relies on when clause contexts to choose the appropriate
