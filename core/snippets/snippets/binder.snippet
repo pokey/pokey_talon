@@ -1,0 +1,21 @@
+name: bindClassFunction
+description: Bind function or arg
+phrase: binder
+insertionScope: statement
+---
+
+language: typescript | javascript | typescriptreact | javascriptreact
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
+$name.wrapperPhrase: binder
+-
+this.${name/^(this.)?(.+)$/$2/} = this.${name/^(this.)?(.+)$/$2/}.bind(this)
+---
+
+language: python
+
+$name.insertionFormatter: SNAKE_CASE
+$name.wrapperPhrase: binder
+-
+self.$name = $name
+---

@@ -1,0 +1,14 @@
+name: talonTag
+description: A talon tag
+phrase: talon tag
+
+$name.insertionFormatter: SNAKE_CASE
+---
+
+language: python
+-
+mod.tag(
+    "$name",
+    "$description",
+)
+---

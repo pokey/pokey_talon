@@ -1,0 +1,18 @@
+name: ternaryExpression
+description: Ternary expression
+phrase: turn
+
+$alternative.wrapperPhrase: turn else
+$condition.wrapperPhrase: turn dish
+$value.wrapperPhrase: turn
+---
+
+language: python
+-
+$value if $condition else $alternative
+---
+
+language: typescript | javascript | typescriptreact | javascriptreact
+-
+$condition ? $value : $alternative
+---

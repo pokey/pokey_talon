@@ -1,0 +1,14 @@
+name: interface
+description: Interface declaration
+phrase: face
+insertionScope: statement
+---
+
+language: typescript | javascript | typescriptreact | javascriptreact
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+interface $name {
+    $body
+}
+---

@@ -1,0 +1,15 @@
+name: listComprehension
+description: Python list comprehension
+phrase: list comp
+
+$element.insertionFormatter: SNAKE_CASE
+$value.wrapperScope: statement
+---
+
+language: python
+-
+[
+    $value
+    for $element in $list
+]
+---

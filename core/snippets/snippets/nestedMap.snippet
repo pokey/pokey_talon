@@ -1,0 +1,20 @@
+name: nestedMap
+description: Nested map
+
+$items.wrapperPhrase: nest
+$items.wrapperScope: collectionItem
+---
+
+language: javascript | typescript | typescriptreact | javascriptreact
+-
+$key: {
+    $items
+}
+---
+
+language: json | jsonc | python
+-
+"$key": {
+    $items
+}
+---

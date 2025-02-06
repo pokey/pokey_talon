@@ -1,0 +1,25 @@
+name: functionDeclarationWithType
+description: Function declaration
+phrase: funk type
+insertionScope: namedFunction | statement | line
+
+$body.wrapperPhrase: funk type
+$body.wrapperScope: statement
+---
+
+language: typescript | typescriptreact | javascript | javascriptreact
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+function $name($parameterList): $type {
+    $body
+}
+---
+
+language: python
+
+$name.insertionFormatter: SNAKE_CASE
+-
+def $name($parameterList) => $type:
+    $body
+---

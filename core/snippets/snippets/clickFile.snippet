@@ -1,0 +1,10 @@
+name: clickFile
+description: File argument using click CLI library
+
+$name.insertionFormatter: SNAKE_CASE
+---
+
+language: python
+-
+@click.argument('$name', type=click.File('${mode:r}'))
+---

@@ -1,0 +1,18 @@
+name: talonCapture
+description: A talon capture
+phrase: capture
+insertionScope: namedFunction
+
+$body.wrapperScope: statement
+---
+
+language: python
+
+$name.insertionFormatter: SNAKE_CASE
+-
+@mod.capture(
+    rule=$rule
+)
+def $name(m):
+    $body
+---
