@@ -75,12 +75,7 @@ ctx.lists["user.branchless_command"] = {
 mod.list("launch_configuration", "A launch configuration for vscode")
 
 ctx.lists["user.launch_configuration"] = {
-    "stench": "Run extension",
-    "test": "Extension tests",
-    "test subset": "Extension tests subset",
-    "test unit": "Unit tests only",
-    "test talon": "Talon tests",
-    "test talon subset": "Talon tests subset",
+    "stench": "VSCode: Run",
     # "Update fixtures": "Update fixtures",
     # "Update fixtures subset": "Update fixtures subset",
     # "Docusaurus start": "Docusaurus start",
@@ -248,6 +243,7 @@ class Actions:
 
     def git_commit(text: str):
         """Git commit"""
+        actions.user.run_rpc_command_and_wait("git.refresh")
         actions.user.vscode("git.commitStaged")
         actions.sleep("500ms")
         actions.user.insert_formatted(text, "CAPITALIZE_FIRST_WORD")
@@ -294,6 +290,20 @@ class Actions:
             name,
             {variable_name: actions.user.cursorless_get_text(target)},
         )
+
+    def replace_at_selection(text: str):
+        """Search and replaces in the active editor"""
+        actions.user.run_rpc_command(
+            "editor.actions.findWithArgs",
+            {
+                "searchString": text,
+                "replaceString": "",
+                "findInSelection": True,
+                "preserveCase": True,
+                "isCaseSensitive": False,
+            },
+        )
+        actions.key("tab")
 
 
 @mac_ctx.action_class("user")

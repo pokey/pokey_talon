@@ -69,3 +69,14 @@ increment, increment
 
 # 2024-07-04 15:27:13 - New entries automatically added by cursorless
 falling split, followLinkAside
+
+
+# 2025-02-06 16:26:32 - New entries automatically added by cursorless
+append, addSelection
+append post, addSelectionAfter
+append pre, addSelectionBefore
+flash, flashTargets
+git accept, gitAccept
+git discard, gitRevert
+git stage, gitStage
+git unstage, gitUnstage

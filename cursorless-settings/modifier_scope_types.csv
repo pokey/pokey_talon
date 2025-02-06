@@ -89,3 +89,9 @@ access, private.fieldAccess
 blip, glyph
 
 text fragment,textFragment
+
+disqualify,disqualifyDelimiter
+
+
+# 2024-07-29 15:20:26 - New entries automatically added by cursorless
+short block, boundedParagraph

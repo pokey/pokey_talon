@@ -328,25 +328,6 @@ git commit <user.prose> disclose:
     sleep(150ms)
     app.tab_close()
     sleep(250ms)
-disk git commit [<user.prose>]$:
-    key(esc:5)
-    edit.save()
-    sleep(1500ms)
-    user.git_commit(prose or "")
-disk git commit [<user.prose>] halt:
-    key(esc:5)
-    edit.save()
-    sleep(1500ms)
-    user.git_commit(prose or "")
-disk git commit <user.prose> disclose:
-    key(esc:5)
-    edit.save()
-    sleep(1500ms)
-    user.git_commit(prose or "")
-    edit.save()
-    sleep(150ms)
-    app.tab_close()
-    sleep(250ms)
 git stash [<user.prose>] [halt]:
     user.vscode("git.stash")
     sleep(100ms)
@@ -373,6 +354,7 @@ git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
 git revert: user.vscode("git.revertChange")
 git stash: user.vscode("git.stash")
+git refresh: user.vscode("git.refresh")
 git stash pop: user.vscode("git.stashPop")
 git status: user.vscode("workbench.scm.focus")
 git stage: user.vscode("git.stage")
@@ -582,10 +564,10 @@ replace here:
     user.replace("")
     key(cmd-alt-l)
 
-replace <user.cursorless_target>:
-    user.cursorless_command("setSelection", cursorless_target)
-    user.replace("")
-    key(cmd-alt-l)
+replace <user.cursorless_target> in <user.cursorless_target>:
+    text = user.cursorless_get_text(cursorless_target_1)
+    user.cursorless_command("setSelection", cursorless_target_2)
+    user.replace_at_selection(text)
 
 none check <user.cursorless_target>:
     user.insert_snippet_with_cursorless_target("nullCheck", "1", cursorless_target)
