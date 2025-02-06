@@ -1,12 +1,13 @@
 name: elseStatement
+description: Else statement
 phrase: else
-insertionScope: statement
+insertionScope: branch
 
 $0.wrapperPhrase: else
 $0.wrapperScope: statement
 ---
 
-language: javascript | java
+language: javascript | java | cpp | c | csharp
 -
 else {
     $0

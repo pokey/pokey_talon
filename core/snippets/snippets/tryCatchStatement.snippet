@@ -1,5 +1,5 @@
 name: tryCatchStatement
-phrase: try catch
+phrase: try
 insertionScope: statement
 
 $1.wrapperPhrase: try
@@ -13,7 +13,7 @@ language: javascript
 try {
     $1
 }
-catch(error) {
+catch(err) {
     $0
 }
 ---

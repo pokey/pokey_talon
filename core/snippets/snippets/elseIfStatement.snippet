@@ -1,14 +1,14 @@
 name: elseIfStatement
-phrase: elif
-insertionScope: statement
+phrase: elsif
+insertionScope: ifStatement
 
-$1.wrapperPhrase: elif cond
+$1.wrapperPhrase: elsif cond
 $1.wrapperScope: statement
-$0.wrapperPhrase: elif
+$0.wrapperPhrase: elsif
 $0.wrapperScope: statement
 ---
 
-language: javascript | java
+language: javascript | cpp | c | java | csharp
 -
 else if ($1) {
     $0

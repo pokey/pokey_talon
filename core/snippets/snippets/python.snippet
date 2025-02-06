@@ -45,3 +45,15 @@ insertionScope: class | statement
 class $2Actions:
     $0
 ---
+
+name: withStatement
+description: With statement
+phrase: with
+insertionScope: statement
+
+$body.wrapperPhrase: with
+$body.wrapperScope: statement
+-
+with $clause:
+    $body
+---

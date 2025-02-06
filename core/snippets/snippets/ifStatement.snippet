@@ -2,21 +2,28 @@ name: ifStatement
 phrase: if
 insertionScope: statement
 
-$1.wrapperPhrase: if cond
-$1.wrapperScope: statement
-$0.wrapperPhrase: if
-$0.wrapperScope: statement
+$condition.wrapperPhrase: condition
+$condition.wrapperScope: statement
+$consequence.wrapperPhrase: if
+$consequence.wrapperScope: statement
 ---
 
-language: javascript | java
+language: javascript | java | cpp | c | csharp
 -
-if ($1) {
-    $0
+if (${condition/^([^;]*);?$/$1/}) {
+    $consequence
 }
 ---
 
 language: python
 -
-if $1:
-    $0
+if $condition:
+    $consequence
+---
+
+language: shellscript
+-
+if $condition; then
+    $consequence
+fi
 ---

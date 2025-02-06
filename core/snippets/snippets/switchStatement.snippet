@@ -1,17 +1,25 @@
 name: switchStatement
+description: Switch statement
 phrase: switch
 insertionScope: statement
+
+$caseBody.wrapperPhrase: switch
+$caseBody.wrapperScope: statement
 ---
 
-language: javascript | java
+language: javascript | java | cpp | c | csharp
 -
-switch ($1) {
-    $0
+switch ($value) {
+    case $caseValue:
+        $caseBody
+        break;
 }
 ---
 
 language: python
 -
-match $1:
-    $0
+match $value:
+    case $caseValue:
+        $caseBody
+        break;
 ---

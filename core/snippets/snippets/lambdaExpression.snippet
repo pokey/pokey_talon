@@ -1,22 +1,20 @@
 name: lambdaExpression
+description: Lambda expression
 phrase: lambda
+
+$expression.wrapperPhrase: lambda
 ---
 
-language: javascript
--
-($1) => {
-    $0
-}
----
+language: typescript | typescriptreact | javascript | javascriptreact
 
-language: java
+$parameters.insertionFormatter: PRIVATE_CAMEL_CASE
 -
-($1) -> {
-    $0
-}
+($parameters) => ($expression)
 ---
 
 language: python
+
+$parameters.insertionFormatter: SNAKE_CASE
 -
-lambda $1: $0
+lambda $parameters: $expression
 ---

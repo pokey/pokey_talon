@@ -1,11 +1,16 @@
 name: caseStatement
+description: Case statement
 phrase: case
+insertionScope: branch
+
+$0.wrapperScope: statement
 ---
 
-language: javascript | java
+language: javascript | java | cpp | c | csharp
 -
 case $1:
     $0
+    break;
 ---
 
 language: python

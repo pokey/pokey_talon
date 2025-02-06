@@ -1,24 +1,42 @@
 name: forEachStatement
-phrase: for each
+phrase: foreign
 insertionScope: statement
+
+$body.wrapperPhrase: foreign
+$body.wrapperScope: statement
 ---
 
 language: javascript
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
 -
-for (const $1 of $2) {
-    $0
+for (const $name of $iterable) {
+    $body
 }
 ---
 
 language: java
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
 -
-for (final $1 : $2) {
-    $0
+for (final $name : $iterable) {
+    $body
 }
 ---
 
 language: python
+
+$name.insertionFormatter: SNAKE_CASE
 -
-for $1 in $2:
-    $0
+for $name in $iterable:
+    $body
+---
+
+language: shellscript
+
+$name.insertionFormatter: SNAKE_CASE
+-
+for $name in $iterable; do
+    $body
+done
 ---
