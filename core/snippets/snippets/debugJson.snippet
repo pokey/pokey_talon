@@ -2,10 +2,14 @@ name: debugJson
 description: Print debug output for variable
 phrase: debug jason
 insertionScope: statement
-
 ---
 
 language: typescript | javascript | typescriptreact | javascriptreact
 -
 console.log(`$variable: ${JSON.stringify($variable, undefined, 2)}`);
+---
+
+language: python
+-
+print(f"$expression: {json.dumps($expression, indent=2)}")
 ---
