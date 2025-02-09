@@ -788,3 +788,5 @@ git discard: user.vscode("git.clean")
 bold dog: user.run_rpc_command("bold.toggle")
 bold on: user.run_rpc_command("bold.toggle", true)
 bold off: user.run_rpc_command("bold.toggle", false)
+
+confetti: user.vscode("cursorless.toggleDecorations")
