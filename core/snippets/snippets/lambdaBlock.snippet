@@ -1,0 +1,16 @@
+name: lambdaBlock
+description: Lambda block
+phrase: lambda block
+
+$body.wrapperPhrase: lambda block
+$body.wrapperScope: statement
+---
+
+language: typescript | typescriptreact | javascript | javascriptreact
+
+$parameters.insertionFormatter: PRIVATE_CAMEL_CASE
+-
+($parameters) => {
+    $body
+}
+---

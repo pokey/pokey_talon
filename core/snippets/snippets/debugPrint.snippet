@@ -1,0 +1,16 @@
+name: debugPrint
+description: Insert a print statement for debugging which prints the value of an expression
+phrase: debug
+insertionScope: statement
+
+---
+
+language: typescript | javascript | typescriptreact | javascriptreact
+-
+console.log(`$expression: \${$expression}`)
+---
+
+language: python
+-
+print(f"$expression: {$expression}")
+---

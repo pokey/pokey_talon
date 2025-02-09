@@ -1,0 +1,15 @@
+name: dataclass
+description: Python data class
+phrase: data class
+insertionScope: class | namedFunction | statement | line
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+---
+
+language: python
+-
+from dataclasses import dataclass
+@dataclass
+class $name:
+    $body
+---

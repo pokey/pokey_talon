@@ -1,0 +1,14 @@
+name: withStatement
+description: With statement
+phrase: with
+insertionScope: statement
+
+$body.wrapperPhrase: with
+$body.wrapperScope: statement
+---
+
+language: python
+-
+with $clause:
+    $body
+---

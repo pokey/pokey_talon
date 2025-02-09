@@ -1,0 +1,16 @@
+name: talonList
+description: A talon list
+phrase: talon list
+
+---
+
+language: python
+
+$name.insertionFormatter: SNAKE_CASE
+-
+mod.list("$name", "$description")
+
+ctx.lists["user.$name"] = {
+    $items
+}
+---

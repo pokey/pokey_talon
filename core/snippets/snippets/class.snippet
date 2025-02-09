@@ -1,0 +1,25 @@
+name: classDeclaration
+description: Class declaration
+phrase: class
+insertionScope: statement
+
+$body.wrapperPhrase: class
+$body.wrapperScope: namedFunction
+---
+
+language: python
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+class $name:
+    $body
+---
+
+language: typescript | typescriptreact | javascript | javascriptreact
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+class $name {
+    $body
+}
+---

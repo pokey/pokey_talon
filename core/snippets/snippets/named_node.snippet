@@ -1,0 +1,16 @@
+name: named_node
+description: named_node
+phrase: node
+insertionScope: statement
+
+$body.wrapperPhrase: node
+$body.wrapperScope: statement
+$type.insertionFormatter: SNAKE_CASE
+---
+
+language: scm
+-
+($type
+    $body
+)
+---

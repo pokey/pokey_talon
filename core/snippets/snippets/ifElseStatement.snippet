@@ -1,0 +1,15 @@
+name: ifElseStatement
+phrase: if else
+
+$alternative.wrapperPhrase: else
+$consequence.wrapperPhrase: if else
+---
+
+language: shellscript
+-
+if $condition; then
+    $consequence
+else
+    $alternative
+fi
+---

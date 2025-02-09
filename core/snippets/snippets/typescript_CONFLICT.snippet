@@ -1,0 +1,61 @@
+name: mobxConstructor
+description: Constructor using makeAutoObservable
+language: typescript | javascript | typescriptreact | javascriptreact
+insertionScope: namedFunction
+-
+constructor($parameters) {
+    makeAutoObservable(this);
+}
+---
+
+name: constantDeclaration
+description: Constant variable declaration
+language: typescript | javascript | typescriptreact | javascriptreact
+phrase: con
+insertionScope: statement
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
+$value.wrapperPhrase: con
+$value.wrapperScope: statement
+-
+const $name = ${value/^([^;]*);?$/$1/};
+---
+
+name: constantDeclarationWithType
+description: Constant variable declaration with type
+language: typescript | javascript | typescriptreact | javascriptreact
+phrase: con type
+insertionScope: statement
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
+$value.wrapperPhrase: con type
+$value.wrapperScope: statement
+-
+const $name: $type = ${value/^([^;]*);?$/$1/};
+---
+
+name: letDeclaration
+description: Let variable declaration
+language: typescript | javascript | typescriptreact | javascriptreact
+phrase: let
+insertionScope: statement
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
+$value.wrapperPhrase: let
+$value.wrapperScope: statement
+-
+let $name = ${value/^([^;]*);?$/$1/};
+---
+
+name: letDeclarationWithType
+description: Let variable declaration with type
+language: typescript | javascript | typescriptreact | javascriptreact
+phrase: let type
+insertionScope: statement
+
+$name.insertionFormatter: PRIVATE_CAMEL_CASE
+$value.wrapperPhrase: let type
+$value.wrapperScope: statement
+-
+let $name: $type = ${value/^([^;]*);?$/$1/};
+---

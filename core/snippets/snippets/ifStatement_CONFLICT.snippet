@@ -1,0 +1,21 @@
+name: ifStatement
+phrase: if
+
+$condition.wrapperPhrase: condition
+$condition.wrapperScope: statement
+$consequence.wrapperPhrase: if
+---
+
+language: typescript | typescriptreact | javascript | javascriptreact | cpp | c | java | csharp
+-
+if (${condition/^([^;]*);?$/$1/}) {
+    $consequence
+}
+---
+
+language: shellscript
+-
+if $condition; then
+    $consequence
+fi
+---

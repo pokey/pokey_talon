@@ -1,0 +1,14 @@
+name: tryCatchStatement
+phrase: try
+
+$body.wrapperPhrase: try
+---
+
+language: typescript | typescriptreact | javascript | javascriptreact
+-
+try {
+    $body
+} catch (err) {
+    $exceptBody
+}
+---

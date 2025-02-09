@@ -1,0 +1,20 @@
+name: talonContextFile
+description: A file implementing a talon action in a particular context
+phrase: full context
+
+---
+
+language: python
+-
+from talon import Context
+
+ctx = Context()
+ctx.matches = r"""
+$matches
+"""
+
+@ctx.action_class("$action_type")
+class ${action_type/^./${1:/upcase}/}Actions:
+    def $action_name():
+        $body
+---

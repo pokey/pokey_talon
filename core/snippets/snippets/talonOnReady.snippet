@@ -1,0 +1,16 @@
+name: talonOnReady
+description: 
+phrase: on ready
+
+$body.wrapperPhrase: on ready
+$body.wrapperScope: statement
+---
+
+language: python
+-
+def on_ready():
+    $body
+
+
+app.register("ready", on_ready)
+---

@@ -1,0 +1,18 @@
+name: constructor
+description: Class initializer
+phrase: in it
+insertionScope: namedFunction
+---
+
+language: typescript | javascript | typescriptreact | javascriptreact
+-
+constructor($parameters) {
+    $body
+}
+---
+
+language: python
+-
+def __init__(self${parameters:, $firstParameter}):
+    $body
+---
