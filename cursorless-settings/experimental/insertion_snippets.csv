@@ -1,0 +1,24 @@
+Spoken form, Cursorless identifier
+else, elseStatement
+elsif, elseIfStatement
+if else, ifElseStatement
+if, ifStatement
+in it, constructor
+map, map
+try, tryCatchStatement
+with, withStatement
+switch, switchStatement
+case, caseStatement
+while, whileStatement
+on ready, talonOnReady
+full context, talonContextFile
+shebang, shebang
+else if, elseIf
+use effect, useEffect
+turn, ternaryExpression
+debug, debugPrint
+debug jason, debugJson
+bold, bold
+my snippet test, testSnippet
+group, group
+list, list
