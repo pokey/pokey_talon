@@ -73,7 +73,7 @@ class Actions:
         """Get wrapper snippet named <name>"""
         index = name.rindex(".")
         snippet_name = name[:index]
-        variable_name = name[index + 1]
+        variable_name = name[index + 1 :]
         snippet: Snippet = actions.user.get_snippet(snippet_name)
         variable = snippet.get_variable_strict(variable_name)
         return WrapperSnippet(snippet.body, variable.name, variable.wrapper_scope)

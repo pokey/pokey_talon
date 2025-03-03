@@ -337,4 +337,4 @@ def parse_vector_value(value: str) -> list[str]:
 
 
 def error(file: str, line: int, message: str):
-    print(f"ERROR | {file}:{line+1} | {message}")
+    print(f"ERROR | {file}:{line + 1} | {message}")

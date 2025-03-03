@@ -1,6 +1,8 @@
+language: typescript | javascript | typescriptreact | javascriptreact
+---
+
 name: mobxConstructor
 description: Constructor using makeAutoObservable
-language: typescript | javascript | typescriptreact | javascriptreact
 insertionScope: namedFunction
 -
 constructor($parameters) {
@@ -10,7 +12,6 @@ constructor($parameters) {
 
 name: constantDeclaration
 description: Constant variable declaration
-language: typescript | javascript | typescriptreact | javascriptreact
 phrase: con
 insertionScope: statement
 
@@ -23,7 +24,6 @@ const $name = ${value/^([^;]*);?$/$1/};
 
 name: constantDeclarationWithType
 description: Constant variable declaration with type
-language: typescript | javascript | typescriptreact | javascriptreact
 phrase: con type
 insertionScope: statement
 
@@ -36,7 +36,6 @@ const $name: $type = ${value/^([^;]*);?$/$1/};
 
 name: letDeclaration
 description: Let variable declaration
-language: typescript | javascript | typescriptreact | javascriptreact
 phrase: let
 insertionScope: statement
 
@@ -49,7 +48,6 @@ let $name = ${value/^([^;]*);?$/$1/};
 
 name: letDeclarationWithType
 description: Let variable declaration with type
-language: typescript | javascript | typescriptreact | javascriptreact
 phrase: let type
 insertionScope: statement
 

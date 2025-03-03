@@ -111,6 +111,8 @@ zen switch: user.vscode("workbench.action.toggleZenMode")
 zen mode:
     user.vscode("workbench.action.closeSidebar")
     user.vscode("workbench.action.closePanel")
+    user.vscode("workbench.action.closeAuxiliaryBar")
+right dog: user.vscode("workbench.action.toggleAuxiliaryBar")
 # File Commands
 (<user.show_list> dock | dock <user.show_list> | dockless) [<user.text>] [{user.file_extension}] [halt]:
     user.vscode("workbench.action.quickOpen")
@@ -611,6 +613,7 @@ issue make [<user.text>]$:
     edit.delete_line()
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 issue (submit | save): user.vscode("issue.createIssueFromFile")
+issue show: user.vscode("issues:github.focus")
 
 draft (save | submit): user.draft_editor_save()
 draft discard: user.draft_editor_discard()
