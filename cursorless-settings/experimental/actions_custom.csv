@@ -13,3 +13,4 @@ blast, undo
 yes indeed, redo
 disk, workbench.action.files.save
 toggle, extension.toggle
+pilot add, github.copilot.edits.attachSelection

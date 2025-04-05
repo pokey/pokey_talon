@@ -508,6 +508,7 @@ term dog: user.vscode_and_wait("workbench.action.terminal.toggleTerminal")
 term scroll up: user.vscode("workbench.action.terminal.scrollUp")
 term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)
+term copy last full: user.vscode("workbench.action.terminal.copyLastCommandAndLastCommandOutput")
 
 #TODO: should this be added to linecommands?
 copy line down: user.vscode("editor.action.copyLinesDownAction")
@@ -613,7 +614,7 @@ issue make [<user.text>]$:
     edit.delete_line()
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 issue (submit | save): user.vscode("issue.createIssueFromFile")
-issue show: user.vscode("issues:github.focus")
+issue (show|list): user.vscode("issues:github.focus")
 
 draft (save | submit): user.draft_editor_save()
 draft discard: user.draft_editor_discard()
