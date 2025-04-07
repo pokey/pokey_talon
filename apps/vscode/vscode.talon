@@ -510,6 +510,15 @@ term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)
 term copy last full: user.vscode("workbench.action.terminal.copyLastCommandAndLastCommandOutput")
 
+# Command to search terminal history - focuses terminal, presses up, waits, then inserts phrase
+(run list | runless) [<user.text>]:
+    user.vscode("workbench.action.terminal.focus")
+    sleep(150ms)
+    key(up)
+    sleep(150ms)
+    insert(user.text or "")
+
+
 #TODO: should this be added to linecommands?
 copy line down: user.vscode("editor.action.copyLinesDownAction")
 copy line up: user.vscode("editor.action.copyLinesUpAction")
