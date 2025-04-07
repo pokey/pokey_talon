@@ -717,6 +717,17 @@ line edit: key(ctrl-q e)
     user.insert_formatted(text or "", "DASH_SEPARATED")
 ^pack install$: user.vscode_with_plugin("workbench.action.tasks.runTask", "pnpm install")
 
+sketch <user.text> [halt]:
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch")
+    sleep(1s)
+    insert(text)
+sketch start:
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch start")
+sketch repeat:
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch")
+    sleep(850ms)
+    key(enter)
+
 copy command: user.copy_command_id()
 copy command <number_small>:
     key("down:{number_small-1}")

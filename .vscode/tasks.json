@@ -4,7 +4,7 @@
         {
             "label": "Modify talon using sketch",
             "type": "shell",
-            "command": "/Users/pokey/.local/bin/envdir ~/envs/anthropic /Users/pokey/pokey-home-files/bin/sketch '${input:prompt}. You can find documentation about Talon in ~/src/talon-wiki/docs/Customization/'",
+            "command": "sketch '${input:prompt}. You can find documentation about Talon in ~/src/talon-wiki/docs/Customization/'",
             "presentation": {},
             "problemMatcher": []
         }
@@ -15,8 +15,5 @@
             "type": "promptString",
             "description": "What do you want to modify?"
         }
-    ],
-    "options": {
-        "env": { "PATH": "/opt/homebrew/bin:{env:PATH}" }
-    }
+    ]
 }

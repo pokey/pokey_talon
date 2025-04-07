@@ -36,7 +36,7 @@ tune (talon | talent) [<phrase>]$:
 tune (talon | talent) to <user.text>$:
     user.focus_talon_project()
     user.run_rpc_command("workbench.action.tasks.runTask", "Modify talon using sketch")
-    sleep(650ms)
+    sleep(1s)
     insert(text)
 slacker [<phrase>]$:
     user.switcher_focus("Slack")
