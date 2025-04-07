@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Modify talon using sketch",
+            "type": "shell",
+            "command": "/Users/pokey/.local/bin/envdir ~/envs/anthropic /Users/pokey/pokey-home-files/bin/sketch '${input:prompt}. You can find documentation about Talon in ~/src/talon-wiki/docs/Customization/'",
+            "presentation": {},
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "prompt",
+            "type": "promptString",
+            "description": "What do you want to modify?"
+        }
+    ]
+}

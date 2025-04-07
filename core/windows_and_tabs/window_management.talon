@@ -39,6 +39,17 @@ tune (talon | talent) [<phrase>]$:
     key(enter)
     sleep(250ms)
     user.parse_phrase(phrase or "")
+tune (talon | talent) to <user.text>$:
+    user.switcher_focus("Code")
+    sleep(300ms)
+    user.vscode("workbench.action.openRecent")
+    sleep(250ms)
+    insert("pokey-talon")
+    key(enter)
+    sleep(250ms)
+    user.run_rpc_command("workbench.action.tasks.runTask", "Modify talon using sketch")
+    sleep(650ms)
+    insert(text)
 slacker [<phrase>]$:
     user.switcher_focus("Slack")
     sleep(200ms)

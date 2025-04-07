@@ -366,6 +366,7 @@ git unstage: user.vscode("git.unstage")
 git unstage all: user.vscode("git.unstageAll")
 git sync: user.vscode("git.sync")
 git amend: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend")
+git amend force: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git amend force")
 git reword: user.vscode_with_plugin("workbench.action.tasks.runTask", "Git reword")
 git push force:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push force")
