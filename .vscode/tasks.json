@@ -15,5 +15,8 @@
             "type": "promptString",
             "description": "What do you want to modify?"
         }
-    ]
+    ],
+    "options": {
+        "env": { "PATH": "/opt/homebrew/bin:{env:PATH}" }
+    }
 }
