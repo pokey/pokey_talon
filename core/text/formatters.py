@@ -366,7 +366,7 @@ mod.list("phrase_ender", desc="list of commands that can be used to end a phrase
 ctx.lists["self.phrase_ender"] = {
     "void": "space",
     "clap": "enter",
-    "boom": "enter",
+    "boom": ". space",
     "spam": ", space",
     "halt": "space:0",
 }
