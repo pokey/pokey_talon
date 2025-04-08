@@ -42,5 +42,6 @@ hey siri$:
 
 alphabet: "abcdefghijklmnopqrstuvwxyz"
 
-open today log:
-    user.system_command_nb("code /Users/pokey/src/bold/devlog/pokey/$(date +%Y-%m-%d).md")
+bold dev log:
+    user.system_command("code /Users/pokey/src/bold/devlog/pokey/$(date +%Y-%m-%d).md")
+    sleep(250ms)

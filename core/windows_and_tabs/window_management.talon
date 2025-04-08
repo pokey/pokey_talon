@@ -33,7 +33,7 @@ coder [<phrase>]$:
 tune (talon | talent) [<phrase>]$:
     user.focus_talon_project()
     user.parse_phrase(phrase or "")
-tune (talon | talent) to <user.text>$:
+(talon | talent) sketch <user.text>$:
     user.focus_talon_project()
     user.run_rpc_command("workbench.action.tasks.runTask", "Modify talon using sketch")
     sleep(1s)
