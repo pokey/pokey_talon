@@ -41,3 +41,6 @@ hey siri$:
     key(ctrl-alt-cmd-s)
 
 alphabet: "abcdefghijklmnopqrstuvwxyz"
+
+open today log:
+    user.system_command_nb("code /Users/pokey/src/bold/devlog/pokey/$(date +%Y-%m-%d).md")
