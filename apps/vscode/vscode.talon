@@ -725,8 +725,12 @@ sketch start:
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch start")
 sketch repeat:
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch")
-    sleep(850ms)
+    sleep(1s)
     key(enter)
+sketch branch [<user.text>] [halt]:
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch in worktree")
+    sleep(1s)
+    user.insert_formatted(text or "", "DASH_SEPARATED")
 
 copy command: user.copy_command_id()
 copy command <number_small>:
