@@ -45,3 +45,6 @@ alphabet: "abcdefghijklmnopqrstuvwxyz"
 bold dev log:
     user.system_command("code /Users/pokey/src/bold/devlog/pokey/$(date +%Y-%m-%d).md")
     sleep(250ms)
+sketch dev:
+    user.system_command("code ~/src/spaghetti")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")

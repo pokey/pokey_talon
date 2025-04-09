@@ -717,20 +717,18 @@ line edit: key(ctrl-q e)
     user.insert_formatted(text or "", "DASH_SEPARATED")
 ^pack install$: user.vscode_with_plugin("workbench.action.tasks.runTask", "pnpm install")
 
-sketch <user.text> [halt]:
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch")
-    sleep(1s)
-    insert(text)
 sketch start:
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch start")
+sketch clip:
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard")
 sketch repeat:
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch")
     sleep(1s)
     key(enter)
-sketch branch [<user.text>] [halt]:
+sketch branch:
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch in worktree")
-    sleep(1s)
-    user.insert_formatted(text or "", "DASH_SEPARATED")
+sketch (branch clip | clip branch):
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard in worktree")
 
 copy command: user.copy_command_id()
 copy command <number_small>:
