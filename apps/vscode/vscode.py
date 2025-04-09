@@ -201,6 +201,11 @@ class WinActions:
 
 @mod.action_class
 class Actions:
+    def focus_vscode():
+        """Focus VSCode"""
+        actions.user.switcher_focus("Code")
+        actions.sleep("300ms")
+
     def vscode_terminal(number: int):
         """Activate a terminal by number"""
         actions.user.vscode(f"workbench.action.terminal.focusAtIndex{number}")
@@ -316,6 +321,10 @@ class MacUserActions:
 
 @ctx.action_class("user")
 class UserActions:
+    def focus_vscode():
+        """Focus VSCode"""
+        pass
+
     # splits.py support begin
     def split_clear_all():
         actions.user.vscode("workbench.action.editorLayoutSingle")
