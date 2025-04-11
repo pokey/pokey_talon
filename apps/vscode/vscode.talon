@@ -512,7 +512,7 @@ term <number_small>: user.vscode_terminal(number_small)
 term copy last full: user.vscode("workbench.action.terminal.copyLastCommandAndLastCommandOutput")
 
 # Command to search terminal history - focuses terminal, presses up, waits, then inserts phrase
-(run list | runless) [<user.text>]:
+(man list | manless) [<user.text>]:
     user.vscode("workbench.action.terminal.focus")
     sleep(150ms)
     key(up)
