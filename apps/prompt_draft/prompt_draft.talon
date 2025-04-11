@@ -4,6 +4,10 @@ prom draft [<user.text>]$:
     user.prompt_draft()
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 
+prom draft clip:
+    user.prompt_draft()
+    edit.paste()
+
 prom draft issue:
     user.prompt_draft()
     insert("Implement ")

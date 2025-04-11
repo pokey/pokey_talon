@@ -13,10 +13,15 @@ win.filename: /PROMPT_DRAFT.md/
 # Quick formatting commands
 boom: key(. space)
 spam: key(, space)
-clap$: key(enter)
+void: key(space)
+clap: key(enter)
+clip:
+    key(space)
+    edit.paste()
+    key(space)
 
-# Command to save the prompt to clipboard and backup the file
 prom save | draft save: user.prompt_save()
+prom discard | draft discard: user.prompt_discard()
 prom sketch:
     user.prompt_save()
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard")

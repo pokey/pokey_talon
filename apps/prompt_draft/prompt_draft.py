@@ -38,16 +38,27 @@ class Actions:
         actions.edit.select_all()
         actions.edit.copy()
 
-        actions.edit.save()
-        actions.app.tab_close()
+        delete_prompt_file(prompt_file)
 
-        # Create backup of the current file
-        prompt_backup = "/tmp/PROMPT_DRAFT.md"
+    def prompt_discard():
+        """Save the prompt to clipboard and backup the file"""
+        if prompt_file is None:
+            raise RuntimeError("Prompt draft not open")
 
-        # If the file exists, create a backup
-        if os.path.exists(prompt_file):
-            # Remove old backup if it exists
-            if os.path.exists(prompt_backup):
-                os.remove(prompt_backup)
-            # Create new backup
-            shutil.move(prompt_file, prompt_backup)
+        delete_prompt_file(prompt_file)
+
+
+def delete_prompt_file(path: Path):
+    actions.edit.save()
+    actions.app.tab_close()
+
+    # Create backup of the current file
+    prompt_backup = "/tmp/PROMPT_DRAFT.md"
+
+    # If the file exists, create a backup
+    if os.path.exists(path):
+        # Remove old backup if it exists
+        if os.path.exists(prompt_backup):
+            os.remove(prompt_backup)
+        # Create new backup
+        shutil.move(path, prompt_backup)
