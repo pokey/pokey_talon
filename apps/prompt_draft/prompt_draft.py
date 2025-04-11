@@ -50,6 +50,7 @@ class Actions:
 
 def delete_prompt_file(path: Path):
     actions.edit.save()
+    actions.sleep("150ms")
     actions.app.tab_close()
 
     # Create backup of the current file
