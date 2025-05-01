@@ -3,7 +3,7 @@
 mode: user.sketch
 and not mode: sleep
 app: vscode
-win.filename: /PROMPT_DRAFT.md/
+win.filename: .PROMPT_DRAFT.md
 -
 
 # Process arbitrary prose when spoken and insert it directly
@@ -11,7 +11,7 @@ win.filename: /PROMPT_DRAFT.md/
 <user.prose>: user.dictation_insert(prose)
 
 # Quick formatting commands
-boom: key(. space)
+boom|boomer: key(. space)
 spam: key(, space)
 void: key(space)
 clap: key(enter)

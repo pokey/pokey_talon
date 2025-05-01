@@ -10,7 +10,7 @@ patch {user.symbol_key}:
     edit.line_insert_down()
 spam: ", "
 pipe gap: " | "
-boom: ". "
+boom|boomer: ". "
 arrow: "->"
 dub arrow: "=>"
 empty round: "()"

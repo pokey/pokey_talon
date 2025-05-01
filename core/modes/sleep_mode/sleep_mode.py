@@ -25,6 +25,7 @@ class Actions:
         actions.user.cancel_in_flight_phrase()
         actions.user.mouse_wake()
         actions.user.talon_mode()
+        actions.mode.enable("user.sketch")
 
 
 @wake_ctx.action_class("user")

@@ -45,6 +45,10 @@ alphabet: "abcdefghijklmnopqrstuvwxyz"
 bold dev log:
     user.system_command("code /Users/pokey/src/bold/devlog/pokey/$(date +%Y-%m-%d).md")
     sleep(250ms)
-sketch dev:
+sketch dev clip:
     user.system_command("code ~/src/spaghetti")
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")
+
+bookmark link clip:
+    user.system_command("code ~/notes")
+    user.run_rpc_command("workbench.action.tasks.runTask", "Add note for URL")

@@ -206,6 +206,10 @@ class Actions:
         actions.user.switcher_focus("Code")
         actions.sleep("300ms")
 
+    def get_workspace_folder_strict() -> str:
+        """Returns the current workspace folder"""
+        raise RuntimeError("Not implemented")
+
     def vscode_terminal(number: int):
         """Activate a terminal by number"""
         actions.user.vscode(f"workbench.action.terminal.focusAtIndex{number}")
@@ -324,6 +328,21 @@ class UserActions:
     def focus_vscode():
         """Focus VSCode"""
         pass
+
+    def get_workspace_folder_strict() -> str:
+        """Returns the current workspace folder"""
+        workspace_folders = actions.user.run_rpc_command_get(
+            "andreas.getWorkspaceFolders"
+        )
+
+        if not workspace_folders:
+            raise RuntimeError("No workspace folder found")
+
+        if len(workspace_folders) > 1:
+            print(workspace_folders)
+            raise RuntimeError("Multiple workspace folders found")
+
+        return workspace_folders[0]
 
     # splits.py support begin
     def split_clear_all():

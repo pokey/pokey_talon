@@ -367,6 +367,7 @@ ctx.lists["self.phrase_ender"] = {
     "void": "space",
     "clap": "enter",
     "boom": ". space",
+    "boomer": ". space",
     "spam": ", space",
     "halt": "space:0",
 }

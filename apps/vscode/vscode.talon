@@ -729,6 +729,14 @@ sketch branch:
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch in worktree")
 sketch (branch clip | clip branch):
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard in worktree")
+sketch dev active:
+    workspace_folder = user.get_workspace_folder_strict()
+    clip.set_text(workspace_folder)
+    user.system_command("code ~/src/spaghetti")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")
+
+git push queue head:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Add to sketch merge queue")
 
 copy command: user.copy_command_id()
 copy command <number_small>:
