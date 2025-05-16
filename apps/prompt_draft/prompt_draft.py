@@ -34,6 +34,7 @@ class Actions:
         """Save the prompt to clipboard and backup the file"""
         if prompt_file is None:
             raise RuntimeError("Prompt draft not open")
+        actions.user.run_rpc_command("workbench.action.focusActiveEditorGroup")
         # Copy content to clipboard
         actions.edit.select_all()
         actions.edit.copy()
@@ -41,7 +42,7 @@ class Actions:
         delete_prompt_file(prompt_file)
 
     def prompt_discard():
-        """Save the prompt to clipboard and backup the file"""
+        """Discard the prompt draft without saving"""
         if prompt_file is None:
             raise RuntimeError("Prompt draft not open")
 
@@ -50,7 +51,6 @@ class Actions:
 
 def delete_prompt_file(path: Path):
     actions.edit.save()
-    actions.sleep("150ms")
     actions.app.tab_close()
 
     # Create backup of the current file

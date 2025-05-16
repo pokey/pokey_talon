@@ -169,8 +169,7 @@ class EditActions:
         actions.user.vscode_and_wait("editor.action.insertLineBefore")
 
     def save():
-        actions.key("cmd-s")
-        actions.sleep("50ms")
+        actions.user.run_rpc_command_and_wait("workbench.action.files.save")
 
 
 @mac_ctx.action_class("edit")
