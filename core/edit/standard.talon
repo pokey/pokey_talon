@@ -52,3 +52,8 @@ sketch dev clip:
 bookmark link clip:
     user.system_command("code ~/notes")
     user.run_rpc_command("workbench.action.tasks.runTask", "Add note for URL")
+
+bookmark link this:
+    edit.copy()
+    user.system_command("code ~/notes")
+    user.run_rpc_command("workbench.action.tasks.runTask", "Add note for URL")

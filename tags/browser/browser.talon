@@ -15,6 +15,11 @@ go private: browser.open_private_window()
 
 bookmark it: browser.bookmark()
 bookmark tabs: browser.bookmark_tabs()
+bookmark link active:
+    address = browser.address()
+    clip.set_text(address)
+    user.system_command("code ~/notes")
+    user.run_rpc_command("workbench.action.tasks.runTask", "Add note for URL")
 (refresh | reload) it: browser.reload()
 (refresh | reload) it hard: browser.reload_hard()
 
