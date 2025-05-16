@@ -715,6 +715,10 @@ line edit: key(ctrl-q e)
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Move recorded video")
     sleep(650ms)
     user.insert_formatted(text or "", "DASH_SEPARATED")
+^move recording sketch [<user.text>] [halt]:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Move recorded video sketch")
+    sleep(650ms)
+    user.insert_formatted(text or "", "DASH_SEPARATED")
 ^pack install$: user.vscode_with_plugin("workbench.action.tasks.runTask", "pnpm install")
 
 sketch start:
@@ -734,6 +738,14 @@ sketch dev active:
     clip.set_text(workspace_folder)
     user.system_command("code ~/src/spaghetti")
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")
+sketch dev this:
+    text = edit.selected_text()
+    clip.set_text(text)
+    user.system_command("code ~/src/spaghetti")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
+sketch dev clip:
+    user.system_command("code ~/src/spaghetti")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
 
 git push queue head:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Add to sketch merge queue")
