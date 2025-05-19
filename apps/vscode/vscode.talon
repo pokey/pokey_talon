@@ -743,14 +743,8 @@ sketch dev active:
     clip.set_text(workspace_folder)
     user.system_command("code ~/src/spaghetti")
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")
-sketch dev this:
-    text = edit.selected_text()
-    clip.set_text(text)
-    user.system_command("code ~/src/spaghetti")
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
-sketch dev clip:
-    user.system_command("code ~/src/spaghetti")
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
+sketch update:
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "update sketch")
 
 git push queue head:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Add to sketch merge queue")

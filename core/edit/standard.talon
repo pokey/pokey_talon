@@ -45,9 +45,14 @@ alphabet: "abcdefghijklmnopqrstuvwxyz"
 bold dev log:
     user.system_command("code /Users/pokey/src/bold/devlog/pokey/$(date +%Y-%m-%d).md")
     sleep(250ms)
+sketch dev this:
+    text = edit.selected_text()
+    clip.set_text(text)
+    user.system_command("code ~/src/spaghetti")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
 sketch dev clip:
     user.system_command("code ~/src/spaghetti")
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
 
 bookmark link clip:
     user.system_command("code ~/notes")
