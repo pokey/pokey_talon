@@ -1,11 +1,15 @@
 from talon import Context, Module, actions, app
 
+from pathlib import Path
+
 mod = Module()
 mod.tag(
     "recording_screen",
     "Indicates that the screen is being recorded",
 )
 ctx = Context()
+
+is_recording_file = Path("/tmp/is-recording-video")
 
 
 @mod.action_class
@@ -28,6 +32,8 @@ class UserActions:
         # Slow down cursorless decorations
         actions.user.change_setting("cursorless.pendingEditDecorationTime", 200)
 
+        is_recording_file.touch()
+
         # Hide VSCode notifications that command recording has started
         actions.sleep(1)
         actions.key("escape")
@@ -44,6 +50,9 @@ class UserActions:
 
     def stop_recording():
         """Stop recording"""
+        if is_recording_file.exists():
+            is_recording_file.unlink()
+
         actions.user.wax_stop_recording()
 
         ctx.tags = []
