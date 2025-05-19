@@ -380,6 +380,11 @@ git full continue:
     user.vscode("git.stageAllMerge")
     user.git_commit(prose or "")
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git imerge continue")
+git show <user.text>$:
+    clip.set_text(user.text)
+    user.run_rpc_command("workbench.action.tasks.runTask", "Git auto-query")
+git show clip:
+    user.run_rpc_command("workbench.action.tasks.runTask", "Git auto-query")
 
 # Commands for use with git-branchless
 ^git push stack head$:

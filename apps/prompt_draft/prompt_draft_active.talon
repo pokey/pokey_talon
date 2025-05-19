@@ -28,3 +28,6 @@ prom sketch:
 prom sketch branch:
     user.prompt_save()
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard in worktree")
+prom git show:
+    user.prompt_save()
+    user.run_rpc_command("workbench.action.tasks.runTask", "Git auto-query")
