@@ -648,6 +648,8 @@ comment show: user.vscode("workbench.action.focusCommentsPanel")
 
 line numbers on: user.change_setting("editor.lineNumbers", "on")
 line numbers off: user.change_setting("editor.lineNumbers", "off")
+tab show: user.change_setting("workbench.editor.showTabs", "multiple")
+tab hide: user.change_setting("workbench.editor.showTabs", "none")
 
 han solo: user.vscode("workbench.action.joinAllGroups")
 
