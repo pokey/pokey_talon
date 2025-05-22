@@ -4,9 +4,9 @@ dictate [<phrase>]$:
     mode.enable("dictation")
     user.parse_phrase(phrase or "")
 
-^halt: mode.disable("dictation")
+^(halt | halter): mode.disable("dictation")
 
-dictate <user.prose> halt: auto_insert(prose or "")
+dictate <user.prose> (halt | halter): auto_insert(prose or "")
 
 show numbers: key(cmd-ctrl-alt-f)
 
