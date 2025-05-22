@@ -775,6 +775,9 @@ note make [<user.text>] [halt]:
     sleep(100ms)
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 
+foam show graph: user.vscode("foam-vscode.show-graph")
+foam show links: user.vscode("foam-vscode.connections.focus")
+
 note make clip:
     user.vscode("foam-vscode.create-note")
     sleep(100ms)
