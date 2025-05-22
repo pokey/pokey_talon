@@ -23,7 +23,7 @@ speech_system.register("post:phrase", on_post_phrase)
 
 @mod.action_class
 class Actions:
-    def parse_phrase(phrase: Union[Phrase, str]):
+    def parse_phrase(phrase: Union[list[str], str]):
         """Rerun phrase"""
         if phrase == "":
             return
