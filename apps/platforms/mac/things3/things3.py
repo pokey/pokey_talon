@@ -83,7 +83,7 @@ class Actions:
             actions.key(f"ctrl-{tag.shortcut}")
 
         for tag in tags_without_shortcuts:
-            actions.key(f"cmd-shift-t")
+            actions.key("cmd-shift-t")
             actions.insert(tag.title)
             actions.key("enter")
 

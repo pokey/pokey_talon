@@ -53,6 +53,10 @@ sketch dev this:
 sketch dev clip:
     user.system_command("code ~/src/spaghetti")
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev in worktree")
+sketch dev sketch:
+    clip.set_text("~/src/sketch")
+    user.system_command("code ~/src/spaghetti")
+    user.run_rpc_command("workbench.action.tasks.runTask", "sketch dev")
 
 bookmark link clip:
     user.system_command("code ~/notes")

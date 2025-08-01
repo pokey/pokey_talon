@@ -749,7 +749,7 @@ sketch update:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "update sketch")
 
 git push queue head:
-    user.vscode_with_plugin("workbench.action.tasks.runTask", "Add to sketch merge queue")
+    user.vscode_with_plugin("workbench.action.tasks.runTask", "Add to merge queue")
 
 copy command: user.copy_command_id()
 copy command <number_small>:

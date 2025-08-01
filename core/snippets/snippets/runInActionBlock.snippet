@@ -1,0 +1,12 @@
+name: runInActionBlock
+language: typescript|javascript|typescriptreact|javascriptreact
+phrase: action block
+description: Run a function in an action context, useful for MobX.
+
+$body.wrapperPhrase: action block
+$body.wrapperScope: statement
+-
+runInAction(() => {
+    $body
+});
+---

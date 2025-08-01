@@ -1,0 +1,10 @@
+name: runInAction
+description: Run a function in an action context, useful for MobX.
+language: typescript | javascript | typescriptreact | javascriptreact
+phrase: action
+
+$value.wrapperPhrase: action
+$value.wrapperScope: statement
+-
+runInAction(() => (${value/^([^;]*);?$/$1/}));
+---
