@@ -517,6 +517,7 @@ term scroll up: user.vscode("workbench.action.terminal.scrollUp")
 term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)
 term copy last full: user.vscode("workbench.action.terminal.copyLastCommandAndLastCommandOutput")
+term copy last bot: user.term_copy_last_bot()
 
 # Command to search terminal history - focuses terminal, presses up, waits, then inserts phrase
 (man list | manless) [<user.text>]:

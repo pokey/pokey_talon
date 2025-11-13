@@ -213,6 +213,21 @@ class Actions:
         """Activate a terminal by number"""
         actions.user.vscode(f"workbench.action.terminal.focusAtIndex{number}")
 
+    def term_copy_last_bot():
+        """Copy last terminal command + output and wrap in ```console"""
+        with clip.capture() as captured:
+            actions.user.run_rpc_command_and_wait(
+                "workbench.action.terminal.copyLastCommandAndLastCommandOutput"
+            )
+
+        try:
+            terminal_text = captured.text()
+        except clip.NoChange:
+            return
+
+        formatted_body = terminal_text.rstrip("\r\n")
+        clip.set_text(f"\n\n```console\n{formatted_body}\n```\n\n")
+
     def change_setting(setting_name: str, setting_value: any):
         """
         Changes a VSCode setting by name
