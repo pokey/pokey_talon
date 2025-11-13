@@ -25,6 +25,11 @@ prom discard | draft discard: user.prompt_discard()
 prom sketch:
     user.prompt_save()
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard")
+prom (claude | bot | term):
+    user.prompt_save()
+    user.run_rpc_command("workbench.action.terminal.focus")
+    sleep(0.1)
+    edit.paste()
 prom sketch branch:
     user.prompt_save()
     user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard in worktree")
