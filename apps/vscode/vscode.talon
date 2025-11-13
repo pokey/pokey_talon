@@ -386,6 +386,8 @@ git show <user.text>$:
 git show clip:
     user.run_rpc_command("workbench.action.tasks.runTask", "Git auto-query")
 
+git doc history: user.vscode("gitlens.openFileHistory")
+
 # Commands for use with git-branchless
 ^git push stack head$:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Git push current stack")
