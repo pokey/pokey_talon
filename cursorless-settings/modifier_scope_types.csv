@@ -95,3 +95,7 @@ disqualify,disqualifyDelimiter
 
 # 2024-07-29 15:20:26 - New entries automatically added by cursorless
 short block, boundedParagraph
+
+# 2025-11-13 11:53:36 - New entries automatically added by cursorless
+arg list, argumentList
+full line, fullLine
