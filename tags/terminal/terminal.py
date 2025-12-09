@@ -1,6 +1,10 @@
-from talon import Module
+from talon import Context, Module, actions
 
 mod = Module()
+ctx = Context()
+ctx.matches = r"""
+tag: terminal
+"""
 
 
 @mod.action_class
@@ -28,3 +32,15 @@ class Actions:
 
     def terminal_kill_all():
         """kills the running command"""
+
+
+threshold = 20
+
+
+@ctx.action_class("main")
+class MainActions:
+    def insert(text: str):
+        if threshold < len(text):
+            actions.user.paste(text)
+            return
+        actions.next(text)
