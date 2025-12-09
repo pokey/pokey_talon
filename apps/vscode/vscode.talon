@@ -732,11 +732,11 @@ line edit: key(ctrl-q e)
 ^pack install$: user.vscode_with_plugin("workbench.action.tasks.runTask", "pnpm install")
 
 sketch start:
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch start")
+    user.run_rpc_command("workbench.action.tasks.runTask", "claude start")
 sketch clip:
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch clipboard")
+    user.run_rpc_command("workbench.action.tasks.runTask", "claude clipboard")
 sketch repeat:
-    user.run_rpc_command("workbench.action.tasks.runTask", "sketch")
+    user.run_rpc_command("workbench.action.tasks.runTask", "claude")
     sleep(1s)
     key(enter)
 sketch branch:
@@ -753,6 +753,8 @@ sketch update:
 
 git push queue head:
     user.vscode_with_plugin("workbench.action.tasks.runTask", "Add to merge queue")
+sketch merge fix:
+    user.run_rpc_command("workbench.action.tasks.runTask", "claude resolve merge conflicts")
 
 copy command: user.copy_command_id()
 copy command <number_small>:
