@@ -25,6 +25,7 @@ prom discard | draft discard: user.prompt_discard()
 prom sketch:
     user.prompt_save()
     user.run_rpc_command("workbench.action.tasks.runTask", "claude clipboard")
+    user.rename_active_terminal_auto()
 prom (sketch active | term):
     user.prompt_save()
     user.run_rpc_command("workbench.action.terminal.focus")

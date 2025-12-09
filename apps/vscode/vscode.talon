@@ -511,13 +511,28 @@ term next: user.vscode("workbench.action.terminal.focusNext")
 term last: user.vscode("workbench.action.terminal.focusPrevious")
 term split: user.vscode("workbench.action.terminal.split")
 term zoom: user.vscode("workbench.action.toggleMaximizedPanel")
-term trash: user.vscode("workbench.action.terminal.kill")
+term abandon: user.vscode("workbench.action.terminal.kill")
 term dog: user.vscode_and_wait("workbench.action.terminal.toggleTerminal")
 term scroll up: user.vscode("workbench.action.terminal.scrollUp")
 term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)
 term copy last full: user.vscode("workbench.action.terminal.copyLastCommandAndLastCommandOutput")
 term copy last bot: user.term_copy_last_bot()
+term rename <user.text> [halt]:
+    title = user.formatted_text(text, "CAPITALIZE_FIRST_WORD")
+    user.rename_active_terminal(title, false)
+term rename auto: user.rename_active_terminal_auto()
+term rename clip:
+    text = clip.text()
+    user.rename_active_terminal(text, true)
+(term <user.show_list> | termless) [<user.text>] [halt]:
+    user.vscode("workbench.action.quickOpenTerm")
+    insert(text or "")
+term <user.teleport> <user.text> [halt]:
+    user.vscode("workbench.action.quickOpenTerm")
+    insert(text)
+    key(enter)
+
 
 # Command to search terminal history - focuses terminal, presses up, waits, then inserts phrase
 (man list | manless) [<user.text>]:
@@ -735,6 +750,7 @@ sketch start:
     user.run_rpc_command("workbench.action.tasks.runTask", "claude start")
 sketch clip:
     user.run_rpc_command("workbench.action.tasks.runTask", "claude clipboard")
+    user.rename_active_terminal_auto()
 sketch repeat:
     user.run_rpc_command("workbench.action.tasks.runTask", "claude")
     sleep(1s)

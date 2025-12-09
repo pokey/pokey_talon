@@ -1,5 +1,7 @@
 import json
+import os
 import re
+import subprocess
 from os.path import expanduser
 from pathlib import Path
 from typing import Any
@@ -229,6 +231,98 @@ class Actions:
 
         formatted_body = terminal_text.rstrip("\r\n")
         clip.set_text(f"\n\n```console\n{formatted_body}\n```\n\n")
+
+    def rename_active_terminal(text: str, press_enter: bool = True):
+        """Rename the active terminal"""
+        actions.user.run_rpc_command("workbench.action.terminal.rename")
+        actions.sleep("100ms")
+        actions.insert(text)
+        if press_enter:
+            actions.key("enter")
+
+    def rename_active_terminal_auto():
+        """Automatically rename the active terminal based on clipboard contents using LLM"""
+        try:
+            clipboard_content = clip.text()
+        except clip.NoChange:
+            app.notify("Failed to get clipboard content")
+            return
+
+        if not clipboard_content:
+            app.notify("Clipboard is empty")
+            return
+
+        prompt = """
+Generate a very short name (2-4 words max) based on this content.
+The name should describe what the task is doing.
+Only return the name itself, nothing else. Do not use quotes.
+Use sentence casing.
+
+<example>
+<input>
+add skill for executing db queries. both psql and typescript-based. add readonly user for coding agent to use and then auto-approve
+</input>
+<output>DB query skill</output>
+</example
+<example>
+<input>
+Add vscode task for `docker compose --project-directory ~/src/brm/devenv up`
+</input>
+<output>Docker VSCode task</output>
+</example>
+""".strip()
+
+        try:
+            # Use autoenv + mise to run llm CLI with claude-3.5-haiku model
+            autoenv_path = expanduser("~/pokey-home-files/bin/autoenv")
+            mise_path = expanduser("~/.local/bin/mise")
+            command = [
+                autoenv_path,
+                mise_path,
+                "exec",
+                "--",
+                "llm",
+                prompt,
+                "-m",
+                "claude-haiku-4.5",
+                "-s",
+                "You are a helpful assistant that generates concise terminal names.",
+            ]
+
+            # Set up environment with proper PATH
+            env = os.environ.copy()
+            local_bin = expanduser("~/.local/bin")
+            env["PATH"] = f"{local_bin}:{env.get('PATH', '')}"
+
+            # Execute command with proper encoding and environment
+            result = subprocess.run(
+                command,
+                input=clipboard_content.encode("utf-8"),
+                capture_output=True,
+                timeout=30,
+                env=env,
+            )
+
+            if result.returncode == 0:
+                terminal_name = result.stdout.decode("utf-8").strip()
+                # Take only the first line in case there's extra output
+                terminal_name = terminal_name.split("\n")[0].strip()
+                if terminal_name:
+                    actions.user.rename_active_terminal(terminal_name, True)
+                else:
+                    app.notify("LLM returned empty response")
+            else:
+                error_msg = (
+                    result.stderr.decode("utf-8").strip()
+                    if result.stderr
+                    else "Unknown error"
+                )
+                app.notify(f"LLM command failed: {error_msg}")
+        except subprocess.TimeoutExpired:
+            app.notify("LLM request timed out")
+        except Exception as e:
+            print(f"[DEBUG] Exception: {str(e)}")
+            app.notify(f"Error calling LLM: {str(e)}")
 
     def change_setting(setting_name: str, setting_value: any):
         """
