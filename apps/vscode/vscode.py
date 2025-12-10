@@ -255,8 +255,10 @@ class Actions:
         prompt = """
 Generate a very short name (2-4 words max) based on this content.
 The name should describe what the task is doing.
-Only return the name itself, nothing else. Do not use quotes.
+Only return the name itself, nothing else. Do not use quotes. YOU MUST FOLLOW THIS RULE.
 Use sentence casing.
+If there is link you don't have access to, still try to make a useful name; see example below.
+NEVER return anything other than the name.
 
 <example>
 <input>
@@ -270,6 +272,15 @@ Add vscode task for `docker compose --project-directory ~/src/brm/devenv up`
 </input>
 <output>Docker VSCode task</output>
 </example>
+<example>
+<input>
+https://github.com/brmlabs/brm/pull/5955#discussion_r2598625737
+</input>
+<output>PR comment (#5955)</output>
+</example>
+
+YOUR RESPONSE MUST BE ONLY THE NAME, CONSISTING OF 2-4 WORDS.
+DO NOT EXPLAIN YOUR ANSWER, JUST RETURN THE NAME.
 """.strip()
 
         try:
@@ -282,11 +293,10 @@ Add vscode task for `docker compose --project-directory ~/src/brm/devenv up`
                 "exec",
                 "--",
                 "llm",
-                prompt,
                 "-m",
                 "claude-haiku-4.5",
                 "-s",
-                "You are a helpful assistant that generates concise terminal names.",
+                prompt,
             ]
 
             # Set up environment with proper PATH
