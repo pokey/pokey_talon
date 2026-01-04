@@ -4,7 +4,7 @@ prom draft [<user.text>]$:
     user.prompt_draft()
     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 
-sketch edit <user.cursorless_target>:
+sketch change <user.cursorless_target>:
     text = user.cursorless_get_text(cursorless_target)
     user.prompt_draft()
     insert("In ")

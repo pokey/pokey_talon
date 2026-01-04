@@ -517,9 +517,9 @@ term scroll up: user.vscode("workbench.action.terminal.scrollUp")
 term scroll down: user.vscode("workbench.action.terminal.scrollDown")
 term <number_small>: user.vscode_terminal(number_small)
 term copy last full: user.vscode("workbench.action.terminal.copyLastCommandAndLastCommandOutput")
-term copy last bot: user.term_copy_last_bot()
-term rename <user.text> [halt]:
-    title = user.formatted_text(text, "CAPITALIZE_FIRST_WORD")
+term copy last sketch: user.term_copy_last_bot()
+term rename [<user.text>] [halt]:
+    title = user.formatted_text(text or "", "CAPITALIZE_FIRST_WORD")
     user.rename_active_terminal(title, false)
 term rename auto: user.rename_active_terminal_auto()
 term rename clip:

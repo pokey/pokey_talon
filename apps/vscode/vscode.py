@@ -253,34 +253,12 @@ class Actions:
             return
 
         prompt = """
-Generate a very short name (2-4 words max) based on this content.
-The name should describe what the task is doing.
-Only return the name itself, nothing else. Do not use quotes. YOU MUST FOLLOW THIS RULE.
-Use sentence casing.
-If there is link you don't have access to, still try to make a useful name; see example below.
-NEVER return anything other than the name.
+Generate a very short title (max 3 words; abbrevs ok) for this task. Use sentence casing. Output only the title, nothing else.
 
-<example>
-<input>
-add skill for executing db queries. both psql and typescript-based. add readonly user for coding agent to use and then auto-approve
-</input>
-<output>DB query skill</output>
-</example
-<example>
-<input>
-Add vscode task for `docker compose --project-directory ~/src/brm/devenv up`
-</input>
-<output>Docker VSCode task</output>
-</example>
-<example>
-<input>
-https://github.com/brmlabs/brm/pull/5955#discussion_r2598625737
-</input>
-<output>PR comment (#5955)</output>
-</example>
-
-YOUR RESPONSE MUST BE ONLY THE NAME, CONSISTING OF 2-4 WORDS.
-DO NOT EXPLAIN YOUR ANSWER, JUST RETURN THE NAME.
+Good: "Fix login bug"
+Bad: "This is a title for fixing the login bug in the application"
+Bad: "# Fix login bug"
+Bad: "**Fix login bug**"
 """.strip()
 
         try:
@@ -293,6 +271,7 @@ DO NOT EXPLAIN YOUR ANSWER, JUST RETURN THE NAME.
                 "exec",
                 "--",
                 "llm",
+                clipboard_content,
                 "-m",
                 "claude-haiku-4.5",
                 "-s",
@@ -307,7 +286,6 @@ DO NOT EXPLAIN YOUR ANSWER, JUST RETURN THE NAME.
             # Execute command with proper encoding and environment
             result = subprocess.run(
                 command,
-                input=clipboard_content.encode("utf-8"),
                 capture_output=True,
                 timeout=30,
                 env=env,
@@ -317,6 +295,8 @@ DO NOT EXPLAIN YOUR ANSWER, JUST RETURN THE NAME.
                 terminal_name = result.stdout.decode("utf-8").strip()
                 # Take only the first line in case there's extra output
                 terminal_name = terminal_name.split("\n")[0].strip()
+                # Strip leading `# `
+                terminal_name = re.sub(r"^#\s*", "", terminal_name)
                 if terminal_name:
                     actions.user.rename_active_terminal(terminal_name, True)
                 else:
